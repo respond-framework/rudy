@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pop from route that wont let you leave:  - response 1`] = `false`;
+
+exports[`pop from route that wont let you leave:  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`pop from route that wont let you leave:  - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`pop from route that wont let you leave:  - routes - SECOND - beforeLeave 1`] = `1`;
+
+exports[`pop from route that wont let you leave:  - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 1,
+}
+`;
+
+exports[`pop from route that wont let you leave:  - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 0,
+        "key": "345678",
+        "pathname": "/",
+        "scene": "",
+        "search": "",
+        "url": "/",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "FIRST",
+    },
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/",
+          "scene": "",
+          "search": "",
+          "url": "/",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SECOND",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 1,
+    "key": "345678",
+    "kind": "push",
+    "length": 2,
+    "n": 1,
+    "params": Object {},
+    "pathname": "/second",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 0,
+        "key": "345678",
+        "pathname": "/",
+        "scene": "",
+        "search": "",
+        "url": "/",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "FIRST",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "universal": false,
+    "url": "/second",
+  },
+  "title": "@@skiprudy/BLOCK - {\\"ref\\":{\\"type\\":\\"FIRST\\",\\"params\\":{},\\"query\\":{},\\"state\\":{},\\"hash\\":\\"\\",\\"basename\\":\\"\\",\\"location\\":{\\"url\\":\\"/\\",\\"pathname\\":\\"/\\",\\"search\\":\\"\\",\\"key\\":\\"345678\\",\\"scene\\":\\"\\",\\"index\\":0}}}",
+}
+`;
+
+exports[`pop from route that wont let you leave:  - title 1`] = `"SECOND"`;
+
+exports[`pop from route that wont let you leave:  - windowLocation 1`] = `"/"`;

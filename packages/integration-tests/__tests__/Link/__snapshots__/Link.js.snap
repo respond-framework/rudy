@@ -1,0 +1,213 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ON_CLICK: DOES dispatch if onClick returns true 1`] = `
+<a
+  href="/first"
+  onClick={[Function]}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
+  target={undefined}
+/>
+`;
+
+exports[`ON_CLICK: DOES dispatch if onClick returns undefined 1`] = `
+<a
+  href="/first"
+  onClick={[Function]}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
+  target={undefined}
+/>
+`;
+
+exports[`ON_CLICK: dispatches location-aware action 1`] = `
+<a
+  href="/first"
+  onClick={[Function]}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
+  target={undefined}
+>
+  CLICK ME
+</a>
+`;
+
+exports[`ON_CLICK: dispatches redirect if redirect === true 1`] = `
+<a
+  href="/first"
+  onClick={[Function]}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
+  target={undefined}
+>
+  CLICK ME
+</a>
+`;
+
+exports[`ON_CLICK: does NOT dispatch if onClick returns false 1`] = `
+<a
+  href="/first"
+  onClick={[Function]}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
+  target={undefined}
+/>
+`;
+
+exports[`ON_CLICK: does NOT dispatch if shouldDispatch === false 1`] = `
+<a
+  href="/first"
+  onClick={[Function]}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
+  target={undefined}
+/>
+`;
+
+exports[`ON_MOUSE_DOWN: dispatches action onMouseDown if down === true 1`] = `
+<a
+  href="/first"
+  onClick={[Function]}
+  onMouseDown={[Function]}
+  onTouchStart={[Function]}
+  target={undefined}
+/>
+`;
+
+exports[`ON_TOUCH_START: dispatches action onTouchStart if down === true 1`] = `
+<a
+  href="/first"
+  onClick={[Function]}
+  onMouseDown={[Function]}
+  onTouchStart={[Function]}
+  target={undefined}
+/>
+`;
+
+exports[`converts href as action object to path 1`] = `
+<a
+  href="/second/bar"
+  onClick={[Function]}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
+  target={undefined}
+/>
+`;
+
+exports[`converts href as array of strings to path 1`] = `
+<a
+  href="/second/bar"
+  onClick={[Function]}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
+  target={undefined}
+/>
+`;
+
+exports[`converts href as non-matched action object to "#" for path 1`] = `
+<a
+  href="/#"
+  onClick={[Function]}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
+  target={undefined}
+/>
+`;
+
+exports[`converts invalid href to "#" for path 1`] = `
+<a
+  href="/#"
+  onClick={[Function]}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
+  target={undefined}
+/>
+`;
+
+exports[`supports custom HTML tag name 1`] = `
+<div
+  href={undefined}
+  onClick={[Function]}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
+  target={undefined}
+/>
+`;
+
+exports[`supports custom HTML tag name which is still a link 1`] = `
+<a
+  href="/somewhere"
+  onClick={[Function]}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
+  target={undefined}
+/>
+`;
+
+exports[`with basename options generates url with basename 1`] = `
+Object {
+  "basename": "/base-foo",
+  "entries": Array [
+    Object {
+      "basename": "/base-foo",
+      "hash": "",
+      "key": "345678",
+      "pathname": "/third",
+      "search": "",
+      "state": Object {},
+      "url": "/third",
+    },
+    Object {
+      "basename": "/base-foo",
+      "hash": "",
+      "key": "345678",
+      "pathname": "/first",
+      "search": "",
+      "state": Object {},
+      "url": "/first",
+    },
+  ],
+  "hasSSR": false,
+  "hash": "",
+  "index": 1,
+  "kind": "push",
+  "length": 2,
+  "params": Object {},
+  "pathname": "/first",
+  "prev": Object {
+    "basename": "/base-foo",
+    "entries": Array [
+      Object {
+        "basename": "/base-foo",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/third",
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "THIRD",
+    "url": "/third",
+  },
+  "query": Object {},
+  "scene": "",
+  "search": "",
+  "state": Object {},
+  "status": 200,
+  "type": "FIRST",
+  "url": "/first",
+}
+`;

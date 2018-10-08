@@ -1,0 +1,429 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo"}}}} - response 1`] = `
+Object {
+  "payload": Object {
+    "formatRoute": undefined,
+    "routes": Object {
+      "FOO": Object {
+        "path": "/foo",
+        "type": "FOO",
+      },
+    },
+    "routesAdded": 1,
+  },
+  "type": "@@rudy/ADD_ROUTES",
+}
+`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo"}}}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo"}}}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo"}}}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "scene": "",
+          "search": "",
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 0,
+    "key": "345678",
+    "kind": "load",
+    "length": 1,
+    "n": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": -1,
+        "key": "",
+        "pathname": "",
+        "scene": "",
+        "search": "",
+        "url": "",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "",
+    },
+    "query": Object {},
+    "routesAdded": 1,
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "universal": false,
+    "url": "/first",
+  },
+  "title": "@@rudy/ADD_ROUTES - {\\"routes\\":{\\"FOO\\":{\\"path\\":\\"/foo\\",\\"type\\":\\"FOO\\"}},\\"routesAdded\\":1}",
+}
+`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo"}}}} - title 1`] = `"FIRST"`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "scene": "",
+          "search": "",
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/foo",
+          "scene": "",
+          "search": "",
+          "url": "/foo",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FOO",
+      },
+    ],
+    "from": null,
+    "index": 1,
+    "key": "345678",
+    "kind": "push",
+    "length": 2,
+    "n": 1,
+    "pathname": "/foo",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 0,
+        "key": "345678",
+        "pathname": "/first",
+        "routesAdded": 1,
+        "scene": "",
+        "search": "",
+        "url": "/first",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "FIRST",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/foo",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "FOO",
+}
+`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "scene": "",
+          "search": "",
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/foo",
+          "scene": "",
+          "search": "",
+          "url": "/foo",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FOO",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 1,
+    "key": "345678",
+    "kind": "push",
+    "length": 2,
+    "n": 1,
+    "params": Object {},
+    "pathname": "/foo",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 0,
+        "key": "345678",
+        "pathname": "/first",
+        "routesAdded": 1,
+        "scene": "",
+        "search": "",
+        "url": "/first",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "FIRST",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FOO",
+    "universal": false,
+    "url": "/foo",
+  },
+  "title": "FOO",
+}
+`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - title 1`] = `"FOO"`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","thunk":"BAZ"},"BAZ":{"path":"/baz"}}}} - response 1`] = `
+Object {
+  "payload": Object {
+    "formatRoute": [Function],
+    "routes": Object {
+      "BAZ": Object {
+        "path": "/bar",
+        "thunk": [Function],
+        "type": "BAZ",
+      },
+      "FOO": Object {
+        "path": "/bar",
+        "thunk": [Function],
+        "type": "FOO",
+      },
+    },
+    "routesAdded": 2,
+  },
+  "type": "@@rudy/ADD_ROUTES",
+}
+`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","thunk":"BAZ"},"BAZ":{"path":"/baz"}}}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","thunk":"BAZ"},"BAZ":{"path":"/baz"}}}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","thunk":"BAZ"},"BAZ":{"path":"/baz"}}}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "scene": "",
+          "search": "",
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 0,
+    "key": "345678",
+    "kind": "load",
+    "length": 1,
+    "n": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": -1,
+        "key": "",
+        "pathname": "",
+        "scene": "",
+        "search": "",
+        "url": "",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "",
+    },
+    "query": Object {},
+    "routesAdded": 2,
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "universal": false,
+    "url": "/first",
+  },
+  "title": "@@rudy/ADD_ROUTES - {\\"routes\\":{\\"FOO\\":{\\"path\\":\\"/bar\\",\\"type\\":\\"FOO\\"},\\"BAZ\\":{\\"path\\":\\"/bar\\",\\"type\\":\\"BAZ\\"}},\\"routesAdded\\":2}",
+}
+`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","thunk":"BAZ"},"BAZ":{"path":"/baz"}}}} - title 1`] = `"FIRST"`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - response 1`] = `
+Object {
+  "payload": "payload!",
+  "type": "FOO_COMPLETE",
+}
+`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "scene": "",
+          "search": "",
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/bar",
+          "scene": "",
+          "search": "",
+          "url": "/bar",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FOO",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 1,
+    "key": "345678",
+    "kind": "push",
+    "length": 2,
+    "n": 1,
+    "params": Object {},
+    "pathname": "/bar",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 0,
+        "key": "345678",
+        "pathname": "/first",
+        "routesAdded": 2,
+        "scene": "",
+        "search": "",
+        "url": "/first",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "FIRST",
+    },
+    "query": Object {},
+    "ready": true,
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FOO",
+    "universal": false,
+    "url": "/bar",
+  },
+  "title": "FOO_COMPLETE - \\"payload!\\"",
+}
+`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - title 1`] = `"FOO"`;

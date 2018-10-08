@@ -1,0 +1,814 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`restore history from history fallback with redirect before enter 1`] = `
+Object {
+  "basename": "",
+  "blocked": null,
+  "direction": "backward",
+  "entries": Array [
+    Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "key": "345678",
+        "pathname": "/redirected",
+        "scene": "",
+        "search": "",
+        "url": "/redirected",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "REDIRECTED",
+    },
+    Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "key": "345678",
+        "pathname": "/second",
+        "scene": "",
+        "search": "",
+        "url": "/second",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "SECOND",
+    },
+    Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "key": "345678",
+        "pathname": "/third",
+        "scene": "",
+        "search": "",
+        "url": "/third",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "THIRD",
+    },
+  ],
+  "from": Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "index": 0,
+      "key": "345678",
+      "pathname": "/",
+      "scene": "",
+      "search": "",
+      "url": "/",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "FIRST",
+  },
+  "hash": "",
+  "index": 0,
+  "key": "345678",
+  "kind": "load",
+  "length": 3,
+  "n": -1,
+  "params": Object {},
+  "pathname": "/redirected",
+  "pop": false,
+  "prev": Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "index": 1,
+      "key": "345678",
+      "pathname": "/second",
+      "scene": "",
+      "search": "",
+      "url": "/second",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "SECOND",
+  },
+  "query": Object {},
+  "ready": true,
+  "scene": "",
+  "search": "",
+  "state": Object {},
+  "status": 302,
+  "type": "REDIRECTED",
+  "universal": false,
+  "url": "/redirected",
+}
+`;
+
+exports[`restore history from history fallback with redirect before enter 2`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/redirected",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 0,
+  "out": undefined,
+}
+`;
+
+exports[`restore history from history fallback with redirect before enter 3`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/redirected",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 1,
+  "out": undefined,
+}
+`;
+
+exports[`restore history from history fallback with redirect before enter 4`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/redirected",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 2,
+  "out": undefined,
+}
+`;
+
+exports[`restore history from history fallback with redirect before enter 5`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/redirected",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/redirected",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 3,
+  "out": undefined,
+}
+`;
+
+exports[`restore history from history fallback with redirect before enter:  - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/redirected",
+          "scene": "",
+          "search": "",
+          "url": "/redirected",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "REDIRECTED",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+    ],
+    "from": null,
+    "index": 1,
+    "key": "345678",
+    "kind": "next",
+    "length": 3,
+    "n": 1,
+    "pathname": "/second",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 0,
+        "key": "345678",
+        "pathname": "/redirected",
+        "scene": "",
+        "search": "",
+        "url": "/redirected",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "REDIRECTED",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`restore history from history fallback with redirect before enter:  - response 2`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/redirected",
+          "scene": "",
+          "search": "",
+          "url": "/redirected",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "REDIRECTED",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+    ],
+    "from": null,
+    "index": 2,
+    "key": "345678",
+    "kind": "next",
+    "length": 3,
+    "n": 1,
+    "pathname": "/third",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 1,
+        "key": "345678",
+        "pathname": "/second",
+        "scene": "",
+        "search": "",
+        "url": "/second",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "SECOND",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/third",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "THIRD",
+}
+`;
+
+exports[`restore history from history fallback with redirect before enter:  - routes - FIRST - beforeEnter 1`] = `1`;
+
+exports[`restore history from history fallback with redirect before enter:  - routes - FIRST - beforeEnter 2`] = `1`;
+
+exports[`restore history from history fallback with redirect before enter:  - routes - FIRST - thunk 1`] = `0`;
+
+exports[`restore history from history fallback with redirect before enter:  - routes - FIRST - thunk 2`] = `0`;
+
+exports[`restore history from history fallback with redirect before enter:  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`restore history from history fallback with redirect before enter:  - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
+
+exports[`restore history from history fallback with redirect before enter:  - routes - REDIRECTED - onComplete 1`] = `1`;
+
+exports[`restore history from history fallback with redirect before enter:  - routes - REDIRECTED - onComplete 2`] = `1`;
+
+exports[`restore history from history fallback with redirect before enter:  - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/redirected",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 1,
+  "out": undefined,
+}
+`;
+
+exports[`restore history from history fallback with redirect before enter:  - sessionStorage 2`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/redirected",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 2,
+  "out": undefined,
+}
+`;
+
+exports[`restore history from history fallback with redirect before enter:  - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/redirected",
+          "scene": "",
+          "search": "",
+          "url": "/redirected",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "REDIRECTED",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 1,
+    "key": "345678",
+    "kind": "next",
+    "length": 3,
+    "n": 1,
+    "params": Object {},
+    "pathname": "/second",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 0,
+        "key": "345678",
+        "pathname": "/redirected",
+        "scene": "",
+        "search": "",
+        "url": "/redirected",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "REDIRECTED",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "universal": false,
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`restore history from history fallback with redirect before enter:  - state 2`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/redirected",
+          "scene": "",
+          "search": "",
+          "url": "/redirected",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "REDIRECTED",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 2,
+    "key": "345678",
+    "kind": "next",
+    "length": 3,
+    "n": 1,
+    "params": Object {},
+    "pathname": "/third",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 1,
+        "key": "345678",
+        "pathname": "/second",
+        "scene": "",
+        "search": "",
+        "url": "/second",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "SECOND",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "THIRD",
+    "universal": false,
+    "url": "/third",
+  },
+  "title": "THIRD",
+}
+`;
+
+exports[`restore history from history fallback with redirect before enter:  - title 1`] = `"SECOND"`;
+
+exports[`restore history from history fallback with redirect before enter:  - title 2`] = `"THIRD"`;
+
+exports[`restore history from history fallback with redirect before enter:  - windowLocation 1`] = `"/second"`;
+
+exports[`restore history from history fallback with redirect before enter:  - windowLocation 2`] = `"/third"`;
+
+exports[`restore history from history fallback with redirect before enter: {"type":"FIRST"} - response 1`] = `
+Object {
+  "payload": "redirect_complete",
+  "type": "REDIRECTED_COMPLETE",
+}
+`;
+
+exports[`restore history from history fallback with redirect before enter: {"type":"FIRST"} - routes - FIRST - beforeEnter 1`] = `2`;
+
+exports[`restore history from history fallback with redirect before enter: {"type":"FIRST"} - routes - FIRST - thunk 1`] = `0`;
+
+exports[`restore history from history fallback with redirect before enter: {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`restore history from history fallback with redirect before enter: {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `2`;
+
+exports[`restore history from history fallback with redirect before enter: {"type":"FIRST"} - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/redirected",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/redirected",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 3,
+  "out": undefined,
+}
+`;
+
+exports[`restore history from history fallback with redirect before enter: {"type":"FIRST"} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/redirected",
+          "scene": "",
+          "search": "",
+          "url": "/redirected",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "REDIRECTED",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/redirected",
+          "scene": "",
+          "search": "",
+          "url": "/redirected",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "REDIRECTED",
+      },
+    ],
+    "from": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 3,
+        "key": "345678",
+        "pathname": "/",
+        "scene": "",
+        "search": "",
+        "url": "/",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "FIRST",
+    },
+    "hash": "",
+    "index": 3,
+    "key": "345678",
+    "kind": "replace",
+    "length": 4,
+    "n": 1,
+    "params": Object {},
+    "pathname": "/redirected",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 2,
+        "key": "345678",
+        "pathname": "/third",
+        "scene": "",
+        "search": "",
+        "url": "/third",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "THIRD",
+    },
+    "query": Object {},
+    "ready": true,
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 302,
+    "type": "REDIRECTED",
+    "universal": false,
+    "url": "/redirected",
+  },
+  "title": "REDIRECTED_COMPLETE - \\"redirect_complete\\"",
+}
+`;
+
+exports[`restore history from history fallback with redirect before enter: {"type":"FIRST"} - title 1`] = `"REDIRECTED"`;
+
+exports[`restore history from history fallback with redirect before enter: {"type":"FIRST"} - windowLocation 1`] = `"/redirected"`;
