@@ -55,7 +55,7 @@
 > for notes on how to get set up and contribute to redux-first-router 2.0, AKA
 > Rudy
 
-# Redux-First Router
+# Rudy Router, the successor of Redux-First Router
 
 <p align="center">
   <a href="https://www.npmjs.com/package/redux-first-router">
