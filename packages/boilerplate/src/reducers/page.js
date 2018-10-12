@@ -5,10 +5,11 @@ const components = {
 }
 
 export default (state = 'HOME', action = {}) => {
-  if (action.payload && action.payload.routes) {
-    Object.assign(components, action.payload.routes)
-  }
+  // for dynamic routes, as this reducer is for mapping.
 
+  if (action.component) {
+    return action.component
+  }
   return components[action.type] || state
 }
 

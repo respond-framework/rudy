@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { flushChunkNames } from 'react-universal-component/server'
 import flushChunks from 'webpack-flush-chunks'
-import configureStore from './configureStore'
+
+import configureStore from './configureStore.server'
 import App from './components/App'
-import { aquiredRoutes } from './router'
 
 export default ({ clientStats }) => async (req, res, next) => {
   console.log('REQUESTED PATH:', req.path) // eslint-disable-line no-console
@@ -21,9 +21,7 @@ const renderToString = async (clientStats, req, res) => {
   console.log('REQUESTED PATH:', req.path) // eslint-disable-line no-console
   const store = await configureStore(req, res)
   if (!store) return '' // no store means redirect was already served
-  // console.log(store.dispatch())
-  // console.log(aquiredRoutes)
-  const app = createApp(App,  store)
+  const app = createApp(App, store)
 
   const appString = ReactDOM.renderToString(app)
 

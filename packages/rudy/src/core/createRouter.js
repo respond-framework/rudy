@@ -31,6 +31,7 @@ import {
   call,
   enter,
   changePageTitle,
+  nestedRoute
 } from '../middleware'
 
 export default (
@@ -68,6 +69,7 @@ export default (
   options.onError = typeof onErr !== 'undefined' ? onErr : defaultOnError
   options.parseSearch = options.parseSearch || parseSearch
   options.stringifyQuery = options.stringifyQuery || qs.stringify
+  Object.assign(routesInput, nestedRoute.routes)
 
   const routes = formatRoutes(routesInput, formatRoute)
   const selectLocationState = createSelector('location', location)

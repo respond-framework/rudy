@@ -24,7 +24,7 @@ const UniversalComponent = universal(determineHowToLoad, {
 
 const Switcher = ({ page }) => (
   <div className={styles.switcher}>
-    <UniversalComponent component={page.component || page} />
+    <UniversalComponent component={page} />
   </div>
 )
 const mapStateToProps = (state) => ({

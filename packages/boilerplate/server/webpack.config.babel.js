@@ -62,6 +62,7 @@ export default (env) => {
             loader: 'eslint-loader',
             options: {
               emitError: isProd, // Production builds must have no warnings
+              fix: true,
             },
           },
         },
