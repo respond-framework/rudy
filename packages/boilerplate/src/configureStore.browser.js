@@ -1,7 +1,7 @@
 /* eslint-env browser */
 
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction'
+import {createStore, applyMiddleware, compose, combineReducers} from 'redux'
+import {composeWithDevTools} from 'redux-devtools-extension/logOnlyInProduction'
 import {
   push,
   replace,
@@ -21,21 +21,22 @@ import {
 import routes from './routes'
 import * as reducers from './reducers'
 
+export const store = {}
+
 export default (preloadedState, initialEntries) => {
-  const options = { initialEntries, basenames: ['/foo', '/bar'] }
-  const { reducer, middleware, firstRoute, history, ctx } = createRouter(
+  const options = {initialEntries, basenames: ['/foo', '/bar']}
+  const {reducer, middleware, firstRoute, history, ctx} = createRouter(
     routes,
     options,
   )
-
-  const rootReducer = combineReducers({ ...reducers, location: reducer })
+  const rootReducer = combineReducers({...reducers, location: reducer})
   const middlewares = applyMiddleware(middleware)
   const enhancers = composeEnhancers(middlewares)
-  const store = createStore(rootReducer, preloadedState, enhancers)
+  Object.assign(store, createStore(rootReducer, preloadedState, enhancers))
 
   if (module.hot) {
     module.hot.accept('./reducers/index', () => {
-      const newRootReducer = combineReducers({ ...reducers, location: reducer })
+      const newRootReducer = combineReducers({...reducers, location: reducer})
       store.replaceReducer(newRootReducer)
     })
   }
@@ -48,12 +49,12 @@ export default (preloadedState, initialEntries) => {
     window.ctx = ctx
   }
 
-  return { store, firstRoute }
+  return {store, firstRoute}
 }
 
 const composeEnhancers = (...args) =>
   typeof window !== 'undefined'
-    ? composeWithDevTools({ actionCreators })(...args)
+    ? composeWithDevTools({actionCreators})(...args)
     : compose(...args)
 
 const actionCreators = {
