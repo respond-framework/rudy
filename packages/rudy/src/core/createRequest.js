@@ -104,6 +104,13 @@ export class Request {
     this.tmp.committed = true
     this.history.pendingPop = null
 
+    // likely late in the process and should be moved.
+    // Merging the action with the route that was dispatched.
+    // I am adding the component, for dynamic routing
+    // This means the page reducer does not have to have a mapping of route key to file name. ex {HOME:'Home'}
+    // its replaced with `component` which will resolve a Promise inside Universal
+    Object.assign(this.action,this.route && {component: this.route.component})
+
     return Promise.resolve(this.commitDispatch(this.action)) // syncronous 99% percent of the time (state needs to be updated before history updates URL etc)
       .then((res) => {
         if (!this.commitHistory) return res
