@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "module": "es/index.js",
   "scripts": {
-    "build": "yarn run build:cjs | yarn run build:es | yarn run flow-copy | yarn run build:umd | yarn run build:umd:min",
+    "build": "yarn run build:cjs && yarn run build:es && yarn run flow-copy && yarn run build:umd && yarn run build:umd:min",
     "build:cjs": "babel --source-maps true src -d dist",
     "build:es": "BABEL_ENV=es babel --source-maps true src -d es",
     "build:umd": "NODE_ENV=production webpack --mode production --env.minimize=false src/index.js -o dist/redux-first-router.js",
@@ -51,6 +51,5 @@
       "eslint --fix",
       "git add"
     ]
-  },
-  "devDependencies": {}
+  }
 }

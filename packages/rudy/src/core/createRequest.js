@@ -157,6 +157,7 @@ export class Request {
     }
 
     const oldUrl = this.getLocation().url
+
     return Promise.resolve(dispatch(action)) // dispatch transformed action
       .then((res) => {
         const urlChanged = oldUrl !== this.getLocation().url
@@ -254,6 +255,7 @@ export class Request {
       : typeof act === 'string' && (type = this.isActionType(act))
         ? { type }
         : { payload: act }
+
     action.type =
       action.type ||
       (this.tmp.committed ? `${this.type}_COMPLETE` : `${this.type}_DONE`)

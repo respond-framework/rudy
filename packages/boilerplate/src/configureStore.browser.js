@@ -27,6 +27,7 @@ export default (preloadedState, initialEntries) => {
     routes,
     options,
   )
+
   const rootReducer = combineReducers({ ...reducers, location: reducer })
   const middlewares = applyMiddleware(middleware)
   const enhancers = composeEnhancers(middlewares)
@@ -45,12 +46,6 @@ export default (preloadedState, initialEntries) => {
     window.hist = history
     window.actions = actionCreators
     window.ctx = ctx
-  } else {
-    global.routes = routes
-    global.store = store
-    global.hist = history
-    global.actions = actionCreators
-    global.ctx = ctx
   }
 
   return { store, firstRoute }
