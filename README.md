@@ -377,18 +377,18 @@ That's all folks! :+1:
 
 ## More Docs (they are short easy reads)
 
-- [connectRoutes (there is a third `options` parameter you should check out)](./docs/connectRoutes.md)
-- [action.meta (the `meta` key is how our system communicates & how our action maintains its status as an "FSA")](./docs/action.md)
-- [location reducer shape](./docs/reducer.md)
-- [server side rendering](./docs/server-rendering.md)
-- [query strings](./docs/query-strings.md)
-- [scroll restoration](./docs/scroll-restoration.md)
-- [redirects](./docs/server-rendering.md#redirects-example)
-- [client-only API](./docs/client-only-api.md)
-- [React Native](./docs/react-native.md)
-- [React Navigation Support](./docs/react-native.md#first-class-react-navigation-support)
+- [connectRoutes (there is a third `options` parameter you should check out)](./packages/rudy/docs/connectRoutes.md)
+- [action.meta (the `meta` key is how our system communicates & how our action maintains its status as an "FSA")](./packages/rudy/docs/action.md)
+- [location reducer shape](./packages/rudy/docs/reducer.md)
+- [server side rendering](./packages/rudy/docs/server-rendering.md)
+- [query strings](./packages/rudy/docs/query-strings.md)
+- [scroll restoration](./packages/rudy/docs/scroll-restoration.md)
+- [redirects](./packages/rudy/docs/server-rendering.md#redirects-example)
+- [client-only API](./packages/rudy/docs/client-only-api.md)
+- [React Native](./packages/rudy/docs/react-native.md)
+- [React Navigation Support](./packages/rudy/docs/react-native.md#first-class-react-navigation-support)
   🔮 - _my current primary day-to-day focus_
-- [Prefetching!](./docs/prefetching.md) 🔮 - `<Link prefetch />` **_powered
+- [Prefetching!](./packages/rudy/docs/prefetching.md) 🔮 - `<Link prefetch />` **_powered
   by:_**
   **[react-universal-component](https://github.com/faceyspacey/react-universal-component)** +
   **[webpack-flush-chunks](https://github.com/faceyspacey/webpack-flush-chunks)**
