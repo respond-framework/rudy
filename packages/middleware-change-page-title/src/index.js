@@ -1,7 +1,15 @@
-import { isServer, createSelector } from '@respond-framework/utils'
+import {
+  isServer as defaultIsServer,
+  createSelector as defaultCreateSelector,
+} from '@respond-framework/utils'
 
 export default (options) => {
-  const { title } = options || {}
+  const {
+    title,
+    isServer = defaultIsServer,
+    createSelector = defaultCreateSelector,
+    setTitle = (title) => { window.document.title = title },
+  } = options || {}
   const selectTitleState = createSelector('title', title)
 
   return (api) => async (req, next) => {
@@ -9,7 +17,7 @@ export default (options) => {
 
     if (!isServer() && typeof title === 'string') {
       // eslint-disable-next-line no-undef
-      window.document.title = title
+      setTitle(title)
     }
 
     return next()
