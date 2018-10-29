@@ -1,4 +1,4 @@
-import changePageTitle from './'
+import changePageTitle from '../src'
 
 describe('Changes the page title correctly', () => {
   test('Does default behaviour with no options', async () => {

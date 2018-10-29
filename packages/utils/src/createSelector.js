@@ -5,7 +5,7 @@ export default (name: string, selector: ?string | ?Function): any => {
     return selector
   }
   if (selector) {
-    return (state: Object): any => state && state[selector]
+    return (state: Object): any => (state ? state[selector] : undefined)
   }
-  return (state: Object): any => state && state[name]
+  return (state: Object): any => (state ? state[name] : undefined)
 }

@@ -5,12 +5,15 @@ import {
 
 export default (options) => {
   const {
-    title,
+    title: keyOrSelector,
     isServer = defaultIsServer,
     createSelector = defaultCreateSelector,
-    setTitle = (title) => { window.document.title = title },
+    setTitle = (title) => {
+      // eslint-disable-next-line no-undef
+      window.document.title = title
+    },
   } = options || {}
-  const selectTitleState = createSelector('title', title)
+  const selectTitleState = createSelector('title', keyOrSelector)
 
   return (api) => async (req, next) => {
     const title = selectTitleState(api.getState())

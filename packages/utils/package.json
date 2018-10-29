@@ -19,6 +19,15 @@
     "prettify": "prettier --ignore-path=.eslintignore '**/*' --write",
     "eslint": "eslint",
     "lint": "eslint --ext=js,jsx .",
+    "test": "jest",
     "vulnerabilities": "mkdir node_modules; snyk test"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/cjs/",
+      "<rootDir>/es/"
+    ],
+    "testEnvironment": "node"
   }
 }
