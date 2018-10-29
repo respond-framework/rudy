@@ -1,9 +1,1 @@
-// @flow
-/* global window */
-
-export default (): boolean =>
-  !(
-    typeof window !== 'undefined' &&
-    window.document &&
-    window.document.createElement
-  )
+export { isServer as default } from '@respond-framework/utils'
