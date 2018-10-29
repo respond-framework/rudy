@@ -1,0 +1,24 @@
+{
+  "name": "@respond-framework/utils",
+  "version": "0.1.0",
+  "description": "Shared utilities for rudy",
+  "main": "cjs/index.js",
+  "module": "es/index.js",
+  "repository": "https://github.com/respond-framework/rudy.git",
+  "author": "Daniel Playfair Cal",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "yarn run build:cjs && yarn run build:es && yarn run flow-copy",
+    "build:cjs": "babel --source-maps true src -d cjs",
+    "build:es": "BABEL_ENV=es babel --source-maps true src -d es",
+    "clean": "rimraf cjs && rimraf es",
+    "flow-copy": "flow-copy-source src cjs && flow-copy-source src es",
+    "prettier": "prettier",
+    "is-pretty": "prettier --ignore-path=.eslintignore '**/*' --list-different",
+    "prettify": "prettier --ignore-path=.eslintignore '**/*' --write",
+    "eslint": "eslint",
+    "lint": "eslint --ext=js,jsx .",
+    "vulnerabilities": "mkdir node_modules; snyk test"
+  }
+}
