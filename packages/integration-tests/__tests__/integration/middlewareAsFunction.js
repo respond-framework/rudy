@@ -32,7 +32,7 @@ createTest(
           call('beforeLeave', { prev: true }),
           call('beforeEnter'),
           enter,
-          changePageTitle,
+          changePageTitle(),
           call('onLeave', { prev: true }),
           call('onEnter'),
           call('thunk', { cache: true }),

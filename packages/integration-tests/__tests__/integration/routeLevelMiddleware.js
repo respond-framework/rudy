@@ -17,7 +17,7 @@ createTest(
       middleware: [
         transformAction,
         enter,
-        changePageTitle,
+        changePageTitle(),
         () => async (req, next) => {
           const res = await next()
 
@@ -45,7 +45,7 @@ createTest(
             transformAction,
             call('onTransition'),
             enter,
-            changePageTitle,
+            changePageTitle(),
             () => () => 'foo',
           ],
           api,

@@ -1,5 +1,6 @@
 // @flow
-import { isServer, isRedirect, actionToUrl } from '../utils'
+import { isServer } from '@respond-framework/utils'
+import { isRedirect, actionToUrl } from '../utils'
 import type { Redirect } from '../flow-types'
 
 export default (api: Redirect) => (req: Object, next: Function) => {

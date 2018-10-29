@@ -35,6 +35,7 @@
   },
   "homepage": "https://github.com/faceyspacey/redux-first-router#readme",
   "dependencies": {
+    "@respond-framework/middleware-change-page-title": "^0.1.0",
     "@respond-framework/utils": "^0.1.0",
     "path-to-regexp": "^2.1.0",
     "prop-types": "^15.6.0",

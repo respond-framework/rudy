@@ -1,4 +1,5 @@
-import { isServer, redirectShortcut } from '../utils'
+import { isServer } from '@respond-framework/utils'
+import { redirectShortcut } from '../utils'
 
 export default (api) => async (req, next) => {
   if (req.route.redirect) {

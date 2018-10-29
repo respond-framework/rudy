@@ -1,6 +1,7 @@
 // @flow
 import type { LocationState } from '../../../flow-types'
-import { isHydrate, isServer } from '../../../utils'
+import { isServer } from '@respond-framework/utils'
+import { isHydrate } from '../../../utils'
 
 export default (name, route, req) => {
   if (!route[name] && !req.options[name]) return false

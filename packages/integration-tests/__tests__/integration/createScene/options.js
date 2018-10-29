@@ -41,7 +41,7 @@ createTest(
     ['actions.second(params)', actions.second({ foo: 'bar' })],
     [
       'actions.second(thunk)',
-      actions.second((req) => ({ foo: req.getTitle() })),
+      actions.second((req) => ({ foo: req.getState().title })),
     ],
     [
       'actions.second(action with wrong type)',

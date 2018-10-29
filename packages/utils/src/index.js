@@ -1,1 +1,2 @@
-export { default as isServer } from './isServer.js'
+export { default as isServer } from './isServer'
+export { default as createSelector } from './createSelector'

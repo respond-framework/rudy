@@ -23,7 +23,6 @@ createTest(
     shouldTransition: (...args) => shouldTransition(...args),
     createRequest: (...args) => createRequest(...args),
     shouldCall: (...args) => shouldCall(...args),
-    title: (state) => state.title,
     location: 'location',
   },
 )

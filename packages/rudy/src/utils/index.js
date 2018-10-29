@@ -1,7 +1,6 @@
 export { default as isHydrate } from './isHydrate'
 export { default as isAction } from './isAction'
 export { default as isNotFound } from './isNotFound'
-export { default as isServer } from './isServer'
 export { default as isRedirect } from './isRedirect'
 
 export { default as actionToUrl } from './actionToUrl'
@@ -28,8 +27,6 @@ export { default as redirectShortcut } from './redirectShortcut'
 export { default as callRoute } from './callRoute'
 
 export { default as noOp } from './noOp'
-
-export { default as createSelector } from './createSelector'
 
 export { default as nestAction, createActionRef } from './nestAction'
 

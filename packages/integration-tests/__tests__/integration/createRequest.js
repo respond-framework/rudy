@@ -22,7 +22,6 @@ createTest(
         expect(req.register).toBeDefined()
         expect(req.has).toBeDefined()
 
-        expect(req.getTitle).toBeDefined()
         expect(req.getLocation).toBeDefined()
 
         expect(req.dispatch).toBeDefined()

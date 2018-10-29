@@ -16,12 +16,13 @@ import {
 } from './index'
 
 import {
-  createSelector,
   formatRoutes,
   shouldTransition,
   parseSearch,
   onError as defaultOnError,
 } from '../utils'
+
+import { createSelector } from '@respond-framework/utils'
 
 import {
   serverRedirect,
@@ -44,7 +45,7 @@ export default (
     call('beforeLeave', { prev: true }),
     call('beforeEnter'),
     enter,
-    changePageTitle,
+    changePageTitle(),
     call('onLeave', { prev: true }),
     call('onEnter'),
     call('thunk', { cache: true }),
@@ -89,12 +90,11 @@ export default (
   )
 
   const middleware = ({ dispatch, getState }: Store) => {
-    const getTitle = () => selectTitleState(getState() || {})
     const getLocation = (s) => selectLocationState(s || getState() || {})
     const { shouldTransition, createRequest } = options // middlewares may mutably monkey-patch these in above call to `compose`
 
     // TODO: Fix these annotations
-    Object.assign(api, { getTitle, getLocation, dispatch, getState })
+    Object.assign(api, { getLocation, dispatch, getState })
 
     getState.rudy = api // make rudy available via `context` with no extra Providers, (see <Link />)
     history.listen(dispatch, getLocation) // dispatch actions in response to pops, use redux location state as single source of truth
