@@ -10,8 +10,8 @@
   "private": false,
   "scripts": {
     "build": "yarn run build:cjs && yarn run build:es && yarn run flow-copy",
-    "build:cjs": "babel --source-maps true src -d cjs",
-    "build:es": "BABEL_ENV=es babel --source-maps true src -d es",
+    "build:cjs": "babel --root-mode upward --source-maps true src -d cjs",
+    "build:es": "BABEL_ENV=es babel --root-mode upward --source-maps true src -d es",
     "clean": "rimraf cjs && rimraf es",
     "flow-copy": "flow-copy-source src cjs && flow-copy-source src es",
     "prettier": "prettier",

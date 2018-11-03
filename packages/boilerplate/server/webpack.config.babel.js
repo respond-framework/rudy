@@ -46,6 +46,7 @@ export default (env) => {
             loader: 'babel-loader',
             options: {
               cacheDirectory: true,
+              rootMode: 'upward',
               plugins: [
                 'react-hot-loader/babel',
                 '@babel/syntax-dynamic-import',

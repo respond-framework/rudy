@@ -4,7 +4,14 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = (env) => ({
   module: {
     rules: [
-      { test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        options: {
+          rootMode: 'upward',
+        },
+        exclude: /[\\/]node_modules[\\/]/,
+      },
     ],
   },
   output: {
