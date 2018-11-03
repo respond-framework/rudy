@@ -94,7 +94,7 @@ export default (env) => {
         isClient && 'browser',
         'module',
         'main',
-      ].filter(Boolean)
+      ].filter(Boolean),
     },
     optimization: {
       minimizer: [

@@ -9,5 +9,5 @@ module.exports = (api) => {
       webpack && '@babel/plugin-syntax-dynamic-import',
       webpack && 'babel-plugin-universal-import',
     ].filter(Boolean),
-  };
+  }
 }
