@@ -47,11 +47,7 @@ export default (env) => {
             options: {
               cacheDirectory: true,
               rootMode: 'upward',
-              plugins: [
-                'react-hot-loader/babel',
-                '@babel/syntax-dynamic-import',
-                'universal-import',
-              ],
+              envName: 'webpack',
             },
           },
         },
