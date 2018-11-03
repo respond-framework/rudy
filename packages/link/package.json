@@ -4,6 +4,7 @@
   "description": "React component to create links which dispatch rudy routing actions",
   "main": "cjs/index.js",
   "module": "es/index.js",
+  "rudy-src-main": "src/index.jsx",
   "repository": "https://github.com/ScriptedAlchemy/redux-first-router.git",
   "author": "James Gilmore",
   "license": "MIT",
