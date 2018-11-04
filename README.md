@@ -388,8 +388,8 @@ That's all folks! :+1:
 - [React Native](./packages/rudy/docs/react-native.md)
 - [React Navigation Support](./packages/rudy/docs/react-native.md#first-class-react-navigation-support)
   🔮 - _my current primary day-to-day focus_
-- [Prefetching!](./packages/rudy/docs/prefetching.md) 🔮 - `<Link prefetch />` **_powered
-  by:_**
+- [Prefetching!](./packages/rudy/docs/prefetching.md) 🔮 - `<Link prefetch />`
+  **_powered by:_**
   **[react-universal-component](https://github.com/faceyspacey/react-universal-component)** +
   **[webpack-flush-chunks](https://github.com/faceyspacey/webpack-flush-chunks)**
 
