@@ -1,14 +1,7 @@
-node_modules/
-packages/*/
+# Ignored everywhere
+**/node_modules/
 
-.editorconfig
-.eslintignore
-.gitignore
-.snyk
-
-LICENSE
-yarn.lock
-yarn-error.log
-lerna-debug.log
-
-*.png
+# Ignored dirs in sub packages
+packages/*/cjs/
+packages/*/es/
+packages/*/flow-typed/
