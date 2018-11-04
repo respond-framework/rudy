@@ -25,5 +25,11 @@ module.exports = {
     'no-underscore-dangle': 0,
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'no-nested-ternary': 0,
+    'import/no-extraneous-dependencies': [
+      2,
+      {
+        devDependencies: ['config/**'],
+      },
+    ],
   },
 }

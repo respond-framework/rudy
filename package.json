@@ -15,7 +15,7 @@
     "test": "lerna run test",
     "build": "lerna run build",
     "lint:root": "eslint . --ignore-pattern 'packages/*/**'",
-    "lint": "lerna run lint",
+    "lint": "yarn run lint:root && lerna run lint",
     "is-pretty:root": "prettier '**/*' --list-different",
     "is-pretty": "yarn run is-pretty:root && yarn run lerna run is-pretty",
     "prettify:root": "prettier '**/*' --write",
