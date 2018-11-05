@@ -2,23 +2,25 @@
 
 ## Setup/installation
 
+Check out a copy of this repository and then install its dependencies:
+
 ```shell
-git clone git@github.com:ScriptedAlchemy/redux-first-router.git
 yarn
 ```
 
 ## Running the example/boilerplate
 
-To run the example boilerplate app and easily hack on it and/or rudy, you need
-to do two things:
+The boilerplate package provides an example of the use of rudy. You can run a
+development server as follows:
 
-1. Run a watching compilation of `rudy`:
-   `cd packages/rudy && yarn run build:es --watch`
-2. Run the development server for the boilerplate:
-   `cd packages/boilerplate && yarn run start`
+```shell
+cd packages/boilerplate
+yarn run start
+```
 
-Then you can use the boilerplate at `http://localhost:3000`. You can edit the
-source code in `packages/rudy` and in `packages/boilerplate` and the
+The boilerplate should be accessible at `http://localhost:3000`.
+
+You can edit any of the source code (anywhere in the repository) and the
 server/browser will update accordingly, including HMR and with source maps.
 
 ## Debugging

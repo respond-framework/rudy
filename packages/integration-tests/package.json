@@ -21,27 +21,5 @@
     "react-test-renderer": "^16.4.2",
     "redux": "^3.7.2",
     "redux-thunk": "^2.3.0"
-  },
-  "jest": {
-    "verbose": false,
-    "silent": true,
-    "testURL": "http://localhost:3000",
-    "testMatch": [
-      "**/__tests__/integration/**/*.js?(x)"
-    ],
-    "setupTestFrameworkScriptFile": "./__test-helpers__/setupJest.js",
-    "setupFiles": [
-      "jest-localstorage-mock"
-    ],
-    "moduleFileExtensions": [
-      "js"
-    ],
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      ".eslintrc.js"
-    ],
-    "transformIgnorePatterns": [
-      "<rootDir>/node_modules/(?!@respond-framework)"
-    ]
   }
 }
