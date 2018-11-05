@@ -30,6 +30,9 @@
   },
   "author": "James Gillmore <james@faceyspacey.com>",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "bugs": {
     "url": "https://github.com/faceyspacey/redux-first-router/issues"
   },

@@ -12,6 +12,9 @@
   ],
   "license": "MIT",
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "yarn run build:cjs && yarn run build:es && yarn run flow-copy",
     "build:cjs": "babel --root-mode upward --source-maps true src -d cjs",
