@@ -8,6 +8,7 @@
 **/.snyk
 **/.flowconfig
 **/.npmignore
+**/CHANGELOG.md
 
 # Ignored packages outside sub packages
 LICENSE
