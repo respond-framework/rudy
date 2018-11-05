@@ -27,7 +27,10 @@ createTest('createScene()', routes, [
   ['actions.second()', actions.second()],
   ['actions.second(partialAction)', actions.second({ params: { foo: 'bar' } })],
   ['actions.second(params)', actions.second({ foo: 'bar' })],
-  ['actions.second(thunk)', actions.second((req) => ({ foo: req.getTitle() }))],
+  [
+    'actions.second(thunk)',
+    actions.second((req) => ({ foo: req.getState().title })),
+  ],
   ['actions.second(action with wrong type)', actions.second({ type: 'WRONG' })],
   ['route.action - custom action creator', actions.third('baz')],
   [

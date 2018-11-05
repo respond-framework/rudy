@@ -1,4 +1,4 @@
-dist/
+cjs/
 es/
 flow-typed/
 node_modules/
@@ -11,5 +11,3 @@ node_modules/
 
 *.png
 *.snap
-*.log
-

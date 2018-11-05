@@ -314,7 +314,6 @@ export type RequestAPI = {
     clear: Function,
   },
   routes: Routes,
-  getTitle: Function,
   resolveFirstRouteOnEnter: boolean,
   dispatch: Dispatch,
   getLocation: Function,

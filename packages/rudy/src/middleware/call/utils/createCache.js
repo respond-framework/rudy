@@ -1,4 +1,5 @@
-import { isServer, toAction } from '../../../utils'
+import { isServer } from '@respond-framework/utils'
+import { toAction } from '../../../utils'
 
 const defaultCreateCacheKey = (action, name) => {
   const { type, basename, location } = action

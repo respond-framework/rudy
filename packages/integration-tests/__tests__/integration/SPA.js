@@ -1,7 +1,7 @@
 import createTest from '../../__helpers__/createTest'
 
 jest.mock('@respond-framework/rudy/src/utils/isHydrate', () => () => false)
-jest.mock('@respond-framework/rudy/src/utils/isServer', () => () => false)
+jest.mock('@respond-framework/utils/cjs/isServer', () => () => false)
 
 createTest('callbacks called on load if SPA', {
   FIRST: {
