@@ -1,6 +1,6 @@
 {
   "name": "@respond-framework/middleware-change-page-title",
-  "version": "0.1.0",
+  "version": "1.0.1-test.0",
   "description": "Rudy middleware to synchronise the browser page title with redux state",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -12,8 +12,15 @@
   ],
   "license": "MIT",
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "cjs",
+    "es"
+  ],
   "scripts": {
-    "build": "yarn run build:cjs && yarn run build:es && yarn run flow-copy",
+    "prepare": "yarn run build:cjs && yarn run build:es && yarn run flow-copy",
     "build:cjs": "babel --root-mode upward --source-maps true src -d cjs",
     "build:es": "BABEL_ENV=es babel --root-mode upward --source-maps true src -d es",
     "clean": "rimraf cjs && rimraf es",
@@ -26,6 +33,6 @@
     "vulnerabilities": "mkdir node_modules; snyk test"
   },
   "dependencies": {
-    "@respond-framework/utils": "^0.1.0"
+    "@respond-framework/utils": "^0.1.1-test.0"
   }
 }

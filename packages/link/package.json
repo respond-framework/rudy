@@ -1,6 +1,6 @@
 {
   "name": "@respond-framework/link",
-  "version": "0.1.0",
+  "version": "0.1.1-test.0",
   "description": "React component to create links which dispatch rudy routing actions",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -9,8 +9,15 @@
   "author": "James Gilmore",
   "license": "MIT",
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "cjs",
+    "es"
+  ],
   "scripts": {
-    "build": "yarn run build:cjs && yarn run build:es && yarn run flow-copy",
+    "prepare": "yarn run build:cjs && yarn run build:es && yarn run flow-copy",
     "build:cjs": "babel --root-mode upward --source-maps true src -d cjs",
     "build:es": "BABEL_ENV=es babel --root-mode upward --source-maps true src -d es",
     "clean": "rimraf cjs && rimraf es",
