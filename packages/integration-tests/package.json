@@ -1,6 +1,6 @@
 {
   "name": "integration-tests",
-  "version": "1.0.0",
+  "version": "1.0.1-test.0",
   "description": "Integration tests for the respond framework",
   "main": "index.js",
   "repository": "https://github.com/ScriptedAlchemy/redux-first-router.git",
@@ -16,7 +16,7 @@
     "vulnerabilities": "mkdir node_modules; snyk test"
   },
   "dependencies": {
-    "@respond-framework/rudy": "^0.1.0",
+    "@respond-framework/rudy": "^0.1.1-test.0",
     "react": "^16.4.2",
     "react-redux": "^5.0.7",
     "react-test-renderer": "^16.4.2",

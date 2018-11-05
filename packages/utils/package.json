@@ -1,6 +1,6 @@
 {
   "name": "@respond-framework/utils",
-  "version": "0.1.0",
+  "version": "0.1.1-test.0",
   "description": "Shared utilities for rudy",
   "main": "cjs/index.js",
   "module": "es/index.js",
