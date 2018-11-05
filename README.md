@@ -81,7 +81,7 @@
   <a href="https://www.npmjs.com/package/redux-first-router">
     <img src="https://img.shields.io/npm/dt/redux-first-router.svg" alt="Downloads" />
   </a>
-  
+
   <a href="https://snyk.io/test/github/faceyspacey/redux-first-router">
     <img src="https://snyk.io/test/github/faceyspacey/redux-first-router/badge.svg" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/faceyspacey/redux-first-router">
   </a>
@@ -520,16 +520,6 @@ use for configuring the store???
 > overall simplicity:
 
 _video coming soon..._
-
-## Contributing
-
-We use [commitizen](https://github.com/commitizen/cz-cli), so run `npm run cm`
-to make commits. A command-line form will appear, requiring you answer a few
-questions to automatically produce a nicely formatted commit. Releases, semantic
-version numbers, tags, changelogs and publishing to NPM will automatically be
-handled based on these commits thanks to
-[semantic-release](https://github.com/semantic-release/semantic-release). Be
-good.
 
 ## Tests
 

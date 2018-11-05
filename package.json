@@ -21,13 +21,7 @@
     "prettify:root": "prettier '**/*' --write",
     "prettify": "yarn run prettify:root && yarn run lerna run prettify",
     "vulnerabilities": "yarn run snyk test && yarn run lerna run vulnerabilities",
-    "check": "yarn run is-pretty && yarn run lint && yarn run build && yarn run test -- -- -w 1 && yarn run vulnerabilities",
-    "cm": "npx git-cz"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+    "check": "yarn run is-pretty && yarn run lint && yarn run build && yarn run test -- -- -w 1 && yarn run vulnerabilities"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
@@ -43,10 +37,8 @@
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "babel-watch": "git://github.com/hedgepigdaniel/babel-watch.git",
-    "commitizen": "^2.9.6",
     "cross-env": "^5.0.1",
     "css-loader": "^1.0.0",
-    "cz-conventional-changelog": "^2.1.0",
     "eslint": "^5.4.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.0.1",
