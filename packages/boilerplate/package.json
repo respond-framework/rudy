@@ -12,7 +12,7 @@
     "build": "npm run build:node && npm run build:client && npm run build:server",
     "build:client": "webpack --config=buildServer/webpack.config.babel -p --progress --env.server=false",
     "build:server": "webpack --config=buildServer/webpack.config.babel -p --progress --env.server=true",
-    "build:node": "babel server/ -d buildServer/",
+    "build:node": "babel --root-mode upward server/ -d buildServer/",
     "clean": "rimraf buildClient buildServer",
     "precommit": "lint-staged",
     "cm": "git-cz",

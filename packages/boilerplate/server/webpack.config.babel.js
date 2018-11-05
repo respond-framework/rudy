@@ -40,17 +40,15 @@ export default (env) => {
       strictExportPresence: true, // If you import something that isn't exported
       rules: [
         {
-          test: /\.js$/,
-          exclude: /node_modules/,
+          test: /\.jsx?$/,
+          // Skip node_modules, with the exception of packages in the monorepo
+          exclude: /[\\/]node_modules[\\/](?!@respond-framework)/,
           use: {
             loader: 'babel-loader',
             options: {
               cacheDirectory: true,
-              plugins: [
-                'react-hot-loader/babel',
-                '@babel/syntax-dynamic-import',
-                'universal-import',
-              ],
+              rootMode: 'upward',
+              envName: 'webpack',
             },
           },
         },
@@ -91,6 +89,12 @@ export default (env) => {
       extensions: isServer
         ? ['.server.js', '.js', '.css']
         : ['.browser.js', '.js', '.css'],
+      mainFields: [
+        isDev && 'rudy-src-main',
+        isClient && 'browser',
+        'module',
+        'main',
+      ].filter(Boolean),
     },
     optimization: {
       minimizer: [
