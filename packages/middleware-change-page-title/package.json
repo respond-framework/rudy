@@ -1,6 +1,6 @@
 {
   "name": "@respond-framework/middleware-change-page-title",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Rudy middleware to synchronise the browser page title with redux state",
   "main": "cjs/index.js",
   "module": "es/index.js",

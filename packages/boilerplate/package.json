@@ -1,7 +1,7 @@
 {
   "name": "@respond-framework/boilerplate",
   "description": "Universal Rudy Demo",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "server/index.js",
   "author": "James Gillmore <james@faceyspacey.com>",
   "license": "MIT",

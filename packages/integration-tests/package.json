@@ -6,6 +6,7 @@
   "repository": "https://github.com/ScriptedAlchemy/redux-first-router.git",
   "author": "James Gilmore, Daniel Playfair Cal",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "test": "jest",
     "prettier": "prettier",
