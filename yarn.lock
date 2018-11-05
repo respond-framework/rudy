@@ -2588,10 +2588,10 @@ camelcase@^4.1.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
   integrity sha1-1UVjW+HjPFQmScaRc+Xeas+uNN0=
 
-caniuse-lite@^1.0.30000899:
-  version "1.0.30000904"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000904.tgz#4445d00da859a0e0ae6dbb2876c545f3324f6c74"
-  integrity sha512-M4sXvogCoY5Fp6fuXIaQG/MIexlEFQ3Lgwban+KlqiQUbUIkSmjAB8ZJIP79aj2cdqz2F1Lb+Z+5GwHvCrbLtg==
+caniuse-lite@^1.0.30000888:
+  version "1.0.30000905"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000905.tgz#8f731ecf5b8553c7154a691c3df3a635a1a3fda5"
+  integrity sha512-cR6ICguvhRrkAjFfBoe54vJQMVOEz7vFmqrV6oor1a7GRg6DdswI40lkiV/QQvAMb4txzTkjSaLaJaiAtSuQzA==
 
 capture-exit@^1.2.0:
   version "1.2.0"
@@ -3677,7 +3677,7 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
-electron-to-chromium@^1.3.82:
+electron-to-chromium@^1.3.73:
   version "1.3.83"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.83.tgz#74584eb0972bb6777811c5d68d988c722f5e6666"
   integrity sha512-DqJoDarxq50dcHsOOlMLNoy+qQitlMNbYb6wwbE0oUw2veHdRkpNrhmngiUYKMErdJ8SJ48rpJsZTQgy5SoEAA==
@@ -7674,7 +7674,7 @@ node-pre-gyp@^0.10.0:
     semver "^5.3.0"
     tar "^4"
 
-node-releases@^1.0.1:
+node-releases@^1.0.0-alpha.12:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.0.3.tgz#3414ed84595096459c251699bfcb47d88324a9e4"
   integrity sha512-ZaZWMsbuDcetpHmYeKWPO6e63pSXLb50M7lJgCbcM2nC/nQC3daNifmtp5a2kp7EWwYfhuvH6zLPWkrF8IiDdw==

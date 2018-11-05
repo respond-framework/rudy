@@ -19,10 +19,9 @@
     "clean": "rimraf cjs && rimraf es",
     "flow-copy": "flow-copy-source src cjs && flow-copy-source src es",
     "prettier": "prettier",
-    "is-pretty": "prettier --ignore-path=.eslintignore '**/*' --list-different",
-    "prettify": "prettier --ignore-path=.eslintignore '**/*' --write",
-    "eslint": "eslint",
-    "lint": "eslint --ext=js,jsx .",
+    "is-pretty": "prettier --ignore-path=../../config/.prettierignore '**/*' --list-different",
+    "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write",
+    "lint": "eslint --config ../../.eslintrc.js --ignore-path ../../.eslintignore --ext=js,jsx .",
     "test": "jest --config ../../jest.config.js --rootDir .",
     "vulnerabilities": "mkdir node_modules; snyk test"
   }

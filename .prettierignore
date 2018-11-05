@@ -1,0 +1,24 @@
+# Ignored everywhere
+**/node_modules/
+
+**/.editorconfig
+**/.eslintignore
+**/.prettierignore
+**/.gitignore
+**/.snyk
+**/.flowconfig
+**/.npmignore
+
+# Ignored packages outside sub packages
+LICENSE
+yarn.lock
+yarn-error.log
+lerna-debug.log
+
+# Ignored extensions
+*.png
+*.snap
+*.log
+
+# Ignored dirs in sub packages
+packages/*/

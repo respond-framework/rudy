@@ -17,9 +17,8 @@
     "precommit": "lint-staged",
     "cm": "git-cz",
     "prettier": "prettier",
-    "is-pretty": "prettier --ignore-path=.eslintignore '**/*' --list-different",
-    "prettify": "prettier --ignore-path=.eslintignore '**/*' --write",
-    "eslint": "eslint",
+    "is-pretty": "prettier --ignore-path=../../config/.prettierignore '**/*' --list-different",
+    "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write",
     "lint": "eslint .",
     "vulnerabilities": "mkdir node_modules; snyk test"
   },

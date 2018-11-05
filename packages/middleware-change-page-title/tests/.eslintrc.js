@@ -7,5 +7,5 @@ function res() {
 }
 
 module.exports = {
-  extends: [res('../.eslintrc.js'), 'plugin:jest/recommended'],
+  extends: [res('../../../.eslintrc.js'), 'plugin:jest/recommended'],
 }
