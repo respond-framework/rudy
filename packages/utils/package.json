@@ -6,7 +6,10 @@
   "module": "es/index.js",
   "rudy-src-main": "src/index.jsx",
   "repository": "https://github.com/respond-framework/rudy.git",
-  "author": "Daniel Playfair Cal",
+  "contributors": [
+    "James Gilmore <james@faceyspacey.com>",
+    "Daniel Playfair Cal <daniel.playfair.cal@gmail.com>"
+  ],
   "license": "MIT",
   "private": false,
   "scripts": {
