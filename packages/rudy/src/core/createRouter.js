@@ -1,28 +1,27 @@
 // @flow
 import qs from 'qs'
+import { createSelector } from '@respond-framework/utils'
 import type {
+  InputOptions,
   Options,
   Store,
   Dispatch,
   RoutesInput,
-  RequestAPI,
 } from '../flow-types'
 import {
-  compose,
-  createHistory,
-  createReducer,
-  createInitialState,
-  createRequest,
+  compose as defaultCompose,
+  createHistory as defaultCreateHistory,
+  createReducer as defaultCreateReducer,
+  createInitialState as defaultCreateInitialState,
+  createRequest as defaultCreateRequest,
 } from './index'
 
 import {
   formatRoutes,
-  shouldTransition,
-  parseSearch,
+  shouldTransition as defaultShouldTransition,
+  parseSearch as defaultParseSearch,
   onError as defaultOnError,
 } from '../utils'
-
-import { createSelector } from '@respond-framework/utils'
 
 import {
   serverRedirect,
@@ -36,7 +35,7 @@ import {
 
 export default (
   routesInput: RoutesInput = {},
-  options: Options = {},
+  inputOptions: InputOptions = {},
   middlewares: Array<Function> = [
     serverRedirect, // short-circuiting middleware
     anonymousThunk,
@@ -52,31 +51,37 @@ export default (
     call('onComplete'),
   ],
 ) => {
+  // assign to options so middleware can override them in 1st pass if necessary
+  const options: Options = {
+    ...inputOptions,
+
+    // Fill in the optional values with defaults
+    shouldTransition: inputOptions.shouldTransition || defaultShouldTransition,
+    createRequest: inputOptions.createRequest || defaultCreateRequest,
+    compose: inputOptions.compose || defaultCompose,
+    onError: inputOptions.onError || defaultOnError,
+    parseSearch: inputOptions.parseSearch || defaultParseSearch,
+    stringifyQuery: inputOptions.stringifyQuery || qs.stringify,
+    createHistory: inputOptions.createHistory || defaultCreateHistory,
+    createReducer: inputOptions.createReducer || defaultCreateReducer,
+    createInitialState:
+      inputOptions.createInitialState || defaultCreateInitialState,
+  }
+
   const {
     location,
-    title,
     formatRoute,
-    createHistory: createSmartHistory = createHistory,
-    createReducer: createLocationReducer = createReducer,
-    createInitialState: createState = createInitialState,
-    onError: onErr,
+    createHistory,
+    createReducer,
+    createInitialState,
   } = options
-
-  // assign to options so middleware can override them in 1st pass if necessary
-  options.shouldTransition = options.shouldTransition || shouldTransition
-  options.createRequest = options.createRequest || createRequest
-  options.compose = options.compose || compose
-  options.onError = typeof onErr !== 'undefined' ? onErr : defaultOnError
-  options.parseSearch = options.parseSearch || parseSearch
-  options.stringifyQuery = options.stringifyQuery || qs.stringify
 
   const routes = formatRoutes(routesInput, formatRoute)
   const selectLocationState = createSelector('location', location)
-  const selectTitleState = createSelector('title', title)
-  const history = createSmartHistory(routes, options)
+  const history = createHistory(routes, options)
   const { firstAction } = history
-  const initialState = createState(firstAction)
-  const reducer = createLocationReducer(initialState, routes)
+  const initialState = createInitialState(firstAction)
+  const reducer = createReducer(initialState, routes)
   const wares = {}
   const register = (name: string, val?: any = true) => (wares[name] = val)
   const has = (name: string) => wares[name]

@@ -141,8 +141,6 @@ export type RoutesInput = {
 export type Routes = {
   [key: string]: Route,
 }
-
-
 export type LocationState = {
   type: string,
   kind: ?string,
@@ -178,6 +176,15 @@ export type HistoryRouteAction = {
 }
 
 export type HistoryAction = string
+
+export type CreateReducerAction = {
+  type: string,
+  basename?: string,
+  hash?: string,
+  location?: SelectLocationState,
+  params?: Object,
+  state?: Object,
+}
 
 export type Listener = (HistoryLocation, HistoryAction) => void
 export type Listen = (Listener) => void
@@ -240,7 +247,63 @@ export type NavigationToAction = (
   navigationAction: ?NavigationAction,
 }
 
+export type Reducer = (
+  st: LocationState,
+  action: CreateReducerAction,
+) => LocationState
+
+export type CreateInitialState = (action: Action) => LocationState
+
+export type CreateReducer = (
+  initialState: LocationState,
+  routes: Routes,
+) => Reducer
+
 export type Options = {
+  extra?: any,
+  toPath?: ?any,
+  toSearch?: any,
+  basename?: string,
+  basenames?: Array<string>,
+  scrollTop?: boolean,
+  notFoundPath?: string,
+  defaultState?: Object,
+  defaultQuery?: ?Object,
+  defaultParams?: Options,
+  thunk?: StandardCallback,
+  beforeLeave?: BeforeLeave,
+  onFail?: StandardCallback,
+  onEnter?: StandardCallback,
+  onLeave?: StandardCallback,
+  onError?: StandardCallback,
+  onComplete?: StandardCallback,
+  onBackNext?: StandardCallback,
+  beforeEnter?: StandardCallback,
+  defaultHash?: Function | string,
+  title?: string | SelectTitleState,
+  querySerializer?: QuerySerializer,
+  parseSearch: (string) => Object,
+  stringifyQuery?: (?Object) => string,
+  location?: string | SelectLocationState,
+  initialEntries?: string | Array<string>,
+  restoreScroll?: (History) => ScrollBehavior,
+  createHistory: (routes: Routes, options?: Object) => History,
+  createReducer: CreateReducer,
+  createInitialState: CreateInitialState,
+  toHash?: (hash: string, route: Route, opts: Options) => string,
+  shouldTransition?: StandardCallback,
+  createRequest?: StandardCallback,
+  compose: StandardCallback,
+  fromPath?: FromPath,
+  navigators?: {
+    navigators: Navigators,
+    patchNavigators: (navigators: Navigators) => void,
+    actionToNavigation: ActionToNavigation,
+    navigationToAction: NavigationToAction,
+  },
+}
+
+export type InputOptions = {
   extra?: any,
   toPath?: ?any,
   toSearch?: any,
@@ -269,6 +332,8 @@ export type Options = {
   initialEntries?: string | Array<string>,
   restoreScroll?: (History) => ScrollBehavior,
   createHistory?: (options?: Object) => History,
+  createReducer?: CreateReducer,
+  createInitialState?: CreateInitialState,
   toHash?: (hash: string, route: Route, opts: Options) => string,
   shouldTransition?: StandardCallback,
   createRequest?: StandardCallback,
@@ -285,15 +350,6 @@ export type Options = {
 export type RouteNames = Array<string>
 
 // TODO: Question: Is can this be split up to sub-types at some point
-
-export type CreateReducerAction = {
-  type: string,
-  basename?: string,
-  hash?: string,
-  location?: SelectLocationState,
-  params?: Object,
-  state?: Object,
-}
 
 export type ReceivedActionMeta = {
   type: string,

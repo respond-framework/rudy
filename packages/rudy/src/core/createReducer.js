@@ -1,17 +1,22 @@
 // @flow
-import { ADD_ROUTES, BLOCK, UNBLOCK, SET_FROM } from '../types'
-import { typeToScene, isNotFound } from '../utils'
 import { isServer } from '@respond-framework/utils'
+import { ADD_ROUTES, BLOCK, UNBLOCK, SET_FROM } from '../types'
+import { isNotFound } from '../utils'
 
 import type {
   LocationState,
   Routes,
   Action,
   CreateReducerAction,
+  CreateInitialState,
+  CreateReducer,
   Prev,
 } from '../flow-types'
 
-export default (initialState: Object, routes: Routes) => (
+const createReducer: CreateReducer = (
+  initialState: LocationState,
+  routes: Routes,
+) => (
   st: LocationState = initialState,
   action: CreateReducerAction,
 ): LocationState => {
@@ -69,7 +74,11 @@ export default (initialState: Object, routes: Routes) => (
   return st
 }
 
-export const createInitialState = (action: Action): LocationState => {
+export default createReducer
+
+export const createInitialState: CreateInitialState = (
+  action: Action,
+): LocationState => {
   const { location, type, basename, params, query, state, hash } = action
   const {
     entries,
