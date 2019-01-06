@@ -18,13 +18,13 @@ import {
   createRouter,
 } from '@respond-framework/rudy'
 
-import routes from './routes'
+import baseRoute from './baseRoute'
 import * as reducers from './reducers'
 
 export default (preloadedState, initialEntries) => {
   const options = { initialEntries, basenames: ['/foo', '/bar'] }
   const { reducer, middleware, firstRoute, history, ctx } = createRouter(
-    routes,
+    baseRoute,
     options,
   )
 
@@ -41,7 +41,7 @@ export default (preloadedState, initialEntries) => {
   }
 
   if (typeof window !== 'undefined') {
-    window.routes = routes
+    window.baseRoute = baseRoute
     window.store = store
     window.hist = history
     window.actions = actionCreators

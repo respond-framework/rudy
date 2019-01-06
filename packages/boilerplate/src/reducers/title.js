@@ -2,7 +2,7 @@ export default (state = 'RFR Demo', action = {}) => {
   switch (action.type) {
     case 'HOME':
       return 'RFR Boilerplate'
-    case 'LIST':
+    case 'CATEGORIES':
       return `RFR: ${capitalize(action.params.category)}`
     default:
       return state

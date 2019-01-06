@@ -18,14 +18,16 @@ const Sidebar = ({ path, dispatch }) => (
     <Link
       role="link"
       tabIndex="0"
-      to={{ type: 'LIST', params: { category: 'redux' } }}
+      to={{ type: 'CATEGORIES', params: { category: 'redux' } }}
     >
       Redux
     </Link>
     <span
       role="link"
       tabIndex="0"
-      onClick={() => dispatch({ type: 'LIST', params: { category: 'react' } })}
+      onClick={() =>
+        dispatch({ type: 'CATEGORIES', params: { category: 'react' } })
+      }
     >
       React
     </span>
@@ -55,7 +57,9 @@ const Sidebar = ({ path, dispatch }) => (
       role="link"
       tabIndex="0"
       className={isActive(path, '/list/redux')}
-      onClick={() => dispatch({ type: 'LIST', params: { category: 'redux' } })}
+      onClick={() =>
+        dispatch({ type: 'CATEGORIES', params: { category: 'redux' } })
+      }
     >
       Redux
     </span>
@@ -64,7 +68,9 @@ const Sidebar = ({ path, dispatch }) => (
       role="link"
       tabIndex="0"
       className={isActive(path, '/list/react')}
-      onClick={() => dispatch({ type: 'LIST', params: { category: 'react' } })}
+      onClick={() =>
+        dispatch({ type: 'CATEGORIES', params: { category: 'react' } })
+      }
     >
       React
     </span>
