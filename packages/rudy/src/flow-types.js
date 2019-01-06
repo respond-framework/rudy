@@ -108,6 +108,8 @@ export type ToPath = (
   opts: Options,
 ) => string | Object
 
+export type ToHash = (hash: string, route: Route, opts: Options) => string
+
 export type Route = {
   path?: string,
   toPath?: ToPath,
@@ -129,7 +131,7 @@ export type Route = {
   stringifyQuery?: (?Object) => string,
   fromSearch?: Function,
   fromPath?: FromPath,
-  toHash?: (hash: string, route: Route, opts: Options) => string,
+  toHash?: ToHash,
 }
 
 export type RouteInput = Function | Route
@@ -290,7 +292,7 @@ export type Options = {
   createHistory: (routes: Routes, options?: Object) => History,
   createReducer: CreateReducer,
   createInitialState: CreateInitialState,
-  toHash?: (hash: string, route: Route, opts: Options) => string,
+  toHash?: ToHash,
   shouldTransition?: StandardCallback,
   createRequest?: StandardCallback,
   compose: StandardCallback,
@@ -334,7 +336,7 @@ export type InputOptions = {
   createHistory?: (options?: Object) => History,
   createReducer?: CreateReducer,
   createInitialState?: CreateInitialState,
-  toHash?: (hash: string, route: Route, opts: Options) => string,
+  toHash?: ToHash,
   shouldTransition?: StandardCallback,
   createRequest?: StandardCallback,
   compose?: StandardCallback,
