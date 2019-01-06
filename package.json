@@ -50,7 +50,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
-    "flow-bin": "^0.78.0",
+    "flow-bin": "^0.89.0",
     "flow-copy-source": "^2.0.2",
     "husky": "^0.14.3",
     "jest": "^23.6.0",
