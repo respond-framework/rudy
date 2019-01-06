@@ -1,3 +1,4 @@
+import { noOp } from '@respond-framework/rudy/src'
 import createTest from '../../__helpers__/createTest'
 
 createTest('route onError called if other callbacks throw', {
@@ -30,7 +31,7 @@ createTest('currentType_ERROR dispatched if no onError callback provided', {
 })
 
 createTest(
-  'default options.onError skipped if options.onError === null',
+  'default options.onError skipped if options.onError === noOp',
   {
     SECOND: {
       path: '/second',
@@ -40,5 +41,5 @@ createTest(
       onError() {},
     },
   },
-  { onError: null },
+  { onError: noOp },
 )

@@ -94,17 +94,19 @@ Object {
 
 exports[`currentType_ERROR dispatched if no onError callback provided: 1 - title 1`] = `"SECOND"`;
 
-exports[`default options.onError skipped if options.onError === null: 1 - response 1`] = `undefined`;
+exports[`default options.onError skipped if options.onError === noOp: 1 - options - onError 1`] = `1`;
 
-exports[`default options.onError skipped if options.onError === null: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`default options.onError skipped if options.onError === noOp: 1 - response 1`] = `undefined`;
 
-exports[`default options.onError skipped if options.onError === null: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`default options.onError skipped if options.onError === noOp: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`default options.onError skipped if options.onError === null: 1 - routes - SECOND - onError 1`] = `1`;
+exports[`default options.onError skipped if options.onError === noOp: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`default options.onError skipped if options.onError === null: 1 - routes - SECOND - thunk 1`] = `1`;
+exports[`default options.onError skipped if options.onError === noOp: 1 - routes - SECOND - onError 1`] = `1`;
 
-exports[`default options.onError skipped if options.onError === null: 1 - state 1`] = `
+exports[`default options.onError skipped if options.onError === noOp: 1 - routes - SECOND - thunk 1`] = `1`;
+
+exports[`default options.onError skipped if options.onError === noOp: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -181,7 +183,7 @@ Object {
 }
 `;
 
-exports[`default options.onError skipped if options.onError === null: 1 - title 1`] = `"SECOND"`;
+exports[`default options.onError skipped if options.onError === noOp: 1 - title 1`] = `"SECOND"`;
 
 exports[`route onError called if other callbacks throw: 1 - response 1`] = `
 Object {
