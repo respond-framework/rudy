@@ -1,20 +1,90 @@
 // @flow
 import type { Dispatch as ReduxDispatch, Store as ReduxStore } from 'redux'
-import { CALL_HISTORY } from './types'
 
+// Redux
+export type Store = ReduxStore<*, *>
 export type Dispatch = ReduxDispatch<*>
 export type GetState = () => Object
+
+// Flux Standard Routing Actions
+export type Params = Object
+export type Payload = Object
+
+export type HistoryData = {
+  entries: Array<{ pathname: string }>,
+  index: number,
+  length: number,
+}
+
+export type Location = {
+  pathname: string,
+  type: string,
+  payload: Payload,
+  query?: Object,
+  search?: string,
+}
+
+export type ActionMetaLocation = {
+  current: Location,
+  prev: Location,
+  from: string,
+  kind: ?string,
+  history: ?HistoryData,
+}
+
+export type NavigationAction = {
+  type: string,
+  key?: ?string,
+  navKey?: ?string,
+  routeName?: string,
+  actions?: Array<NavigationAction>,
+  action?: NavigationAction,
+  params?: Object,
+  meta?: Object,
+}
+
+export type Meta = {
+  location: ActionMetaLocation,
+  notFoundPath?: string,
+  navigation?: NavigationAction,
+  query?: Object,
+  search?: string,
+}
+
+export type ReceivedAction = {
+  type: string,
+  meta?: Object,
+  hash?: string,
+  state?: Object,
+  query?: Object,
+  search?: string,
+  params: ?Params,
+  payload: Payload,
+  navKey?: ?string,
+  basename?: ?string,
+  pathname?: string,
+}
+
+export type Action = {
+  meta: Meta,
+  type: string,
+  kind?: ?string,
+  query?: Object,
+  payload: Payload,
+  navKey?: ?string,
+  tmp?: Object,
+}
+
+export type Bag = {
+  action: ReceivedAction | Action | Location,
+  extra: any,
+}
 
 export type BeforeLeave = (
   state: Object,
   action: Object,
   bag: Bag,
 ) => any | Promise<any>
-
-export type Bag = {
-  action: ReceivedAction | Action | Location,
-  extra: any,
-}
 
 export type StandardCallback = (
   dispatch: Dispatch,
@@ -30,9 +100,17 @@ export type FromPath = (
   opts?: Options,
 ) => string
 
+export type ToPath = (
+  val: string,
+  key: string,
+  encodedVal: string,
+  route: Route,
+  opts: Options,
+) => string | Object
+
 export type Route = {
   path?: string,
-  toPath?: Path,
+  toPath?: ToPath,
   type?: string,
   scene?: string,
   navKey?: string,
@@ -64,6 +142,70 @@ export type Routes = {
   [key: string]: Route,
 }
 
+
+export type LocationState = {
+  type: string,
+  kind: ?string,
+  query?: Object,
+  prev: Location,
+  search?: string,
+  universal?: true,
+  pathname: string,
+  payload: Payload,
+  routesMap: Routes,
+  history: ?HistoryData,
+}
+
+export type HistoryLocation = {
+  pathname: string,
+  search?: string,
+  hash?: string,
+}
+
+export type SelectLocationState = (state: Object) => LocationState
+export type SelectTitleState = (state: Object) => string
+export type QuerySerializer = {
+  stringify: (params: Object) => string,
+  parse: (queryString: string) => Object,
+}
+
+export type HistoryRouteAction = {
+  payload: {
+    args: Array<mixed>,
+    method: string,
+  },
+  type: string,
+}
+
+export type HistoryAction = string
+
+export type Listener = (HistoryLocation, HistoryAction) => void
+export type Listen = (Listener) => void
+export type Push = (pathname: string, state?: any) => void
+export type Replace = (pathname: string, state?: any) => void
+export type GoBack = () => void
+export type GoForward = () => void
+export type Go = (number) => void
+export type CanGo = (number) => boolean
+export type BlockFunction = (location: HistoryLocation) => any | Promise<any>
+
+export type History = {
+  listen: Listen,
+  push: Push,
+  replace: Replace,
+  goBack: GoBack,
+  goForward: GoForward,
+  go: Go,
+  canGo: CanGo,
+  entries: Array<{ pathname: string }>,
+  index: number,
+  length: number,
+  location: HistoryLocation,
+  block: (func: BlockFunction) => void,
+}
+
+export type ScrollBehavior = Object
+
 export type Router = {
   getStateForActionOriginal: (action: Object, state: ?Object) => ?Object,
   getStateForAction: (action: Object, state: ?Object) => ?Object,
@@ -79,16 +221,6 @@ export type Navigator = {
 
 export type Navigators = {
   [key: string]: Navigator,
-}
-
-export type RouteNames = Array<string>
-
-export type SelectLocationState = (state: Object) => LocationState
-export type SelectTitleState = (state: Object) => string
-
-export type QuerySerializer = {
-  stringify: (params: Object) => string,
-  parse: (queryString: string) => Object,
 }
 
 export type ActionToNavigation = (
@@ -108,15 +240,6 @@ export type NavigationToAction = (
   navigationAction: ?NavigationAction,
 }
 
-export type Path = (
-  val: string,
-  key: string,
-  encodedVal: string,
-  route: Route,
-  opts: Options,
-) => string | Object
-
-// TODO: Question: Is can this be split up to sub-types at some point.
 export type Options = {
   extra?: any,
   toPath?: ?any,
@@ -159,82 +282,9 @@ export type Options = {
   },
 }
 
-export type ScrollBehavior = Object
+export type RouteNames = Array<string>
 
-export type Params = Object
-export type Payload = Object
-
-export type LocationState = {
-  type: string,
-  kind: ?string,
-  query?: Object,
-  prev: Location,
-  search?: string,
-  universal?: true,
-  pathname: string,
-  payload: Payload,
-  routesMap: Routes,
-  history: ?HistoryData,
-}
-
-export type Location = {
-  pathname: string,
-  type: string,
-  payload: Payload,
-  query?: Object,
-  search?: string,
-}
-
-export type ActionMetaLocation = {
-  current: Location,
-  prev: Location,
-  from: string,
-  kind: ?string,
-  history: ?HistoryData,
-}
-
-export type NavigationAction = {
-  type: string,
-  key?: ?string,
-  navKey?: ?string,
-  routeName?: string,
-  actions?: Array<NavigationAction>,
-  action?: NavigationAction,
-  params?: Object,
-  meta?: Object,
-}
-
-export type Meta = {
-  location: ActionMetaLocation,
-  notFoundPath?: string,
-  navigation?: NavigationAction,
-  query?: Object,
-  search?: string,
-}
-
-export type HistoryData = {
-  entries: Array<{ pathname: string }>,
-  index: number,
-  length: number,
-}
-
-export type HistoryRouteAction = {
-  payload: {
-    args: Array<mixed>,
-    method: string,
-  },
-  type: string,
-}
-
-export type Action = {
-  meta: Meta,
-  type: string,
-  kind?: ?string,
-  query?: Object,
-  payload: Payload,
-  navKey?: ?string,
-  tmp?: Object,
-}
+// TODO: Question: Is can this be split up to sub-types at some point
 
 export type CreateReducerAction = {
   type: string,
@@ -243,20 +293,6 @@ export type CreateReducerAction = {
   location?: SelectLocationState,
   params?: Object,
   state?: Object,
-}
-
-export type ReceivedAction = {
-  type: string,
-  meta?: Object,
-  hash?: string,
-  state?: Object,
-  query?: Object,
-  search?: string,
-  params: ?Params,
-  payload: Payload,
-  navKey?: ?string,
-  basename?: ?string,
-  pathname?: string,
 }
 
 export type ReceivedActionMeta = {
@@ -269,31 +305,6 @@ export type ReceivedActionMeta = {
     query?: Object,
     search?: string,
   },
-}
-
-export type Listener = (HistoryLocation, HistoryAction) => void
-export type Listen = (Listener) => void
-export type Push = (pathname: string, state?: any) => void
-export type Replace = (pathname: string, state?: any) => void
-export type GoBack = () => void
-export type GoForward = () => void
-export type Go = (number) => void
-export type CanGo = (number) => boolean
-export type BlockFunction = (location: HistoryLocation) => any | Promise<any>
-
-export type History = {
-  listen: Listen,
-  push: Push,
-  replace: Replace,
-  goBack: GoBack,
-  goForward: GoForward,
-  go: Go,
-  canGo: CanGo,
-  entries: Array<{ pathname: string }>,
-  index: number,
-  length: number,
-  location: HistoryLocation,
-  block: (func: BlockFunction) => void,
 }
 
 export type LocationActionMeta = {
@@ -331,17 +342,17 @@ export type RequestAPI = {
   },
 }
 
-export type HistoryLocation = {
-  pathname: string,
-  search?: string,
-  hash?: string,
-}
-
 export type AddRoutes = {
   action: Action,
   options: Options,
   routes: Routes,
   has: Function,
+}
+
+export type Cache = {
+  isCached: Function,
+  cacheAction: Function,
+  clear: Function,
 }
 
 export type ClearCache = {
@@ -363,11 +374,7 @@ export type HistoryActionDispatcher = {
   has: Function,
 }
 
-export type HistoryAction = string
-
 export type Document = Object
-
-export type Store = ReduxStore<*, *>
 
 export type CreateActionsOptions = {
   logExports: ?boolean,
@@ -380,12 +387,6 @@ export type Confirm = {
   ctx: Object,
   has: Function,
   _dispatched?: boolean,
-}
-
-export type Cache = {
-  isCached: Function,
-  cacheAction: Function,
-  clear: Function,
 }
 
 export type ComposeCurryArgs = Redirect
