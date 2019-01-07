@@ -8,6 +8,7 @@
     "**/node_modules/**/*": true,
     "**/dist/**/*": true,
     "**/es/**/*": true,
+    "**/cjs/**/*": true,
     "examples/boilerplate/buildClient/**/*": true,
     "examples/boilerplate/buildServer/**/*": true
   }
