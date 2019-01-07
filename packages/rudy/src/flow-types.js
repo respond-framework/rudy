@@ -147,6 +147,7 @@ export type Route = {
   fromSearch?: Function,
   fromPath?: FromPath,
   toHash?: ToHash,
+  convertNumbers?: Boolean,
 }
 
 export type RouteInput = Function | Route
@@ -308,6 +309,7 @@ export type Options = {
   createReducer: CreateReducer,
   createInitialState: CreateInitialState,
   toHash?: ToHash,
+  convertNumbers?: Boolean,
   shouldTransition?: StandardCallback,
   createRequest?: StandardCallback,
   compose: StandardCallback,
@@ -352,6 +354,7 @@ export type InputOptions = {
   createReducer?: CreateReducer,
   createInitialState?: CreateInitialState,
   toHash?: ToHash,
+  convertNumbers?: Boolean,
   shouldTransition?: StandardCallback,
   createRequest?: StandardCallback,
   compose?: StandardCallback,
