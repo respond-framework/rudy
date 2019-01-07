@@ -129,7 +129,7 @@ export type DefaultRouteParams = DefaultRouteDetails<RouteParams>
 export type DefaultRouteQuery = DefaultRouteDetails<RouteParams>
 export type DefaultRouteState = DefaultRouteDetails<RouteParams>
 
-export type StringifyQuery = (Object, ?{ addQueryPrefix: Boolean }) => string
+export type StringifyQuery = (Object, ?{ addQueryPrefix: boolean }) => string
 
 export type Route = {
   path?: string,
