@@ -1,6 +1,6 @@
 // @flow
 import { actionToUrl, urlToAction } from './index'
-import type { Options, Routes, LocationState } from '../flow-types'
+import type { Options, Routes, Action } from '../flow-types'
 // This will take anything you throw at it (a url string, action, or array: [url, state, key?])
 // and convert it to a complete Rudy FSRA ("flux standard routing action").
 
@@ -14,9 +14,9 @@ export default (
   },
   // TODO: make better annotations here
   entry: string | Object,
-  st: ?Object,
-  k: ?Object,
-): LocationState => {
+  st?: Object,
+  k?: Object,
+): Action => {
   if (Array.isArray(entry)) {
     // entry as array of [url, state, key?]
     const [url, state, key] = entry

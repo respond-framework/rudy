@@ -5,9 +5,9 @@ import { notFound } from '../actions'
 import type {
   Routes,
   HistoryLocation,
-  NavigationAction,
   Route,
   Options,
+  Action,
 } from '../flow-types'
 
 export default (
@@ -19,7 +19,7 @@ export default (
   url: string,
   state: Object = {},
   key: string = createKey(),
-) => {
+): Action => {
   const { getLocation, routes, options: opts } = api
   const curr = getLocation ? getLocation() : {}
 
@@ -59,7 +59,13 @@ const createAction = (
   opts: Options,
   st: Object = {},
   curr: Object = {},
-): NavigationAction => {
+): {
+  type: string,
+  params: Object,
+  query: Object,
+  hash: string,
+  state: ?Object,
+} => {
   const types = Object.keys(routes).filter((type) => routes[type].path)
 
   for (let i = 0; i < types.length; i++) {

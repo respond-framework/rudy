@@ -65,14 +65,21 @@ export type ReceivedAction = {
   pathname?: string,
 }
 
+// A routing action, as received by reducers (after middleware)
 export type Action = {
-  meta: Meta,
   type: string,
-  kind?: ?string,
-  query?: Object,
-  payload: Payload,
-  navKey?: ?string,
-  tmp?: Object,
+  params: Object,
+  query: Object,
+  hash: string,
+  state: Object,
+  basename: string,
+  location: {
+    key: string,
+    scene: string,
+    url: string,
+    pathname: string,
+    search: string,
+  },
 }
 
 export type Bag = {
