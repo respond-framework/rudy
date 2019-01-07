@@ -1,9 +1,13 @@
 // @flow
-import type { LocationState } from '../../../flow-types'
 import { isServer } from '@respond-framework/utils'
+import type { Route, RequestAPI } from '../../../flow-types'
 import { isHydrate } from '../../../utils'
 
-export default (name, route, req) => {
+export default (
+  name: string,
+  route: Route,
+  req: RequestAPI,
+): boolean | { route: boolean, options: boolean } => {
   if (!route[name] && !req.options[name]) return false
 
   // skip callbacks (beforeEnter, thunk, etc) called on server, which produced initialState
