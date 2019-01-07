@@ -111,10 +111,16 @@ export type ToPath = (
 export type ToHash = (hash: string, route: Route, opts: Options) => string
 
 export type RouteState = Object
+export type RouteQuery = Object
+export type RouteParams = Object
 
-export type DefaultState =
-  | RouteState
-  | ((RouteState, Route, Options) => RouteState)
+export type DefaultRouteDetails<StateType> =
+  | StateType
+  | ((RouteQuery, Route, Options) => StateType)
+
+export type DefaultRouteParams = DefaultRouteDetails<RouteParams>
+export type DefaultRouteQuery = DefaultRouteDetails<RouteParams>
+export type DefaultRouteState = DefaultRouteDetails<RouteParams>
 
 export type Route = {
   path?: string,
@@ -133,7 +139,9 @@ export type Route = {
   onComplete?: StandardCallback,
   beforeEnter?: StandardCallback,
   defaultHash?: Function | string,
-  defaultState?: DefaultState,
+  defaultState?: DefaultRouteState,
+  defaultQuery?: DefaultRouteQuery,
+  defaultParams?: DefaultRouteParams,
   parseSearch?: (?string) => Object,
   stringifyQuery?: (?Object) => string,
   fromSearch?: Function,
@@ -276,9 +284,9 @@ export type Options = {
   basenames?: Array<string>,
   scrollTop?: boolean,
   notFoundPath?: string,
-  defaultState?: DefaultState,
-  defaultQuery?: ?Object,
-  defaultParams?: Options,
+  defaultState?: DefaultRouteState,
+  defaultQuery?: DefaultRouteQuery,
+  defaultParams?: DefaultRouteParams,
   thunk?: StandardCallback,
   beforeLeave?: BeforeLeave,
   onFail?: StandardCallback,
@@ -320,9 +328,9 @@ export type InputOptions = {
   basenames?: Array<string>,
   scrollTop?: boolean,
   notFoundPath?: string,
-  defaultState?: DefaultState,
-  defaultQuery?: ?Object,
-  defaultParams?: Options,
+  defaultState?: DefaultRouteState,
+  defaultQuery?: DefaultRouteQuery,
+  defaultParams?: DefaultRouteParams,
   thunk?: StandardCallback,
   beforeLeave?: BeforeLeave,
   onFail?: StandardCallback,
