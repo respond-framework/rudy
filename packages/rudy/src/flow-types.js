@@ -133,7 +133,8 @@ export type Route = {
   thunk?: StandardCallback,
   beforeLeave?: BeforeLeave,
   onFail?: StandardCallback,
-  capitalizedWords?: boolean,
+  capitalizedWords?: Boolean,
+  convertNumbers?: Boolean,
   onEnter?: StandardCallback,
   onLeave?: StandardCallback,
   onComplete?: StandardCallback,
@@ -147,7 +148,6 @@ export type Route = {
   fromSearch?: Function,
   fromPath?: FromPath,
   toHash?: ToHash,
-  convertNumbers?: Boolean,
 }
 
 export type RouteInput = Function | Route
@@ -309,6 +309,7 @@ export type Options = {
   createReducer: CreateReducer,
   createInitialState: CreateInitialState,
   toHash?: ToHash,
+  capitalizedWords?: Boolean,
   convertNumbers?: Boolean,
   shouldTransition?: StandardCallback,
   createRequest?: StandardCallback,
@@ -354,6 +355,7 @@ export type InputOptions = {
   createReducer?: CreateReducer,
   createInitialState?: CreateInitialState,
   toHash?: ToHash,
+  capitalizedWords?: Boolean,
   convertNumbers?: Boolean,
   shouldTransition?: StandardCallback,
   createRequest?: StandardCallback,
