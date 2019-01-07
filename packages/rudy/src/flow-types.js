@@ -129,6 +129,8 @@ export type DefaultRouteParams = DefaultRouteDetails<RouteParams>
 export type DefaultRouteQuery = DefaultRouteDetails<RouteParams>
 export type DefaultRouteState = DefaultRouteDetails<RouteParams>
 
+export type StringifyQuery = (Object, ?{ addQueryPrefix: Boolean }) => string
+
 export type Route = {
   path?: string,
   toPath?: ToPath,
@@ -151,7 +153,7 @@ export type Route = {
   defaultQuery?: DefaultRouteQuery,
   defaultParams?: DefaultRouteParams,
   parseSearch?: (?string) => Object,
-  stringifyQuery?: (?Object) => string,
+  stringifyQuery?: StringifyQuery,
   fromSearch?: Function,
   fromPath?: FromPath,
   toHash?: ToHash,
@@ -308,7 +310,7 @@ export type Options = {
   title?: string | SelectTitleState,
   querySerializer?: QuerySerializer,
   parseSearch: (string) => Object,
-  stringifyQuery?: (?Object) => string,
+  stringifyQuery: StringifyQuery,
   location?: string | SelectLocationState,
   initialEntries?: string | Array<string>,
   restoreScroll?: (History) => ScrollBehavior,
@@ -354,7 +356,7 @@ export type InputOptions = {
   title?: string | SelectTitleState,
   querySerializer?: QuerySerializer,
   parseSearch?: (?string) => Object,
-  stringifyQuery?: (?Object) => string,
+  stringifyQuery?: StringifyQuery,
   location?: string | SelectLocationState,
   initialEntries?: string | Array<string>,
   restoreScroll?: (History) => ScrollBehavior,
