@@ -110,6 +110,12 @@ export type ToPath = (
 
 export type ToHash = (hash: string, route: Route, opts: Options) => string
 
+export type RouteState = Object
+
+export type DefaultState =
+  | RouteState
+  | ((RouteState, Route, Options) => RouteState)
+
 export type Route = {
   path?: string,
   toPath?: ToPath,
@@ -127,6 +133,7 @@ export type Route = {
   onComplete?: StandardCallback,
   beforeEnter?: StandardCallback,
   defaultHash?: Function | string,
+  defaultState?: DefaultState,
   parseSearch?: (?string) => Object,
   stringifyQuery?: (?Object) => string,
   fromSearch?: Function,
@@ -269,7 +276,7 @@ export type Options = {
   basenames?: Array<string>,
   scrollTop?: boolean,
   notFoundPath?: string,
-  defaultState?: Object,
+  defaultState?: DefaultState,
   defaultQuery?: ?Object,
   defaultParams?: Options,
   thunk?: StandardCallback,
@@ -313,7 +320,7 @@ export type InputOptions = {
   basenames?: Array<string>,
   scrollTop?: boolean,
   notFoundPath?: string,
-  defaultState?: Object,
+  defaultState?: DefaultState,
   defaultQuery?: ?Object,
   defaultParams?: Options,
   thunk?: StandardCallback,
