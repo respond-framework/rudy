@@ -330,6 +330,7 @@ export type Options = {
     actionToNavigation: ActionToNavigation,
     navigationToAction: NavigationToAction,
   },
+  testBrowser?: boolean,
 }
 
 export type InputOptions = {
@@ -376,6 +377,7 @@ export type InputOptions = {
     actionToNavigation: ActionToNavigation,
     navigationToAction: NavigationToAction,
   },
+  testBrowser?: boolean,
 }
 
 export type RouteNames = Array<string>
