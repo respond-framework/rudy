@@ -126,8 +126,8 @@ export type DefaultRouteDetails<StateType> =
   | ((RouteQuery, Route, Options) => StateType)
 
 export type DefaultRouteParams = DefaultRouteDetails<RouteParams>
-export type DefaultRouteQuery = DefaultRouteDetails<RouteParams>
-export type DefaultRouteState = DefaultRouteDetails<RouteParams>
+export type DefaultRouteQuery = DefaultRouteDetails<RouteQuery>
+export type DefaultRouteState = DefaultRouteDetails<RouteState>
 
 export type StringifyQuery = (Object, ?{ addQueryPrefix: boolean }) => string
 

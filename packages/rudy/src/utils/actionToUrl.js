@@ -6,6 +6,8 @@ import type {
   Routes,
   ReceivedAction as Action,
   Options,
+  RouteParams,
+  RouteQuery,
 } from '../flow-types'
 
 export default (action: Action, api: Object, prevRoute?: string): Object => {
@@ -56,17 +58,17 @@ export default (action: Action, api: Object, prevRoute?: string): Object => {
 }
 
 const formatParams = (
-  params: ?Object,
+  providedParams: ?Object = {},
   route: Route,
   opts: Options,
 ): void | {} => {
-  const def: mixed = route.defaultParams || opts.defaultParams
+  const def = route.defaultParams || opts.defaultParams
 
-  params = def
+  const params: RouteParams = def
     ? typeof def === 'function'
-      ? def(params, route, opts)
-      : { ...def, ...params }
-    : params
+      ? def(providedParams, route, opts)
+      : { ...def, ...providedParams }
+    : providedParams
 
   if (params) {
     const newParams: {} = {}
@@ -114,13 +116,17 @@ const defaultToPath = (
       : encodedVal
 }
 
-const formatQuery = (query: ?Object, route: Route, opts: Options): mixed => {
+const formatQuery = (
+  providedQuery: ?Object = {},
+  route: Route,
+  opts: Options,
+): mixed => {
   const def = route.defaultQuery || opts.defaultQuery
-  query = def
+  const query: RouteQuery = def
     ? typeof def === 'function'
-      ? def(query, route, opts)
-      : { ...def, ...query }
-    : query
+      ? def(providedQuery, route, opts)
+      : { ...def, ...providedQuery }
+    : providedQuery
 
   const to = route.toSearch || opts.toSearch
 
@@ -183,7 +189,6 @@ const notFoundUrl = (
       : 'NOT_FOUND'
 
   const p: string = routes[t].path || routes.NOT_FOUND.path || ''
-  // $FlowFixMe
   const s: string = query
     ? opts.stringifyQuery(query, { addQueryPrefix: true })
     : '' // preserve these (why? because we can)
