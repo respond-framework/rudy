@@ -1,7 +1,7 @@
 # Respond Framework
 Think of your app in terms of _states_, not _routes_ or _components_. Connect your components and just dispatch _Flux Standard Actions_!
 
-**Respond Framework** is the successor to [redux-first-router](https://github.com/faceyspacey/redux-first-router).
+**Rudy** is the successor to [redux-first-router](https://github.com/faceyspacey/redux-first-router).
 
 ## Motivation
 To be able to use Redux *as is* while keeping the address bar in sync. To achieve *bi-directional mapping* between the address bar and Redux actions. This way, changing the address (also via back/forward) dispatches an action, and dispatching an action changes the address. Paths are defined as actions, and path params and query strings are handled as action payloads.
