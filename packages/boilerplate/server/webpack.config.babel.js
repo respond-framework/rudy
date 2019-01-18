@@ -90,7 +90,7 @@ export default (env) => {
         ? ['.server.js', '.js', '.css']
         : ['.browser.js', '.js', '.css'],
       mainFields: [
-        isDev && 'rudy-src-main',
+        'rudy-src-main',
         isClient && 'browser',
         'module',
         'main',
