@@ -11,5 +11,6 @@ module.exports = {
     'import/extensions': 0,
     'react/jsx-filename-extension': 0,
     'react/prop-types': ['error', { skipUndeclared: true }],
+    'import/no-extraneous-dependencies': 0, // There is no package.json
   },
 }
