@@ -4,7 +4,7 @@
   "description": "Rudy middleware to synchronise the browser page title with redux state",
   "main": "cjs/index.js",
   "module": "es/index.js",
-  "rudy-src-main": "src/index.jsx",
+  "rudy-src-main": "src/index.js",
   "repository": "https://github.com/respond-framework/rudy.git",
   "contributors": [
     "James Gilmore <james@faceyspacey.com>",
