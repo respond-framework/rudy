@@ -15,6 +15,7 @@
     "build:es": "BABEL_ENV=es babel --root-mode upward --source-maps true src -d es",
     "build:umd": "NODE_ENV=production webpack --mode production --env.minimize=false src/index.js -o dist/redux-first-router.js",
     "build:umd:min": "NODE_ENV=production webpack --mode production --env.minimize=true src/index.js -o dist/redux-first-router.min.js",
+    "build": "yarn run build:cjs && yarn run build:es && yarn run build:umd && yarn run build:umd:min",
     "flow-copy": "flow-copy-source src dist && flow-copy-source src es",
     "flow-watch": "clear; printf \"\\033[3J\" & npm run flow & fswatch -o ./ | xargs -n1 -I{} sh -c 'clear; printf \"\\033[3J\" && npm run flow'",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
