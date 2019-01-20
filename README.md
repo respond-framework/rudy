@@ -1,23 +1,34 @@
 # Respond Framework
-Think of your app in terms of _states_, not _routes_ or _components_. Connect your components and just dispatch _Flux Standard Actions_!
 
-**Rudy** is the successor to [redux-first-router](https://github.com/faceyspacey/redux-first-router).
+Think of your app in terms of _states_, not _routes_ or _components_. Connect
+your components and just dispatch _Flux Standard Actions_!
+
+**Rudy** is the successor to
+[redux-first-router](https://github.com/faceyspacey/redux-first-router).
 
 ## Motivation
-To be able to use Redux *as is* while keeping the address bar in sync. To achieve *bi-directional mapping* between the address bar and Redux actions. This way, changing the address (also via back/forward) dispatches an action, and dispatching an action changes the address. Paths are defined as actions, and path params and query strings are handled as action payloads.
 
-**Respond Framework** also seeks to *avoid* the following obstacles:
+To be able to use Redux _as is_ while keeping the address bar in sync. To
+achieve _bi-directional mapping_ between the address bar and Redux actions. This
+way, changing the address (also via back/forward) dispatches an action, and
+dispatching an action changes the address. Paths are defined as actions, and
+path params and query strings are handled as action payloads.
 
-* Rendering from state that doesn't come from Redux
-* Dealing with the added complexity from having state outside of Redux
-* Cluttering components with route-related code
-* Large API surface areas of frameworks like `react-router` and `next.js`
-* Routing frameworks getting in the way of optimizing animations (such as when animations coincide with component updates)
-* Having to do route changes differently in order to support server-side rendering
+**Respond Framework** also seeks to _avoid_ the following obstacles:
+
+- Rendering from state that doesn't come from Redux
+- Dealing with the added complexity from having state outside of Redux
+- Cluttering components with route-related code
+- Large API surface areas of frameworks like `react-router` and `next.js`
+- Routing frameworks getting in the way of optimizing animations (such as when
+  animations coincide with component updates)
+- Having to do route changes differently in order to support server-side
+  rendering
 
 ## Usage
 
 ### Install
+
 `yarn add @respond-framework/rudy`
 
 ### Basic example for React
@@ -165,7 +176,9 @@ export {
 
 The source code for this example can be found [here](./examples/react).
 
-Also see the [boilerplate project](./packages/boilerplate) and the (partly outdated) [documentation](./packages/rudy/docs).
+Also see the [boilerplate project](./packages/boilerplate) and the (partly
+outdated) [documentation](./packages/rudy/docs).
 
 ## License
+
 [MIT](LICENSE)
