@@ -3,7 +3,7 @@
 Think of your app in terms of _states_, not _routes_ or _components_. Connect
 your components and just dispatch _Flux Standard Actions_!
 
-**Respond Framework** is the successor to
+**Rudy** is the successor to
 [redux-first-router](https://github.com/faceyspacey/redux-first-router).
 
 ## Motivation
