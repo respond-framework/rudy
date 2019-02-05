@@ -1,5 +1,6 @@
 // @flow
 import qs from 'qs'
+import { createSelector } from '@respond-framework/utils'
 import type {
   Options,
   Store,
@@ -22,8 +23,6 @@ import {
   onError as defaultOnError,
 } from '../utils'
 
-import { createSelector } from '@respond-framework/utils'
-
 import {
   serverRedirect,
   pathlessRoute,
@@ -42,14 +41,16 @@ export default (
     anonymousThunk,
     pathlessRoute('thunk'),
     transformAction, // pipeline starts here
+    // Hydrate: skip callbacks called on server to produce initialState (beforeEnter, thunk, etc)
+    // Server: don't allow client-centric callbacks (onEnter, onLeave, beforeLeave)
     call('beforeLeave', { prev: true }),
-    call('beforeEnter'),
+    call('beforeEnter', { runOnServer: true }),
     enter,
     changePageTitle(),
     call('onLeave', { prev: true }),
-    call('onEnter'),
-    call('thunk', { cache: true }),
-    call('onComplete'),
+    call('onEnter', { runOnHydrate: true }),
+    call('thunk', { cache: true, runOnServer: true }),
+    call('onComplete', { runOnServer: true }),
   ],
 ) => {
   const {
@@ -82,7 +83,9 @@ export default (
   const has = (name: string) => wares[name]
   const ctx = { busy: false }
   const api = { routes, history, options, register, has, ctx }
-  const onError = call('onError')(api)
+  const onError = call('onError', { runOnServer: true, runOnHydrate: true })(
+    api,
+  )
   const nextPromise = options.compose(
     middlewares,
     api,
