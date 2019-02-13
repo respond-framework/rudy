@@ -21,7 +21,7 @@
     "prettify:root": "prettier '**/*' --write",
     "prettify": "yarn run prettify:root && yarn run lerna run prettify",
     "vulnerabilities": "yarn run snyk test && yarn run lerna run vulnerabilities",
-    "check": "yarn run is-pretty && yarn run lint && yarn run build && yarn run test -- -- -w 1 && yarn run vulnerabilities"
+    "check": "yarn run is-pretty && yarn run lint && yarn run build && yarn run test -- -- -w 1"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
