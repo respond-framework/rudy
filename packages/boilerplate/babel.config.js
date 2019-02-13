@@ -8,6 +8,7 @@ module.exports = (api) => {
       webpack && 'react-hot-loader/babel',
       webpack && '@babel/plugin-syntax-dynamic-import',
       webpack && 'babel-plugin-universal-import',
+      !webpack && 'babel-plugin-dynamic-import-node',
     ].filter(Boolean),
   }
 }

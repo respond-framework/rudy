@@ -129,10 +129,6 @@ export default (env) => {
     },
     plugins: [
       isClient && new ExtractCssChunks(),
-      isServer &&
-        new webpack.optimize.LimitChunkCountPlugin({
-          maxChunks: 1,
-        }),
       isClient && isDev && new webpack.HotModuleReplacementPlugin(),
       isClient && isProd && new StatsPlugin('stats.json'),
       isClient && isProd && new webpack.HashedModuleIdsPlugin(), // not needed for strategy to work (just good practice)
