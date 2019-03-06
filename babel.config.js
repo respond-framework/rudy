@@ -3,6 +3,7 @@ const supportsStaticEsm = (caller) =>
 
 module.exports = (api) => {
   const envEs = api.env('es')
+  const test = api.env('test')
   const esModules = api.caller(supportsStaticEsm) || envEs
   return {
     presets: [
@@ -19,6 +20,7 @@ module.exports = (api) => {
     plugins: [
       '@babel/plugin-proposal-object-rest-spread',
       '@babel/plugin-proposal-class-properties',
-    ],
+      test && '@babel/plugin-transform-runtime',
+    ].filter(Boolean),
   }
 }
