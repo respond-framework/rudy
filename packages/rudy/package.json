@@ -23,8 +23,7 @@
     "prettier": "prettier",
     "is-pretty": "prettier --ignore-path=../../config/.prettierignore '**/*' --list-different",
     "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write",
-    "lint": "eslint . || true",
-    "vulnerabilities": "mkdir node_modules; snyk test"
+    "lint": "eslint . || true"
   },
   "repository": {
     "type": "git",

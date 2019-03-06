@@ -26,8 +26,7 @@
     "prettier": "prettier",
     "is-pretty": "prettier --ignore-path=../../config/.prettierignore '**/*' --list-different",
     "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write",
-    "lint": "eslint --ignore-path ../../.eslintignore --ext=js,jsx .",
-    "vulnerabilities": "mkdir node_modules; snyk test"
+    "lint": "eslint --ignore-path ../../.eslintignore --ext=js,jsx ."
   },
   "dependencies": {
     "resolve-pathname": "^2.2.0"

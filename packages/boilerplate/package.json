@@ -18,8 +18,7 @@
     "prettier": "prettier",
     "is-pretty": "prettier --ignore-path=../../config/.prettierignore '**/*' --list-different",
     "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write",
-    "lint": "eslint .",
-    "vulnerabilities": "mkdir node_modules; snyk test"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
