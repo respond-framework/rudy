@@ -3,7 +3,6 @@
 **/.editorconfig
 **/.eslintignore
 **/.gitignore
-**/.snyk
 **/.flowconfig
 **/.npmignore
 **/LICENSE

@@ -4,7 +4,6 @@ node_modules/
 
 .eslintignore
 .gitignore
-.snyk
 LICENSE
 *.ico
 *.png

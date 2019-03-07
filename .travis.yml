@@ -12,11 +12,6 @@ notifications:
     on_success: always # options: [always|never|change] default: always
     on_failure: always # options: [always|never|change] default: always
     on_start: never # options: [always|never|change] default: always
-after_success:
-  - npm run semantic-release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
-env:
-  global:
-    secure: SUwQGthakvvg7x3IIfOVYXQTCVX4KaJln/QJLMAONb0vkBsQzQ/JQMvlUL77S64I1aO8VCnzLq5Yl2sM3gcwTl8tp23HCkDcnj+1713z5QX585I+pC6lv9lJxnFk3kg1AeLcWK7S2efwnT041oMA53iq+f+vD0GL3PXriywZC8TDy7t/c+2PLbU0GsfMZDAmkE8whYhtYwbi5LgTvpUqRRbPY2A3iUNkXrvQksPYsrs+6Tto2f581OEN1IX+egrhgpBWJvAu+Z+2gv8sVpvXs+B0rs9Q+Z2P7z+Md8Ggy9ppwA2udyKGXgcDtSeLp/xwq0se7cZvKUp86HRtpVk2jRvGuk7iEINJI7FKaEf+RfFlb9m97jKs5+ci39UaMdg2QVMs8CI0fpNMmJT9FznWyOiZat0WkpLC8DRwJLOsaSY2J1WJ1Htf08xfaHGsEgyuTPgmdmoB9wz1V1VIqzpRxU2El7mFwrTiRfMteQsn7RNZ3RdUs8AAHGps0C1k2bPLyDTgX+ANCHc2emh2+sW59w4ovr7tgrORfI0+CldaJBUfFXSPYy3P9nxPeds2z1nSLesoO6KBZbgr8f3dPXs8TsdEJXMud0xybFo9qVjAI5Kq287Hwrnr5xqJNQYbwvQynjWriMEUu+xs7GKlWftyvBk7DV6SvCQ7RlOVF0FSncA= # SNYK_TOKEN

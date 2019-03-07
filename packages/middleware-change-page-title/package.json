@@ -30,8 +30,7 @@
     "is-pretty": "prettier --ignore-path=../../config/.prettierignore '**/*' --list-different",
     "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write",
     "lint": "eslint --config ../../.eslintrc.js --ignore-path ../../.eslintignore --ext=js,jsx .",
-    "test": "jest --config ../../jest.config.js --rootDir .",
-    "vulnerabilities": "mkdir node_modules; snyk test"
+    "test": "jest --config ../../jest.config.js --rootDir ."
   },
   "dependencies": {
     "@respond-framework/utils": "^0.1.1-test.0"
