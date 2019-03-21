@@ -12,7 +12,7 @@ export default (
 ) => {
   const { pathname, search, hash: h } = urlToLocation(loc)
 
-  const { match, keys } = matchPath(pathname, matchers.path, options)
+  const { match, keys } = matchPath(pathname, matchers.path, opts)
   if (!match) return null
 
   const query = matchQuery(search, matchers.query, route, opts)

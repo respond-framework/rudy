@@ -138,7 +138,7 @@ const navLinkProps = (
   const matchers = { path: pathname, query: q && query, hash: h && hash }
   const opts = { partial, strict }
   const route = routes[action.type] || {}
-  const match = matchUrl(url, matchers, opts, route, options)
+  const match = matchUrl(url, matchers, options, route, opts)
 
   if (match) {
     Object.assign(match, action)
