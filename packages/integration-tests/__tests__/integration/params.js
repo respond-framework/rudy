@@ -63,10 +63,10 @@ createTest(
 )
 
 const toFromPath = {
-  toPath: (v, k, encodedV) => encodedV + k + v,
-  fromPath: (v, k, encodedV) =>
-    decodeURIComponent(encodedV.replace(k, '')).replace(
-      v.replace('correct with spaceskey', ''),
+  toPath: (v, k) => encodeURIComponent(v) + k + v,
+  fromPath: (v, k) =>
+    decodeURIComponent(v.replace(k, '')).replace(
+      decodeURIComponent(v).replace('correct with spaceskey', ''),
       '',
     ),
 }

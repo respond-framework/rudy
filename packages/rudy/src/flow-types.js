@@ -23,25 +23,33 @@ export type StandardCallback = (
 ) => ?any | Promise<any>
 
 export type FromPath = (
-  path: string,
-  key?: string,
-  val?: string,
-  route?: Route,
-  opts?: Options,
-) => string
+  val: ?string,
+  key: string,
+  route: Route,
+  opts: Options,
+) => any
+
+export type ToPath = (
+  val: any,
+  key: string,
+  route: Route,
+  opts: Options,
+) => ?string
 
 export type Route = {
   path?: string,
-  toPath?: Path,
+  toPath?: ToPath,
   type?: string,
   scene?: string,
   navKey?: string,
   redirect?: Function,
   toSearch?: Function,
+  defaultParams?: DefaultParams,
   thunk?: StandardCallback,
   beforeLeave?: BeforeLeave,
   onFail?: StandardCallback,
   capitalizedWords?: boolean,
+  convertNumbers?: boolean,
   onEnter?: StandardCallback,
   onLeave?: StandardCallback,
   onComplete?: StandardCallback,
@@ -108,26 +116,22 @@ export type NavigationToAction = (
   navigationAction: ?NavigationAction,
 }
 
-export type Path = (
-  val: string,
-  key: string,
-  encodedVal: string,
-  route: Route,
-  opts: Options,
-) => string | Object
+export type DefaultParams = Params | ((Params, Route, Options) => Params)
 
 // TODO: Question: Is can this be split up to sub-types at some point.
 export type Options = {
   extra?: any,
   toPath?: ?any,
   toSearch?: any,
+  capitalizedWords?: boolean,
+  convertNumbers?: boolean,
   basename?: string,
   basenames?: Array<string>,
   scrollTop?: boolean,
   notFoundPath?: string,
   defaultState?: Object,
   defaultQuery?: ?Object,
-  defaultParams?: Options,
+  defaultParams?: DefaultParams,
   thunk?: StandardCallback,
   beforeLeave?: BeforeLeave,
   onFail?: StandardCallback,
@@ -161,7 +165,7 @@ export type Options = {
 
 export type ScrollBehavior = Object
 
-export type Params = Object
+export type Params = { [string]: any }
 export type Payload = Object
 
 export type LocationState = {

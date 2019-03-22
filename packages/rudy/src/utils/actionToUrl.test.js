@@ -61,12 +61,9 @@ describe('Serializes params', () => {
   it('Single compulsory parameter', () => {
     assertUrlForAction({ type: SINGLE_PARAM }, '/404')
 
-    /**
-     * TODO null should be treated as missing, not serialised to "null"
-     */
     assertUrlForAction(
       { type: SINGLE_PARAM, params: { param: null } },
-      '/compulsory/null',
+      '/404',
     )
 
     assertUrlForAction(
@@ -83,12 +80,9 @@ describe('Serializes params', () => {
   it('Single optional parameter', () => {
     assertUrlForAction({ type: OPTIONAL_PARAM }, '/optional')
 
-    /**
-     * TODO null should be treated as missing, not serialised to "null"
-     */
     assertUrlForAction(
       { type: OPTIONAL_PARAM, params: { param: null } },
-      '/optional/null',
+      '/optional',
     )
 
     assertUrlForAction(
@@ -121,15 +115,15 @@ describe('Serializes params', () => {
       '/multistar',
     )
 
-    /**
-     * TODO null should be treated as missing, not serialised to "null"
-     */
     assertUrlForAction(
       { type: OPTIONAL_PATH_PARAM, params: { p: null } },
-      '/multistar/null',
+      '/multistar',
     )
 
-    assertUrlForAction({ type: OPTIONAL_PATH_PARAM, params: { p: '' } }, '/404')
+    assertUrlForAction(
+      { type: OPTIONAL_PATH_PARAM, params: { p: '' } },
+      '/multistar',
+    )
 
     assertUrlForAction(
       { type: OPTIONAL_PATH_PARAM, params: { p: 'single' } },
@@ -148,12 +142,9 @@ describe('Serializes params', () => {
       '/404',
     )
 
-    /**
-     * TODO null should be treated as missing, not serialised to "null"
-     */
     assertUrlForAction(
       { type: COMPULSORY_PATH_PARAM, params: { p: null } },
-      '/multiplus/null',
+      '/404',
     )
 
     assertUrlForAction(

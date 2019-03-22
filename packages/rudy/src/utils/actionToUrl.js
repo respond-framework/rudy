@@ -6,6 +6,8 @@ import type {
   Routes,
   ReceivedAction as Action,
   Options,
+  ToPath,
+  DefaultParams,
 } from '../flow-types'
 
 export default (action: Action, api: Object, prevRoute?: string): Object => {
@@ -16,7 +18,7 @@ export default (action: Action, api: Object, prevRoute?: string): Object => {
   const path: string | void | string | void =
     typeof route === 'object' ? route.path : route
 
-  const p: void | {} = formatParams(params, route, opts)
+  const p: void | {} = formatParams(params || {}, route, opts)
   const q: mixed = formatQuery(query, route, opts)
   const s: ?Object = formatState(state, route, opts)
   const h: string = formatHash(hash, route, opts)
@@ -56,27 +58,23 @@ export default (action: Action, api: Object, prevRoute?: string): Object => {
 }
 
 const formatParams = (
-  params: ?Object,
+  params: Object,
   route: Route,
   opts: Options,
 ): void | {} => {
-  const def: mixed = route.defaultParams || opts.defaultParams
+  const def: DefaultParams = route.defaultParams || opts.defaultParams || {}
 
-  params = def
-    ? typeof def === 'function'
-      ? def(params, route, opts)
+  params =
+    typeof def === 'function'
+      ? def(params || {}, route, opts)
       : { ...def, ...params }
-    : params
 
   if (params) {
     const newParams: {} = {}
-    const to = route.toPath || defaultToPath
+    const toPath: ToPath = route.toPath || defaultToPath
     Object.keys(params).forEach((key: string) => {
       const val = params[key]
-      const encodedVal: string = encodeURIComponent(val)
-
-      const res = to(val, key, encodedVal, route, opts)
-      newParams[key] = res
+      newParams[key] = toPath(val, key, route, opts)
     })
     return newParams
   }
@@ -84,17 +82,14 @@ const formatParams = (
 }
 
 const defaultToPath = (
-  val: (string) => Array<Array<any>>,
+  val: any,
   key: string,
-  encodedVal: string,
   route: Route,
   opts: Options,
-): string | void => {
-  if (typeof val === 'string' && val.indexOf('/') > -1) {
-    // support a parameter that for example is a file path with slashes (like on github)
-    return val.split('/').map(encodeURIComponent) // path-to-regexp supports arrays for this use case
+): ?string => {
+  if (!val) {
+    return undefined
   }
-
   if (typeof val === 'string' && val.indexOf('/') > -1) {
     // support a parameter that for example is a file path with slashes (like on github)
     return val.split('/').map(encodeURIComponent) // path-to-regexp supports arrays for this use case
@@ -105,13 +100,9 @@ const defaultToPath = (
     (opts.capitalizedWords && route.capitalizedWords !== false)
 
   if (capitalize && typeof val === 'string') {
-    return val.replace(/ /g, '-').toLowerCase()
+    return encodeURIComponent(val.replace(/ /g, '-').toLowerCase())
   }
-  return opts.toPath
-    ? opts.toPath(val, key, encodedVal, route, opts)
-    : val === undefined
-      ? undefined
-      : encodedVal
+  return opts.toPath ? opts.toPath(val, key, route, opts) : val
 }
 
 const formatQuery = (query: ?Object, route: Route, opts: Options): mixed => {

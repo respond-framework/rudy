@@ -8,6 +8,7 @@ import type {
   NavigationAction,
   Route,
   Options,
+  FromPath,
 } from '../flow-types'
 
 export default (
@@ -92,13 +93,12 @@ const createAction = (
 // EVERYTHING BELOW IS RELATED TO THE TRANSFORMERS PASSED TO `matchUrl`:
 
 const formatParams = (params: Object, route: Route, opts: Options) => {
-  const from = route.fromPath || defaultFromPath
+  const from: FromPath = route.fromPath || defaultFromPath
 
   Object.keys(params).forEach((key) => {
     const val = params[key]
     // don't decode undefined values from optional params
-    const decodedVal = val && decodeURIComponent(val)
-    params[key] = from(decodedVal, key, val, route, opts)
+    params[key] = from(val, key, route, opts)
     if (params[key] === undefined) {
       // allow optional params to be overriden by defaultParams
       delete params[key]
@@ -114,18 +114,20 @@ const formatParams = (params: Object, route: Route, opts: Options) => {
 }
 
 const defaultFromPath = (
-  decodedVal: string,
+  val: ?string,
   key: string,
-  val: string,
   route: Route,
   opts: Options,
-): string | number => {
+): ?(string | number) => {
+  if (!val) {
+    return undefined
+  }
   const convertNum =
     route.convertNumbers ||
     (opts.convertNumbers && route.convertNumbers !== false)
 
-  if (convertNum && isNumber(decodedVal)) {
-    return Number.parseFloat(decodedVal)
+  if (convertNum && isNumber(val)) {
+    return Number.parseFloat(val)
   }
 
   const capitalize =
@@ -133,14 +135,13 @@ const defaultFromPath = (
     (opts.capitalizedWords && route.capitalizedWords !== false)
 
   if (capitalize) {
-    return decodedVal
-      .replace(/-/g, ' ')
-      .replace(/\b\w/g, (ltr) => ltr.toUpperCase()) // 'my-category' -> 'My Category'
+    // 'my-category' -> 'My Category'
+    return val.replace(/-/g, ' ').replace(/\b\w/g, (ltr) => ltr.toUpperCase())
   }
 
   return opts.fromPath
-    ? opts.fromPath(decodedVal, key, val, route, opts)
-    : decodedVal
+    ? opts.fromPath(val, key, route, opts)
+    : decodeURIComponent(val)
 }
 
 const formatQuery = (query: Object, route: Route, opts: Options) => {
