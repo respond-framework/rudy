@@ -15,7 +15,7 @@ describe('Parses params', () => {
       path: '/404',
     },
     [ROOT]: {
-      path: '',
+      path: '/',
     },
     [STATIC]: {
       path: '/static',
@@ -62,11 +62,7 @@ describe('Parses params', () => {
     })
 
   it('Static path', () => {
-    /**
-     * TODO the route regex doesn't have a trailing slash, so this
-     * URL should match!
-     */
-    // assertActionForUrl('', { type: ROOT })
+    assertActionForUrl('/', { type: ROOT })
 
     assertActionForUrl('/static', { type: STATIC })
   })

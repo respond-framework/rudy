@@ -15,7 +15,7 @@ describe('Serializes params', () => {
       path: '/404',
     },
     [ROOT]: {
-      path: '',
+      path: '/',
     },
     [STATIC]: {
       path: '/static',
@@ -50,10 +50,6 @@ describe('Serializes params', () => {
     })
 
   it('Static path', () => {
-    /**
-     * TODO the route regex doesn't have a trailing slash, so this
-     * generated URL also should not!
-     */
     assertUrlForAction({ type: ROOT }, '/')
     assertUrlForAction({ type: STATIC }, '/static')
   })
