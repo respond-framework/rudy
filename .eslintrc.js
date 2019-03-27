@@ -1,17 +1,12 @@
 const path = require('path')
 const {
   configs: {
-    recommended: {
-      env,
-      ...jestConfig
-    },
+    recommended: { env, ...jestConfig },
   },
   environments: {
-    globals: {
-      globals: jestGlobals,
-    },
+    globals: { globals: jestGlobals },
   },
-} = require('eslint-plugin-jest');
+} = require('eslint-plugin-jest')
 
 module.exports = {
   extends: [

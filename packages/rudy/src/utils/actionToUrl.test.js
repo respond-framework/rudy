@@ -57,10 +57,7 @@ describe('Serializes params', () => {
   it('Single compulsory parameter', () => {
     assertUrlForAction({ type: SINGLE_PARAM }, '/404')
 
-    assertUrlForAction(
-      { type: SINGLE_PARAM, params: { param: null } },
-      '/404',
-    )
+    assertUrlForAction({ type: SINGLE_PARAM, params: { param: null } }, '/404')
 
     assertUrlForAction(
       { type: SINGLE_PARAM, params: { param: undefined } },
