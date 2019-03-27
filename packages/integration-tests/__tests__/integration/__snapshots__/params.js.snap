@@ -1353,9 +1353,7 @@ Object {
           "search": "",
           "url": "/third",
         },
-        "params": Object {
-          "0": "",
-        },
+        "params": Object {},
         "query": Object {},
         "state": Object {},
         "type": "THIRD",
@@ -1390,9 +1388,7 @@ Object {
     "status": 200,
     "url": "/third",
   },
-  "params": Object {
-    "0": "",
-  },
+  "params": Object {},
   "query": Object {},
   "state": Object {},
   "type": "THIRD",
@@ -1435,9 +1431,7 @@ Object {
           "search": "",
           "url": "/third",
         },
-        "params": Object {
-          "0": "",
-        },
+        "params": Object {},
         "query": Object {},
         "state": Object {},
         "type": "THIRD",
@@ -1450,9 +1444,7 @@ Object {
     "kind": "push",
     "length": 2,
     "n": 1,
-    "params": Object {
-      "0": "",
-    },
+    "params": Object {},
     "pathname": "/third",
     "pop": false,
     "prev": Object {
