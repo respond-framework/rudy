@@ -1,16 +1,14 @@
 // @flow
-import type { LocationState } from '../../../flow-types'
 import { isServer } from '@respond-framework/utils'
+import type { LocationState } from '../../../flow-types'
 import { isHydrate } from '../../../utils'
 
-export default (name, route, req) => {
+export default (name, route, req, { runOnServer, runOnHydrate }) => {
   if (!route[name] && !req.options[name]) return false
 
-  // skip callbacks (beforeEnter, thunk, etc) called on server, which produced initialState
-  if (isHydrate(req) && !/onEnter|onError/.test(name)) return false
+  if (isHydrate(req) && !runOnHydrate) return false
 
-  // dont allow these client-centric callbacks on the server
-  if (isServer() && /onEnter|Leave/.test(name)) return false
+  if (isServer() && !runOnServer) return false
 
   return allowBoth
 }
