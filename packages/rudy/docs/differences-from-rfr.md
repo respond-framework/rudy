@@ -5,7 +5,19 @@ This is an overview of its differences from redux-first-router.
 
 # New features
 
-TODO
+- URL handling has been extended to include hash strings and "state" (as in the
+  browser pushState API), through the corresponding keys in routing actions
+- There is an extensible asynchronous middleware API. The default middlewares
+  replicate similar behaviour to redux-first-router, but they are much more
+  flexible.
+- All callbacks are asynchronous (i.e. if callbacks return promises, the
+  remaining middlewares do not execute until the promise is resolved). Since
+  changing the URL is a middleware, callbacks that happen before the URL change
+  can delay the URL change.
+- Callbacks can be defined both globally and in specific routes and they will be
+  executed concurrently
+- Callbacks can be set up to happen on both SSR and hydrate, which is useful for
+  code splitting reducers
 
 # Breaking changes
 
@@ -26,8 +38,9 @@ TODO
   `(dispatch, getState, bag)` - instead they are passed the `Request` object,
   which contains keys `dispatch`, `getState`, and others previously in `bag`
   such as `action`
-- `action.meta` no longer exists in routing actions. If it or other unrecognixed
+- `action.meta` no longer exists in routing actions. If it or other unrecognised
   keys are provided, they will be removed
-- URLs without trailing slashes will no longer match route regexes with trailing
-  regexes (due to an upgrade of the `path-to-regexp` library). By default, URLs
-  with trailing slashes will still match route regexes without trailing slashes.
+- URLs without trailing slashes will no longer be matched by route regexes with
+  trailing slashes (due to an upgrade of the `path-to-regexp` library). By
+  default, URLs with trailing slashes will still match route regexes without
+  trailing slashes.
