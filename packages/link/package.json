@@ -5,7 +5,7 @@
   "main": "cjs/index.js",
   "module": "es/index.js",
   "rudy-src-main": "src/index.jsx",
-  "repository": "https://github.com/ScriptedAlchemy/redux-first-router.git",
+  "repository": "https://github.com/respond-framework/rudy/tree/master/packages/link",
   "author": "James Gilmore",
   "license": "MIT",
   "private": false,

@@ -5,7 +5,7 @@
   "main": "cjs/index.js",
   "module": "es/index.js",
   "rudy-src-main": "src/index.js",
-  "repository": "https://github.com/respond-framework/rudy.git",
+  "repository": "https://github.com/respond-framework/rudy/tree/master/packages/utils",
   "contributors": [
     "James Gilmore <james@faceyspacey.com>",
     "Daniel Playfair Cal <daniel.playfair.cal@gmail.com>"
