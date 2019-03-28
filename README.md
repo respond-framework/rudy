@@ -205,7 +205,7 @@ meaning.
 ```javascript
 const routes = {
   BLOB: {
-    path: '/:namespace/:repo/blob/:ref/:path',
+    path: '/:namespace/:repo/blob/:ref/:path+',
   },
 }
 
