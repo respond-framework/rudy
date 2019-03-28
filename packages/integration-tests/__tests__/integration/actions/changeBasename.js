@@ -1,4 +1,4 @@
-import { changeBasename } from '@respond-framework/rudy/src/actions'
+import { changeBasename } from '@respond-framework/rudy/actions'
 import createTest from '../../../__helpers__/createTest'
 
 createTest(

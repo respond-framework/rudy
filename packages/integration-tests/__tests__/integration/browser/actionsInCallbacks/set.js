@@ -1,4 +1,4 @@
-import { set, setState } from '@respond-framework/rudy/src/actions'
+import { set, setState } from '@respond-framework/rudy/actions'
 import createTest, { resetBrowser } from '../../../../__helpers__/createTest'
 
 beforeEach(resetBrowser)

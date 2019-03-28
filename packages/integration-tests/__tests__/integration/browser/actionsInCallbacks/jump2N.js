@@ -1,4 +1,4 @@
-import { jump } from '@respond-framework/rudy/src/actions'
+import { jump } from '@respond-framework/rudy/actions'
 import createTest, {
   resetBrowser,
   setupStore,

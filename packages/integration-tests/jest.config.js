@@ -9,7 +9,10 @@ module.exports = {
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['./__test-helpers__/setupJest.js'],
   setupFiles: ['jest-localstorage-mock'],
-  moduleFileExtensions: ['js'],
+  moduleFileExtensions: ['js', 'jsx'],
   testPathIgnorePatterns: ['/node_modules/', '.eslintrc.js'],
-  transformIgnorePatterns: ['/node_modules/(?!@respond-framework)'],
+  moduleNameMapper: {
+    '^@respond-framework\\/([^/]+)\\/(.*)': '<rootDir>/../../packages/$1/src/$2',
+    '^@respond-framework\\/([^/]+)': '<rootDir>/../../packages/$1/src',
+  },
 }

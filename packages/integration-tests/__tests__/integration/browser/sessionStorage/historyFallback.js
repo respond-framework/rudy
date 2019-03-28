@@ -3,9 +3,9 @@ import createTest, { setupStore } from '../../../../__helpers__/createTest'
 // when there is no `sessionStorage`, we fallback to our innovative solution of
 // storing all session info on EVERY entry of the real browser history!
 
-jest.mock('@respond-framework/rudy/src/history/utils/supports', () => ({
+jest.mock('@respond-framework/rudy/history/utils/supports', () => ({
   ...require.requireActual(
-    '@respond-framework/rudy/src/history/utils/supports',
+    '@respond-framework/rudy/history/utils/supports',
   ),
   supportsSession: jest.fn(() => false),
 }))

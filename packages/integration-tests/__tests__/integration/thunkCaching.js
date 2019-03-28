@@ -1,4 +1,4 @@
-import { clearCache } from '@respond-framework/rudy/src/actions'
+import { clearCache } from '@respond-framework/rudy/actions'
 import createTest from '../../__helpers__/createTest'
 
 createTest(

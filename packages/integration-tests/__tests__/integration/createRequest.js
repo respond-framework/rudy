@@ -1,4 +1,4 @@
-import { Request } from '@respond-framework/rudy/src/core/createRequest'
+import { Request } from '@respond-framework/rudy/core/createRequest'
 import createTest from '../../__helpers__/createTest'
 
 createTest(

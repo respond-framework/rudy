@@ -1,4 +1,4 @@
-import { callRoute } from '@respond-framework/rudy/src/utils'
+import { callRoute } from '@respond-framework/rudy/utils'
 import createTest from '../../__helpers__/createTest'
 
 createTest(

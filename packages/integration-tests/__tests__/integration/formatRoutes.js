@@ -1,4 +1,4 @@
-import { notFound } from '@respond-framework/rudy/src/actions'
+import { notFound } from '@respond-framework/rudy/actions'
 import createTest from '../../__helpers__/createTest'
 
 createTest('routes as path string', {
