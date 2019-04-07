@@ -6,9 +6,7 @@ import createTest, { setupStore } from '../../../../__helpers__/createTest'
 // entries even in those older browsers.
 
 jest.mock('@respond-framework/rudy/history/utils/supports', () => ({
-  ...require.requireActual(
-    '@respond-framework/rudy/history/utils/supports',
-  ),
+  ...require.requireActual('@respond-framework/rudy/history/utils/supports'),
   supportsSession: jest.fn(() => true),
   supportsHistory: jest.fn(() => false),
 }))

@@ -12,7 +12,8 @@ module.exports = {
   moduleFileExtensions: ['js', 'jsx'],
   testPathIgnorePatterns: ['/node_modules/', '.eslintrc.js'],
   moduleNameMapper: {
-    '^@respond-framework\\/([^/]+)\\/(.*)': '<rootDir>/../../packages/$1/src/$2',
+    '^@respond-framework\\/([^/]+)\\/(.*)':
+      '<rootDir>/../../packages/$1/src/$2',
     '^@respond-framework\\/([^/]+)': '<rootDir>/../../packages/$1/src',
   },
 }
