@@ -21,6 +21,7 @@ export default (name, config = {}) => (api) => {
 
   return (req, next = noOp) => {
     const route = prev ? req.prevRoute : req.route
+    if (!route) return next()
 
     const isCached = cache && api.cache.isCached(name, route, req)
     if (isCached) return next()
