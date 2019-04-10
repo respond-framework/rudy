@@ -1,4 +1,4 @@
-# Respond Framework
+# Rudy
 
 Think of your app in terms of _states_, not _routes_ or _components_. Connect
 your components and just dispatch _Flux Standard Routing Actions_!
@@ -7,8 +7,8 @@ your components and just dispatch _Flux Standard Routing Actions_!
 [redux-first-router](https://github.com/faceyspacey/redux-first-router).
 Compared to RFR, there are many
 [new features, and some breaking changes](https://github.com/respond-framework/rudy/blob/master/packages/rudy/docs/differences-from-rfr.md).
-It is a work in progress. Most of the basic features work, but there are still
-bugs and some features are incomplete.
+It is a work in progress. The basic features work, but there are still bugs and
+some features are incomplete.
 
 ## Motivation
 
