@@ -7,13 +7,18 @@ This is an overview of its differences from redux-first-router.
 
 - URL handling has been extended to include hash strings and "state" (as in the
   browser pushState API), through the corresponding keys in routing actions
-- There is an extensible asynchronous middleware API. The default middlewares
-  replicate similar behaviour to redux-first-router, but they are much more
-  flexible.
+- There is an extensible asynchronous middleware API. A Redux routing action
+  becomes a request, and the request passes though the configured middlewares.
+  The default middlewares replicate similar behaviour to redux-first-router, but
+  they are much more flexible.
 - All callbacks are asynchronous (i.e. if callbacks return promises, the
   remaining middlewares do not execute until the promise is resolved). Since
-  changing the URL is a middleware, callbacks that happen before the URL change
-  can delay the URL change.
+  both callbacks and changing the URL are examples of middleware, callbacks that
+  happen before the URL change can delay, change, or cancel the URL change.
+- Actions can be blocked by returning false (or a promise that resolves to
+  false) from callbacks taht occur before the transition, such as `beforeLeave`.
+  They can be unblocked by dispatching `confirm(canLeave)`, which continues or
+  cancels the request/action as appropriate.
 - Callbacks can be defined both globally and in specific routes and they will be
   executed concurrently
 - Callbacks can be set up to happen on both SSR and hydrate, which is useful for
@@ -44,3 +49,5 @@ This is an overview of its differences from redux-first-router.
   trailing slashes (due to an upgrade of the `path-to-regexp` library). By
   default, URLs with trailing slashes will still match route regexes without
   trailing slashes.
+- `confirmLeave` and `displayConfirmLeave` no longer exist. They have been
+  replaced by the new request blocking feature.
