@@ -22,9 +22,9 @@ difficult to understand and work with. Some of the things it can do:
   routing state is Redux state. This mapping works the same way for server side
   and client side rendering.
 - Trigger callbacks defined on redux actions (including but not limited to route
-  changes), which can do things like triggerring API calls or other side
-  effects. They can also delay URL changes until the required data is ready,
-  and/or redirect to other routes.
+  changes), which can do things like making API calls or other side effects.
+  They can also delay URL changes until the required data is ready, and/or
+  redirect to other routes.
 - Set the page title on route changes based on the redux state
 - Block page navigation depending on the redux state
 - Load code split reducers, controller code, and components for each route when
@@ -35,7 +35,7 @@ This library can help you build an app where:
 - URLs are defined exclusively in one place
 - Code that receives input (and dispatches Redux actions) is decoupled from code
   that triggers side effects (in response to Redux actions).
-- The entire app's state can be kept in Redux, and omponents only need to
+- The entire app's state can be kept in Redux, and components only need to
   receive state from Redux, not also from other places.
 - Components can be pure functions, because they don't have to handle state and
   side effects.
@@ -234,8 +234,8 @@ const action = {
   },
 }
 
-actionToUrl(action) == url
-urlToAction(url) == action
+actionToUrl(action) == { url, state: { invisible: '12345' } }
+urlToAction({ url, state: { invisible: '12345' }) == action
 ```
 
 ## Development
