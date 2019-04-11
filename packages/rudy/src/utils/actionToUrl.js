@@ -135,7 +135,7 @@ const defaultToPath = (
   ) {
     return val ? val.split('/') : []
   }
-  if (!repeat && optional && (val === undefined || val === null)) {
+  if (!repeat && optional && val === undefined) {
     return undefined
   }
   return toSegment(val, convertNum, capitalize)

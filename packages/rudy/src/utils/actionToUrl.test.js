@@ -97,7 +97,7 @@ describe('Serializes params', () => {
 
     assertUrlForAction(
       { type: OPTIONAL_PARAM, params: { param: null } },
-      '/optional',
+      '/404',
     )
 
     assertUrlForAction(

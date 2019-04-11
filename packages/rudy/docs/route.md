@@ -73,5 +73,4 @@ possible):
 - For multi segment params, convert strings into arrays, split on `/`. Note that
   this means you cannot include `/` in individual segments of a multi segment
   param!
-- Convert `null` to `undefined`
 - Fail (redirect to a 404) if other types are provided in params
