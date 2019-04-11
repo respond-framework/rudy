@@ -4,6 +4,7 @@ describe('Serializes params', () => {
   const NOT_FOUND = 'NOT_FOUND'
   const ROOT = 'ROOT'
   const STATIC = 'STATIC'
+  const UNNAMED_PARAM = 'UNNAMED_PARAM'
   const SINGLE_PARAM = 'SINGLE_PARAM'
   const OPTIONAL_PARAM = 'OPTIONAL_PARAM'
   const MULTIPLE_PARAMS = 'MULTIPLE_PARAMS'
@@ -19,6 +20,9 @@ describe('Serializes params', () => {
     },
     [STATIC]: {
       path: '/static',
+    },
+    [UNNAMED_PARAM]: {
+      path: '/unnamed(.*)',
     },
     [SINGLE_PARAM]: {
       path: '/compulsory/:param',
@@ -52,6 +56,24 @@ describe('Serializes params', () => {
   it('Static path', () => {
     assertUrlForAction({ type: ROOT }, '/')
     assertUrlForAction({ type: STATIC }, '/static')
+  })
+
+  it('Single compulsory unnamed parameter', () => {
+    assertUrlForAction({ type: UNNAMED_PARAM }, '/404')
+
+    assertUrlForAction({ type: UNNAMED_PARAM, params: { 0: null } }, '/404')
+
+    assertUrlForAction(
+      { type: UNNAMED_PARAM, params: { 0: undefined } },
+      '/404',
+    )
+
+    assertUrlForAction({ type: UNNAMED_PARAM, params: { 0: '' } }, '/unnamed')
+
+    assertUrlForAction(
+      { type: UNNAMED_PARAM, params: { 0: 'apple' } },
+      '/unnamedapple',
+    )
   })
 
   it('Single compulsory parameter', () => {
@@ -92,10 +114,15 @@ describe('Serializes params', () => {
   it('Multiple parameters', () => {
     assertUrlForAction({ type: MULTIPLE_PARAMS, params: {} }, '/404')
 
-    assertUrlForAction({ type: MULTIPLE_PARAMS, params: { p1: 1 } }, '/404')
+    assertUrlForAction({ type: MULTIPLE_PARAMS, params: { p1: '1' } }, '/404')
 
     assertUrlForAction(
       { type: MULTIPLE_PARAMS, params: { p1: 1, p2: 2 } },
+      '/404',
+    )
+
+    assertUrlForAction(
+      { type: MULTIPLE_PARAMS, params: { p1: '1', p2: '2' } },
       '/multiple/1/2',
     )
   })

@@ -1,4 +1,5 @@
 // @flow
+import pathToRegexp from 'path-to-regexp'
 import { compileUrl, cleanBasename } from './index'
 
 import type {
@@ -15,14 +16,11 @@ export default (action: Action, api: Object, prevRoute?: string): Object => {
   const { type, params, query, state, hash, basename }: Action = action
 
   const route = routes[type] || {}
-  const path: string | void | string | void =
-    typeof route === 'object' ? route.path : route
+  const path: string | void = typeof route === 'object' ? route.path : route
 
-  const p: void | {} = formatParams(params || {}, route, opts)
   const q: mixed = formatQuery(query, route, opts)
   const s: ?Object = formatState(state, route, opts)
   const h: string = formatHash(hash, route, opts)
-
   const bn = cleanBasename(basename)
   const isWrongBasename = bn && !opts.basenames.includes(bn)
   // $FlowFixMe
@@ -32,8 +30,11 @@ export default (action: Action, api: Object, prevRoute?: string): Object => {
     if (isWrongBasename) {
       throw new Error(`[rudy] basename "${bn}" not in options.basenames`)
     }
+    const p: void | {} = formatParams(params || {}, route, opts)
 
-    const pathname: string = compileUrl(path, p, q, h, route, opts) || '/' // path-to-regexp throws for failed compilations; we made our queries + hashes also throw to conform
+    // path-to-regexp throws for failed compilations;
+    // we made our queries + hashes also throw to conform
+    const pathname: string = compileUrl(path, p, q, h, route, opts) || '/'
     const url: string = bn + pathname
 
     return { url, state: s }
@@ -70,39 +71,74 @@ const formatParams = (
       : { ...def, ...params }
 
   if (params) {
+    const keys = []
+    pathToRegexp(typeof route === 'string' ? route : route.path, keys)
     const newParams: {} = {}
-    const toPath: ToPath = route.toPath || defaultToPath
-    Object.keys(params).forEach((key: string) => {
-      const val = params[key]
-      newParams[key] = toPath(val, key, route, opts)
-    })
+    const toPath: ToPath = route.toPath || opts.toPath || defaultToPath
+    keys.forEach(
+      ({
+        name,
+        repeat,
+        optional,
+      }: {
+        name: string | Number,
+        repeat: Boolean,
+        optional: Boolean,
+      }) => {
+        if (!Object.prototype.hasOwnProperty.call(params, name)) {
+          return
+        }
+        const val = params[name]
+        newParams[name.toString()] = toPath(
+          val,
+          { name: name.toString(), repeat, optional },
+          route,
+          opts,
+        )
+      },
+    )
     return newParams
   }
   return undefined
 }
 
+const toSegment = (val, convertNum, capitalize) => {
+  if (typeof val === 'number' && convertNum) {
+    return val.toString()
+  }
+  if (typeof val !== 'string') {
+    throw TypeError('[rudy]: defaultToPath::toSegment received unknown type')
+  }
+  if (capitalize) {
+    return val.replace(/ /g, '-').toLowerCase()
+  }
+  return val
+}
+
 const defaultToPath = (
   val: any,
-  key: string,
+  { repeat, optional },
   route: Route,
   opts: Options,
-): ?string => {
-  if (!val) {
-    return undefined
-  }
-  if (typeof val === 'string' && val.indexOf('/') > -1) {
-    // support a parameter that for example is a file path with slashes (like on github)
-    return val.split('/').map(encodeURIComponent) // path-to-regexp supports arrays for this use case
-  }
+): void | string | Array<string> => {
+  const convertNum =
+    route.convertNumbers ||
+    (opts.convertNumbers && route.convertNumbers !== false)
 
   const capitalize =
     route.capitalizedWords ||
     (opts.capitalizedWords && route.capitalizedWords !== false)
 
-  if (capitalize && typeof val === 'string') {
-    return encodeURIComponent(val.replace(/ /g, '-').toLowerCase())
+  if (
+    repeat &&
+    (typeof val === 'string' || val === undefined || val === null)
+  ) {
+    return val ? val.split('/') : []
   }
-  return opts.toPath ? opts.toPath(val, key, route, opts) : val
+  if (!repeat && optional && (val === undefined || val === null)) {
+    return undefined
+  }
+  return toSegment(val, convertNum, capitalize)
 }
 
 const formatQuery = (query: ?Object, route: Route, opts: Options): mixed => {

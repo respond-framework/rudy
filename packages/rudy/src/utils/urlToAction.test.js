@@ -4,6 +4,7 @@ describe('Parses params', () => {
   const NOT_FOUND = 'NOT_FOUND'
   const ROOT = 'ROOT'
   const STATIC = 'STATIC'
+  const UNNAMED_PARAM = 'UNNAMED_PARAM'
   const SINGLE_PARAM = 'SINGLE_PARAM'
   const OPTIONAL_PARAM = 'OPTIONAL_PARAM'
   const MULTIPLE_PARAMS = 'MULTIPLE_PARAMS'
@@ -19,6 +20,9 @@ describe('Parses params', () => {
     },
     [STATIC]: {
       path: '/static',
+    },
+    [UNNAMED_PARAM]: {
+      path: '/unnamed(.*)',
     },
     [SINGLE_PARAM]: {
       path: '/compulsory/:param',
@@ -65,6 +69,18 @@ describe('Parses params', () => {
     assertActionForUrl('/', { type: ROOT })
 
     assertActionForUrl('/static', { type: STATIC })
+  })
+
+  it('Single unnamed parameter', () => {
+    assertActionForUrl('/unnamed', {
+      type: UNNAMED_PARAM,
+      params: { 0: '' },
+    })
+
+    assertActionForUrl('/unnamedapple', {
+      type: UNNAMED_PARAM,
+      params: { 0: 'apple' },
+    })
   })
 
   it('Single compulsory parameter', () => {

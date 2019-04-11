@@ -23,14 +23,25 @@ export default (
 
   const [path, ...values] = match
   const params = keys.reduce((_params, key, index) => {
-    _params[key.name] = values[index]
+    if (key.repeat) {
+      // Multi segment params come out as arrays of decoded segments
+      // If optional multi segment params are not provided, an empty array
+      _params[key.name] = values[index]
+        ? values[index].split('/').map(decodeURIComponent)
+        : []
+    } else {
+      _params[key.name] =
+        typeof values[index] === 'string'
+          ? decodeURIComponent(values[index])
+          : undefined
+    }
     return _params
   }, {})
 
   const { formatParams, formatQuery, formatHash } = options
 
   return {
-    params: formatParams ? formatParams(params, route, opts) : params,
+    params: formatParams ? formatParams(params, route, keys, opts) : params,
     query: formatQuery ? formatQuery(query, route, opts) : query,
     hash: formatHash ? formatHash(hash || '', route, opts) : hash || '',
     matchedPath: matchers.path === '/' && path === '' ? '/' : path, // the matched portion of the URL/path
@@ -178,7 +189,7 @@ type CompileOptions = {
 
 type Compiled = {
   re: RegExp,
-  keys: Array<{ name: string }>,
+  keys: Array<{ name: string, repeat: Boolean, optional: Boolean }>,
 }
 
 // type Match = {

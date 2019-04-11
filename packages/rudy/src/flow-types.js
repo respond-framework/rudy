@@ -23,18 +23,18 @@ export type StandardCallback = (
 ) => ?any | Promise<any>
 
 export type FromPath = (
-  val: ?string,
-  key: string,
+  val: void | string | Array<string>,
+  { name: string, repeat: Boolean, optional: Boolean },
   route: Route,
   opts: Options,
 ) => any
 
 export type ToPath = (
   val: any,
-  key: string,
+  { name: string, repeat: Boolean, optional: Boolean },
   route: Route,
   opts: Options,
-) => ?string
+) => void | string | Array<string>
 
 export type Route = {
   path?: string,

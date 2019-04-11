@@ -68,7 +68,6 @@ const createAction = (
     const route = routes[type]
     const transformers = { formatParams, formatQuery, formatHash }
     const match = matchUrl(loc, route, transformers, route, opts)
-
     if (match) {
       const { params, query, hash } = match
       const state = formatState(st, route, opts)
@@ -92,18 +91,36 @@ const createAction = (
 
 // EVERYTHING BELOW IS RELATED TO THE TRANSFORMERS PASSED TO `matchUrl`:
 
-const formatParams = (params: Object, route: Route, opts: Options) => {
-  const from: FromPath = route.fromPath || defaultFromPath
+const formatParams = (params: Object, route: Route, keys, opts: Options) => {
+  const fromPath: FromPath = route.fromPath || opts.fromPath || defaultFromPath
 
-  Object.keys(params).forEach((key) => {
-    const val = params[key]
-    // don't decode undefined values from optional params
-    params[key] = from(val, key, route, opts)
-    if (params[key] === undefined) {
-      // allow optional params to be overriden by defaultParams
-      delete params[key]
-    }
-  })
+  keys.forEach(
+    ({
+      name,
+      repeat,
+      optional,
+    }: {
+      name: string | number,
+      repeat: Boolean,
+      optional: Boolean,
+    }) => {
+      if (!Object.prototype.hasOwnProperty.call(params, name)) {
+        return
+      }
+      const val = params[name]
+      // don't decode undefined values from optional params
+      params[name] = fromPath(
+        val,
+        { name: name.toString(), repeat, optional },
+        route,
+        opts,
+      )
+      if (params[name] === undefined) {
+        // allow optional params to be overriden by defaultParams
+        delete params[name]
+      }
+    },
+  )
 
   const def = route.defaultParams || opts.defaultParams
   return def
@@ -113,35 +130,48 @@ const formatParams = (params: Object, route: Route, opts: Options) => {
     : params
 }
 
-const defaultFromPath = (
-  val: ?string,
-  key: string,
-  route: Route,
-  opts: Options,
-): ?(string | number) => {
-  if (!val) {
-    return undefined
+const fromSegment = (val, convertNum, capitalize) => {
+  if (typeof val !== 'string') {
+    // defensive
+    throw TypeError('[rudy]: received invalid type from URL')
   }
-  const convertNum =
-    route.convertNumbers ||
-    (opts.convertNumbers && route.convertNumbers !== false)
-
   if (convertNum && isNumber(val)) {
     return Number.parseFloat(val)
   }
-
-  const capitalize =
-    route.capitalizedWords ||
-    (opts.capitalizedWords && route.capitalizedWords !== false)
 
   if (capitalize) {
     // 'my-category' -> 'My Category'
     return val.replace(/-/g, ' ').replace(/\b\w/g, (ltr) => ltr.toUpperCase())
   }
 
-  return opts.fromPath
-    ? opts.fromPath(val, key, route, opts)
-    : decodeURIComponent(val)
+  return val
+}
+
+const defaultFromPath = (
+  val: void | string | Array<string>,
+  { repeat, optional },
+  route: Route,
+  opts: Options,
+): ?((string | number) | Array<string | number>) => {
+  const convertNum =
+    route.convertNumbers ||
+    (opts.convertNumbers && route.convertNumbers !== false)
+
+  const capitalize =
+    route.capitalizedWords ||
+    (opts.capitalizedWords && route.capitalizedWords !== false)
+
+  if (repeat && (Array.isArray(val) || val === undefined)) {
+    return val && val.length ? val.join('/') : undefined
+  }
+  if (!repeat && optional && val === undefined) {
+    return undefined
+  }
+  if (typeof val === 'string') {
+    return fromSegment(val, convertNum, capitalize)
+  }
+  // defensive
+  throw TypeError(`[rudy]: Received invalid param from URL`)
 }
 
 const formatQuery = (query: Object, route: Route, opts: Options) => {

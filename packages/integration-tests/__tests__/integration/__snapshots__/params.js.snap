@@ -1353,7 +1353,9 @@ Object {
           "search": "",
           "url": "/third",
         },
-        "params": Object {},
+        "params": Object {
+          "0": "",
+        },
         "query": Object {},
         "state": Object {},
         "type": "THIRD",
@@ -1388,7 +1390,9 @@ Object {
     "status": 200,
     "url": "/third",
   },
-  "params": Object {},
+  "params": Object {
+    "0": "",
+  },
   "query": Object {},
   "state": Object {},
   "type": "THIRD",
@@ -1431,7 +1435,9 @@ Object {
           "search": "",
           "url": "/third",
         },
-        "params": Object {},
+        "params": Object {
+          "0": "",
+        },
         "query": Object {},
         "state": Object {},
         "type": "THIRD",
@@ -1444,7 +1450,9 @@ Object {
     "kind": "push",
     "length": 2,
     "n": 1,
-    "params": Object {},
+    "params": Object {
+      "0": "",
+    },
     "pathname": "/third",
     "pop": false,
     "prev": Object {
@@ -1478,7 +1486,7 @@ Object {
 
 exports[`does not parse a blank string "" as NaN "/third": 2 - title 1`] = `"THIRD"`;
 
-exports[`does not parse a blank string "" as NaN {"type":"SECOND"}: 1 - response 1`] = `
+exports[`does not parse a blank string "" as NaN {"type":"SECOND","params":{"0":""}}: 1 - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -1506,15 +1514,17 @@ Object {
         "hash": "",
         "location": Object {
           "key": "345678",
-          "pathname": "/not-found",
+          "pathname": "/second",
           "scene": "",
           "search": "",
-          "url": "/not-found",
+          "url": "/second",
         },
-        "params": Object {},
+        "params": Object {
+          "0": "",
+        },
         "query": Object {},
         "state": Object {},
-        "type": "NOT_FOUND",
+        "type": "SECOND",
       },
     ],
     "from": null,
@@ -1523,7 +1533,7 @@ Object {
     "kind": "push",
     "length": 2,
     "n": 1,
-    "pathname": "/not-found",
+    "pathname": "/second",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -1543,21 +1553,23 @@ Object {
     },
     "scene": "",
     "search": "",
-    "status": 404,
-    "url": "/not-found",
+    "status": 200,
+    "url": "/second",
   },
-  "params": Object {},
+  "params": Object {
+    "0": "",
+  },
   "query": Object {},
   "state": Object {},
-  "type": "NOT_FOUND",
+  "type": "SECOND",
 }
 `;
 
-exports[`does not parse a blank string "" as NaN {"type":"SECOND"}: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`does not parse a blank string "" as NaN {"type":"SECOND","params":{"0":""}}: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`does not parse a blank string "" as NaN {"type":"SECOND"}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`does not parse a blank string "" as NaN {"type":"SECOND","params":{"0":""}}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`does not parse a blank string "" as NaN {"type":"SECOND"}: 1 - state 1`] = `
+exports[`does not parse a blank string "" as NaN {"type":"SECOND","params":{"0":""}}: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -1584,15 +1596,17 @@ Object {
         "hash": "",
         "location": Object {
           "key": "345678",
-          "pathname": "/not-found",
+          "pathname": "/second",
           "scene": "",
           "search": "",
-          "url": "/not-found",
+          "url": "/second",
         },
-        "params": Object {},
+        "params": Object {
+          "0": "",
+        },
         "query": Object {},
         "state": Object {},
-        "type": "NOT_FOUND",
+        "type": "SECOND",
       },
     ],
     "from": null,
@@ -1602,8 +1616,10 @@ Object {
     "kind": "push",
     "length": 2,
     "n": 1,
-    "params": Object {},
-    "pathname": "/not-found",
+    "params": Object {
+      "0": "",
+    },
+    "pathname": "/second",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -1625,18 +1641,18 @@ Object {
     "scene": "",
     "search": "",
     "state": Object {},
-    "status": 404,
-    "type": "NOT_FOUND",
+    "status": 200,
+    "type": "SECOND",
     "universal": false,
-    "url": "/not-found",
+    "url": "/second",
   },
-  "title": "NOT_FOUND",
+  "title": "SECOND",
 }
 `;
 
-exports[`does not parse a blank string "" as NaN {"type":"SECOND"}: 1 - title 1`] = `"NOT_FOUND"`;
+exports[`does not parse a blank string "" as NaN {"type":"SECOND","params":{"0":""}}: 1 - title 1`] = `"SECOND"`;
 
-exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - response 1`] = `
+exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect%20with%20spaces": 2 - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -1664,10 +1680,10 @@ Object {
         "hash": "",
         "location": Object {
           "key": "345678",
-          "pathname": "/third/correct%20with%20spaceskeycorrect with spaces",
+          "pathname": "/third/correct%20with%20spaceskeycorrect%20with%20spaces",
           "scene": "",
           "search": "",
-          "url": "/third/correct%20with%20spaceskeycorrect with spaces",
+          "url": "/third/correct%20with%20spaceskeycorrect%20with%20spaces",
         },
         "params": Object {
           "key": "correct with spaces",
@@ -1683,7 +1699,7 @@ Object {
     "kind": "push",
     "length": 2,
     "n": 1,
-    "pathname": "/third/correct%20with%20spaceskeycorrect with spaces",
+    "pathname": "/third/correct%20with%20spaceskeycorrect%20with%20spaces",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -1704,7 +1720,7 @@ Object {
     "scene": "",
     "search": "",
     "status": 200,
-    "url": "/third/correct%20with%20spaceskeycorrect with spaces",
+    "url": "/third/correct%20with%20spaceskeycorrect%20with%20spaces",
   },
   "params": Object {
     "key": "correct with spaces",
@@ -1715,19 +1731,19 @@ Object {
 }
 `;
 
-exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect%20with%20spaces": 2 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect%20with%20spaces": 2 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - routes - SECOND - fromPath 1`] = `0`;
+exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect%20with%20spaces": 2 - routes - SECOND - fromPath 1`] = `0`;
 
-exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - routes - SECOND - toPath 1`] = `0`;
+exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect%20with%20spaces": 2 - routes - SECOND - toPath 1`] = `0`;
 
-exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - routes - THIRD - fromPath 1`] = `1`;
+exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect%20with%20spaces": 2 - routes - THIRD - fromPath 1`] = `1`;
 
-exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - routes - THIRD - toPath 1`] = `0`;
+exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect%20with%20spaces": 2 - routes - THIRD - toPath 1`] = `0`;
 
-exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - state 1`] = `
+exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect%20with%20spaces": 2 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -1754,10 +1770,10 @@ Object {
         "hash": "",
         "location": Object {
           "key": "345678",
-          "pathname": "/third/correct%20with%20spaceskeycorrect with spaces",
+          "pathname": "/third/correct%20with%20spaceskeycorrect%20with%20spaces",
           "scene": "",
           "search": "",
-          "url": "/third/correct%20with%20spaceskeycorrect with spaces",
+          "url": "/third/correct%20with%20spaceskeycorrect%20with%20spaces",
         },
         "params": Object {
           "key": "correct with spaces",
@@ -1777,7 +1793,7 @@ Object {
     "params": Object {
       "key": "correct with spaces",
     },
-    "pathname": "/third/correct%20with%20spaceskeycorrect with spaces",
+    "pathname": "/third/correct%20with%20spaceskeycorrect%20with%20spaces",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -1802,13 +1818,13 @@ Object {
     "status": 200,
     "type": "THIRD",
     "universal": false,
-    "url": "/third/correct%20with%20spaceskeycorrect with spaces",
+    "url": "/third/correct%20with%20spaceskeycorrect%20with%20spaces",
   },
   "title": "THIRD",
 }
 `;
 
-exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - title 1`] = `"THIRD"`;
+exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect%20with%20spaces": 2 - title 1`] = `"THIRD"`;
 
 exports[`fromPath + toPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - response 1`] = `
 Object {
@@ -1838,10 +1854,10 @@ Object {
         "hash": "",
         "location": Object {
           "key": "345678",
-          "pathname": "/second/correct%20with%20spaceskeycorrect with spaces",
+          "pathname": "/second/correct%20with%20spaceskeycorrect%20with%20spaces",
           "scene": "",
           "search": "",
-          "url": "/second/correct%20with%20spaceskeycorrect with spaces",
+          "url": "/second/correct%20with%20spaceskeycorrect%20with%20spaces",
         },
         "params": Object {
           "key": "correct with spaces",
@@ -1857,7 +1873,7 @@ Object {
     "kind": "push",
     "length": 2,
     "n": 1,
-    "pathname": "/second/correct%20with%20spaceskeycorrect with spaces",
+    "pathname": "/second/correct%20with%20spaceskeycorrect%20with%20spaces",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -1878,7 +1894,7 @@ Object {
     "scene": "",
     "search": "",
     "status": 200,
-    "url": "/second/correct%20with%20spaceskeycorrect with spaces",
+    "url": "/second/correct%20with%20spaceskeycorrect%20with%20spaces",
   },
   "params": Object {
     "key": "correct with spaces",
@@ -1928,10 +1944,10 @@ Object {
         "hash": "",
         "location": Object {
           "key": "345678",
-          "pathname": "/second/correct%20with%20spaceskeycorrect with spaces",
+          "pathname": "/second/correct%20with%20spaceskeycorrect%20with%20spaces",
           "scene": "",
           "search": "",
-          "url": "/second/correct%20with%20spaceskeycorrect with spaces",
+          "url": "/second/correct%20with%20spaceskeycorrect%20with%20spaces",
         },
         "params": Object {
           "key": "correct with spaces",
@@ -1951,7 +1967,7 @@ Object {
     "params": Object {
       "key": "correct with spaces",
     },
-    "pathname": "/second/correct%20with%20spaceskeycorrect with spaces",
+    "pathname": "/second/correct%20with%20spaceskeycorrect%20with%20spaces",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -1976,7 +1992,7 @@ Object {
     "status": 200,
     "type": "SECOND",
     "universal": false,
-    "url": "/second/correct%20with%20spaceskeycorrect with spaces",
+    "url": "/second/correct%20with%20spaceskeycorrect%20with%20spaces",
   },
   "title": "SECOND",
 }
@@ -3968,7 +3984,7 @@ Object {
 
 exports[`numbers NOT converted without convertNumbers option "/third/100": 2 - title 1`] = `"THIRD"`;
 
-exports[`numbers NOT converted without convertNumbers option {"type":"SECOND","params":{"param":100}}: 1 - response 1`] = `
+exports[`numbers NOT converted without convertNumbers option {"type":"SECOND","params":{"param":"100"}}: 1 - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -4047,11 +4063,11 @@ Object {
 }
 `;
 
-exports[`numbers NOT converted without convertNumbers option {"type":"SECOND","params":{"param":100}}: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`numbers NOT converted without convertNumbers option {"type":"SECOND","params":{"param":"100"}}: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`numbers NOT converted without convertNumbers option {"type":"SECOND","params":{"param":100}}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`numbers NOT converted without convertNumbers option {"type":"SECOND","params":{"param":"100"}}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`numbers NOT converted without convertNumbers option {"type":"SECOND","params":{"param":100}}: 1 - state 1`] = `
+exports[`numbers NOT converted without convertNumbers option {"type":"SECOND","params":{"param":"100"}}: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -4132,7 +4148,7 @@ Object {
 }
 `;
 
-exports[`numbers NOT converted without convertNumbers option {"type":"SECOND","params":{"param":100}}: 1 - title 1`] = `"SECOND"`;
+exports[`numbers NOT converted without convertNumbers option {"type":"SECOND","params":{"param":"100"}}: 1 - title 1`] = `"SECOND"`;
 
 exports[`optional static segments ("aliases") "/third": 3 - response 1`] = `
 Object {
@@ -4964,11 +4980,11 @@ Object {
 
 exports[`optionally match "multi segment params" as single param {"type":"REPO1","params":{"user":"faceyspacey","repo":"rudy","branch":"master"}}: 1 - title 1`] = `"REPO1"`;
 
-exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - options - fromPath 1`] = `1`;
+exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect%20with%20spaces": 2 - options - fromPath 1`] = `1`;
 
-exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - options - toPath 1`] = `0`;
+exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect%20with%20spaces": 2 - options - toPath 1`] = `0`;
 
-exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - response 1`] = `
+exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect%20with%20spaces": 2 - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -4996,10 +5012,10 @@ Object {
         "hash": "",
         "location": Object {
           "key": "345678",
-          "pathname": "/third/correct%20with%20spaceskeycorrect with spaces",
+          "pathname": "/third/correct%20with%20spaceskeycorrect%20with%20spaces",
           "scene": "",
           "search": "",
-          "url": "/third/correct%20with%20spaceskeycorrect with spaces",
+          "url": "/third/correct%20with%20spaceskeycorrect%20with%20spaces",
         },
         "params": Object {
           "key": "correct with spaces",
@@ -5015,7 +5031,7 @@ Object {
     "kind": "push",
     "length": 2,
     "n": 1,
-    "pathname": "/third/correct%20with%20spaceskeycorrect with spaces",
+    "pathname": "/third/correct%20with%20spaceskeycorrect%20with%20spaces",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -5036,7 +5052,7 @@ Object {
     "scene": "",
     "search": "",
     "status": 200,
-    "url": "/third/correct%20with%20spaceskeycorrect with spaces",
+    "url": "/third/correct%20with%20spaceskeycorrect%20with%20spaces",
   },
   "params": Object {
     "key": "correct with spaces",
@@ -5047,11 +5063,11 @@ Object {
 }
 `;
 
-exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect%20with%20spaces": 2 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect%20with%20spaces": 2 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - state 1`] = `
+exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect%20with%20spaces": 2 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -5078,10 +5094,10 @@ Object {
         "hash": "",
         "location": Object {
           "key": "345678",
-          "pathname": "/third/correct%20with%20spaceskeycorrect with spaces",
+          "pathname": "/third/correct%20with%20spaceskeycorrect%20with%20spaces",
           "scene": "",
           "search": "",
-          "url": "/third/correct%20with%20spaceskeycorrect with spaces",
+          "url": "/third/correct%20with%20spaceskeycorrect%20with%20spaces",
         },
         "params": Object {
           "key": "correct with spaces",
@@ -5101,7 +5117,7 @@ Object {
     "params": Object {
       "key": "correct with spaces",
     },
-    "pathname": "/third/correct%20with%20spaceskeycorrect with spaces",
+    "pathname": "/third/correct%20with%20spaceskeycorrect%20with%20spaces",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -5126,13 +5142,13 @@ Object {
     "status": 200,
     "type": "THIRD",
     "universal": false,
-    "url": "/third/correct%20with%20spaceskeycorrect with spaces",
+    "url": "/third/correct%20with%20spaceskeycorrect%20with%20spaces",
   },
   "title": "THIRD",
 }
 `;
 
-exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - title 1`] = `"THIRD"`;
+exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect%20with%20spaces": 2 - title 1`] = `"THIRD"`;
 
 exports[`options.to/fromPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - options - fromPath 1`] = `1`;
 
@@ -5166,10 +5182,10 @@ Object {
         "hash": "",
         "location": Object {
           "key": "345678",
-          "pathname": "/second/correct%20with%20spaceskeycorrect with spaces",
+          "pathname": "/second/correct%20with%20spaceskeycorrect%20with%20spaces",
           "scene": "",
           "search": "",
-          "url": "/second/correct%20with%20spaceskeycorrect with spaces",
+          "url": "/second/correct%20with%20spaceskeycorrect%20with%20spaces",
         },
         "params": Object {
           "key": "correct with spaces",
@@ -5185,7 +5201,7 @@ Object {
     "kind": "push",
     "length": 2,
     "n": 1,
-    "pathname": "/second/correct%20with%20spaceskeycorrect with spaces",
+    "pathname": "/second/correct%20with%20spaceskeycorrect%20with%20spaces",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -5206,7 +5222,7 @@ Object {
     "scene": "",
     "search": "",
     "status": 200,
-    "url": "/second/correct%20with%20spaceskeycorrect with spaces",
+    "url": "/second/correct%20with%20spaceskeycorrect%20with%20spaces",
   },
   "params": Object {
     "key": "correct with spaces",
@@ -5248,10 +5264,10 @@ Object {
         "hash": "",
         "location": Object {
           "key": "345678",
-          "pathname": "/second/correct%20with%20spaceskeycorrect with spaces",
+          "pathname": "/second/correct%20with%20spaceskeycorrect%20with%20spaces",
           "scene": "",
           "search": "",
-          "url": "/second/correct%20with%20spaceskeycorrect with spaces",
+          "url": "/second/correct%20with%20spaceskeycorrect%20with%20spaces",
         },
         "params": Object {
           "key": "correct with spaces",
@@ -5271,7 +5287,7 @@ Object {
     "params": Object {
       "key": "correct with spaces",
     },
-    "pathname": "/second/correct%20with%20spaceskeycorrect with spaces",
+    "pathname": "/second/correct%20with%20spaceskeycorrect%20with%20spaces",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -5296,7 +5312,7 @@ Object {
     "status": 200,
     "type": "SECOND",
     "universal": false,
-    "url": "/second/correct%20with%20spaceskeycorrect with spaces",
+    "url": "/second/correct%20with%20spaceskeycorrect%20with%20spaces",
   },
   "title": "SECOND",
 }
@@ -5628,6 +5644,172 @@ Object {
 
 exports[`regex parameters "/third/foo": 4 - title 1`] = `"NOT_FOUND"`;
 
+exports[`regex parameters {"type":"SECOND","params":{"id":"100"}}: 1 - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "scene": "",
+          "search": "",
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second/100",
+          "scene": "",
+          "search": "",
+          "url": "/second/100",
+        },
+        "params": Object {
+          "id": "100",
+        },
+        "query": Object {},
+        "state": Object {},
+        "type": "SECOND",
+      },
+    ],
+    "from": null,
+    "index": 1,
+    "key": "345678",
+    "kind": "push",
+    "length": 2,
+    "n": 1,
+    "pathname": "/second/100",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 0,
+        "key": "345678",
+        "pathname": "/first",
+        "scene": "",
+        "search": "",
+        "url": "/first",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "FIRST",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second/100",
+  },
+  "params": Object {
+    "id": "100",
+  },
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`regex parameters {"type":"SECOND","params":{"id":"100"}}: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`regex parameters {"type":"SECOND","params":{"id":"100"}}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`regex parameters {"type":"SECOND","params":{"id":"100"}}: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "scene": "",
+          "search": "",
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second/100",
+          "scene": "",
+          "search": "",
+          "url": "/second/100",
+        },
+        "params": Object {
+          "id": "100",
+        },
+        "query": Object {},
+        "state": Object {},
+        "type": "SECOND",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 1,
+    "key": "345678",
+    "kind": "push",
+    "length": 2,
+    "n": 1,
+    "params": Object {
+      "id": "100",
+    },
+    "pathname": "/second/100",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 0,
+        "key": "345678",
+        "pathname": "/first",
+        "scene": "",
+        "search": "",
+        "url": "/first",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "FIRST",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "universal": false,
+    "url": "/second/100",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`regex parameters {"type":"SECOND","params":{"id":"100"}}: 1 - title 1`] = `"SECOND"`;
+
 exports[`regex parameters {"type":"SECOND","params":{"id":"foo"}}: 2 - response 1`] = `
 Object {
   "basename": "",
@@ -5785,172 +5967,6 @@ Object {
 `;
 
 exports[`regex parameters {"type":"SECOND","params":{"id":"foo"}}: 2 - title 1`] = `"NOT_FOUND"`;
-
-exports[`regex parameters {"type":"SECOND","params":{"id":100}}: 1 - response 1`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "blocked": null,
-    "direction": "forward",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "location": Object {
-          "key": "345678",
-          "pathname": "/first",
-          "scene": "",
-          "search": "",
-          "url": "/first",
-        },
-        "params": Object {},
-        "query": Object {},
-        "state": Object {},
-        "type": "FIRST",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "location": Object {
-          "key": "345678",
-          "pathname": "/second/100",
-          "scene": "",
-          "search": "",
-          "url": "/second/100",
-        },
-        "params": Object {
-          "id": "100",
-        },
-        "query": Object {},
-        "state": Object {},
-        "type": "SECOND",
-      },
-    ],
-    "from": null,
-    "index": 1,
-    "key": "345678",
-    "kind": "push",
-    "length": 2,
-    "n": 1,
-    "pathname": "/second/100",
-    "pop": false,
-    "prev": Object {
-      "basename": "",
-      "hash": "",
-      "location": Object {
-        "index": 0,
-        "key": "345678",
-        "pathname": "/first",
-        "scene": "",
-        "search": "",
-        "url": "/first",
-      },
-      "params": Object {},
-      "query": Object {},
-      "state": Object {},
-      "type": "FIRST",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/second/100",
-  },
-  "params": Object {
-    "id": "100",
-  },
-  "query": Object {},
-  "state": Object {},
-  "type": "SECOND",
-}
-`;
-
-exports[`regex parameters {"type":"SECOND","params":{"id":100}}: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`regex parameters {"type":"SECOND","params":{"id":100}}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`regex parameters {"type":"SECOND","params":{"id":100}}: 1 - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "blocked": null,
-    "direction": "forward",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "location": Object {
-          "key": "345678",
-          "pathname": "/first",
-          "scene": "",
-          "search": "",
-          "url": "/first",
-        },
-        "params": Object {},
-        "query": Object {},
-        "state": Object {},
-        "type": "FIRST",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "location": Object {
-          "key": "345678",
-          "pathname": "/second/100",
-          "scene": "",
-          "search": "",
-          "url": "/second/100",
-        },
-        "params": Object {
-          "id": "100",
-        },
-        "query": Object {},
-        "state": Object {},
-        "type": "SECOND",
-      },
-    ],
-    "from": null,
-    "hash": "",
-    "index": 1,
-    "key": "345678",
-    "kind": "push",
-    "length": 2,
-    "n": 1,
-    "params": Object {
-      "id": "100",
-    },
-    "pathname": "/second/100",
-    "pop": false,
-    "prev": Object {
-      "basename": "",
-      "hash": "",
-      "location": Object {
-        "index": 0,
-        "key": "345678",
-        "pathname": "/first",
-        "scene": "",
-        "search": "",
-        "url": "/first",
-      },
-      "params": Object {},
-      "query": Object {},
-      "state": Object {},
-      "type": "FIRST",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "SECOND",
-    "universal": false,
-    "url": "/second/100",
-  },
-  "title": "SECOND",
-}
-`;
-
-exports[`regex parameters {"type":"SECOND","params":{"id":100}}: 1 - title 1`] = `"SECOND"`;
 
 exports[`route.defaultParams "/second": 4 - response 1`] = `
 Object {
