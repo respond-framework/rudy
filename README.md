@@ -1,29 +1,47 @@
-# Respond Framework
+# Rudy
 
 Think of your app in terms of _states_, not _routes_ or _components_. Connect
-your components and just dispatch _Flux Standard Actions_!
+your components and just dispatch _Flux Standard Routing Actions_!
 
 **Rudy** is the successor to
 [redux-first-router](https://github.com/faceyspacey/redux-first-router).
+Compared to RFR, there are many
+[new features, and some breaking changes](https://github.com/respond-framework/rudy/blob/master/packages/rudy/docs/differences-from-rfr.md).
+It is a work in progress. The basic features work, but there are still bugs and
+some features are incomplete.
 
 ## Motivation
 
-To be able to use Redux _as is_ while keeping the address bar in sync. To
-achieve _bi-directional mapping_ between the address bar and Redux actions. This
-way, changing the address (also via back/forward) dispatches an action, and
-dispatching an action changes the address. Paths are defined as actions, and
-path params and query strings are handled as action payloads.
+Rudy is a library for creating a controller (as in Model View Controller) for
+redux based apps. It provides an abstraction for handling all the side effects
+and cross cutting concerns that tend to pollute React components and make apps
+difficult to understand and work with. Some of the things it can do:
 
-**Respond Framework** also seeks to _avoid_ the following obstacles:
+- Maintain a bi-directional mapping between the URL and Redux actions of your
+  choice. As far as your app is concerned, URL changes are Redux actions, and
+  routing state is Redux state. This mapping works the same way for server side
+  and client side rendering.
+- Trigger callbacks defined on redux actions (including but not limited to route
+  changes), which can do things like making API calls or other side effects.
+  They can also delay URL changes until the required data is ready, and/or
+  redirect to other routes.
+- Set the page title on route changes based on the redux state
+- Block page navigation depending on the redux state
+- Load code split reducers, controller code, and components for each route when
+  necessary.
 
-- Rendering from state that doesn't come from Redux
-- Dealing with the added complexity from having state outside of Redux
-- Cluttering components with route-related code
-- Large API surface areas of frameworks like `react-router` and `next.js`
-- Routing frameworks getting in the way of optimizing animations (such as when
-  animations coincide with component updates)
-- Having to do route changes differently in order to support server-side
-  rendering
+This library can help you build an app where:
+
+- URLs are defined exclusively in one place
+- Code that receives input (and dispatches Redux actions) is decoupled from code
+  that triggers side effects (in response to Redux actions).
+- The entire app's state can be kept in Redux, and components only need to
+  receive state from Redux, not also from other places.
+- Components can be pure functions, because they don't have to handle state and
+  side effects.
+- The majority of the code (reducers, selectors, components) are pure functions
+  and can be easily unit tested with no mocking necessary. The little that
+  remains (the controller) is neatly concentrated in one place.
 
 ## Usage
 
@@ -178,6 +196,56 @@ The source code for this example can be found [here](./examples/react).
 
 Also see the [boilerplate project](./packages/boilerplate) and the (partly
 outdated) [documentation](./packages/rudy/docs).
+
+## The Flux Standard Routing Action (FSRA)
+
+The redux actions that Rudy synchronises with URLs have a particular shape and
+meaning.
+
+```javascript
+const routes = {
+  BLOB: {
+    path: '/:namespace/:repo/blob/:ref/:path+',
+  },
+}
+
+const url = {
+  url:
+    '/respond-framework/rudy/blob/master/README.md?unused=test#the-flux-standard-routing-action-fsra',
+  state: {
+    invisible: '12345',
+  },
+}
+
+const action = {
+  type: 'BLOB',
+  params: {
+    namespace: 'respond-framework',
+    repo: 'rudy',
+    ref: 'master',
+    path: 'README.md',
+  },
+  query: {
+    unused: 'test',
+  },
+  hash: 'the-flux-standard-routing-action-fsra',
+  state: {
+    invisible: '12345',
+  },
+}
+
+actionToUrl(action) == { url, state: { invisible: '12345' } }
+urlToAction({ url, state: { invisible: '12345' }) == action
+```
+
+## Development
+
+Pull requests are welcome! See
+[HACKING](https://github.com/respond-framework/rudy/blob/master/HACKING.md) for
+some simple instructions for getting started if you want to make an improvement.
+More detailed documentation about development is available in the
+[development docs](https://github.com/respond-framework/rudy/tree/master/docs/development)
+directory.
 
 ## License
 

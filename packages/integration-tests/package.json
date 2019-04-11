@@ -3,7 +3,7 @@
   "version": "1.0.1-test.0",
   "description": "Integration tests for the respond framework",
   "main": "index.js",
-  "repository": "https://github.com/ScriptedAlchemy/redux-first-router.git",
+  "repository": "https://github.com/respond-framework/rudy/tree/master/packages/integration-tests",
   "author": "James Gilmore, Daniel Playfair Cal",
   "license": "MIT",
   "private": true,

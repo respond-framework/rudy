@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/faceyspacey/redux-first-router.git"
+    "url": "https://github.com/respond-framework/rudy/tree/master/packages/rudy"
   },
   "author": "James Gillmore <james@faceyspacey.com>",
   "license": "MIT",
@@ -35,9 +35,9 @@
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/faceyspacey/redux-first-router/issues"
+    "url": "https://github.com/respond-framework/rudy/issues"
   },
-  "homepage": "https://github.com/faceyspacey/redux-first-router#readme",
+  "homepage": "https://github.com/respond-framework/rudy",
   "dependencies": {
     "@respond-framework/middleware-change-page-title": "^1.0.1-test.0",
     "@respond-framework/utils": "^0.1.1-test.0",

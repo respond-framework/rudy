@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A set of tools for building beautiful idiomatic React/Redux apps",
   "main": "index.js",
-  "repository": "git@github.com:ScriptedAlchemy/redux-first-router.git",
+  "repository": "https://github.com/respond-framework/rudy",
   "author": "James Gilmore <james@faceyspacey.com>",
   "license": "MIT",
   "private": true,
