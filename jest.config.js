@@ -7,6 +7,5 @@ module.exports = {
       path.resolve(__dirname, './config/babel-jest'),
     ),
   },
-  testPathIgnorePatterns: ['/node_modules/', '<rootDir>/cjs/', '<rootDir>/es/'],
   testEnvironment: 'node',
 }

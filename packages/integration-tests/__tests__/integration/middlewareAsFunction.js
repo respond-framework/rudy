@@ -1,4 +1,4 @@
-import { compose } from '@respond-framework/rudy/src/core'
+import { compose } from '@respond-framework/rudy/core'
 
 import {
   serverRedirect,
@@ -8,7 +8,7 @@ import {
   call,
   enter,
   changePageTitle,
-} from '@respond-framework/rudy/src/middleware'
+} from '@respond-framework/rudy/middleware'
 import createTest from '../../__helpers__/createTest'
 
 createTest(

@@ -3,9 +3,9 @@ import renderer from 'react-test-renderer'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 
-import { createRouter } from '@respond-framework/rudy/src'
+import { createRouter } from '@respond-framework/rudy'
 
-import Link, { NavLink } from '@respond-framework/rudy/src/Link'
+import Link, { NavLink } from '@respond-framework/link'
 
 const createLink = async (props, initialPath, options, isNavLink) => {
   const link = isNavLink ? <NavLink {...props} /> : <Link {...props} />

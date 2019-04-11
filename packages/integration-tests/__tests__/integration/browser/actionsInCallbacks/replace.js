@@ -1,4 +1,4 @@
-import { replace } from '@respond-framework/rudy/src/actions'
+import { replace } from '@respond-framework/rudy/actions'
 import createTest, { resetBrowser } from '../../../../__helpers__/createTest'
 
 beforeEach(resetBrowser)

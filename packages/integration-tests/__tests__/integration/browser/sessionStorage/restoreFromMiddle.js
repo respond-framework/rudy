@@ -1,4 +1,4 @@
-import { get } from '@respond-framework/rudy/src/history/utils/sessionStorage'
+import { get } from '@respond-framework/rudy/history/utils/sessionStorage'
 import createTest, { setupStore } from '../../../../__helpers__/createTest'
 
 // note restoreFromMiddle is in fact the same as restoreFromFront
