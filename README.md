@@ -194,8 +194,11 @@ export {
 
 The source code for this example can be found [here](./examples/react).
 
-Also see the [boilerplate project](./packages/boilerplate) and the (partly
-outdated) [documentation](./packages/rudy/docs).
+Also see:
+
+- the [boilerplate project](./packages/boilerplate)
+- the new but incomplete [documentation](./packages/rudy/docs).
+- the outdated [RFR documentation](./packages/rudy/docs-old).
 
 ## The Flux Standard Routing Action (FSRA)
 
