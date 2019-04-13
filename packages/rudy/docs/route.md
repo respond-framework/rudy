@@ -44,8 +44,7 @@ a date could be handled:
 ```js
 POST: {
   path: '/post/:slug/:date',
-  fromPath: (val, { name }, route, options) => name === 'date' ? new Date(val) : val
-  },
+  fromPath: (val, { name }, route, options) => name === 'date' ? new Date(val) : val,
   toPath: (val, { name }, route, options) => {
     if (name === 'date') {
       const month = numToMonth(val.getMonth())
