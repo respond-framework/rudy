@@ -1,4 +1,5 @@
-import urlToAction from './urlToAction'
+// @flow
+import urlToAction, { defaultFromPath } from './urlToAction'
 
 describe('Parses params', () => {
   const NOT_FOUND = 'NOT_FOUND'
@@ -74,12 +75,12 @@ describe('Parses params', () => {
   it('Single unnamed parameter', () => {
     assertActionForUrl('/unnamed', {
       type: UNNAMED_PARAM,
-      params: { 0: '' },
+      params: { '0': '' },
     })
 
     assertActionForUrl('/unnamedapple', {
       type: UNNAMED_PARAM,
-      params: { 0: 'apple' },
+      params: { '0': 'apple' },
     })
   })
 
@@ -152,4 +153,104 @@ describe('Parses params', () => {
       params: { p1: 'one/two', p2: 'three/four' },
     })
   })
+})
+
+describe('defaultFromPath', () => {
+  const checkFromPath = (
+    value,
+    result,
+    {
+      repeat,
+      optional,
+      convertNumbers,
+      capitalizedWords,
+    }: {
+      repeat?: boolean,
+      optional?: boolean,
+      convertNumbers?: boolean,
+      capitalizedWords?: boolean,
+    } = {},
+  ) => {
+    let label
+    if (value === undefined) {
+      label = 'undefined'
+    } else if (Array.isArray(value)) {
+      label = '[Array]'
+    } else if (typeof value === 'string') {
+      label = `'${value}'`
+    }
+
+    const repeatValues = [true, false].filter((val) => !val !== repeat)
+    const optionalValues = [true, false].filter((val) => !val !== optional)
+    const convertNumbersValues = [true, false].filter(
+      (val) => !val !== convertNumbers,
+    )
+    const capitalizeWordsValues = [true, false].filter(
+      (val) => !val !== capitalizedWords,
+    )
+
+    repeatValues.forEach((r) => {
+      optionalValues.forEach((o) => {
+        capitalizeWordsValues.forEach((w) => {
+          convertNumbersValues.forEach((n) =>
+            it(`defaultFromPath(${label}, { name: 'test', repeat: ${
+              repeat ? 'true' : 'false'
+            }, optional: ${optional ? 'true' : 'false'}}, { convertNumbers: ${
+              n ? 'true' : 'false'
+            }, capitalizedWords: ${w ? 'true' : 'false'} })`, () =>
+              expect(
+                defaultFromPath(
+                  value,
+                  { name: 'test', optional: o, repeat: r },
+                  { convertNumbers: n, capitalizedWords: w },
+                  {},
+                ),
+              ).toEqual(result)),
+          )
+        })
+      })
+    })
+  }
+
+  // absent optional  params
+  checkFromPath(undefined, undefined, { optional: true, repeat: false })
+  checkFromPath([], undefined, { repeat: true, optional: true })
+
+  // strings
+  checkFromPath('one%20two-three', 'one%20two-three', {
+    repeat: false,
+    capitalizedWords: false,
+  })
+  checkFromPath('42', '42', {
+    repeat: false,
+    convertNumbers: false,
+  })
+
+  // convertNumbers
+  checkFromPath('42', 42, {
+    repeat: false,
+    convertNumbers: true,
+  })
+  checkFromPath('3.141', 3.141, {
+    repeat: false,
+    convertNumbers: true,
+  })
+
+  // capitalizedWords
+  checkFromPath('one-two-three', 'One Two Three', {
+    repeat: false,
+    capitalizedWords: true,
+  })
+  checkFromPath('one', 'One', {
+    repeat: false,
+    capitalizedWords: true,
+  })
+
+  // multiple segments
+  checkFromPath(['segment1'], 'segment1', { repeat: true })
+  checkFromPath(
+    ['segment1', 'segment%202', 'segment-three', '42'],
+    'segment1/segment%202/segment-three/42',
+    { repeat: true },
+  )
 })

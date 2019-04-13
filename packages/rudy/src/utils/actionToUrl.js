@@ -5,15 +5,19 @@ import { compileUrl, cleanBasename } from './index'
 import type {
   Route,
   Routes,
-  ReceivedAction as Action,
+  ReceivedAction,
   Options,
   ToPath,
   DefaultParams,
 } from '../flow-types'
 
-export default (action: Action, api: Object, prevRoute?: string): Object => {
+export default (
+  action: ReceivedAction,
+  api: Object,
+  prevRoute?: string,
+): Object => {
   const { routes, options: opts }: Object = api
-  const { type, params, query, state, hash, basename }: Action = action
+  const { type, params, query, state, hash, basename }: ReceivedAction = action
 
   const route = routes[type] || {}
   const path: string | void = typeof route === 'object' ? route.path : route
@@ -82,19 +86,38 @@ const formatParams = (
         optional,
       }: {
         name: string | Number,
-        repeat: Boolean,
-        optional: Boolean,
+        repeat: boolean,
+        optional: boolean,
       }) => {
         if (!Object.prototype.hasOwnProperty.call(params, name)) {
           return
         }
         const val = params[name]
-        newParams[name.toString()] = toPath(
+        const urlVal = toPath(
           val,
           { name: name.toString(), repeat, optional },
           route,
           opts,
         )
+        if (repeat) {
+          if (!Array.isArray(urlVal)) {
+            throw Error('toPath failed')
+          }
+          if (!optional && !urlVal.length) {
+            throw Error('toPath failed')
+          }
+          urlVal.forEach((segment) => {
+            if (typeof segment !== 'string' || !segment) {
+              throw Error('toPath failed')
+            }
+          })
+        } else if (
+          typeof urlVal !== 'string' &&
+          (!optional || urlVal !== undefined)
+        ) {
+          throw Error('toPath failed')
+        }
+        newParams[name.toString()] = urlVal
       },
     )
     return newParams
@@ -106,7 +129,7 @@ const toSegment = (val, convertNum, capitalize) => {
   if (typeof val === 'number' && convertNum) {
     return val.toString()
   }
-  if (typeof val !== 'string') {
+  if (typeof val !== 'string' || !val) {
     throw TypeError('[rudy]: defaultToPath::toSegment received unknown type')
   }
   if (capitalize) {
@@ -115,12 +138,12 @@ const toSegment = (val, convertNum, capitalize) => {
   return val
 }
 
-const defaultToPath = (
-  val: any,
+export const defaultToPath: ToPath = (
+  val,
   { repeat, optional },
-  route: Route,
-  opts: Options,
-): void | string | Array<string> => {
+  route,
+  opts,
+) => {
   const convertNum =
     route.convertNumbers ||
     (opts.convertNumbers && route.convertNumbers !== false)
@@ -131,7 +154,7 @@ const defaultToPath = (
 
   if (
     repeat &&
-    (typeof val === 'string' || val === undefined || val === null)
+    ((typeof val === 'string' && val) || (val === undefined && optional))
   ) {
     return val ? val.split('/') : []
   }
@@ -190,7 +213,7 @@ const formatState = (
 } // state has no string counter part in the address bar, so there is no `toState`
 
 const notFoundUrl = (
-  action: Action,
+  action: ReceivedAction,
   routes: Routes,
   opts: Options,
   query: mixed,

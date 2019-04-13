@@ -24,14 +24,14 @@ export type StandardCallback = (
 
 export type FromPath = (
   val: void | string | Array<string>,
-  { name: string, repeat: Boolean, optional: Boolean },
+  { name: string, repeat: boolean, optional: boolean },
   route: Route,
   opts: Options,
 ) => any
 
 export type ToPath = (
   val: any,
-  { name: string, repeat: Boolean, optional: Boolean },
+  { name: string, repeat: boolean, optional: boolean },
   route: Route,
   opts: Options,
 ) => void | string | Array<string>
@@ -256,8 +256,8 @@ export type ReceivedAction = {
   state?: Object,
   query?: Object,
   search?: string,
-  params: ?Params,
-  payload: Payload,
+  params?: Params,
+  payload?: Payload,
   navKey?: ?string,
   basename?: ?string,
   pathname?: string,

@@ -15,7 +15,7 @@ export default (
   api: {
     routes: Routes,
     options: Options,
-    getLocation: Function,
+    getLocation?: Function,
   },
   url: string,
   state: Object = {},
@@ -147,12 +147,12 @@ const fromSegment = (val, convertNum, capitalize) => {
   return val
 }
 
-const defaultFromPath = (
-  val: void | string | Array<string>,
+export const defaultFromPath: FromPath = (
+  val,
   { repeat, optional },
-  route: Route,
-  opts: Options,
-): ?((string | number) | Array<string | number>) => {
+  route,
+  opts,
+) => {
   const convertNum =
     route.convertNumbers ||
     (opts.convertNumbers && route.convertNumbers !== false)
