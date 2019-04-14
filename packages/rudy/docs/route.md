@@ -9,7 +9,7 @@ it is set.
 
 ## Transformations
 
-### convertNumbers
+### `convertNumbers`
 
 ```javascript
 type Route = {
@@ -21,7 +21,7 @@ type Route = {
 When enabled, this causes numbers in `action.params` to be mapped to strings in
 the URL. It works only for single segment params. Disabled by default.
 
-### capitalizedWords
+### `capitalizedWords`
 
 ```javascript
 type Route = {
@@ -34,7 +34,7 @@ When enabled, this causes capital case strings in `action.params` to be mapped
 to snake case in the URL. For example, `The Quick Fox` would become
 `the-quick-fox` and vice versa. Disabled by default.
 
-### `toPath/fromPath`
+### `toPath`/`fromPath`
 
 `toPath` and `fromPath` map between the matched string segments in the URL path
 and the values your app sees in the action `params`. The URL side is one of the
@@ -116,7 +116,7 @@ example `null`, `undefined` for compulsory parameters, numbers when
 exception, causing the action to fail. This is so that `toPath` and `fromPath`
 are fully symmetrical by default.
 
-### defaultParams/defaultQuery/defaultState/defaultHash
+### `defaultParams`/`defaultQuery`/`defaultState`/`defaultHash`
 
 ```javascript
 type ObjectDefault = Object | ((?Object, Route, Options) => ?Object)
