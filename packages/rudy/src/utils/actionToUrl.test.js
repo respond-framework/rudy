@@ -66,7 +66,7 @@ describe('Serializes params', () => {
   })
 
   it('Single compulsory unnamed parameter', () => {
-    assertUrlForAction({ type: UNNAMED_PARAM }, '/404')
+    assertErrorForAction({ type: UNNAMED_PARAM })
 
     assertErrorForAction({ type: UNNAMED_PARAM, params: { '0': null } })
 
@@ -81,13 +81,13 @@ describe('Serializes params', () => {
   })
 
   it('Single compulsory parameter', () => {
-    assertUrlForAction({ type: SINGLE_PARAM }, '/404')
+    assertErrorForAction({ type: SINGLE_PARAM })
 
     assertErrorForAction({ type: SINGLE_PARAM, params: { param: null } })
 
     assertErrorForAction({ type: SINGLE_PARAM, params: { param: undefined } })
 
-    assertUrlForAction({ type: SINGLE_PARAM, params: { param: '' } }, '/404')
+    assertErrorForAction({ type: SINGLE_PARAM, params: { param: '' } })
 
     assertUrlForAction(
       { type: SINGLE_PARAM, params: { param: 'apple' } },
@@ -112,9 +112,9 @@ describe('Serializes params', () => {
   })
 
   it('Multiple parameters', () => {
-    assertUrlForAction({ type: MULTIPLE_PARAMS, params: {} }, '/404')
+    assertErrorForAction({ type: MULTIPLE_PARAMS, params: {} })
 
-    assertUrlForAction({ type: MULTIPLE_PARAMS, params: { p1: '1' } }, '/404')
+    assertErrorForAction({ type: MULTIPLE_PARAMS, params: { p1: '1' } })
 
     assertUrlForAction(
       { type: MULTIPLE_PARAMS, params: { p1: '1', p2: '2' } },
@@ -172,7 +172,7 @@ describe('Serializes params', () => {
   })
 
   it('Multiple multi segment params', () => {
-    assertUrlForAction({ type: MULTI_MULTI_PARAM, params: {} }, '/404')
+    assertErrorForAction({ type: MULTI_MULTI_PARAM, params: {} })
 
     assertErrorForAction({ type: MULTI_MULTI_PARAM, params: { p1: 'one' } })
 

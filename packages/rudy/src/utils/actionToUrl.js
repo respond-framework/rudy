@@ -31,34 +31,15 @@ export default (
   const isWrongBasename = bn && !opts.basenames.includes(bn)
   if (basename === '') s._emptyBn = true // not cool kyle
 
-  try {
-    if (isWrongBasename) {
-      throw new Error(`[rudy] basename "${bn}" not in options.basenames`)
-    }
-
-    // path-to-regexp throws for failed compilations
-    const pathname: string = compileUrl(path, p, q, h, route, opts) || '/'
-    const url: string = bn + pathname
-
-    return { url, state: s }
-  } catch (e) {
-    if (process.env.NODE_ENV === 'development') {
-      // eslint-disable-next-line no-console
-      console.error(
-        `[rudy] unable to compile action "${type}" to URL`,
-        action,
-        e,
-      )
-    } else if (process.env.NODE_ENV === 'test') {
-      // eslint-disable-next-line no-console
-      console.log(`[rudy] unable to compile action "${type}" to URL`, action, e)
-    }
-
-    const base: string = isWrongBasename ? '' : bn
-    const url: string =
-      base + notFoundUrl(action, routes, opts, q, h, prevRoute)
-    return { url, state: s }
+  if (isWrongBasename) {
+    throw new Error(`[rudy] basename "${bn}" not in options.basenames`)
   }
+
+  // path-to-regexp throws for failed compilations
+  const pathname: string = compileUrl(path, p, q, h, route, opts) || '/'
+  const url: string = bn + pathname
+
+  return { url, state: s }
 }
 
 const formatParams = (
