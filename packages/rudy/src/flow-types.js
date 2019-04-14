@@ -36,6 +36,9 @@ export type ToPath = (
   opts: Options,
 ) => void | string | Array<string>
 
+export type ObjectDefault = Object | ((?Object, Route, Options) => ?Object)
+export type StringDefault = string | ((?string, Route, Options) => string)
+
 export type Route = {
   path?: string,
   toPath?: ToPath,
@@ -44,7 +47,10 @@ export type Route = {
   navKey?: string,
   redirect?: Function,
   toSearch?: Function,
-  defaultParams?: DefaultParams,
+  defaultParams?: ObjectDefault,
+  defaultQuery?: ObjectDefault,
+  defaultState?: ObjectDefault,
+  defaultHash?: StringDefault,
   thunk?: StandardCallback,
   beforeLeave?: BeforeLeave,
   onFail?: StandardCallback,
@@ -116,8 +122,6 @@ export type NavigationToAction = (
   navigationAction: ?NavigationAction,
 }
 
-export type DefaultParams = Params | ((Params, Route, Options) => Params)
-
 // TODO: Question: Is can this be split up to sub-types at some point.
 export type Options = {
   extra?: any,
@@ -129,9 +133,10 @@ export type Options = {
   basenames?: Array<string>,
   scrollTop?: boolean,
   notFoundPath?: string,
-  defaultState?: Object,
-  defaultQuery?: ?Object,
-  defaultParams?: DefaultParams,
+  defaultState?: ObjectDefault,
+  defaultQuery?: ObjectDefault,
+  defaultParams?: ObjectDefault,
+  defaultHash?: StringDefault,
   thunk?: StandardCallback,
   beforeLeave?: BeforeLeave,
   onFail?: StandardCallback,

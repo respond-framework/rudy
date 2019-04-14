@@ -11,7 +11,8 @@ type, which may include specifying which URLs it should be synchronised with.
 and the values your app sees in the action `params`. The URL side is one of the
 following types:
 
-- For single segment params (`repeat: false`), a string
+- For single segment params (`repeat: false`), a string. The string may be empty
+  only if the parameter is compulsory.
 - For optional single segment params (`repeat: false, optional: true`),
   `undefined`
 - For multi segment params (`repeat: true`), an array of strings. The array may

@@ -57,6 +57,9 @@ describe('Serializes params', () => {
       state: {},
     })
 
+  const assertErrorForAction = (action) =>
+    expect(() => actionToUrl(action, api)).toThrow()
+
   it('Static path', () => {
     assertUrlForAction({ type: ROOT }, '/')
     assertUrlForAction({ type: STATIC }, '/static')
@@ -65,12 +68,9 @@ describe('Serializes params', () => {
   it('Single compulsory unnamed parameter', () => {
     assertUrlForAction({ type: UNNAMED_PARAM }, '/404')
 
-    assertUrlForAction({ type: UNNAMED_PARAM, params: { '0': null } }, '/404')
+    assertErrorForAction({ type: UNNAMED_PARAM, params: { '0': null } })
 
-    assertUrlForAction(
-      { type: UNNAMED_PARAM, params: { '0': undefined } },
-      '/404',
-    )
+    assertErrorForAction({ type: UNNAMED_PARAM, params: { '0': undefined } })
 
     assertUrlForAction({ type: UNNAMED_PARAM, params: { '0': '' } }, '/unnamed')
 
@@ -83,12 +83,9 @@ describe('Serializes params', () => {
   it('Single compulsory parameter', () => {
     assertUrlForAction({ type: SINGLE_PARAM }, '/404')
 
-    assertUrlForAction({ type: SINGLE_PARAM, params: { param: null } }, '/404')
+    assertErrorForAction({ type: SINGLE_PARAM, params: { param: null } })
 
-    assertUrlForAction(
-      { type: SINGLE_PARAM, params: { param: undefined } },
-      '/404',
-    )
+    assertErrorForAction({ type: SINGLE_PARAM, params: { param: undefined } })
 
     assertUrlForAction({ type: SINGLE_PARAM, params: { param: '' } }, '/404')
 
@@ -101,10 +98,7 @@ describe('Serializes params', () => {
   it('Single optional parameter', () => {
     assertUrlForAction({ type: OPTIONAL_PARAM }, '/optional')
 
-    assertUrlForAction(
-      { type: OPTIONAL_PARAM, params: { param: null } },
-      '/404',
-    )
+    assertErrorForAction({ type: OPTIONAL_PARAM, params: { param: null } })
 
     assertUrlForAction(
       { type: OPTIONAL_PARAM, params: { param: undefined } },
@@ -131,17 +125,14 @@ describe('Serializes params', () => {
   it('Multi segment optional parameter', () => {
     assertUrlForAction({ type: OPTIONAL_PATH_PARAM }, '/multistar')
 
-    assertUrlForAction(
-      { type: OPTIONAL_PATH_PARAM, params: { p: undefined } },
-      '/404',
-    )
+    assertErrorForAction({
+      type: OPTIONAL_PATH_PARAM,
+      params: { p: undefined },
+    })
 
-    assertUrlForAction(
-      { type: OPTIONAL_PATH_PARAM, params: { p: null } },
-      '/404',
-    )
+    assertErrorForAction({ type: OPTIONAL_PATH_PARAM, params: { p: null } })
 
-    assertUrlForAction({ type: OPTIONAL_PATH_PARAM, params: { p: '' } }, '/404')
+    assertErrorForAction({ type: OPTIONAL_PATH_PARAM, params: { p: '' } })
 
     assertUrlForAction(
       { type: OPTIONAL_PATH_PARAM, params: { p: [] } },
@@ -160,20 +151,14 @@ describe('Serializes params', () => {
   })
 
   it('Multi segment compulsory parameter', () => {
-    assertUrlForAction(
-      { type: COMPULSORY_PATH_PARAM, params: { p: undefined } },
-      '/404',
-    )
+    assertErrorForAction({
+      type: COMPULSORY_PATH_PARAM,
+      params: { p: undefined },
+    })
 
-    assertUrlForAction(
-      { type: COMPULSORY_PATH_PARAM, params: { p: null } },
-      '/404',
-    )
+    assertErrorForAction({ type: COMPULSORY_PATH_PARAM, params: { p: null } })
 
-    assertUrlForAction(
-      { type: COMPULSORY_PATH_PARAM, params: { p: [] } },
-      '/404',
-    )
+    assertErrorForAction({ type: COMPULSORY_PATH_PARAM, params: { p: [] } })
 
     assertUrlForAction(
       { type: COMPULSORY_PATH_PARAM, params: { p: ['one'] } },
@@ -189,10 +174,7 @@ describe('Serializes params', () => {
   it('Multiple multi segment params', () => {
     assertUrlForAction({ type: MULTI_MULTI_PARAM, params: {} }, '/404')
 
-    assertUrlForAction(
-      { type: MULTI_MULTI_PARAM, params: { p1: 'one' } },
-      '/404',
-    )
+    assertErrorForAction({ type: MULTI_MULTI_PARAM, params: { p1: 'one' } })
 
     assertUrlForAction(
       { type: MULTI_MULTI_PARAM, params: { p2: ['one'] } },
@@ -242,6 +224,8 @@ describe('defaultToPath', () => {
       label = '{Object}'
     } else if (typeof value === 'string') {
       label = `'${value}'`
+    } else if (typeof value === 'number') {
+      label = value.toString()
     } else {
       label = '<unknown>'
     }
@@ -261,7 +245,7 @@ describe('defaultToPath', () => {
           convertNumbersValues.forEach((n) =>
             it(`defaultToPath(${label}, { name: 'test', repeat: ${
               repeat ? 'true' : 'false'
-            }, optional: ${optional ? 'true' : 'false'}}, { convertNumbers: ${
+            }, optional: ${optional ? 'true' : 'false'} }, { convertNumbers: ${
               n ? 'true' : 'false'
             }, capitalizedWords: ${w ? 'true' : 'false'} })`, () =>
               succeed
@@ -293,17 +277,20 @@ describe('defaultToPath', () => {
   checkToPath(false, undefined, { optional: false })
 
   // Values never allowed (they would break the symmetry of fromPath/toPath)
-  checkToPath(false, '')
+  checkToPath(false, '', { repeat: true })
+  checkToPath(false, '', { repeat: false, optional: true })
   checkToPath(false, null)
+  checkToPath(false, true)
+  checkToPath(false, false)
   checkToPath(false, [])
   checkToPath(false, {})
 
   // convertNumbers
+  checkToPath(false, 0, { repeat: true })
   checkToPath(false, 0, { convertNumbers: false })
-  checkToPath(false, 1, { convertNumbers: false })
-  checkToPath(true, 0, { convertNumbers: true }, '0')
-  checkToPath(true, 1, { convertNumbers: true }, '1')
-  checkToPath(true, 3.141, { convertNumbers: true }, '3.141')
+  checkToPath(true, 0, { repeat: false, convertNumbers: true }, '0')
+  checkToPath(true, 1, { repeat: false, convertNumbers: true }, '1')
+  checkToPath(true, 3.141, { repeat: false, convertNumbers: true }, '3.141')
 
   // Strings
   checkToPath(true, 'simple', { repeat: false }, 'simple')
