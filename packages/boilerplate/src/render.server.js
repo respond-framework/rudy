@@ -7,7 +7,7 @@ import configureStore from './configureStore'
 import App from './components/App'
 
 export default ({ clientStats }) => async (req, res, next) => {
-  console.log('REQUESTED PATH:', req.path) // eslint-disable-line no-console
+  console.log('REQUESTED PATH:', req.url) // eslint-disable-line no-console
   try {
     const html = await renderToString(clientStats, req, res)
     return res.send(html)
@@ -17,7 +17,7 @@ export default ({ clientStats }) => async (req, res, next) => {
 }
 
 const renderToString = async (clientStats, req, res) => {
-  console.log('REQUESTED PATH:', req.path) // eslint-disable-line no-console
+  console.log('REQUESTED PATH:', req.url) // eslint-disable-line no-console
   const store = await configureStore(req, res)
   if (!store) return '' // no store means redirect was already served
 
