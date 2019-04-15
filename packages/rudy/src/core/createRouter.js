@@ -46,7 +46,7 @@ export default (
     call('beforeLeave', { prev: true }),
     call('beforeEnter', { runOnServer: true }),
     enter,
-    changePageTitle(),
+    changePageTitle({ title: options.title }),
     call('onLeave', { prev: true }),
     call('onEnter', { runOnHydrate: true }),
     call('thunk', { cache: true, runOnServer: true }),
@@ -73,7 +73,6 @@ export default (
 
   const routes = formatRoutes(routesInput, formatRoute)
   const selectLocationState = createSelector('location', location)
-  const selectTitleState = createSelector('title', title)
   const history = createSmartHistory(routes, options)
   const { firstAction } = history
   const initialState = createState(firstAction)
