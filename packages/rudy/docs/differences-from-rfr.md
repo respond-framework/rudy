@@ -51,3 +51,17 @@ This is an overview of its differences from redux-first-router.
   trailing slashes.
 - `confirmLeave` and `displayConfirmLeave` no longer exist. They have been
   replaced by the new request blocking feature.
+- `fromPath` and `toPath` behave differently (although the old behaviour can be
+  restored by customizing them):
+  - The values on the URL side have changed such that multi segment parameters
+    are represented as arrays rather than strings
+  - URL encoding and decoding is handled internally, not by `toPath`/`fromPath`.
+  - The type signatures of the functions have changed. Instead of receiving the
+    parameter name as the second argument, they now receive an object with keys
+    indicating the parameter name, whether it is optional, and whether it allows
+    multiple segments.
+  - The default implementation of `toPath` raises exceptions if the provided
+    values of params would not be encoded and decoded symmetrically. For
+    example, dispatching routing actions with params that are `null`, are
+    numbers (when `convertNumbers` is not set), or are empty strings (for
+    optional parameters), will cause an exception.
