@@ -23,7 +23,8 @@
     "prettier": "prettier",
     "is-pretty": "prettier --ignore-path=../../config/.prettierignore '**/*' --list-different",
     "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write",
-    "lint": "eslint . || true"
+    "lint": "eslint . || true",
+    "test": "jest --config ../../jest.config.js --rootDir ."
   },
   "repository": {
     "type": "git",

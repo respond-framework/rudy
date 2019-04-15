@@ -1,29 +1,34 @@
 // @flow
+import pathToRegexp from 'path-to-regexp'
+import { applyStringDefault, applyObjectDefault } from './applyDefaults'
 import { compileUrl, cleanBasename } from './index'
 
 import type {
   Route,
   Routes,
-  ReceivedAction as Action,
+  ReceivedAction,
   Options,
+  ToPath,
 } from '../flow-types'
 
-export default (action: Action, api: Object, prevRoute?: string): Object => {
+export default (
+  action: ReceivedAction,
+  api: Object,
+  prevRoute?: string,
+): Object => {
   const { routes, options: opts }: Object = api
-  const { type, params, query, state, hash, basename }: Action = action
+  const { type, params, query, state, hash, basename }: ReceivedAction = action
 
   const route = routes[type] || {}
-  const path: string | void | string | void =
-    typeof route === 'object' ? route.path : route
+  const path: string | void = typeof route === 'object' ? route.path : route
 
-  const p: void | {} = formatParams(params, route, opts)
-  const q: mixed = formatQuery(query, route, opts)
-  const s: ?Object = formatState(state, route, opts)
-  const h: string = formatHash(hash, route, opts)
+  const p: Object = formatParams(params, route, opts) || {}
+  const q: ?Object = formatQuery(query, route, opts)
+  const s: Object = formatState(state, route, opts) || {}
+  const h: string = formatHash(hash || '', route, opts)
 
   const bn = cleanBasename(basename)
   const isWrongBasename = bn && !opts.basenames.includes(bn)
-  // $FlowFixMe
   if (basename === '') s._emptyBn = true // not cool kyle
 
   try {
@@ -31,7 +36,8 @@ export default (action: Action, api: Object, prevRoute?: string): Object => {
       throw new Error(`[rudy] basename "${bn}" not in options.basenames`)
     }
 
-    const pathname: string = compileUrl(path, p, q, h, route, opts) || '/' // path-to-regexp throws for failed compilations; we made our queries + hashes also throw to conform
+    // path-to-regexp throws for failed compilations
+    const pathname: string = compileUrl(path, p, q, h, route, opts) || '/'
     const url: string = bn + pathname
 
     return { url, state: s }
@@ -60,74 +66,123 @@ const formatParams = (
   route: Route,
   opts: Options,
 ): void | {} => {
-  const def: mixed = route.defaultParams || opts.defaultParams
-
-  params = def
-    ? typeof def === 'function'
-      ? def(params, route, opts)
-      : { ...def, ...params }
-    : params
+  params = applyObjectDefault(route.defaultParams || opts.defaultParams)(
+    params,
+    route,
+    opts,
+  )
 
   if (params) {
+    const keys = []
+    pathToRegexp(typeof route === 'string' ? route : route.path, keys)
     const newParams: {} = {}
-    const to = route.toPath || defaultToPath
-    Object.keys(params).forEach((key: string) => {
-      const val = params[key]
-      const encodedVal: string = encodeURIComponent(val)
-
-      const res = to(val, key, encodedVal, route, opts)
-      newParams[key] = res
-    })
+    const toPath: ToPath = route.toPath || opts.toPath || defaultToPath
+    keys.forEach(
+      ({
+        name,
+        repeat,
+        optional,
+      }: {
+        name: string | Number,
+        repeat: boolean,
+        optional: boolean,
+      }) => {
+        if (!Object.prototype.hasOwnProperty.call(params, name)) {
+          return
+        }
+        // $FlowFixMe
+        const val = params[name]
+        const urlVal = toPath(
+          val,
+          { name: name.toString(), repeat, optional },
+          route,
+          opts,
+        )
+        if (repeat) {
+          if (!Array.isArray(urlVal)) {
+            throw Error('toPath failed')
+          }
+          if (!optional && !urlVal.length) {
+            throw Error('toPath failed')
+          }
+          urlVal.forEach((segment) => {
+            if (typeof segment !== 'string' || !segment) {
+              throw Error('toPath failed')
+            }
+          })
+        } else if (
+          typeof urlVal !== 'string' &&
+          (!optional || urlVal !== undefined)
+        ) {
+          throw Error('toPath failed')
+        }
+        newParams[name.toString()] = urlVal
+      },
+    )
     return newParams
   }
   return undefined
 }
 
-const defaultToPath = (
-  val: (string) => Array<Array<any>>,
-  key: string,
-  encodedVal: string,
-  route: Route,
-  opts: Options,
-): string | void => {
-  if (typeof val === 'string' && val.indexOf('/') > -1) {
-    // support a parameter that for example is a file path with slashes (like on github)
-    return val.split('/').map(encodeURIComponent) // path-to-regexp supports arrays for this use case
+const toSegment = (val, convertNum, capitalize, optional) => {
+  if (typeof val === 'number' && convertNum) {
+    return val.toString()
   }
+  if (typeof val !== 'string' || (optional && !val)) {
+    throw TypeError('[rudy]: defaultToPath::toSegment received unknown type')
+  }
+  if (capitalize) {
+    return val.replace(/ /g, '-').toLowerCase()
+  }
+  return val
+}
 
-  if (typeof val === 'string' && val.indexOf('/') > -1) {
-    // support a parameter that for example is a file path with slashes (like on github)
-    return val.split('/').map(encodeURIComponent) // path-to-regexp supports arrays for this use case
-  }
+export const defaultToPath: ToPath = (
+  val,
+  { repeat, optional },
+  route,
+  opts,
+) => {
+  const convertNum =
+    route.convertNumbers ||
+    (opts.convertNumbers && route.convertNumbers !== false)
 
   const capitalize =
     route.capitalizedWords ||
     (opts.capitalizedWords && route.capitalizedWords !== false)
 
-  if (capitalize && typeof val === 'string') {
-    return val.replace(/ /g, '-').toLowerCase()
+  if (repeat) {
+    if (optional && val === undefined) {
+      return []
+    }
+    if (!val) {
+      throw Error('defaultToPath received incorrect value')
+    }
+    return val.split('/')
   }
-  return opts.toPath
-    ? opts.toPath(val, key, encodedVal, route, opts)
-    : val === undefined
-      ? undefined
-      : encodedVal
+  if (optional && val === undefined) {
+    return undefined
+  }
+  return toSegment(val, convertNum, capitalize, optional)
 }
 
-const formatQuery = (query: ?Object, route: Route, opts: Options): mixed => {
-  const def = route.defaultQuery || opts.defaultQuery
-  query = def
-    ? typeof def === 'function'
-      ? def(query, route, opts)
-      : { ...def, ...query }
-    : query
-
+export const formatQuery = (
+  query: ?Object,
+  route: Route,
+  opts: Options,
+): ?Object => {
+  query = applyObjectDefault(route.defaultQuery || opts.defaultQuery)(
+    query,
+    route,
+    opts,
+  )
   const to = route.toSearch || opts.toSearch
 
   if (to && query) {
     const newQuery = {}
 
     Object.keys(query).forEach((key) => {
+      // $FlowFixMe
       newQuery[key] = to(query[key], key, route, opts)
     })
 
@@ -137,36 +192,33 @@ const formatQuery = (query: ?Object, route: Route, opts: Options): mixed => {
   return query
 }
 
-const formatHash = (hash: string = '', route: Route, opts: Options): string => {
-  const def: string | void | Function | string =
-    route.defaultHash || opts.defaultHash
-  hash = def
-    ? typeof def === 'function'
-      ? def(hash, route, opts)
-      : hash || def
-    : hash
+export const formatHash = (
+  hash: string,
+  route: Route,
+  opts: Options,
+): string => {
+  hash = applyStringDefault(route.defaultHash || opts.defaultHash)(
+    hash,
+    route,
+    opts,
+  )
   const to = route.toHash || opts.toHash
   return to ? to(hash, route, opts) : hash
 }
 
-const formatState = (
-  state: ?Object = {},
-  route: Route,
-  opts: Options,
-): ?Object => {
-  const def: mixed = route.defaultState || opts.defaultState
-  return def
-    ? typeof def === 'function'
-      ? def(state, route, opts)
-      : { ...def, ...state }
-    : state
-} // state has no string counter part in the address bar, so there is no `toState`
+const formatState = (state: ?Object, route: Route, opts: Options): ?Object =>
+  applyObjectDefault(route.defaultState || opts.defaultState)(
+    state,
+    route,
+    opts,
+  )
+// state has no string counter part in the address bar, so there is no `toState`
 
 const notFoundUrl = (
-  action: Action,
+  action: ReceivedAction,
   routes: Routes,
   opts: Options,
-  query: mixed,
+  query: ?Object,
   hash: string,
   prevRoute: string = '',
 ): string => {
@@ -183,10 +235,10 @@ const notFoundUrl = (
       : 'NOT_FOUND'
 
   const p: string = routes[t].path || routes.NOT_FOUND.path || ''
-  // $FlowFixMe
-  const s: string = query
-    ? opts.stringifyQuery(query, { addQueryPrefix: true })
-    : '' // preserve these (why? because we can)
+
+  // preserve these (why? because we can)
+  const s: string =
+    query && opts.stringifyQuery ? `?${opts.stringifyQuery(query)}` : ''
   const h: string = hash ? `#${hash}` : ''
 
   return p + s + h

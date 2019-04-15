@@ -59,16 +59,14 @@ createTest(
       path: '/third/:param',
     },
   },
-  [{ type: 'SECOND', params: { param: 100 } }, '/third/100'],
+  [{ type: 'SECOND', params: { param: '100' } }, '/third/100'],
 )
 
 const toFromPath = {
-  toPath: (v, k, encodedV) => encodedV + k + v,
-  fromPath: (v, k, encodedV) =>
-    decodeURIComponent(encodedV.replace(k, '')).replace(
-      v.replace('correct with spaceskey', ''),
-      '',
-    ),
+  // Symmetrically add the key ane the value again to the URL,
+  // and remove them on the way out
+  toPath: (v, { name: k }) => v + k + v,
+  fromPath: (v, { name: k }) => v.replace(`${k}correct with spaces`, ''),
 }
 
 createTest(
@@ -85,7 +83,7 @@ createTest(
   },
   [
     { type: 'SECOND', params: { key: 'correct with spaces' } },
-    '/third/correct%20with%20spaceskeycorrect with spaces',
+    '/third/correct%20with%20spaceskeycorrect%20with%20spaces',
   ],
 )
 
@@ -102,7 +100,7 @@ createTest(
   toFromPath,
   [
     { type: 'SECOND', params: { key: 'correct with spaces' } },
-    '/third/correct%20with%20spaceskeycorrect with spaces',
+    '/third/correct%20with%20spaceskeycorrect%20with%20spaces',
   ],
 )
 
@@ -116,10 +114,7 @@ createTest(
       path: '/third(.*)',
     },
   },
-  [
-    { type: 'SECOND' }, // this won't match unfortunately -- use optional param? instead
-    '/third',
-  ],
+  [{ type: 'SECOND', params: { 0: '' } }, '/third'],
 )
 
 createTest(
@@ -284,7 +279,7 @@ createTest(
     },
   },
   [
-    { type: 'SECOND', params: { id: 100 } },
+    { type: 'SECOND', params: { id: '100' } },
     { type: 'SECOND', params: { id: 'foo' } },
     '/third/100',
     '/third/foo',
