@@ -132,10 +132,14 @@ export const matchVal = (
   return true
 }
 
-const parseSearch = (search: string, route: Route, opts: Options): Object => {
+export const parseSearch = (
+  search: string,
+  route: Route,
+  opts: Options,
+): Object => {
   if (queries[search]) return queries[search]
   const parse = route.parseSearch || opts.parseSearch
-  queries[search] = parse(search)
+  queries[search] = parse ? parse(search) : {}
   return queries[search]
 }
 

@@ -1,5 +1,6 @@
 // @flow
 import resolvePathname from 'resolve-pathname'
+import { parseSearch } from './matchUrl'
 import { urlToLocation, locationToUrl, cleanBasename, matchUrl } from './index'
 import { notFound } from '../actions'
 import type {
@@ -77,14 +78,15 @@ const createAction = (
 
   const { scene } = routes[curr.type] || {}
 
-  // TODO: Need some clairfication on scene stuff
-  // $FlowFixMe
-  const type = routes[`${scene}/NOT_FOUND`] && `${scene}/NOT_FOUND` // try to interpret scene-level NOT_FOUND if available (note: links create plain NOT_FOUND actions)
+  // Try to interpret scene-level NOT_FOUND if available
+  // (note: links create plain NOT_FOUND actions)
+  const type =
+    scene && routes[`${scene}/NOT_FOUND`] ? `${scene}/NOT_FOUND` : 'NOT_FOUND'
 
   return {
     ...notFound(st, type),
     params: {}, // we can't know these in this case
-    query: loc.search ? parseSearch(loc.search, routes, opts) : {}, // keep this info
+    query: loc.search ? parseSearch(loc.search, routes[type], opts) : {}, // keep this info
     hash: loc.hash || '',
   }
 }
@@ -222,9 +224,6 @@ const formatState = (state: Object, route: Route, opts: Options) => {
 } // state has no string counter part in the address bar, so there is no `fromState`
 
 const isNumber = (str: string) => !Number.isNaN(Number.parseFloat(str))
-
-const parseSearch = (search, routes, opts) =>
-  (routes.NOT_FOUND.parseSearch || opts.parseSearch)(search)
 
 // BASENAME HANDLING:
 

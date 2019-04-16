@@ -1,5 +1,6 @@
 // @flow
 import urlToAction, { defaultFromPath } from './urlToAction'
+import { notFound } from '../actions'
 
 describe('Parses params', () => {
   const NOT_FOUND = 'NOT_FOUND'
@@ -65,6 +66,10 @@ describe('Parses params', () => {
       params: {},
       ...action,
     })
+
+  it('Not found path', () => {
+    assertActionForUrl('/doesnotexist', notFound())
+  })
 
   it('Static path', () => {
     assertActionForUrl('/', { type: ROOT })
