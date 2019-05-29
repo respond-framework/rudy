@@ -23,10 +23,11 @@ import * as reducers from './reducers'
 
 export default (preloadedState, initialEntries) => {
   const options = { initialEntries, basenames: ['/foo', '/bar'] }
-  const { reducer, middleware, firstRoute, history, ctx } = createRouter(
+  const { reducer, middleware, firstRoute, api } = createRouter(
     routes,
     options,
   )
+  const { history, ctx } = api
 
   const rootReducer = combineReducers({ ...reducers, location: reducer })
   const middlewares = applyMiddleware(middleware)
@@ -48,7 +49,7 @@ export default (preloadedState, initialEntries) => {
     window.ctx = ctx
   }
 
-  return { store, firstRoute }
+  return { store, firstRoute, api }
 }
 
 const composeEnhancers = (...args) =>

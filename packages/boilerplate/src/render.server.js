@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { flushChunkNames } from 'react-universal-component/server'
 import flushChunks from 'webpack-flush-chunks'
+import { LinkContext } from '@respond-framework/link'
+
 import configureStore from './configureStore'
 import App from './components/App'
 
@@ -18,10 +20,10 @@ export default ({ clientStats }) => async (req, res, next) => {
 
 const renderToString = async (clientStats, req, res) => {
   console.log('REQUESTED PATH:', req.url) // eslint-disable-line no-console
-  const store = await configureStore(req, res)
+  const { store, api } = await configureStore(req, res)
   if (!store) return '' // no store means redirect was already served
 
-  const app = createApp(App, store)
+  const app = createApp(App, store, api)
   const appString = ReactDOM.renderToString(app)
   const state = store.getState()
   const stateJson = JSON.stringify(state)
@@ -47,8 +49,10 @@ const renderToString = async (clientStats, req, res) => {
       </html>`
 }
 
-const createApp = (Root, store) => (
+const createApp = (Root, store, api) => (
   <Provider store={store}>
-    <Root />
+    <LinkContext.Provider value={api}>
+      <Root />
+    </LinkContext.Provider>
   </Provider>
 )

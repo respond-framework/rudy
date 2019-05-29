@@ -1,6 +1,6 @@
 // @flow
 
-import * as React from 'react'
+import React, { createContext } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import type { Connector } from 'react-redux'
@@ -42,9 +42,7 @@ type Props = {
   currentPathname?: string,
 } & OwnProps
 
-type Context = {
-  store: Store<*, *>,
-}
+export const LinkContext = createContext('rudy-link')
 
 const LinkInner = (props) => {
   const {
@@ -181,14 +179,11 @@ const connector: Connector<OwnProps, Props> = connect(mapState)
 
 const LinkConnected = connector(LinkInner)
 
-const Link = (
-  props: OwnProps = {},
-  {
-    store: {
-      getState: { rudy },
-    },
-  }: Context,
-) => <LinkConnected rudy={rudy} {...props} />
+const Link = (props) => (
+  <LinkContext.Consumer>
+    {(rudy) => <LinkConnected rudy={rudy} {...props} />}
+  </LinkContext.Consumer>
+)
 
 Link.contextTypes = {
   store: PropTypes.shape({

@@ -132,7 +132,7 @@ export default (
   }
 
   return {
-    ...api,
+    api,
     middleware,
     reducer,
     firstRoute: (resolveOnEnter = true) => {

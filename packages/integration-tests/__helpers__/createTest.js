@@ -233,7 +233,7 @@ export const setupStore = (routesMap, initialPath, opts) => {
       ? `${action.type} - ${JSON.stringify(action.payload)}`
       : action.type
 
-  const { middleware, reducer, firstRoute, history } = createRouter(
+  const { middleware, reducer, firstRoute, api: { history } } = createRouter(
     routes,
     options,
     middlewareFunc,
