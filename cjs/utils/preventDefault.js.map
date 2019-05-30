@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/utils/preventDefault.js"],"names":["e","preventDefault"],"mappings":";;;;;;;eAEe,kBAACA,CAAD;AAAA,SACbA,CAAC,IAAIA,CAAC,CAACC,cAAP,IAAyBD,CAAC,CAACC,cAAF,EADZ;AAAA,C","sourcesContent":["// @flow\n\nexport default (e: SyntheticEvent<HTMLButtonElement>) =>\n  e && e.preventDefault && e.preventDefault()\n"],"file":"preventDefault.js"}
