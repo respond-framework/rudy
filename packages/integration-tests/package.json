@@ -1,6 +1,6 @@
 {
   "name": "integration-tests",
-  "version": "1.0.1-from-git.0",
+  "version": "1.0.1-from-git.1",
   "description": "Integration tests for the respond framework",
   "main": "index.js",
   "repository": "https://github.com/respond-framework/rudy/tree/master/packages/integration-tests",
@@ -15,7 +15,7 @@
     "lint": "eslint --config ../../.eslintrc.js --ignore-path ../../.eslintignore . || true"
   },
   "dependencies": {
-    "@respond-framework/rudy": "^0.1.1-from-git.0",
+    "@respond-framework/rudy": "^0.1.1-from-git.1",
     "react": "^16.4.2",
     "react-redux": "^5.0.7",
     "react-test-renderer": "^16.4.2",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-from-git.1](https://github.com/respond-framework/rudy/tree/master/packages/rudy/compare/@respond-framework/rudy@0.1.1-test.1...@respond-framework/rudy@0.1.1-from-git.1) (2019-05-30)
+
+
+### Bug Fixes
+
+* **core:** Pass the configured title state key or selector into the title middleware [#28](https://github.com/respond-framework/rudy/tree/master/packages/rudy/issues/28) ([381d8c3](https://github.com/respond-framework/rudy/tree/master/packages/rudy/commit/381d8c3))
+
+
+
+
+
 ## [0.1.1-from-git.0](https://github.com/respond-framework/rudy/tree/master/packages/rudy/compare/@respond-framework/rudy@0.1.1-test.1...@respond-framework/rudy@0.1.1-from-git.0) (2019-05-30)
 
 
