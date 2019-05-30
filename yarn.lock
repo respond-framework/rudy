@@ -7292,7 +7292,7 @@ npm-pick-manifest@^2.2.3:
 
 "npm-publish-git@git://github.com/hedgepigdaniel/npm-publish-git.git":
   version "0.0.10"
-  resolved "git://github.com/hedgepigdaniel/npm-publish-git.git#f34a49474db5a7b4a73cd31b5daf56b1d4186b83"
+  resolved "git://github.com/hedgepigdaniel/npm-publish-git.git#c6ebdd98043ad0b014e537d95a00004ec0951486"
 
 npm-registry-fetch@^3.8.0:
   version "3.8.0"
