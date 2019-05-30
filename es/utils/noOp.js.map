@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/utils/noOp.js"],"names":["Promise","resolve"],"mappings":"AACA,gBAAe;AAAA,SAAqBA,OAAO,CAACC,OAAR,EAArB;AAAA,CAAf","sourcesContent":["// @flow\nexport default (): Promise<void> => Promise.resolve()\n"],"file":"noOp.js"}

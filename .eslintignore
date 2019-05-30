@@ -1,7 +1,0 @@
-# Ignored everywhere
-**/node_modules/
-
-# Ignored dirs in sub packages
-packages/*/cjs/
-packages/*/es/
-packages/*/flow-typed/
