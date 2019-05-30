@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.1-from-git.0 (2019-05-30)
+
+**Note:** Version bump only for package @respond-framework/react
+
+
+
+
+
 ## 0.1.1-test.1 (2019-04-15)
 
 **Note:** Version bump only for package @respond-framework/react

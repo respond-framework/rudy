@@ -1,7 +1,7 @@
 {
   "name": "@respond-framework/boilerplate",
   "description": "Universal Rudy Demo",
-  "version": "0.1.1-test.1",
+  "version": "0.1.1-from-git.0",
   "main": "server/index.js",
   "author": "James Gillmore <james@faceyspacey.com>",
   "license": "MIT",
@@ -22,8 +22,8 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
-    "@respond-framework/react": "^0.1.1-test.1",
-    "@respond-framework/rudy": "^0.1.1-test.1",
+    "@respond-framework/react": "^0.1.1-from-git.0",
+    "@respond-framework/rudy": "^0.1.1-from-git.0",
     "express": "^4.15.2",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
