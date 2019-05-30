@@ -1,11 +1,11 @@
 {
-  "name": "@respond-framework/link",
+  "name": "@respond-framework/react",
   "version": "0.1.1-test.1",
   "description": "React component to create links which dispatch rudy routing actions",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "rudy-src-main": "src/index.jsx",
-  "repository": "https://github.com/respond-framework/rudy/tree/master/packages/link",
+  "repository": "https://github.com/respond-framework/rudy/tree/master/packages/react",
   "author": "James Gilmore",
   "license": "MIT",
   "private": false,

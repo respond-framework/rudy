@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { flushChunkNames } from 'react-universal-component/server'
 import flushChunks from 'webpack-flush-chunks'
-import { LinkContext } from '@respond-framework/link'
+import { RudyProvider } from '@respond-framework/react'
 
 import configureStore from './configureStore'
 import App from './components/App'
@@ -51,8 +51,8 @@ const renderToString = async (clientStats, req, res) => {
 
 const createApp = (Root, store, api) => (
   <Provider store={store}>
-    <LinkContext.Provider value={api}>
+    <RudyProvider api={api}>
       <Root />
-    </LinkContext.Provider>
+    </RudyProvider>
   </Provider>
 )

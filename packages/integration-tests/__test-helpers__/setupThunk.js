@@ -15,7 +15,7 @@ export default async (
 
   const options = { extra: { arg: 'extra-arg' }, initialEntries: path, ...opts }
 
-  const { middleware, reducer, api: { rudy }, firstRoute } = createRouter(
+  const { middleware, reducer, api: rudy, firstRoute } = createRouter(
     routesMap,
     options,
   )

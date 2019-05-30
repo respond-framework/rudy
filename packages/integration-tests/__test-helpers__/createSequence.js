@@ -37,7 +37,7 @@ export default async (routesMap, actions, options = {}) => {
   options.initialEntries = [path]
   options.extra = { arg: 'extra-arg' }
 
-  const { middleware, reducer, firstRoute, api: { rudy } } = createRouter(
+  const { middleware, reducer, firstRoute, api: rudy } = createRouter(
     routes,
     options,
   )

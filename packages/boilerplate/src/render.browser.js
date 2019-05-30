@@ -3,7 +3,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { LinkContext } from '@respond-framework/link'
+import { RudyProvider } from '@respond-framework/react'
 import App from './components/App'
 import configureStore from './configureStore'
 
@@ -14,9 +14,9 @@ const root = document.getElementById('root')
 const render = () =>
   ReactDOM.hydrate(
     <Provider store={store}>
-      <LinkContext.Provider value={api}>
+      <RudyProvider api={api}>
         <App />
-      </LinkContext.Provider>
+      </RudyProvider>
     </Provider>,
     root,
   )
