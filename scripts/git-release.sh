@@ -4,7 +4,7 @@ set -e
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-yarn run lerna version --no-git-tag-version --no-push --allow-branch $BRANCH --yes
+yarn run lerna version --conventional-prerelease --preid from-git --no-git-tag-version --no-push --allow-branch $BRANCH --yes
 git add .
 git commit -m "Publish to git"
 
