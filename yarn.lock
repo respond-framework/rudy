@@ -7283,9 +7283,9 @@ npm-pick-manifest@^2.2.3:
     npm-package-arg "^6.0.0"
     semver "^5.4.1"
 
-"npm-publish-git@git://github.com/andreineculau/npm-publish-git.git":
+"npm-publish-git@git://github.com/hedgepigdaniel/npm-publish-git.git":
   version "0.0.10"
-  resolved "git://github.com/andreineculau/npm-publish-git.git#9221844211c615f957900a883359aaa3266d26f3"
+  resolved "git://github.com/hedgepigdaniel/npm-publish-git.git#f34a49474db5a7b4a73cd31b5daf56b1d4186b83"
 
 npm-registry-fetch@^3.8.0:
   version "3.8.0"
