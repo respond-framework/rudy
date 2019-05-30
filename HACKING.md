@@ -33,18 +33,20 @@ node.js debugger.
 
 ## Testing Rudy with another app
 
-### Build
+### With yarn link
+
+#### Build
 
 To build the exported files for all packages, do `yarn run build` in the root
 directory
 
-### yarn link
+#### yarn link
 
 To connect your app to your local build of rudy, run `yarn link` in
 `packages/<package>`, and then `yarn link @respond-framework/<package>` in your
 app.
 
-### Make changes
+#### Make changes
 
 in `packages/<package>`, run `yarn run build --watch` to watch for source
 changes and update the built/exported files
@@ -69,6 +71,14 @@ amend your app's webpack config as follows:
   },
 }
 ```
+
+### With git packages
+
+Commit your changes, then run `./scripts/git-release.sh`.
+
+This will create git tags pointing to commits that contain compiled versions of
+all packages that have changed in your branch since the last release. You can
+then install these from the git tags with NPM or Yarn.
 
 ## Running tests
 
