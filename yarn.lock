@@ -7283,6 +7283,10 @@ npm-pick-manifest@^2.2.3:
     npm-package-arg "^6.0.0"
     semver "^5.4.1"
 
+"npm-publish-git@git://github.com/andreineculau/npm-publish-git.git":
+  version "0.0.10"
+  resolved "git://github.com/andreineculau/npm-publish-git.git#9221844211c615f957900a883359aaa3266d26f3"
+
 npm-registry-fetch@^3.8.0:
   version "3.8.0"
   resolved "https://registry.yarnpkg.com/npm-registry-fetch/-/npm-registry-fetch-3.8.0.tgz#aa7d9a7c92aff94f48dba0984bdef4bd131c88cc"
