@@ -5,7 +5,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.1.1-test.1 (2019-04-15)
 
-**Note:** Version bump only for package @respond-framework/link
+**Note:** Version bump only for package @respond-framework/react
 
 
 
@@ -13,4 +13,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.1.1-test.0 (2018-11-05)
 
-**Note:** Version bump only for package @respond-framework/link
+**Note:** Version bump only for package @respond-framework/react

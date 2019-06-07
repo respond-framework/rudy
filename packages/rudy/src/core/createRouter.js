@@ -98,7 +98,6 @@ export default (
     // TODO: Fix these annotations
     Object.assign(api, { getLocation, dispatch, getState })
 
-    getState.rudy = api // make rudy available via `context` with no extra Providers, (see <Link />)
     history.listen(dispatch, getLocation) // dispatch actions in response to pops, use redux location state as single source of truth
 
     return (dispatch: Dispatch) => (action: Object): Promise<any> => {
@@ -132,7 +131,7 @@ export default (
   }
 
   return {
-    ...api,
+    api,
     middleware,
     reducer,
     firstRoute: (resolveOnEnter = true) => {

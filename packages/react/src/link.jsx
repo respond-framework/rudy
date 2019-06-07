@@ -1,7 +1,6 @@
 // @flow
 
-import * as React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import { connect } from 'react-redux'
 import type { Connector } from 'react-redux'
 
@@ -9,6 +8,7 @@ import { matchUrl, urlToLocation } from '@respond-framework/rudy'
 import type { ReceivedAction } from '@respond-framework/rudy'
 
 import { toUrlAndAction, handlePress, preventDefault } from './utils'
+import { RudyConsumer } from './provider'
 import type { To, OnClick } from './utils'
 
 type OwnProps = {
@@ -31,7 +31,7 @@ type OwnProps = {
   hash?: boolean,
   isActive?: (?Object, Object) => boolean,
   component?: string | React.ComponentType<any>,
-  rudy: Object,
+  api: Object,
 }
 
 type Props = {
@@ -41,10 +41,6 @@ type Props = {
   url?: string,
   currentPathname?: string,
 } & OwnProps
-
-type Context = {
-  store: Store<*, *>,
-}
 
 const LinkInner = (props) => {
   const {
@@ -60,7 +56,7 @@ const LinkInner = (props) => {
     dispatch,
     basename: bn,
     currentPathname: cp, // used only for relative URLs
-    rudy,
+    api,
     routesAdded,
 
     url: u,
@@ -76,7 +72,7 @@ const LinkInner = (props) => {
     ...p
   } = props
 
-  const { routes, getLocation, options, history } = rudy
+  const { routes, getLocation, options, history } = api
   const curr = cp || getLocation().pathname // for relative paths and incorrect actions (incorrect actions don't waste re-renderings and just get current pathname from context)
   const { fullUrl, action } = toUrlAndAction(to, routes, bn, curr, options)
   const hasHref = Component === 'a' || typeof Component !== 'string'
@@ -84,7 +80,7 @@ const LinkInner = (props) => {
   const handler = handlePress.bind(
     null,
     action,
-    rudy.routes,
+    api.routes,
     shouldDispatch,
     dispatch,
     onPress || onClick,
@@ -130,10 +126,10 @@ const navLinkProps = (
     activeClassName = '',
     ariaCurrent = 'true',
 
-    rudy,
+    api,
   } = props
 
-  const { getLocation, options, routes } = rudy
+  const { getLocation, options, routes } = api
   const { pathname, query, hash } = urlToLocation(toFullUrl)
   const matchers = { path: pathname, query: q && query, hash: h && hash }
   const opts = { partial, strict }
@@ -153,8 +149,8 @@ const navLinkProps = (
   }
 }
 
-const mapState = (state: Object, { rudy, ...props }: OwnProps) => {
-  const { url, pathname, basename: bn, routesAdded } = rudy.getLocation()
+const mapState = (state: Object, { api, ...props }: OwnProps) => {
+  const { url, pathname, basename: bn, routesAdded } = api.getLocation()
   const isNav = props.activeClassName || props.activeStyle // only NavLinks re-render when the URL changes
 
   // We are very precise about what we want to cause re-renderings, as perf is
@@ -169,7 +165,7 @@ const mapState = (state: Object, { rudy, ...props }: OwnProps) => {
   const basename = bn ? `/${bn}` : ''
 
   return {
-    rudy,
+    api,
     basename,
     routesAdded,
     url: isNav && url,
@@ -181,26 +177,9 @@ const connector: Connector<OwnProps, Props> = connect(mapState)
 
 const LinkConnected = connector(LinkInner)
 
-const Link = (
-  props: OwnProps = {},
-  {
-    store: {
-      getState: { rudy },
-    },
-  }: Context,
-) => <LinkConnected rudy={rudy} {...props} />
-
-Link.contextTypes = {
-  store: PropTypes.shape({
-    subscribe: PropTypes.func.isRequired,
-    dispatch: PropTypes.func.isRequired,
-    getState: PropTypes.func.isRequired,
-  }),
-}
-
-export default Link
-
-export { Link }
+export const Link = (props) => (
+  <RudyConsumer>{(api) => <LinkConnected api={api} {...props} />}</RudyConsumer>
+)
 
 export const NavLink = ({ activeClassName = 'active', ...props }: Object) => (
   <Link activeClassName={activeClassName} {...props} />

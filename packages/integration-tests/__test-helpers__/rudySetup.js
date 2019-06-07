@@ -19,7 +19,7 @@ export default (path = '/first', options = {}, custom = {}) => {
       ? createScene(routesMap, custom)
       : { routes: custom.routesMap }
 
-  const { middleware, reducer, firstRoute, rudy } = createRouter(
+  const { middleware, reducer, firstRoute, api: rudy } = createRouter(
     routes,
     options,
   )
