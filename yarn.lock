@@ -1776,13 +1776,6 @@
     universal-user-agent "^2.0.0"
     url-template "^2.0.8"
 
-"@respond-framework/link@^0.1.1-test.1":
-  version "0.1.1-test.1"
-  resolved "https://registry.yarnpkg.com/@respond-framework/link/-/link-0.1.1-test.1.tgz#37dcee2ea07c4626c97c55060dd1b0425fcc8bd8"
-  integrity sha512-2G0vBXREenHWZ4KWWg6HeIpWqmf5zECE9/wveMxtrdqcVj2GKSJnvyNyJgptgEfvWJgcuFwCXhN426S+zHelxw==
-  dependencies:
-    resolve-pathname "^2.2.0"
-
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.0.tgz#ecdf48d532c58ea477acfcab80348424f8d0662f"
