@@ -14,6 +14,7 @@ The boilerplate package provides an example of the use of rudy. You can run a
 development server as follows:
 
 ```shell
+yarn build
 cd packages/boilerplate
 yarn run start
 ```
