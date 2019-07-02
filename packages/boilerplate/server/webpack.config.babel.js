@@ -87,8 +87,8 @@ export default (env) => {
     resolve: {
       symlinks: false,
       extensions: isServer
-        ? ['.server.js', '.js', '.css']
-        : ['.browser.js', '.js', '.css'],
+        ? ['.server.js', '.js', '.jsx', '.css']
+        : ['.browser.js', '.js', '.jsx', '.css'],
       mainFields: [
         'rudy-src-main',
         isClient && 'browser',
