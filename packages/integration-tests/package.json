@@ -17,9 +17,9 @@
   "dependencies": {
     "@respond-framework/rudy": "^0.1.1-test.3",
     "react": "^16.4.2",
-    "react-redux": "^5.0.7",
+    "react-redux": "^7.1.0",
     "react-test-renderer": "^16.4.2",
-    "redux": "^3.7.2",
+    "redux": "^4.0.4",
     "redux-thunk": "^2.3.0"
   }
 }
