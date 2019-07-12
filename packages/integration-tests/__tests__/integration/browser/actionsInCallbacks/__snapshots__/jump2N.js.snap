@@ -94,7 +94,7 @@ Object {
     "universal": false,
     "url": "/third",
   },
-  "title": "@@redux/INIT",
+  "title": "<initial_title>",
 }
 `;
 
@@ -705,7 +705,7 @@ Object {
     "universal": false,
     "url": "/third",
   },
-  "title": "@@redux/INIT",
+  "title": "<initial_title>",
 }
 `;
 
@@ -1012,7 +1012,7 @@ Object {
     "universal": false,
     "url": "/third",
   },
-  "title": "@@redux/INIT",
+  "title": "<initial_title>",
 }
 `;
 
@@ -1588,7 +1588,7 @@ Object {
     "universal": false,
     "url": "/third",
   },
-  "title": "@@redux/INIT",
+  "title": "<initial_title>",
 }
 `;
 
@@ -2104,7 +2104,7 @@ Object {
     "universal": false,
     "url": "/third",
   },
-  "title": "@@redux/INIT",
+  "title": "<initial_title>",
 }
 `;
 
@@ -2411,7 +2411,7 @@ Object {
     "universal": false,
     "url": "/third",
   },
-  "title": "@@redux/INIT",
+  "title": "<initial_title>",
 }
 `;
 

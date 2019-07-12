@@ -552,7 +552,7 @@ Object {
     "universal": false,
     "url": "/non-existent",
   },
-  "title": "@@redux/INIT",
+  "title": "<initial_title>",
 }
 `;
 

@@ -218,7 +218,7 @@ Object {
     "universal": false,
     "url": "/",
   },
-  "title": "@@redux/INIT",
+  "title": "<initial_title>",
 }
 `;
 
