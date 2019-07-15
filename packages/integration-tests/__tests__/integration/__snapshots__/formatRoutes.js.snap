@@ -151,7 +151,7 @@ Object {
     "universal": false,
     "url": "/missed",
   },
-  "title": "@@redux/INIT",
+  "title": "<initial_title>",
 }
 `;
 
@@ -291,7 +291,7 @@ Object {
     "universal": false,
     "url": "/first",
   },
-  "title": "@@redux/INIT",
+  "title": "<initial_title>",
 }
 `;
 
@@ -572,7 +572,7 @@ Object {
     "universal": false,
     "url": "/first",
   },
-  "title": "@@redux/INIT",
+  "title": "<initial_title>",
 }
 `;
 

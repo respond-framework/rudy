@@ -228,10 +228,14 @@ export const setupStore = (routesMap, initialPath, opts) => {
   const middlewareFunc = options.middlewareFunc
   delete options.middlewareFunc
 
-  const title = (state, action = {}) =>
-    action.payload !== undefined
+  const title = (state, action = {}) => {
+    if (action.type.indexOf('@@redux') === 0) {
+      return state || '<initial_title>'
+    }
+    return action.payload !== undefined
       ? `${action.type} - ${JSON.stringify(action.payload)}`
       : action.type
+  }
 
   const {
     middleware,
