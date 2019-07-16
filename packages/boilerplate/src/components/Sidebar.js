@@ -15,6 +15,18 @@ const Sidebar = ({ path, dispatch }) => (
       Home
     </NavLink>
 
+    <Link role="link" tabIndex="0" to={{ type: 'HOME', hash: 's0' }}>
+      SECTION 0
+    </Link>
+
+    <Link role="link" tabIndex="0" to={{ type: 'HOME', hash: 's1' }}>
+      SECTION 1
+    </Link>
+
+    <Link role="link" tabIndex="0" to={{ type: 'HOME', hash: 's4' }}>
+      SECTION 4
+    </Link>
+
     <Link
       role="link"
       tabIndex="0"
