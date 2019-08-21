@@ -16,11 +16,7 @@ export type Bag = {
   extra: any,
 }
 
-export type AsyncCallback = (
-  dispatch: Dispatch,
-  getState: GetState,
-  bag: Bag,
-) => ?any | Promise<any>
+export type AsyncCallback = (request: RequestAPI) => ?any | Promise<any>
 
 export type FromPath = (
   val: void | string | Array<string>,
