@@ -18,6 +18,9 @@ export type Bag = {
 
 export type AsyncCallback = (request: RequestAPI) => ?any | Promise<any>
 
+export type BeforeUnloadCallback = (api: RequestAPI) => boolean
+export type UnloadCallback = (api: RequestAPI) => boolean
+
 export type FromPath = (
   val: void | string | Array<string>,
   { name: string, repeat: boolean, optional: boolean },
@@ -56,6 +59,8 @@ export type Route = {
   onLeave?: AsyncCallback,
   onComplete?: AsyncCallback,
   beforeEnter?: AsyncCallback,
+  beforeUnload?: BeforeUnloadCallback,
+  onUnload?: UnloadCallback,
   defaultHash?: Function | string,
   parseSearch?: (?string) => Object,
   stringifyQuery?: (?Object) => string,
@@ -142,6 +147,8 @@ export type Options = {
   onComplete?: AsyncCallback,
   onBackNext?: AsyncCallback,
   beforeEnter?: AsyncCallback,
+  beforeUnload?: BeforeUnloadCallback,
+  onUnload?: UnloadCallback,
   defaultHash?: Function | string,
   title?: string | SelectTitleState,
   querySerializer?: QuerySerializer,

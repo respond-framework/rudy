@@ -32,6 +32,7 @@ import {
   enter,
   changePageTitle,
 } from '../middleware'
+import bindUnloadCallback from '../utils/bindUnloadCallback'
 
 export default (
   routesInput: RoutesInput = {},
@@ -157,6 +158,14 @@ export default (
   ) => {
     const store = createStore(innerReducer, innerInitialState, innerEnhancer)
     api._store = store
+
+    // Register listeners to browser unload/beforeunload events if required
+    if (options.beforeUnload) {
+      bindUnloadCallback(api, 'beforeunload', options.beforeUnload)
+    }
+    if (options.onUnload) {
+      bindUnloadCallback(api, 'unload', options.onUnload)
+    }
 
     // dispatch actions in response to pops, use redux location state as single source of truth
     history.listen(api.dispatch, api.getLocation)
