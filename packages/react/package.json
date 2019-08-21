@@ -1,6 +1,6 @@
 {
   "name": "@respond-framework/react",
-  "version": "0.1.1-from-git.0",
+  "version": "0.1.1-from-git.1",
   "description": "React component to create links which dispatch rudy routing actions",
   "main": "cjs/index.js",
   "module": "es/index.js",
