@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-from-git.0](https://github.com/respond-framework/rudy/tree/master/packages/rudy/compare/@respond-framework/rudy@0.1.1-test.3...@respond-framework/rudy@0.1.1-from-git.0) (2019-08-21)
+
+**Note:** Version bump only for package @respond-framework/rudy
+
+
+
+
+
 ## [0.1.1-test.3](https://github.com/respond-framework/rudy/tree/master/packages/rudy/compare/@respond-framework/rudy@0.1.1-test.2...@respond-framework/rudy@0.1.1-test.3) (2019-06-07)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-from-git.0](https://github.com/respond-framework/rudy/tree/master/packages/integration-tests/compare/integration-tests@1.0.1-test.3...integration-tests@1.0.1-from-git.0) (2019-08-21)
+
+
+### Bug Fixes
+
+* update dependencies with security vulnerabilities ([#47](https://github.com/respond-framework/rudy/tree/master/packages/integration-tests/issues/47)) ([3c18480](https://github.com/respond-framework/rudy/tree/master/packages/integration-tests/commit/3c18480))
+
+
+
+
+
 ## [1.0.1-test.3](https://github.com/respond-framework/rudy/tree/master/packages/integration-tests/compare/integration-tests@1.0.1-test.2...integration-tests@1.0.1-test.3) (2019-06-07)
 
 
