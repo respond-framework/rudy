@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 
 import { createRouter } from '@respond-framework/rudy'
@@ -16,17 +16,19 @@ const createLink = async (props, initialPath, options, isNavLink) => {
     THIRD: '/third',
   }
 
-  const { middleware, reducer, firstRoute } = createRouter(routes, {
+  const { enhancer, middleware, reducer, firstRoute } = createRouter(routes, {
     initialEntries: initialPath || '/',
     ...options,
   })
 
-  const enhancer = applyMiddleware(middleware)
   const rootReducer = (state = {}, action = {}) => ({
     location: reducer(state.location, action),
   })
 
-  const store = createStore(rootReducer, enhancer)
+  const store = compose(
+    enhancer,
+    applyMiddleware(middleware),
+  )(createStore)(rootReducer)
   await store.dispatch(firstRoute())
 
   const component = renderer.create(<Provider store={store}>{link}</Provider>)

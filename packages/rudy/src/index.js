@@ -43,7 +43,7 @@ const createHistory = (routes, opts) => {
   return creatHist(routes, opts)
 }
 
-const { middleware, reducer, firstRoute } = createRouter(routes, { createHistory })
+const { enhancer, middleware, reducer, firstRoute } = createRouter(routes, { createHistory })
 
 */
 

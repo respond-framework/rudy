@@ -81,7 +81,33 @@ export default (
   const register = (name: string, val?: any = true) => (wares[name] = val)
   const has = (name: string) => wares[name]
   const ctx = { busy: false }
-  const api = { routes, history, options, register, has, ctx }
+  const api = {
+    routes,
+    history,
+    options,
+    register,
+    has,
+    ctx,
+    dispatch: (...args) => {
+      if (!api._store) {
+        throw new Error(
+          '[rudy]',
+          'api.dispatch() called before createStore()! Did you apply the enhancer?',
+        )
+      }
+      return api._store.dispatch(...args)
+    },
+    getState: (...args) => {
+      if (!api._store) {
+        throw new Error(
+          '[rudy]',
+          'api.getState() called before createStore()! Did you apply the enhancer?',
+        )
+      }
+      return api._store.getState(...args)
+    },
+    getLocation: () => selectLocationState(api.getState() || {}),
+  }
   const onError = call('onError', { runOnServer: true, runOnHydrate: true })(
     api,
   )
@@ -92,13 +118,7 @@ export default (
   )
 
   const middleware = ({ dispatch, getState }: Store) => {
-    const getLocation = (s) => selectLocationState(s || getState() || {})
     const { shouldTransition, createRequest } = options // middlewares may mutably monkey-patch these in above call to `compose`
-
-    // TODO: Fix these annotations
-    Object.assign(api, { getLocation, dispatch, getState })
-
-    history.listen(dispatch, getLocation) // dispatch actions in response to pops, use redux location state as single source of truth
 
     return (dispatch: Dispatch) => (action: Object): Promise<any> => {
       if (!shouldTransition(action, api)) return dispatch(action) // short-circuit and pass through Redux middleware normally
@@ -130,8 +150,23 @@ export default (
     }
   }
 
+  const enhancer = (createStore) => (
+    innerReducer,
+    innerInitialState,
+    innerEnhancer,
+  ) => {
+    const store = createStore(innerReducer, innerInitialState, innerEnhancer)
+    api._store = store
+
+    // dispatch actions in response to pops, use redux location state as single source of truth
+    history.listen(api.dispatch, api.getLocation)
+
+    return store
+  }
+
   return {
     api,
+    enhancer,
     middleware,
     reducer,
     firstRoute: (resolveOnEnter = true) => {

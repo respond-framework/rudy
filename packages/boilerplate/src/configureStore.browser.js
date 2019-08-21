@@ -23,13 +23,15 @@ import * as reducers from './reducers'
 
 export default (preloadedState, initialEntries) => {
   const options = { initialEntries, basenames: ['/foo', '/bar'] }
-  const { reducer, middleware, firstRoute, api } = createRouter(routes, options)
+  const { enhancer, reducer, middleware, firstRoute, api } = createRouter(
+    routes,
+    options,
+  )
   const { history, ctx } = api
 
   const rootReducer = combineReducers({ ...reducers, location: reducer })
-  const middlewares = applyMiddleware(middleware)
-  const enhancers = composeEnhancers(middlewares)
-  const store = createStore(rootReducer, preloadedState, enhancers)
+  const enhancers = composeEnhancers(enhancer, applyMiddleware(middleware))
+  const store = enhancers(createStore)(rootReducer, preloadedState)
 
   if (module.hot) {
     module.hot.accept('./reducers/index', () => {

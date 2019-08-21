@@ -1,4 +1,4 @@
-import { applyMiddleware, createStore, combineReducers } from 'redux'
+import { applyMiddleware, createStore, combineReducers, compose } from 'redux'
 import {
   get,
   clear,
@@ -238,6 +238,7 @@ export const setupStore = (routesMap, initialPath, opts) => {
   }
 
   const {
+    enhancer,
     middleware,
     reducer,
     firstRoute,
@@ -245,8 +246,10 @@ export const setupStore = (routesMap, initialPath, opts) => {
   } = createRouter(routes, options, middlewareFunc)
 
   const rootReducer = combineReducers({ title, location: reducer })
-  const enhancer = applyMiddleware(middleware)
-  const store = createStore(rootReducer, enhancer)
+  const store = compose(
+    enhancer,
+    applyMiddleware(middleware),
+  )(createStore)(rootReducer)
 
   const initialState = store.getState()
 

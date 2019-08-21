@@ -120,13 +120,13 @@ import page from './pageReducer'
 
 export default (preloadedState, initialEntries) => {
   const options = { initialEntries }
-  const { reducer, middleware, firstRoute } = createRouter(routes, options)
+  const { enhancer, reducer, middleware, firstRoute } = createRouter(routes, options)
 
   const rootReducer = combineReducers({ page, location: reducer })
   const middlewares = applyMiddleware(middleware)
-  const enhancers = compose(middlewares)
+  const enhancers = compose(enhancer, middlewares)
 
-  const store = createStore(rootReducer, preloadedState, enhancers)
+  const store = enhancers(createStore)(rootReducer, preloadedState)
 
   return { store, firstRoute }
 }

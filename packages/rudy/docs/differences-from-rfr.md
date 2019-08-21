@@ -27,8 +27,7 @@ This is an overview of its differences from redux-first-router.
 # Breaking changes
 
 - `[NOT_FOUND]` -> `"NOT_FOUND"` in reducers (e.g. page reducer).
-- `connectRoutes` has been renamed to `createRouter` and does not return
-  `enhancer` anymore.
+- `connectRoutes` has been renamed to `createRouter`
 - `firstRoute`, now returned from `createRouter`, must be invoked before
   rendering.
 - `payload` has been renamed to `params`, e.g. `{ type: 'FOO', params: {} }` and

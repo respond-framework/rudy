@@ -1,4 +1,4 @@
-import { applyMiddleware, createStore, combineReducers } from 'redux'
+import { applyMiddleware, createStore, combineReducers, compose } from 'redux'
 import { createRouter, createScene } from '@respond-framework/rudy'
 import { NOT_FOUND } from '@respond-framework/rudy/types'
 
@@ -37,7 +37,7 @@ export default async (routesMap, actions, options = {}) => {
   options.initialEntries = [path]
   options.extra = { arg: 'extra-arg' }
 
-  const { middleware, reducer, firstRoute, api: rudy } = createRouter(
+  const { enhancer, middleware, reducer, firstRoute, api: rudy } = createRouter(
     routes,
     options,
   )
@@ -47,8 +47,10 @@ export default async (routesMap, actions, options = {}) => {
       ? `${action.type}_${JSON.stringify(action.payload)}`
       : action.type
   const rootReducer = combineReducers({ title, location: reducer })
-  const enhancer = applyMiddleware(middleware)
-  const store = createStore(rootReducer, enhancer)
+  const store = compose(
+    enhancer,
+    applyMiddleware(middleware),
+  )(createStore)(rootReducer)
 
   if (routesMap.FIRST) {
     expect(store.getState()).toMatchSnapshot('initial_state')

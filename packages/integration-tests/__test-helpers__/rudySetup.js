@@ -1,4 +1,4 @@
-import { applyMiddleware, createStore, combineReducers } from 'redux'
+import { applyMiddleware, createStore, combineReducers, compose } from 'redux'
 import reduxThunk from 'redux-thunk'
 import { createRouter, createScene } from '@respond-framework/rudy'
 import { NOT_FOUND } from '@respond-framework/rudy/types'
@@ -19,15 +19,17 @@ export default (path = '/first', options = {}, custom = {}) => {
       ? createScene(routesMap, custom)
       : { routes: custom.routesMap }
 
-  const { middleware, reducer, firstRoute, api: rudy } = createRouter(
+  const { enhancer, middleware, reducer, firstRoute, api: rudy } = createRouter(
     routes,
     options,
   )
 
   const title = (state = {}, action = {}) => action.type
   const rootReducer = combineReducers({ title, location: reducer })
-  const enhancer = applyMiddleware(middleware, reduxThunk)
-  const store = createStore(rootReducer, enhancer)
+  const store = compose(
+    enhancer,
+    applyMiddleware(middleware, reduxThunk),
+  )(createStore(rootReducer))
 
   return {
     store,
