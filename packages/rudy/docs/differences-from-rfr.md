@@ -33,6 +33,8 @@ This is an overview of its differences from redux-first-router.
   rendering.
 - `payload` has been renamed to `params`, e.g. `{ type: 'FOO', params: {} }` and
   `state.location.params`.
+- The `redirect` value of the `kind` property of routing actions has changed to
+  `replace`
 - `actionToPath` and `pathToAction` have been replaced with `actionToUrl` and
   `urlToAction`. The URL side is no longer only a string, but an object with a
   `url` (pathname, query, hash) and a `state`)
