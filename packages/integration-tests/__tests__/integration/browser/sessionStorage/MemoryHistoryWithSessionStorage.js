@@ -46,10 +46,10 @@ createTest(
     // firstRoute dispatched by `createTest`
     expect(getLocation().type).toEqual('FIRST')
 
-    await snapPop(history.next, JSON.stringify({ type: 'SECOND' }))
+    await snapPop(history.next)
     expect(getLocation().type).toEqual('SECOND')
 
-    await snapPop(history.next, JSON.stringify({ type: 'THIRD' }))
+    await snapPop(history.next)
     expect(getLocation().type).toEqual('THIRD')
 
     expect(getLocation().index).toEqual(2)

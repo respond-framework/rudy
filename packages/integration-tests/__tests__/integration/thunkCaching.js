@@ -31,7 +31,7 @@ createTest(
   [],
   async ({ snap, snapPop, history }) => {
     await snap({ type: 'SECOND' })
-    await snapPop(history.back, JSON.stringify({ type: 'FIRST' }))
+    await snapPop(history.back)
     await snap({ type: 'SECOND' })
   },
 )
@@ -47,7 +47,7 @@ createTest(
   [],
   async ({ dispatch, snap, history, snapPop }) => {
     await snap({ type: 'SECOND' })
-    await snapPop(history.back, JSON.stringify({ type: 'FIRST' }))
+    await snapPop(history.back)
 
     await dispatch(({ cache }) => {
       cache.clear()
@@ -68,7 +68,7 @@ createTest(
   [],
   async ({ dispatch, snap, history, snapPop }) => {
     await snap({ type: 'SECOND' })
-    await snapPop(history.back, JSON.stringify({ type: 'FIRST' }))
+    await snapPop(history.back)
 
     await dispatch(({ cache }) => {
       cache.clear('SECOND')
@@ -89,7 +89,7 @@ createTest(
   [],
   async ({ dispatch, snap, history, snapPop }) => {
     await snap({ type: 'SECOND' })
-    await snapPop(history.back, JSON.stringify({ type: 'FIRST' }))
+    await snapPop(history.back)
 
     await dispatch(({ cache }) => {
       cache.clear({ type: 'SECOND' })
@@ -110,7 +110,7 @@ createTest(
   [],
   async ({ dispatch, snap, history, snapPop }) => {
     await snap({ type: 'SECOND' })
-    await snapPop(history.back, JSON.stringify({ type: 'FIRST' }))
+    await snapPop(history.back)
 
     await dispatch(({ cache }) => {
       cache.clear({ type: 'SECOND' }, { name: 'thunk' })
@@ -131,7 +131,7 @@ createTest(
   [],
   async ({ dispatch, snap, history, snapPop }) => {
     await snap({ type: 'SECOND' })
-    await snapPop(history.back, JSON.stringify({ type: 'FIRST' }))
+    await snapPop(history.back)
 
     await dispatch(({ cache }) => {
       cache.clear((cache, api, opts) => {
@@ -147,7 +147,7 @@ createTest(
       })
     })
 
-    await snapPop(history.back, JSON.stringify({ type: 'FIRST' }))
+    await snapPop(history.back)
 
     await snap({ type: 'SECOND' })
   },
@@ -164,7 +164,7 @@ createTest(
   [],
   async ({ dispatch, snap, history, snapPop }) => {
     await snap({ type: 'SECOND' })
-    await snapPop(history.back, JSON.stringify({ type: 'FIRST' }))
+    await snapPop(history.back)
 
     await dispatch(clearCache())
 
@@ -184,7 +184,7 @@ createTest(
   [],
   async ({ snap, history, snapPop }) => {
     await snap({ type: 'SECOND' })
-    await snapPop(history.back, JSON.stringify({ type: 'FIRST' }))
+    await snapPop(history.back)
     await snap({ type: 'SECOND' })
   },
 )
@@ -203,7 +203,7 @@ createTest(
   [],
   async ({ snap, snapPop, history }) => {
     await snap({ type: 'SECOND' })
-    await snapPop(history.back, JSON.stringify({ type: 'FIRST' }))
+    await snapPop(history.back)
     await snap({ type: 'SECOND' })
   },
 )

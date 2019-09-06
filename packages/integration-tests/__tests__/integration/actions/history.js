@@ -42,7 +42,7 @@ createTest('dispatch(back/next())', routes, [], async ({ dispatch, snap }) => {
 })
 
 createTest(
-  'automatically interpret push to previous entry as a kind === "back"',
+  'interpret push to previous entry as a kind === "push"',
   routes,
   [],
   async ({ dispatch, snap }) => {
@@ -52,7 +52,7 @@ createTest(
 )
 
 createTest(
-  'automatically interpret push to next entry as a kind === "next"',
+  'interpret push to next entry as a kind === "push"',
   routes,
   [],
   async ({ dispatch, snap }) => {
@@ -63,7 +63,7 @@ createTest(
 )
 
 createTest(
-  'automatically interpret replace to previous entry as a kind === "back"',
+  'interpret replace to previous entry as a kind === "replace"',
   routes,
   [],
   async ({ dispatch, snap }) => {
@@ -73,7 +73,7 @@ createTest(
 )
 
 createTest(
-  'automatically interpret replace to next entry as a kind === "next"',
+  'interpret replace to next entry as a kind === "replace"',
   routes,
   [],
   async ({ dispatch, snap }) => {

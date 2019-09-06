@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`cache.clear(): {"type":"FIRST"} - response 1`] = `
+exports[`cache.clear():  - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -75,13 +75,13 @@ Object {
 }
 `;
 
-exports[`cache.clear(): {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`cache.clear():  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`cache.clear(): {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`cache.clear():  - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`cache.clear(): {"type":"FIRST"} - routes - SECOND - thunk 1`] = `1`;
+exports[`cache.clear():  - routes - SECOND - thunk 1`] = `1`;
 
-exports[`cache.clear(): {"type":"FIRST"} - state 1`] = `
+exports[`cache.clear():  - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -158,7 +158,7 @@ Object {
 }
 `;
 
-exports[`cache.clear(): {"type":"FIRST"} - title 1`] = `"FIRST"`;
+exports[`cache.clear():  - title 1`] = `"FIRST"`;
 
 exports[`cache.clear(): {"type":"SECOND"} - response 1`] = `
 Object {
@@ -480,7 +480,7 @@ exports[`cache.clear(): {"type":"SECOND"} - title 1`] = `"SECOND"`;
 
 exports[`cache.clear(): {"type":"SECOND"} - title 2`] = `"SECOND"`;
 
-exports[`cache.clear(action): {"type":"FIRST"} - response 1`] = `
+exports[`cache.clear(action):  - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -555,13 +555,13 @@ Object {
 }
 `;
 
-exports[`cache.clear(action): {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`cache.clear(action):  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`cache.clear(action): {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`cache.clear(action):  - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`cache.clear(action): {"type":"FIRST"} - routes - SECOND - thunk 1`] = `1`;
+exports[`cache.clear(action):  - routes - SECOND - thunk 1`] = `1`;
 
-exports[`cache.clear(action): {"type":"FIRST"} - state 1`] = `
+exports[`cache.clear(action):  - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -638,7 +638,7 @@ Object {
 }
 `;
 
-exports[`cache.clear(action): {"type":"FIRST"} - title 1`] = `"FIRST"`;
+exports[`cache.clear(action):  - title 1`] = `"FIRST"`;
 
 exports[`cache.clear(action): {"type":"SECOND"} - response 1`] = `
 Object {
@@ -960,7 +960,7 @@ exports[`cache.clear(action): {"type":"SECOND"} - title 1`] = `"SECOND"`;
 
 exports[`cache.clear(action): {"type":"SECOND"} - title 2`] = `"SECOND"`;
 
-exports[`cache.clear(action, { name: "thunk" }): {"type":"FIRST"} - response 1`] = `
+exports[`cache.clear(action, { name: "thunk" }):  - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -1035,13 +1035,13 @@ Object {
 }
 `;
 
-exports[`cache.clear(action, { name: "thunk" }): {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`cache.clear(action, { name: "thunk" }):  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`cache.clear(action, { name: "thunk" }): {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`cache.clear(action, { name: "thunk" }):  - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`cache.clear(action, { name: "thunk" }): {"type":"FIRST"} - routes - SECOND - thunk 1`] = `1`;
+exports[`cache.clear(action, { name: "thunk" }):  - routes - SECOND - thunk 1`] = `1`;
 
-exports[`cache.clear(action, { name: "thunk" }): {"type":"FIRST"} - state 1`] = `
+exports[`cache.clear(action, { name: "thunk" }):  - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -1118,7 +1118,7 @@ Object {
 }
 `;
 
-exports[`cache.clear(action, { name: "thunk" }): {"type":"FIRST"} - title 1`] = `"FIRST"`;
+exports[`cache.clear(action, { name: "thunk" }):  - title 1`] = `"FIRST"`;
 
 exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - response 1`] = `
 Object {
@@ -1440,7 +1440,7 @@ exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - title 1`] =
 
 exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - title 2`] = `"SECOND"`;
 
-exports[`cache.clear(func): {"type":"FIRST"} - response 1`] = `
+exports[`cache.clear(func):  - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -1515,7 +1515,7 @@ Object {
 }
 `;
 
-exports[`cache.clear(func): {"type":"FIRST"} - response 2`] = `
+exports[`cache.clear(func):  - response 2`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -1590,19 +1590,19 @@ Object {
 }
 `;
 
-exports[`cache.clear(func): {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`cache.clear(func):  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`cache.clear(func): {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
+exports[`cache.clear(func):  - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
 
-exports[`cache.clear(func): {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`cache.clear(func):  - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`cache.clear(func): {"type":"FIRST"} - routes - REDIRECTED - onComplete 2`] = `0`;
+exports[`cache.clear(func):  - routes - REDIRECTED - onComplete 2`] = `0`;
 
-exports[`cache.clear(func): {"type":"FIRST"} - routes - SECOND - thunk 1`] = `1`;
+exports[`cache.clear(func):  - routes - SECOND - thunk 1`] = `1`;
 
-exports[`cache.clear(func): {"type":"FIRST"} - routes - SECOND - thunk 2`] = `2`;
+exports[`cache.clear(func):  - routes - SECOND - thunk 2`] = `2`;
 
-exports[`cache.clear(func): {"type":"FIRST"} - state 1`] = `
+exports[`cache.clear(func):  - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -1679,7 +1679,7 @@ Object {
 }
 `;
 
-exports[`cache.clear(func): {"type":"FIRST"} - state 2`] = `
+exports[`cache.clear(func):  - state 2`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -1756,9 +1756,9 @@ Object {
 }
 `;
 
-exports[`cache.clear(func): {"type":"FIRST"} - title 1`] = `"FIRST"`;
+exports[`cache.clear(func):  - title 1`] = `"FIRST"`;
 
-exports[`cache.clear(func): {"type":"FIRST"} - title 2`] = `"FIRST"`;
+exports[`cache.clear(func):  - title 2`] = `"FIRST"`;
 
 exports[`cache.clear(func): {"type":"SECOND"} - response 1`] = `
 Object {
@@ -2240,7 +2240,7 @@ exports[`cache.clear(func): {"type":"SECOND"} - title 2`] = `"SECOND"`;
 
 exports[`cache.clear(func): {"type":"SECOND"} - title 3`] = `"SECOND"`;
 
-exports[`cache.clear(string): {"type":"FIRST"} - response 1`] = `
+exports[`cache.clear(string):  - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -2315,13 +2315,13 @@ Object {
 }
 `;
 
-exports[`cache.clear(string): {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`cache.clear(string):  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`cache.clear(string): {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`cache.clear(string):  - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`cache.clear(string): {"type":"FIRST"} - routes - SECOND - thunk 1`] = `1`;
+exports[`cache.clear(string):  - routes - SECOND - thunk 1`] = `1`;
 
-exports[`cache.clear(string): {"type":"FIRST"} - state 1`] = `
+exports[`cache.clear(string):  - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -2398,7 +2398,7 @@ Object {
 }
 `;
 
-exports[`cache.clear(string): {"type":"FIRST"} - title 1`] = `"FIRST"`;
+exports[`cache.clear(string):  - title 1`] = `"FIRST"`;
 
 exports[`cache.clear(string): {"type":"SECOND"} - response 1`] = `
 Object {
@@ -3200,7 +3200,7 @@ exports[`cached thunk only called once: {"type":"SECOND"} - title 1`] = `"SECOND
 
 exports[`cached thunk only called once: {"type":"SECOND"} - title 2`] = `"SECOND"`;
 
-exports[`clearCache(invalidator) - action creator: {"type":"FIRST"} - response 1`] = `
+exports[`clearCache(invalidator) - action creator:  - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -3275,13 +3275,13 @@ Object {
 }
 `;
 
-exports[`clearCache(invalidator) - action creator: {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`clearCache(invalidator) - action creator:  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`clearCache(invalidator) - action creator: {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`clearCache(invalidator) - action creator:  - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`clearCache(invalidator) - action creator: {"type":"FIRST"} - routes - SECOND - thunk 1`] = `1`;
+exports[`clearCache(invalidator) - action creator:  - routes - SECOND - thunk 1`] = `1`;
 
-exports[`clearCache(invalidator) - action creator: {"type":"FIRST"} - state 1`] = `
+exports[`clearCache(invalidator) - action creator:  - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -3358,7 +3358,7 @@ Object {
 }
 `;
 
-exports[`clearCache(invalidator) - action creator: {"type":"FIRST"} - title 1`] = `"FIRST"`;
+exports[`clearCache(invalidator) - action creator:  - title 1`] = `"FIRST"`;
 
 exports[`clearCache(invalidator) - action creator: {"type":"SECOND"} - response 1`] = `
 Object {
@@ -3680,7 +3680,7 @@ exports[`clearCache(invalidator) - action creator: {"type":"SECOND"} - title 1`]
 
 exports[`clearCache(invalidator) - action creator: {"type":"SECOND"} - title 2`] = `"SECOND"`;
 
-exports[`options.cache === false: {"type":"FIRST"} - response 1`] = `
+exports[`options.cache === false:  - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -3755,13 +3755,13 @@ Object {
 }
 `;
 
-exports[`options.cache === false: {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`options.cache === false:  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`options.cache === false: {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`options.cache === false:  - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`options.cache === false: {"type":"FIRST"} - routes - SECOND - thunk 1`] = `1`;
+exports[`options.cache === false:  - routes - SECOND - thunk 1`] = `1`;
 
-exports[`options.cache === false: {"type":"FIRST"} - state 1`] = `
+exports[`options.cache === false:  - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -3838,7 +3838,7 @@ Object {
 }
 `;
 
-exports[`options.cache === false: {"type":"FIRST"} - title 1`] = `"FIRST"`;
+exports[`options.cache === false:  - title 1`] = `"FIRST"`;
 
 exports[`options.cache === false: {"type":"SECOND"} - response 1`] = `
 Object {
@@ -4160,9 +4160,9 @@ exports[`options.cache === false: {"type":"SECOND"} - title 1`] = `"SECOND"`;
 
 exports[`options.cache === false: {"type":"SECOND"} - title 2`] = `"SECOND"`;
 
-exports[`options.createCacheKey: {"type":"FIRST"} - options - createCacheKey 1`] = `4`;
+exports[`options.createCacheKey:  - options - createCacheKey 1`] = `4`;
 
-exports[`options.createCacheKey: {"type":"FIRST"} - response 1`] = `
+exports[`options.createCacheKey:  - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -4237,13 +4237,13 @@ Object {
 }
 `;
 
-exports[`options.createCacheKey: {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`options.createCacheKey:  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`options.createCacheKey: {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`options.createCacheKey:  - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`options.createCacheKey: {"type":"FIRST"} - routes - SECOND - thunk 1`] = `1`;
+exports[`options.createCacheKey:  - routes - SECOND - thunk 1`] = `1`;
 
-exports[`options.createCacheKey: {"type":"FIRST"} - state 1`] = `
+exports[`options.createCacheKey:  - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -4320,7 +4320,7 @@ Object {
 }
 `;
 
-exports[`options.createCacheKey: {"type":"FIRST"} - title 1`] = `"FIRST"`;
+exports[`options.createCacheKey:  - title 1`] = `"FIRST"`;
 
 exports[`options.createCacheKey: {"type":"SECOND"} - options - createCacheKey 1`] = `3`;
 
@@ -4646,7 +4646,7 @@ exports[`options.createCacheKey: {"type":"SECOND"} - title 1`] = `"SECOND"`;
 
 exports[`options.createCacheKey: {"type":"SECOND"} - title 2`] = `"SECOND"`;
 
-exports[`route.cache === false: {"type":"FIRST"} - response 1`] = `
+exports[`route.cache === false:  - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -4721,13 +4721,13 @@ Object {
 }
 `;
 
-exports[`route.cache === false: {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`route.cache === false:  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`route.cache === false: {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`route.cache === false:  - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`route.cache === false: {"type":"FIRST"} - routes - SECOND - thunk 1`] = `1`;
+exports[`route.cache === false:  - routes - SECOND - thunk 1`] = `1`;
 
-exports[`route.cache === false: {"type":"FIRST"} - state 1`] = `
+exports[`route.cache === false:  - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -4804,7 +4804,7 @@ Object {
 }
 `;
 
-exports[`route.cache === false: {"type":"FIRST"} - title 1`] = `"FIRST"`;
+exports[`route.cache === false:  - title 1`] = `"FIRST"`;
 
 exports[`route.cache === false: {"type":"SECOND"} - response 1`] = `
 Object {
