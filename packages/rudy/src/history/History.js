@@ -82,12 +82,9 @@ export default class History {
 
   push(path, state = path.state || {}, notify = true) {
     const action = toAction(this, path, state)
-    const n = this._findAdjacentN(action) // automatically determine if the user is just going back or next to a URL already visited
 
-    if (n) return this.jump(n, false, undefined, { state }, notify)
-
-    const kind = n === -1 ? 'back' : n === 1 ? 'next' : 'push'
-    const index = n === -1 ? this.index - 1 : this.index + 1
+    const kind = 'push'
+    const index = this.index + 1
     const entries = this._pushToFront(action, this.entries, index, kind)
     const info = { kind, index, entries }
     const awaitUrl = this.url
@@ -98,11 +95,8 @@ export default class History {
 
   replace(path, state = path.state || {}, notify = true) {
     const action = toAction(this, path, state)
-    const n = this._findAdjacentN(action) // automatically determine if the user is just going back or next to a URL already visited
 
-    if (n) return this.jump(n, false, undefined, { state }, notify)
-
-    const kind = n === -1 ? 'back' : n === 1 ? 'next' : 'replace'
+    const kind = 'replace'
     const { index } = this
     const entries = this.entries.slice(0)
     const info = { kind, entries, index }
@@ -336,20 +330,6 @@ export default class History {
         this.options.save(this.location) // will retreive these from redux state, which ALWAYS updates first
       })
     }
-  }
-
-  _findAdjacentN(action) {
-    return this._findBackN(action) || this._findNextN(action)
-  }
-
-  _findBackN(action) {
-    const e = this.entries[this.index - 1]
-    return e && e.location.url === action.location.url && -1
-  }
-
-  _findNextN(action) {
-    const e = this.entries[this.index + 1]
-    return e && e.location.url === action.location.url && 1
   }
 
   _pushToFront(action, prevEntries, index) {
