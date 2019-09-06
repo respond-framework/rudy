@@ -20,14 +20,13 @@ export const replace = (path: string, state: ?Object): HistoryRouteAction => ({
 
 export const jump = (
   delta: number | string,
-  state: ?Object,
   byIndex: ?boolean,
   n: ?number,
 ): HistoryRouteAction => ({
   type: CALL_HISTORY,
   payload: {
     method: 'jump',
-    args: [delta, state, byIndex, n],
+    args: [delta, byIndex, n],
   },
 })
 
@@ -43,24 +42,24 @@ export const reset = (
   },
 })
 
-export const back = (state: ?(Object | Function)): HistoryRouteAction => ({
+export const back = (): HistoryRouteAction => ({
   type: CALL_HISTORY,
   payload: {
     method: 'back',
-    args: [state],
+    args: [],
   },
 })
 
-export const next = (state: ?(Object | Function)): HistoryRouteAction => ({
+export const next = (): HistoryRouteAction => ({
   type: CALL_HISTORY,
   payload: {
     method: 'next',
-    args: [state],
+    args: [],
   },
 })
 
 export const set = (
-  action: Object | Function,
+  action: Object,
   n: ?(number | string),
   byIndex: ?boolean,
 ): HistoryRouteAction => ({
@@ -72,7 +71,7 @@ export const set = (
 })
 
 export const setParams = (
-  params: Object | Function,
+  params: Object,
   n: ?(number | string),
   byIndex: ?boolean,
 ): HistoryRouteAction => ({
@@ -84,7 +83,7 @@ export const setParams = (
 })
 
 export const setQuery = (
-  query: Object | Function,
+  query: Object,
   n: ?(number | string),
   byIndex: ?boolean,
 ): HistoryRouteAction => ({
@@ -96,7 +95,7 @@ export const setQuery = (
 })
 
 export const setState = (
-  state: Object | Function,
+  state: Object,
   n: ?(number | string),
   byIndex: ?boolean,
 ): HistoryRouteAction => ({
@@ -108,7 +107,7 @@ export const setState = (
 })
 
 export const setHash = (
-  hash: Object | Function,
+  hash: Object,
   n: ?(number | string),
   byIndex: ?boolean,
 ): HistoryRouteAction => ({
@@ -120,7 +119,7 @@ export const setHash = (
 })
 
 export const setBasename = (
-  basename: Object | Function,
+  basename: Object,
   n: ?(number | string),
   byIndex: ?boolean,
 ): HistoryRouteAction => ({

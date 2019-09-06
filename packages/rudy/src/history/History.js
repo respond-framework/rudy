@@ -108,7 +108,7 @@ export default class History {
     return this._notify(action, info, commit, notify)
   }
 
-  jump(delta, byIndex = false, n, act, notify = true, revertPop) {
+  jump(delta, byIndex = false, n, notify = true, revertPop) {
     delta = this._resolveDelta(delta, byIndex)
     n = n || (delta < 0 ? -1 : 1) // users can choose what direction to make the `jump` look like it came from
 
@@ -122,10 +122,7 @@ export default class History {
       throw new Error(`[rudy] jump() - no entry at index: ${index}.`)
     }
 
-    const action = (entries[index] = this._transformEntry(
-      this.entries[index],
-      act,
-    ))
+    const action = entries[index]
     const info = { kind, index, entries, n }
 
     const currentEntry = isMovingAdjacently && this.entries[this.index] // for `replace` to adjacent entries we need to override `prev` to be the current entry; `push` doesn't have this issue, but their `prev` value is the same
@@ -138,12 +135,12 @@ export default class History {
     return this._notify(action, info, commit, notify, { prev, revertPop })
   }
 
-  back(state, notify = true) {
-    return this.jump(-1, false, -1, { state }, notify)
+  back(notify = true) {
+    return this.jump(-1, false, -1, notify)
   }
 
-  next(state, notify = true) {
-    return this.jump(1, false, 1, { state }, notify)
+  next(notify = true) {
+    return this.jump(1, false, 1, notify)
   }
 
   set(act, delta, byIndex = false, notify = true) {
@@ -158,7 +155,17 @@ export default class History {
       throw new Error(`[rudy] set() - no entry at index: ${i}`)
     }
 
-    const entry = (entries[i] = this._transformEntry(this.entries[i], act))
+    entries[i] = toAction(this, {
+      ...entries[i],
+      ...{
+        basename: act.basename,
+        query: act.query,
+        params: act.params,
+        hash: act.hash,
+        state: act.state,
+      },
+    })
+    const entry = entries[i]
     const action = delta === 0 ? entry : createActionRef(this.location) // action dispatched must ALWAYS be current one, but insure it receives changes if delta === 0, not just entry in entries
     const info = { kind, index, entries }
 
@@ -228,45 +235,6 @@ export default class History {
   }
 
   // UTILS:
-
-  _transformEntry(entry, action) {
-    entry = { ...entry }
-
-    if (typeof action === 'function') {
-      return toAction(this, action(entry))
-    }
-
-    action = isAction(action) ? action : { state: action }
-    let { params, query, state, hash, basename: bn } = action
-
-    if (params) {
-      params = typeof params === 'function' ? params(entry.query) : params
-      entry.params = { ...entry.params, ...params }
-    }
-
-    if (query) {
-      query = typeof query === 'function' ? query(entry.query) : query
-      entry.query = { ...entry.query, ...query }
-    }
-
-    if (state) {
-      state = typeof state === 'function' ? state(entry.state) : state
-
-      entry.state = { ...entry.state, ...state }
-    }
-
-    if (hash) {
-      hash = typeof hash === 'function' ? hash(entry.hash) : hash
-      entry.hash = hash
-    }
-
-    if (bn) {
-      bn = typeof bn === 'function' ? bn(entry.basename) : bn
-      entry.basename = bn
-    }
-
-    return toAction(this, entry)
-  }
 
   _createPrev({ n, index: i, entries }, currentEntry) {
     const index = i - n // reverse of n direction to get prev

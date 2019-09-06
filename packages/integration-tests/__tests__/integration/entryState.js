@@ -11,44 +11,6 @@ createTest(
 )
 
 createTest(
-  'state merged on back/next',
-  {
-    SECOND: {
-      path: '/second',
-    },
-  },
-  [],
-  async ({ dispatch, snap, getLocation }) => {
-    await dispatch({ type: 'SECOND', state: { foo: 'bar' } })
-    await dispatch({ type: 'FIRST' })
-    await snap({ type: 'SECOND', state: { baz: 'bla' } })
-
-    expect(getLocation()).toMatchSnapshot()
-  },
-)
-
-createTest(
-  'action.state as function',
-  {
-    SECOND: {
-      path: '/second',
-    },
-  },
-  [],
-  async ({ dispatch, snap }) => {
-    await dispatch({ type: 'SECOND', state: { foo: 'bar' } })
-    await dispatch({ type: 'FIRST' })
-    await snap({
-      type: 'SECOND',
-      state: (state) => ({
-        foo: state.foo.toUpperCase(),
-        baz: 'bla',
-      }),
-    })
-  },
-)
-
-createTest(
   'route.defaultState',
   {
     SECOND: {
