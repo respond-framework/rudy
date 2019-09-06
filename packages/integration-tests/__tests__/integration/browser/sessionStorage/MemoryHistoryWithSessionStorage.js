@@ -26,8 +26,8 @@ beforeAll(async () => {
   await store.dispatch({ type: 'SECOND' })
   await store.dispatch({ type: 'THIRD' })
 
-  await store.dispatch({ type: 'SECOND' })
-  await store.dispatch({ type: 'FIRST' }) // history.entries will be at first entry now
+  await history.back()
+  await history.back() // history.entries will be at first entry now
 })
 
 createTest(
@@ -39,17 +39,17 @@ createTest(
   },
   { testBrowser: true },
   [],
-  async ({ snap, getLocation, getState }) => {
+  async ({ snap, getLocation, getState, snapPop, history }) => {
     expect(getState()).toMatchSnapshot()
     expect(get()).toMatchSnapshot()
 
     // firstRoute dispatched by `createTest`
     expect(getLocation().type).toEqual('FIRST')
 
-    await snap({ type: 'SECOND' })
+    await snapPop(history.next, JSON.stringify({ type: 'SECOND' }))
     expect(getLocation().type).toEqual('SECOND')
 
-    await snap({ type: 'THIRD' })
+    await snapPop(history.next, JSON.stringify({ type: 'THIRD' }))
     expect(getLocation().type).toEqual('THIRD')
 
     expect(getLocation().index).toEqual(2)

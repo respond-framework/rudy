@@ -19,7 +19,7 @@ beforeAll(async () => {
 
   await store.dispatch({ type: 'SECOND' })
   await store.dispatch({ type: 'THIRD' })
-  await store.dispatch({ type: 'SECOND' }) // go back, so we can simulate leaving in the middle of the stack
+  await history.back() // go back, so we can simulate leaving in the middle of the stack
 
   history.unlisten()
 })
