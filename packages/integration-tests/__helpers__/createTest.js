@@ -194,7 +194,12 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
         return res
       },
       snapPop: async (direction, prefix = '') => {
-        const res = await pop(direction)
+        let res
+        if (typeof direction === 'string') {
+          res = await pop(direction)
+        } else {
+          res = await direction.call(history)
+        }
 
         if (opts.snipesOnly) return res
 
