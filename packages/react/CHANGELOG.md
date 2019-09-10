@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-test.3](https://github.com/respond-framework/rudy/tree/master/packages/react/compare/@respond-framework/react@0.1.1-test.2...@respond-framework/react@0.1.1-test.3) (2019-09-10)
+
+
+### Bug Fixes
+
+* update dependencies with security vulnerabilities ([#47](https://github.com/respond-framework/rudy/tree/master/packages/react/issues/47)) ([3c18480](https://github.com/respond-framework/rudy/tree/master/packages/react/commit/3c18480))
+
+
+
+
+
 ## 0.1.1-test.2 (2019-06-07)
 
 

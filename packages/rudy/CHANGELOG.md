@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-test.4](https://github.com/respond-framework/rudy/tree/master/packages/rudy/compare/@respond-framework/rudy@0.1.1-test.3...@respond-framework/rudy@0.1.1-test.4) (2019-09-10)
+
+
+### Bug Fixes
+
+* **history:** pushing/replacing a route sometimes resulted in a back/next action ([#56](https://github.com/respond-framework/rudy/tree/master/packages/rudy/issues/56)) ([f6e06ad](https://github.com/respond-framework/rudy/tree/master/packages/rudy/commit/f6e06ad))
+
+
+### BREAKING CHANGES
+
+* **history:** dispatching a route that matches the previous/next route in the history stack is no longer reinterpreted as a back/next action
+* **history:** history functions `set`/`setParams`/`setState`/`setQuery`/`setHash`/`setBasename` no longer accept a function as an argument
+* **history:** history functions `set`/`setParams`/`setState`/`setQuery` no longer merge their arguments with the existing params/state/query
+* **history:** history functions `back`/`next`/`jump` no longer accept a state argument
+
+Fixes https://github.com/respond-framework/rudy/issues/48
+
+
+
+
+
 ## [0.1.1-test.3](https://github.com/respond-framework/rudy/tree/master/packages/rudy/compare/@respond-framework/rudy@0.1.1-test.2...@respond-framework/rudy@0.1.1-test.3) (2019-06-07)
 
 

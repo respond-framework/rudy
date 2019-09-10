@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-test.4](https://github.com/respond-framework/rudy/compare/@respond-framework/boilerplate@0.1.1-test.3...@respond-framework/boilerplate@0.1.1-test.4) (2019-09-10)
+
+
+### Bug Fixes
+
+* update dependencies with security vulnerabilities ([#47](https://github.com/respond-framework/rudy/issues/47)) ([3c18480](https://github.com/respond-framework/rudy/commit/3c18480))
+
+
+
+
+
 ## [0.1.1-test.3](https://github.com/respond-framework/rudy/compare/@respond-framework/boilerplate@0.1.1-test.2...@respond-framework/boilerplate@0.1.1-test.3) (2019-06-07)
 
 
