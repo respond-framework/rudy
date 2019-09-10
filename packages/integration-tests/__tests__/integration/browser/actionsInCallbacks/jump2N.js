@@ -95,19 +95,3 @@ createTest(
   { testBrowser: true },
   [{ type: 'PATHLESS' }],
 )
-
-createTest(
-  'jump(-2, any, any, action) after enter on load',
-  {
-    FIRST: {
-      path: '/',
-    },
-    SECOND: '/second',
-    THIRD: {
-      path: '/third',
-      thunk: () => jump(-2, undefined, undefined, { query: { hell: 'yea' } }),
-    },
-  },
-  { testBrowser: true },
-  [],
-)

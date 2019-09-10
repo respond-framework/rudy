@@ -34,15 +34,13 @@ createTest('dispatch(push/replace())', routes, [
 createTest('dispatch(back/next())', routes, [], async ({ dispatch, snap }) => {
   await dispatch({ type: 'SECOND' })
 
-  await snap(back({ foo: 'bar' }))
-  await snap(next({ yo: 'dog' }))
-  await snap(back(() => ({ more: 'state' })))
-  await snap(next({ bla: 'sdf' })) // merge states
+  await snap(back())
+  await snap(next())
   await snap(back())
 })
 
 createTest(
-  'automatically interpret push to previous entry as a kind === "back"',
+  'interpret push to previous entry as a kind === "push"',
   routes,
   [],
   async ({ dispatch, snap }) => {
@@ -52,7 +50,7 @@ createTest(
 )
 
 createTest(
-  'automatically interpret push to next entry as a kind === "next"',
+  'interpret push to next entry as a kind === "push"',
   routes,
   [],
   async ({ dispatch, snap }) => {
@@ -63,7 +61,7 @@ createTest(
 )
 
 createTest(
-  'automatically interpret replace to previous entry as a kind === "back"',
+  'interpret replace to previous entry as a kind === "replace"',
   routes,
   [],
   async ({ dispatch, snap }) => {
@@ -73,7 +71,7 @@ createTest(
 )
 
 createTest(
-  'automatically interpret replace to next entry as a kind === "next"',
+  'interpret replace to next entry as a kind === "replace"',
   routes,
   [],
   async ({ dispatch, snap }) => {
@@ -100,33 +98,6 @@ createTest('dispatch(jump(n))', routes, [], async ({ dispatch, snap }) => {
 
   // await snap(jump(1))
 })
-
-createTest(
-  'dispatch(jump(n, byIndex === true, act))',
-  routes,
-  [],
-  async ({ dispatch, snap }) => {
-    await dispatch({ type: 'SECOND' })
-    await snap(jump(0, true, undefined, { state: { foo: 'bar' } }))
-    await snap(jump(1, true, undefined, { state: { foo: 'bar' } }))
-  },
-)
-
-// you can force the kind to be whatever you want,
-// which will presume the user came from a different direction;
-// otherwise it's automatically inferred
-createTest(
-  'dispatch(jump(n, byIndex, n, state))',
-  routes,
-  [],
-  async ({ dispatch, snap }) => {
-    await dispatch({ type: 'SECOND' })
-    await dispatch({ type: 'THIRD' })
-
-    await snap(jump(0, true, 1, { state: { foo: 'bar' } })) // would normally be "back"
-    await snap(jump(2, true, -1, { state: { foo: 'bar' } })) // would normally be "next"
-  },
-)
 
 // when you jump more than one entry, middleware/transformAction/utils/historyAction.js re-creates `state.location.prev`
 createTest('dispatch(jump(-2))', routes, [], async ({ dispatch, snap }) => {
@@ -230,10 +201,6 @@ describe('dispatch(set())', () => {
     set({ params: { foo: 'bar' }, hash: 'yolo' }),
   ])
 
-  createTest('dispatch(set(func))', routes, [
-    set((action) => ({ ...action, query: { foo: 'bar' }, hash: 'yolo' })),
-  ])
-
   createTest(
     'dispatch(set(action, n))',
     routes,
@@ -270,32 +237,18 @@ describe('dispatch(set())', () => {
 
 describe('dispatch(setParams())', () => {
   createTest('dispatch(setParams(params))', routes, [setParams({ foo: 'bar' })])
-
-  createTest('dispatch(setParams(func))', routes, [
-    setParams((params) => ({ ...params, foo: 'bar' })),
-  ])
 })
 
 describe('dispatch(setQuery())', () => {
   createTest('dispatch(setQuery(query))', routes, [setQuery({ foo: 'bar' })])
-
-  createTest('dispatch(setQuery(func))', routes, [
-    setQuery((query) => ({ ...query, foo: 'bar' })),
-  ])
 })
 
 describe('dispatch(setState())', () => {
   createTest('dispatch(setState(state))', routes, [setState({ foo: 'bar' })])
-
-  createTest('dispatch(setState(func))', routes, [
-    setState((state) => ({ ...state, foo: 'bar' })),
-  ])
 })
 
 describe('dispatch(setHash())', () => {
   createTest('dispatch(setHash(setHash))', routes, [setHash('new-hash')])
-
-  createTest('dispatch(setHash(func))', routes, [setHash((hash) => 'new-hash')])
 })
 
 describe('dispatch(setBasename())', () => {
@@ -306,14 +259,5 @@ describe('dispatch(setBasename())', () => {
       basenames: ['/new-basename'],
     },
     [setBasename('/new-basename')],
-  )
-
-  createTest(
-    'dispatch(setBasename(func))',
-    routes,
-    {
-      basenames: ['new-basename'],
-    },
-    [setBasename((basename) => 'new-basename')],
   )
 })

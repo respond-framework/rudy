@@ -16,8 +16,8 @@ beforeAll(async () => {
   await store.dispatch({ type: 'SECOND' })
   await store.dispatch({ type: 'THIRD' })
 
-  await store.dispatch({ type: 'SECOND' })
-  await store.dispatch({ type: 'FIRST' }) // history.entries will be at first entry now
+  await history.back()
+  await history.back() // history.entries will be at first entry now
 
   history.unlisten()
 })
