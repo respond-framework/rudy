@@ -15,6 +15,7 @@ lerna-debug.log
 *.snap
 *.log
 *.ico
+*.sh
 
 # Ignored dirs in sub packages
 cjs/
