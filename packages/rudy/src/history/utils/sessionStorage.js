@@ -20,23 +20,27 @@ import { toEntries } from '../../utils'
 // Firefox has the lowest limit of 640kb PER ENTRY. IE has 1mb and chrome has at least 10mb:
 // https://stackoverflow.com/questions/6460377/html5-history-api-what-is-the-max-size-the-state-object-can-be
 
-export const saveHistory = (
-  { index, entries }: { index: number },
-  out: void | Function,
-) => {
+export const saveHistory = ({ entries }, out: void | Function) => {
   entries = entries.map((e) => [e.location.url, e.state, e.location.key]) // one entry has the url, a state object, and a 6 digit key
-  set({ index, entries, out })
+  set({ entries, out })
 }
 
 export const restoreHistory = (api) => {
-  const history = get() || initializeHistory()
+  let history = get()
+  if (!history) {
+    history = initializeHistory()
+  } else {
+    history.index = getHistoryState().index
+  }
   return format(history, api)
 }
 
-export const clear = () => window.sessionStorage.setItem(key(), '')
+export const clear = () => {
+  window.sessionStorage.setItem(key(), '')
+  historySet({ index: 0, id: key() })
+}
 
-export const set = (val) =>
-  window.sessionStorage.setItem(key(), JSON.stringify(val))
+const set = (val) => window.sessionStorage.setItem(key(), JSON.stringify(val))
 
 export const get = () => {
   try {
@@ -49,18 +53,28 @@ export const get = () => {
 
 // HISTORY FACADE:
 
-export const pushState = (url: string) =>
-  window.history.pushState({ id: sessionId() }, null, url) // insure every entry has the sessionId (called by `BrowserHistory`)
+export const pushState = (url: string) => window.history.pushState(
+    { id: sessionId(), index: getHistoryState().index + 1 },
+    null,
+    url,
+  ) // insure every entry has the sessionId (called by `BrowserHistory`)
 
-export const replaceState = (url: string) =>
-  window.history.replaceState({ id: sessionId() }, null, url) // QA: won't the fallback overwrite the `id`? Yes, but the fallback doesn't use the `id` :)
+
+export const replaceState = (url: string) => window.history.replaceState(
+    { id: sessionId(), index: getHistoryState().index },
+    null,
+    url,
+  ) // QA: won't the fallback overwrite the `id`? Yes, but the fallback doesn't use the `id` :)
+
+export const getCurrentIndex = () => getHistoryState().index
 
 const historySet = (history) => window.history.replaceState(history, null) // set on current entry
 
 // SESSION STORAGE FACADE:
 
 // We use `history.state.id` to pick which "session" from `sessionStorage` to use in
-// the case that multiple windows containing the app are open at the same time
+// the case that multiple instances of the app exist in the browser history stack of
+// the same tab (e.g. if you navigate away from the app and then back again)
 let _id
 
 const PREFIX = '@@rudy/'
@@ -80,6 +94,7 @@ const createSessionId = () => {
         .toString(36)
         .substr(2, 6)
     }
+    state.index = 0
     historySet(state)
   }
 
@@ -123,13 +138,10 @@ const format = (history, api) => {
 //
 // B) in IE11 on load in iframes, which also won't need to remember state, as iframes
 // usually aren't for navigating to other sites (and back). This may just be issue A)
-//
-// ALSO NOTE: this would only matter when using our history state fallback, as we don't use
-// `history.state` with `sessionStorage`, with one exception: `state.id`. The `id` is used for
-// a single edge case: having multiple windows open (see "Session Storage Facade" above).
 const getHistoryState = () => {
   try {
     return window.history.state || {}
-  } catch (e) {}
-  return {}
+  } catch (e) {
+    return {}
+  }
 }

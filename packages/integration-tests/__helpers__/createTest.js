@@ -2,6 +2,7 @@ import { applyMiddleware, createStore, combineReducers } from 'redux'
 import {
   get,
   clear,
+  getCurrentIndex,
 } from '@respond-framework/rudy/history/utils/sessionStorage'
 import { locationToUrl } from '@respond-framework/rudy/utils'
 import { createRouter } from '@respond-framework/rudy'
@@ -476,8 +477,7 @@ const awaitPop = async (history, tries = 1) => {
 
 export const resetBrowser = async () => {
   /* eslint-env browser */
-  const storage = get()
-  const index = storage && storage.index
+  const index = getCurrentIndex()
 
   if (index) {
     const delta = index * -1

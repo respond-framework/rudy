@@ -9,9 +9,6 @@ export {
 export {
   saveHistory,
   restoreHistory,
-  get,
-  set,
-  clear,
   pushState,
   replaceState,
 } from './sessionStorage'
