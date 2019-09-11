@@ -11,4 +11,6 @@ export {
   restoreHistory,
   pushState,
   replaceState,
+  go,
+  getCurrentIndex,
 } from './sessionStorage'

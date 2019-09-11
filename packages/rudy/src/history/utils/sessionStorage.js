@@ -53,18 +53,21 @@ export const get = () => {
 
 // HISTORY FACADE:
 
-export const pushState = (url: string) => window.history.pushState(
+export const pushState = (url: string) =>
+  window.history.pushState(
     { id: sessionId(), index: getHistoryState().index + 1 },
     null,
     url,
   ) // insure every entry has the sessionId (called by `BrowserHistory`)
 
-
-export const replaceState = (url: string) => window.history.replaceState(
+export const replaceState = (url: string) =>
+  window.history.replaceState(
     { id: sessionId(), index: getHistoryState().index },
     null,
     url,
   ) // QA: won't the fallback overwrite the `id`? Yes, but the fallback doesn't use the `id` :)
+
+export const go = (n) => window.history.go(n)
 
 export const getCurrentIndex = () => getHistoryState().index
 

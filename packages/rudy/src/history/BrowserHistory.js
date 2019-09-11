@@ -10,6 +10,8 @@ import {
   saveHistory,
   pushState,
   replaceState,
+  go,
+  getCurrentIndex,
 } from './utils'
 import type { Action, Dispatch } from '../flow-types'
 
@@ -76,11 +78,6 @@ export default class BrowserHistory extends History {
     super.unlisten()
   }
 
-  _didPopForward(url: string) {
-    const e = this.entries[this.index + 1]
-    return e && e.location.url === url
-  }
-
   _setupPopHandling() {
     const handlePop = () => {
       if (this._popForced) return (this._popForced = false)
@@ -91,7 +88,7 @@ export default class BrowserHistory extends History {
       let n
 
       if (!this.pendingPop) {
-        n = this._didPopForward(url) ? 1 : -1
+        n = getCurrentIndex() - this.index
         this.pendingPop = n
       } else if (url === this.url) {
         n = this.pendingPop * -1 // switch directions
@@ -123,7 +120,7 @@ export default class BrowserHistory extends History {
 
   _forceGo(n: number): Promise<void> {
     this._popForced = true
-    window.history.go(n) // revert
+    go(n) // revert
     return Promise.resolve()
   }
 
