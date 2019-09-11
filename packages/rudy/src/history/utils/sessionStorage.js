@@ -20,9 +20,9 @@ import { toEntries } from '../../utils'
 // Firefox has the lowest limit of 640kb PER ENTRY. IE has 1mb and chrome has at least 10mb:
 // https://stackoverflow.com/questions/6460377/html5-history-api-what-is-the-max-size-the-state-object-can-be
 
-export const saveHistory = ({ entries }, out: void | Function) => {
+export const saveHistory = ({ entries }) => {
   entries = entries.map((e) => [e.location.url, e.state, e.location.key]) // one entry has the url, a state object, and a 6 digit key
-  set({ entries, out })
+  set({ entries })
 }
 
 export const restoreHistory = (api) => {
@@ -109,22 +109,9 @@ const initializeHistory = () => {
   return { n: 1, index: 0, entries: [url] } // default history on first load
 }
 
-// We must remove entries after the index in case the user opened a link to
-// another site in the middle of the entries stack and then returned via the
-// back button, in which case the entries are gone for good, like a `push`.
-//
-// NOTE: if we did this on the first entry, we would break backing out of the
-// site and returning (entries would be unnecessarily removed). So this is only applied to
-// "forwarding out." That leaves one hole: if you forward out from the first entry, you will
-// return and have problematic entries that should NOT be there. Then because of Rudy's
-// automatic back/next detection, which causes the history track to "jump" instead of "push,"
-// dispatching an action for the next entry would in fact make you leave the site instead
-// of push the new entry! To circumvent that, use Rudy's <Link /> component and it will
-// save the `out` flag (just before linking out) that insures this is addressed:
 const format = (history, api) => {
-  const { entries, index, out } = history
-  const ents = index > 0 || out ? entries.slice(0, index + 1) : entries
-  return toEntries(api, ents, index)
+  const { entries, index } = history
+  return toEntries(api, entries, index)
 }
 
 // IE11 sometimes throws when accessing `history.state`:
