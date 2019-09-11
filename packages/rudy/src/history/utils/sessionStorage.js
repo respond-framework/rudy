@@ -1,6 +1,5 @@
 // @flow
 /* eslint-env browser */
-import { supportsSession, supportsHistory } from './index'
 import { toEntries } from '../../utils'
 
 // API:
@@ -34,11 +33,19 @@ export const restoreHistory = (api) => {
   return format(history, api)
 }
 
-export const clear = () => (supportsSession() ? sessionClear() : historyClear())
+export const clear = () => window.sessionStorage.setItem(key(), '')
 
-export const set = (v) => (supportsSession() ? sessionSet(v) : historySet(v))
+export const set = (val) =>
+  window.sessionStorage.setItem(key(), JSON.stringify(val))
 
-export const get = () => (supportsSession() ? sessionGet() : historyGet())
+export const get = () => {
+  try {
+    const json = window.sessionStorage.getItem(key())
+    return JSON.parse(json)
+  } catch (error) {
+    return null
+  }
+}
 
 // HISTORY FACADE:
 
@@ -48,14 +55,7 @@ export const pushState = (url: string) =>
 export const replaceState = (url: string) =>
   window.history.replaceState({ id: sessionId() }, null, url) // QA: won't the fallback overwrite the `id`? Yes, but the fallback doesn't use the `id` :)
 
-const historyClear = () => window.history.replaceState({}, null)
-
 const historySet = (history) => window.history.replaceState(history, null) // set on current entry
-
-const historyGet = () => {
-  const state = getHistoryState()
-  return state.entries && state
-}
 
 // SESSION STORAGE FACADE:
 
@@ -69,22 +69,7 @@ const sessionId = () => (_id = _id || createSessionId())
 
 const key = () => PREFIX + sessionId()
 
-const sessionClear = () => window.sessionStorage.setItem(key(), '')
-
-const sessionSet = (val) =>
-  window.sessionStorage.setItem(key(), JSON.stringify(val))
-
-const sessionGet = () => {
-  try {
-    const json = window.sessionStorage.getItem(key())
-    return JSON.parse(json)
-  } catch (error) {} // ignore invalid JSON
-  return null
-}
-
 const createSessionId = () => {
-  if (!supportsHistory() || !supportsSession()) return 'id' // both are needed for unique IDs to serve their purpose
-
   const state = getHistoryState()
 
   if (!state.id) {

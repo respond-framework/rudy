@@ -1,4 +1,4 @@
-export { supportsDom, supportsHistory, supportsSession } from './supports'
+export { supportsDom } from './supports'
 
 export {
   addPopListener,
