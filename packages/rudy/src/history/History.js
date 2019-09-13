@@ -207,8 +207,8 @@ export default class History {
         ? i > this.index
           ? 1
           : i === this.index
-            ? this.n
-            : -1 // create direction relative to index of current entries
+          ? this.n
+          : -1 // create direction relative to index of current entries
         : 1) // at the front of the array, always use "forward" direction
 
     const kind = 'reset'

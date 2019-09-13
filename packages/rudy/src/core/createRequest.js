@@ -246,8 +246,8 @@ export class Request {
     const action = isAction(act)
       ? act
       : typeof act === 'string' && (type = this.isActionType(act))
-        ? { type }
-        : { payload: act }
+      ? { type }
+      : { payload: act }
 
     action.type =
       action.type ||
