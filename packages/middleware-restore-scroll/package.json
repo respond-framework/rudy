@@ -1,0 +1,40 @@
+{
+  "name": "@respond-framework/middleware-restore-scroll",
+  "version": "0.1.0-test.1",
+  "description": "Rudy middleware to restore scroll position after navigation",
+  "main": "cjs/index.js",
+  "module": "es/index.js",
+  "rudy-src-main": "src/index.ts",
+  "types": "ts/index.d.ts",
+  "repository": "https://github.com/respond-framework/rudy/tree/master/packages/middleware-restore-scroll",
+  "contributors": [
+    "Daniel Playfair Cal <daniel.playfair.cal@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "cjs",
+    "es",
+    "ts"
+  ],
+  "scripts": {
+    "prepare": "yarn run build",
+    "build:cjs": "babel --root-mode upward --source-maps true -x .tsx,.ts,.js,.jsx src -d cjs",
+    "build:es": "babel --root-mode upward --source-maps true -x .tsx,.ts,.js,.jsx --env-name es src -d es",
+    "build:ts": "tsc --noEmit false -p ./tsconfig.build.json",
+    "build": "yarn run build:cjs && yarn run build:es && yarn run build:ts",
+    "clean": "rimraf cjs && rimraf es && rimraf ts",
+    "prettier": "prettier",
+    "is-pretty": "prettier --ignore-path=../../config/.prettierignore '**/*' --list-different",
+    "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write",
+    "lint": "eslint --config ../../.eslintrc.js --ignore-path ../../.eslintignore --ext=ts,tsx,js,jsx .",
+    "check-types": "tsc"
+  },
+  "dependencies": {
+    "@respond-framework/utils": "^0.1.1-test.1",
+    "scroll-behavior": "^0.9.10"
+  }
+}
