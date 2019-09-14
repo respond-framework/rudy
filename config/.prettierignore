@@ -24,4 +24,5 @@ dist/
 buildClient/
 buildServer/
 flow-typed/
+ts/
 CHANGELOG.md

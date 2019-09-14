@@ -5,15 +5,17 @@
   "main": "dist/index.js",
   "module": "es/index.js",
   "rudy-src-main": "src/index.js",
+  "types": "ts/index.d.ts",
   "files": [
     "dist",
-    "es"
+    "es",
+    "ts"
   ],
   "scripts": {
-    "prepare": "yarn run build:cjs && yarn run build:es && yarn run flow-copy",
-    "build:cjs": "babel --root-mode upward --source-maps true src -d dist",
-    "build:es": "BABEL_ENV=es babel --root-mode upward --source-maps true src -d es",
-    "build": "yarn run build:cjs && yarn run build:es",
+    "prepare": "yarn run build",
+    "build:cjs": "babel --root-mode upward --source-maps true -x .tsx,.ts,.js,.jsx src -d dist",
+    "build:es": "babel --root-mode upward --source-maps true -x .tsx,.ts,.js,.jsx --env-name es src -d es",
+    "build": "yarn run build:cjs && yarn run build:es && yarn run flow-copy",
     "flow-copy": "flow-copy-source src dist && flow-copy-source src es",
     "flow-watch": "clear; printf \"\\033[3J\" & npm run flow & fswatch -o ./ | xargs -n1 -I{} sh -c 'clear; printf \"\\033[3J\" && npm run flow'",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
@@ -21,7 +23,7 @@
     "prettier": "prettier",
     "is-pretty": "prettier --ignore-path=../../config/.prettierignore '**/*' --list-different",
     "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write",
-    "lint": "eslint . || true",
+    "lint": "eslint --ext=ts,tsx,js,jsx . || true",
     "test": "jest --config ../../jest.config.js --rootDir ."
   },
   "repository": {

@@ -8,3 +8,4 @@ dist
 
 packages/*/cjs/
 packages/*/es/
+packages/*/ts/

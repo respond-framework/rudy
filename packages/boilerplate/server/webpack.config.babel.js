@@ -41,7 +41,7 @@ export default (env) => {
       strictExportPresence: true, // If you import something that isn't exported
       rules: [
         {
-          test: /\.jsx?$/,
+          test: /\.(j|t)sx?$/,
           // Skip node_modules, with the exception of packages in the monorepo
           exclude: /[\\/]node_modules[\\/](?!@respond-framework)/,
           use: {
@@ -54,8 +54,8 @@ export default (env) => {
           },
         },
         {
-          test: /\.js$/,
-          exclude: /node_modules/,
+          test: /\.(j|t)sx?$/,
+          exclude: /[\\/]node_modules[\\/](?!@respond-framework)/,
           enforce: 'pre',
           use: {
             loader: 'eslint-loader',
@@ -88,8 +88,8 @@ export default (env) => {
     resolve: {
       symlinks: false,
       extensions: isServer
-        ? ['.server.js', '.js', '.jsx', '.css']
-        : ['.browser.js', '.js', '.jsx', '.css'],
+        ? ['.server.js', '.ts', '.tsx', '.js', '.jsx', '.css']
+        : ['.browser.js', '.ts', '.tsx', '.js', '.jsx', '.css'],
       mainFields: [
         'rudy-src-main',
         isClient && 'browser',

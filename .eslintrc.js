@@ -12,16 +12,51 @@ module.exports = {
   extends: [
     'eslint-config-airbnb',
     'plugin:prettier/recommended',
-    'plugin:flowtype/recommended',
-    'prettier/flowtype',
     'prettier/react',
   ],
-  parser: 'babel-eslint',
+  overrides: [
+    {
+      files: ['*.tsx', '*.ts'],
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        ecmaVersion: 2018,
+        sourceType: 'module',
+      },
+      extends: [
+        'plugin:@typescript-eslint/recommended',
+        'prettier/@typescript-eslint',
+      ],
+      rules: {
+        'no-useless-constructor': 0,
+        '@typescript-eslint/explicit-function-return-type': [
+          'error',
+          {
+            allowExpressions: true,
+          },
+        ],
+      },
+    },
+    {
+      files: ['*.jsx', '**/*.js'],
+      parser: 'babel-eslint',
+      extends: ['plugin:flowtype/recommended', 'prettier/flowtype'],
+    },
+    {
+      files: ['*.test.js', '*.test.jsx', '*.test.ts', '*.test.tsx'],
+      ...jestConfig,
+      globals: jestGlobals,
+    },
+  ],
   settings: {
     'import/resolver': {
-      lerna: {
-        packages: path.resolve(__dirname, './packages'),
+      node: {
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
       },
+    },
+    'import/extensions': ['.ts', '.tsx', '.js', '.jsx'],
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+      'babel-eslint': ['.js', '.jsx'],
     },
   },
   rules: {
@@ -40,11 +75,4 @@ module.exports = {
       },
     ],
   },
-  overrides: [
-    {
-      files: ['*.test.js'],
-      ...jestConfig,
-      globals: jestGlobals,
-    },
-  ],
 }

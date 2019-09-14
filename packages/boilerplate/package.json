@@ -13,12 +13,12 @@
     "build": "npm run build:node && npm run build:client && npm run build:server",
     "build:client": "webpack --config=buildServer/webpack.config.babel -p --progress --env.server=false",
     "build:server": "webpack --config=buildServer/webpack.config.babel -p --progress --env.server=true",
-    "build:node": "babel --root-mode upward server/ -d buildServer/",
+    "build:node": "babel --root-mode upward --source-maps true -x .tsx,.ts,.js,.jsx server/ -d buildServer/",
     "clean": "rimraf buildClient buildServer",
     "prettier": "prettier",
     "is-pretty": "prettier --ignore-path=../../config/.prettierignore '**/*' --list-different",
     "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write",
-    "lint": "eslint ."
+    "lint": "eslint --ext=ts,tsx,js,jsx ."
   },
   "dependencies": {
     "@respond-framework/react": "^0.1.1-test.3",
