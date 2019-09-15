@@ -1,79 +1,74 @@
 /* eslint-env browser */
-import ScrollBehavior from 'scroll-behavior'
+import ScrollBehavior, {
+  TransitionHook,
+  ShouldUpdateScroll,
+} from 'scroll-behavior'
 import { isServer } from '@respond-framework/utils'
+import { Api, Middleware, Location } from '@respond-framework/rudy'
 
-interface RestoreScrollOptions {}
-
-export default (options: RestoreScrollOptions) => {
-  let scrollState
-  const getScrollBehavior = (api) => {
-    if (!scrollState) {
-      scrollState = createScrollBehavior(api, options)
-    }
-    return scrollState
-  }
-
-  return {
-    saveScroll: (api) => {
-      if (isServer()) {
-        return (request, next) => next()
-      }
-      const scrollState = getScrollBehavior(api)
-      return (request, next) => {
-        Object.keys(scrollState.transitionHooks).forEach((hookIndex) => {
-          scrollState.transitionHooks[hookIndex]()
-        })
-        return next()
-      }
-    },
-
-    restoreScroll: (api) => {
-      if (isServer()) {
-        return (request, next) => next()
-      }
-      const scrollState = getScrollBehavior(api)
-      return (request, next) => {
-        scrollState.behavior.updateScroll()
-        next()
-      }
-    },
-
-    updateScroll: () => {
-      if (!scrollState) {
-        throw Error(
-          'Cannot call restoreScroll befire initialising middlewareSaveScroll or middlewareRestoreScroll',
-        )
-      }
-      scrollState.behavior.updateScroll()
-    },
-  }
+type RestoreScrollOptions = {
+  shouldUpdateScroll?: ShouldUpdateScroll<Location>
 }
 
-const createScrollBehavior = (api, options) => {
-  const transitionHooks = {}
-  let nextHookIndex = 0
-  return {
-    transitionHooks,
-    behavior: new ScrollBehavior({
-      addTransitionHook: (hook) => {
-        const hookIndex = nextHookIndex
-        nextHookIndex += 1
-        transitionHooks[hookIndex] = hook
+export default class RestoreScroll {
+  options: RestoreScrollOptions
+
+  behavior?: ScrollBehavior<Location, Location>
+
+  api?: Api
+
+  transitionHooks: { [index: string]: TransitionHook } = {}
+
+  nextHookIndex = 0
+
+  static _makeStorageKey = (
+    location: Location | null,
+    scrollBehaviorKey: string | null,
+  ): string =>
+    `@@rudy-restore-scroll/${
+      location ? `${location.key}/` : ``
+    }${JSON.stringify(scrollBehaviorKey)}`
+
+  constructor(options: RestoreScrollOptions = {}) {
+    this.options = options
+  }
+
+  _getCurrentLocation = (): Location => {
+    return (this.api as Api).getLocation()
+  }
+
+  _getPrevLocation = (): Location | undefined => {
+    return (this.api as Api).getLocation()
+  }
+
+  _init = (api: Api): void => {
+    if (this.api) {
+      return
+    }
+    this.api = api
+    this.behavior = new ScrollBehavior<Location, Location>({
+      addTransitionHook: (hook: TransitionHook) => {
+        const hookIndex = this.nextHookIndex
+        this.nextHookIndex += 1
+        this.transitionHooks[hookIndex] = hook
         return () => {
-          delete transitionHooks[hookIndex]
+          delete this.transitionHooks[hookIndex]
         }
       },
       stateStorage: {
         save: (location, key, value) => {
           window.sessionStorage.setItem(
-            makeStorageKey(location, key),
+            RestoreScroll._makeStorageKey(location, key),
             JSON.stringify(value),
           )
         },
         read: (location, key) => {
           const savedItem = window.sessionStorage.getItem(
-            makeStorageKey(location, key),
+            RestoreScroll._makeStorageKey(location, key),
           )
+          if (savedItem === null) {
+            return null
+          }
           try {
             return JSON.parse(savedItem)
           } catch {
@@ -81,12 +76,47 @@ const createScrollBehavior = (api, options) => {
           }
         },
       },
-      getCurrentLocation: () => api.getLocation().key,
-    }),
+      getCurrentLocation: () => this._getCurrentLocation(),
+      shouldUpdateScroll: this.options.shouldUpdateScroll,
+    })
+  }
+
+  saveScroll: Middleware = (api: Api) => {
+    if (isServer()) {
+      return (_request, next) => next()
+    }
+    this._init(api)
+    return (_request, next) => {
+      Object.keys(this.transitionHooks).forEach((hookIndex) => {
+        this.transitionHooks[hookIndex]()
+      })
+      return next()
+    }
+  }
+
+  restoreScroll: Middleware = (api: Api) => {
+    if (isServer()) {
+      return (_request, next) => next()
+    }
+    this._init(api)
+    return (_request, next) => {
+      ;(this.behavior as ScrollBehavior<Location, Location>).updateScroll(
+        this._getPrevLocation(),
+        this._getCurrentLocation(),
+      )
+      return next()
+    }
+  }
+
+  updateScroll = (): void => {
+    if (!this.behavior) {
+      throw Error(
+        'Cannot call updateScroll before initialising restoreScroll or saveScroll middlewares',
+      )
+    }
+    this.behavior.updateScroll(
+      this._getCurrentLocation(),
+      this._getCurrentLocation(),
+    )
   }
 }
-
-const makeStorageKey = (
-  locationKey: string,
-  scrollBehaviorKey: string | null,
-) => `@@rudy-restore-scroll/${locationKey}/${JSON.stringify(scrollBehaviorKey)}`
