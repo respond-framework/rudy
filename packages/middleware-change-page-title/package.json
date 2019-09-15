@@ -36,5 +36,8 @@
   },
   "dependencies": {
     "@respond-framework/utils": "^0.1.1-test.1"
+  },
+  "peerDependencies": {
+    "@respond-framework/rudy": "^0.1.1-test.4"
   }
 }
