@@ -1,7 +1,7 @@
 // @flow
 import qs from 'qs'
 import { createSelector } from '@respond-framework/utils'
-import middlewareScrollBehavior from '@respond-framework/middleware-restore-scroll'
+import RestoreScroll from '@respond-framework/middleware-restore-scroll'
 import type {
   Options,
   Store,
@@ -50,7 +50,7 @@ export default (
   } = options
 
   if (!middlewares) {
-    const scrollRestorer = middlewareScrollBehavior()
+    const scrollRestorer = new RestoreScroll()
     middlewares = [
       serverRedirect, // short-circuiting middleware
       anonymousThunk,
