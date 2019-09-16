@@ -3,12 +3,12 @@ import createSelector from '../src/createSelector'
 describe('createSelector', () => {
   test('Returns undefined if the state is undefined', async () => {
     const selector = createSelector('test name')
-    expect(selector()).toStrictEqual(undefined)
+    expect(selector()).toBeUndefined()
   })
 
   test('Returns undefined if the state is null', async () => {
     const selector = createSelector('test name')
-    expect(selector(null)).toStrictEqual(undefined)
+    expect(selector(null)).toBeUndefined()
   })
 
   test('Returns the key for the name if no key/selector is provided', async () => {

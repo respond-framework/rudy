@@ -1,5 +1,9 @@
 import isServer from '../src/isServer'
 
+// Not sure if there are published types for this
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const global: any
+
 describe('isServer', () => {
   test('Returns true when window is not defined', async () => {
     expect(isServer()).toStrictEqual(true)
