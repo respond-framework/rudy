@@ -52,6 +52,14 @@ module.exports = {
       node: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
       },
+      webpack: {
+        config: {
+          resolve: {
+            extensions: ['.ts', '.tsx', '.js', '.jsx'],
+            mainFields: ['rudy-src-main'],
+          },
+        },
+      },
     },
     'import/extensions': ['.ts', '.tsx', '.js', '.jsx'],
     'import/parsers': {
