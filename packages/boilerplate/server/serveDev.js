@@ -1,7 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 import 'source-map-support/register'
-import '@babel/polyfill'
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 import path from 'path'
 import express from 'express'
 import favicon from 'serve-favicon'
