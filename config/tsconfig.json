@@ -4,7 +4,7 @@
     "target": "ES6" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */,
     "module": "ES2015",
     "jsx": "preserve" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */,
-    "noEmit": true /* Do not emit outputs. */,
+    "emitDeclarationOnly": true,
     "declarationMap": true,
     "listEmittedFiles": true,
     "declaration": true,
@@ -20,9 +20,17 @@
 
     /* Module Resolution Options */
     "moduleResolution": "node" /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */,
-    "baseUrl": "../packages",
+    "baseUrl": "..",
+
+    "composite": true,
     "paths": {
       "@respond-framework/*": ["*/src"]
     }
-  }
+  },
+  "references": [
+    { "path": "../packages/middleware-restore-scroll" },
+    { "path": "../packages/rudy" },
+    { "path": "../packages/utils" },
+    { "path": "../packages/utils/tests" }
+  ]
 }
