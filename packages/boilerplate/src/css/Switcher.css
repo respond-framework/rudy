@@ -2,7 +2,6 @@
   position: relative;
   margin: 0 10px;
   height: calc(100vh - 20px);
-  overflow: hidden;
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
