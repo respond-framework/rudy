@@ -1,5 +1,75 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`reset(actions) afterEnter:  - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 9,
+}
+`;
+
+exports[`reset(actions) afterEnter:  - historyState 2`] = `
+Object {
+  "id": "345678",
+  "index": 8,
+}
+`;
+
+exports[`reset(actions) afterEnter:  - historyState 3`] = `
+Object {
+  "id": "345678",
+  "index": 7,
+}
+`;
+
+exports[`reset(actions) afterEnter:  - historyState 4`] = `
+Object {
+  "id": "345678",
+  "index": 6,
+}
+`;
+
+exports[`reset(actions) afterEnter:  - historyState 5`] = `
+Object {
+  "id": "345678",
+  "index": 5,
+}
+`;
+
+exports[`reset(actions) afterEnter:  - historyState 6`] = `
+Object {
+  "id": "345678",
+  "index": 4,
+}
+`;
+
+exports[`reset(actions) afterEnter:  - historyState 7`] = `
+Object {
+  "id": "345678",
+  "index": 3,
+}
+`;
+
+exports[`reset(actions) afterEnter:  - historyState 8`] = `
+Object {
+  "id": "345678",
+  "index": 2,
+}
+`;
+
+exports[`reset(actions) afterEnter:  - historyState 9`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
+exports[`reset(actions) afterEnter:  - historyState 10`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
+
 exports[`reset(actions) afterEnter:  - response 1`] = `
 Object {
   "basename": "",
@@ -5164,6 +5234,13 @@ exports[`reset(actions) afterEnter:  - windowLocation 9`] = `"/second?hell=yea#w
 
 exports[`reset(actions) afterEnter:  - windowLocation 10`] = `"/base/bar#yolo"`;
 
+exports[`reset(actions) afterEnter: {"type":"MAIN"} - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 10,
+}
+`;
+
 exports[`reset(actions) afterEnter: {"type":"MAIN"} - response 1`] = `
 Object {
   "basename": "",
@@ -5707,6 +5784,76 @@ Object {
 exports[`reset(actions) afterEnter: {"type":"MAIN"} - title 1`] = `"ELEVENTH"`;
 
 exports[`reset(actions) afterEnter: {"type":"MAIN"} - windowLocation 1`] = `"/eleventh"`;
+
+exports[`reset(actions) beforeEnter:  - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 9,
+}
+`;
+
+exports[`reset(actions) beforeEnter:  - historyState 2`] = `
+Object {
+  "id": "345678",
+  "index": 8,
+}
+`;
+
+exports[`reset(actions) beforeEnter:  - historyState 3`] = `
+Object {
+  "id": "345678",
+  "index": 7,
+}
+`;
+
+exports[`reset(actions) beforeEnter:  - historyState 4`] = `
+Object {
+  "id": "345678",
+  "index": 6,
+}
+`;
+
+exports[`reset(actions) beforeEnter:  - historyState 5`] = `
+Object {
+  "id": "345678",
+  "index": 5,
+}
+`;
+
+exports[`reset(actions) beforeEnter:  - historyState 6`] = `
+Object {
+  "id": "345678",
+  "index": 4,
+}
+`;
+
+exports[`reset(actions) beforeEnter:  - historyState 7`] = `
+Object {
+  "id": "345678",
+  "index": 3,
+}
+`;
+
+exports[`reset(actions) beforeEnter:  - historyState 8`] = `
+Object {
+  "id": "345678",
+  "index": 2,
+}
+`;
+
+exports[`reset(actions) beforeEnter:  - historyState 9`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
+exports[`reset(actions) beforeEnter:  - historyState 10`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
 
 exports[`reset(actions) beforeEnter:  - response 1`] = `
 Object {
@@ -10872,6 +11019,13 @@ exports[`reset(actions) beforeEnter:  - windowLocation 9`] = `"/second?hell=yea#
 
 exports[`reset(actions) beforeEnter:  - windowLocation 10`] = `"/base/bar#yolo"`;
 
+exports[`reset(actions) beforeEnter: {"type":"MAIN"} - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 10,
+}
+`;
+
 exports[`reset(actions) beforeEnter: {"type":"MAIN"} - response 1`] = `
 Object {
   "basename": "",
@@ -11415,6 +11569,76 @@ Object {
 exports[`reset(actions) beforeEnter: {"type":"MAIN"} - title 1`] = `"ELEVENTH"`;
 
 exports[`reset(actions) beforeEnter: {"type":"MAIN"} - windowLocation 1`] = `"/eleventh"`;
+
+exports[`reset(actions) pathlessRoute:  - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 9,
+}
+`;
+
+exports[`reset(actions) pathlessRoute:  - historyState 2`] = `
+Object {
+  "id": "345678",
+  "index": 8,
+}
+`;
+
+exports[`reset(actions) pathlessRoute:  - historyState 3`] = `
+Object {
+  "id": "345678",
+  "index": 7,
+}
+`;
+
+exports[`reset(actions) pathlessRoute:  - historyState 4`] = `
+Object {
+  "id": "345678",
+  "index": 6,
+}
+`;
+
+exports[`reset(actions) pathlessRoute:  - historyState 5`] = `
+Object {
+  "id": "345678",
+  "index": 5,
+}
+`;
+
+exports[`reset(actions) pathlessRoute:  - historyState 6`] = `
+Object {
+  "id": "345678",
+  "index": 4,
+}
+`;
+
+exports[`reset(actions) pathlessRoute:  - historyState 7`] = `
+Object {
+  "id": "345678",
+  "index": 3,
+}
+`;
+
+exports[`reset(actions) pathlessRoute:  - historyState 8`] = `
+Object {
+  "id": "345678",
+  "index": 2,
+}
+`;
+
+exports[`reset(actions) pathlessRoute:  - historyState 9`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
+exports[`reset(actions) pathlessRoute:  - historyState 10`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
 
 exports[`reset(actions) pathlessRoute:  - response 1`] = `
 Object {
@@ -16579,6 +16803,13 @@ exports[`reset(actions) pathlessRoute:  - windowLocation 8`] = `"/third"`;
 exports[`reset(actions) pathlessRoute:  - windowLocation 9`] = `"/second?hell=yea#works"`;
 
 exports[`reset(actions) pathlessRoute:  - windowLocation 10`] = `"/base/bar#yolo"`;
+
+exports[`reset(actions) pathlessRoute: {"type":"MAIN"} - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 10,
+}
+`;
 
 exports[`reset(actions) pathlessRoute: {"type":"MAIN"} - response 1`] = `
 Object {

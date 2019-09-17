@@ -1,5 +1,75 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`reset(actions) afterEnter on load:  - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 9,
+}
+`;
+
+exports[`reset(actions) afterEnter on load:  - historyState 2`] = `
+Object {
+  "id": "345678",
+  "index": 8,
+}
+`;
+
+exports[`reset(actions) afterEnter on load:  - historyState 3`] = `
+Object {
+  "id": "345678",
+  "index": 7,
+}
+`;
+
+exports[`reset(actions) afterEnter on load:  - historyState 4`] = `
+Object {
+  "id": "345678",
+  "index": 6,
+}
+`;
+
+exports[`reset(actions) afterEnter on load:  - historyState 5`] = `
+Object {
+  "id": "345678",
+  "index": 5,
+}
+`;
+
+exports[`reset(actions) afterEnter on load:  - historyState 6`] = `
+Object {
+  "id": "345678",
+  "index": 4,
+}
+`;
+
+exports[`reset(actions) afterEnter on load:  - historyState 7`] = `
+Object {
+  "id": "345678",
+  "index": 3,
+}
+`;
+
+exports[`reset(actions) afterEnter on load:  - historyState 8`] = `
+Object {
+  "id": "345678",
+  "index": 2,
+}
+`;
+
+exports[`reset(actions) afterEnter on load:  - historyState 9`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
+exports[`reset(actions) afterEnter on load:  - historyState 10`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
+
 exports[`reset(actions) afterEnter on load:  - response 1`] = `
 Object {
   "basename": "",
@@ -5183,6 +5253,76 @@ exports[`reset(actions) afterEnter on load:  - windowLocation 8`] = `"/third"`;
 exports[`reset(actions) afterEnter on load:  - windowLocation 9`] = `"/second?hell=yea#works"`;
 
 exports[`reset(actions) afterEnter on load:  - windowLocation 10`] = `"/base/bar#yolo"`;
+
+exports[`reset(actions) beforeEnter  on load:  - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 9,
+}
+`;
+
+exports[`reset(actions) beforeEnter  on load:  - historyState 2`] = `
+Object {
+  "id": "345678",
+  "index": 8,
+}
+`;
+
+exports[`reset(actions) beforeEnter  on load:  - historyState 3`] = `
+Object {
+  "id": "345678",
+  "index": 7,
+}
+`;
+
+exports[`reset(actions) beforeEnter  on load:  - historyState 4`] = `
+Object {
+  "id": "345678",
+  "index": 6,
+}
+`;
+
+exports[`reset(actions) beforeEnter  on load:  - historyState 5`] = `
+Object {
+  "id": "345678",
+  "index": 5,
+}
+`;
+
+exports[`reset(actions) beforeEnter  on load:  - historyState 6`] = `
+Object {
+  "id": "345678",
+  "index": 4,
+}
+`;
+
+exports[`reset(actions) beforeEnter  on load:  - historyState 7`] = `
+Object {
+  "id": "345678",
+  "index": 3,
+}
+`;
+
+exports[`reset(actions) beforeEnter  on load:  - historyState 8`] = `
+Object {
+  "id": "345678",
+  "index": 2,
+}
+`;
+
+exports[`reset(actions) beforeEnter  on load:  - historyState 9`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
+exports[`reset(actions) beforeEnter  on load:  - historyState 10`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
 
 exports[`reset(actions) beforeEnter  on load:  - response 1`] = `
 Object {

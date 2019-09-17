@@ -133,6 +133,20 @@ Object {
 }
 `;
 
+exports[`restore history when index === 0:  - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
+exports[`restore history when index === 0:  - historyState 2`] = `
+Object {
+  "id": "345678",
+  "index": 2,
+}
+`;
+
 exports[`restore history when index === 0:  - response 1`] = `
 Object {
   "basename": "",

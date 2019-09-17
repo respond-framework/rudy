@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"push","args":["/second",{"foo":"bar"}]}} - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"push","args":["/second",{"foo":"bar"}]}} - response 1`] = `
 Object {
   "basename": "",

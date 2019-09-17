@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`double pop:  - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
 exports[`double pop:  - response 1`] = `
 Object {
   "basename": "",

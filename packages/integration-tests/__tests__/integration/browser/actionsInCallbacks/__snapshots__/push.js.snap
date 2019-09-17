@@ -8,6 +8,13 @@ exports[`push after enter on load: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] 
 
 exports[`push after enter on load: 1 - routes - REDIRECTED - onComplete 1`] = `1`;
 
+exports[`push after enter on load: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
 exports[`push after enter on load: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
   "location": Object {
@@ -191,6 +198,13 @@ exports[`push after enter on load: firstRoute - /first - 1 - title 1`] = `"REDIR
 
 exports[`push after enter on load: firstRoute - /first - 1 - windowLocation 1`] = `"/redirected"`;
 
+exports[`push after enter: 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 2,
+}
+`;
+
 exports[`push after enter: 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
@@ -339,6 +353,13 @@ Object {
 exports[`push after enter: 1 - title 1`] = `"REDIRECTED"`;
 
 exports[`push after enter: 1 - windowLocation 1`] = `"/redirected"`;
+
+exports[`push after enter: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "@@rudy/345678",
+  "index": 0,
+}
+`;
 
 exports[`push after enter: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -548,6 +569,13 @@ exports[`push before enter on load: 1 - routes - NEVER_USED_PATHLESS - thunk 1`]
 
 exports[`push before enter on load: 1 - routes - REDIRECTED - onComplete 1`] = `1`;
 
+exports[`push before enter on load: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
 exports[`push before enter on load: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
   "location": Object {
@@ -731,6 +759,13 @@ exports[`push before enter on load: firstRoute - /first - 1 - title 1`] = `"REDI
 
 exports[`push before enter on load: firstRoute - /first - 1 - windowLocation 1`] = `"/redirected"`;
 
+exports[`push before enter: 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
 exports[`push before enter: 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
@@ -859,6 +894,13 @@ Object {
 exports[`push before enter: 1 - title 1`] = `"REDIRECTED"`;
 
 exports[`push before enter: 1 - windowLocation 1`] = `"/redirected"`;
+
+exports[`push before enter: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "@@rudy/345678",
+  "index": 0,
+}
+`;
 
 exports[`push before enter: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -1060,6 +1102,13 @@ exports[`push before enter: firstRoute - /first - 1 - title 1`] = `"FIRST"`;
 
 exports[`push before enter: firstRoute - /first - 1 - windowLocation 1`] = `"/"`;
 
+exports[`push in pathlessRoute: 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
 exports[`push in pathlessRoute: 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
@@ -1171,6 +1220,13 @@ Object {
 exports[`push in pathlessRoute: 1 - title 1`] = `"REDIRECTED"`;
 
 exports[`push in pathlessRoute: 1 - windowLocation 1`] = `"/redirected"`;
+
+exports[`push in pathlessRoute: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "@@rudy/345678",
+  "index": 0,
+}
+`;
 
 exports[`push in pathlessRoute: firstRoute - /first - 1 - initial_state 1`] = `
 Object {

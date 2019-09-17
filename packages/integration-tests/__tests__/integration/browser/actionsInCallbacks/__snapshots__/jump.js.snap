@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`jump after enter: 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
+
 exports[`jump after enter: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -209,6 +216,13 @@ exports[`jump after enter: 1 - title 1`] = `"FIRST"`;
 
 exports[`jump after enter: 1 - windowLocation 1`] = `"/"`;
 
+exports[`jump after enter: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "@@rudy/345678",
+  "index": 0,
+}
+`;
+
 exports[`jump after enter: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
   "location": Object {
@@ -409,6 +423,13 @@ exports[`jump after enter: firstRoute - /first - 1 - title 1`] = `"FIRST"`;
 
 exports[`jump after enter: firstRoute - /first - 1 - windowLocation 1`] = `"/"`;
 
+exports[`jump before enter: 1 - historyState 1`] = `
+Object {
+  "id": "@@rudy/345678",
+  "index": 0,
+}
+`;
+
 exports[`jump before enter: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -582,6 +603,13 @@ Object {
 exports[`jump before enter: 1 - title 1`] = `"FIRST"`;
 
 exports[`jump before enter: 1 - windowLocation 1`] = `"/"`;
+
+exports[`jump before enter: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "@@rudy/345678",
+  "index": 0,
+}
+`;
 
 exports[`jump before enter: firstRoute - /first - 1 - initial_state 1`] = `
 Object {

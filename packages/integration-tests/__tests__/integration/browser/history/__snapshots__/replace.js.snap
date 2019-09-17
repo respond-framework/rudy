@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/fourth",{"hey":"yo"}]}} - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/fourth",{"hey":"yo"}]}} - response 1`] = `
 Object {
   "basename": "",
@@ -226,6 +233,13 @@ Object {
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/fourth",{"hey":"yo"}]}} - title 1`] = `"FOURTH"`;
 
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/fourth",{"hey":"yo"}]}} - windowLocation 1`] = `"/fourth"`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/second",{"foo":"bar"}]}} - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
 
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/second",{"foo":"bar"}]}} - response 1`] = `
 Object {

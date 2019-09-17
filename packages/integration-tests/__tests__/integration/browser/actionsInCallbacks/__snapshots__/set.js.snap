@@ -8,6 +8,13 @@ exports[`set after enter on load: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] =
 
 exports[`set after enter on load: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`set after enter on load: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
+
 exports[`set after enter on load: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
   "location": Object {
@@ -195,6 +202,13 @@ exports[`set after enter on load: firstRoute - /first - 1 - title 1`] = `"FIRST"
 
 exports[`set after enter on load: firstRoute - /first - 1 - windowLocation 1`] = `"/?hell=yea"`;
 
+exports[`set after enter: 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
 exports[`set after enter: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -362,6 +376,13 @@ Object {
 exports[`set after enter: 1 - title 1`] = `"SECOND"`;
 
 exports[`set after enter: 1 - windowLocation 1`] = `"/second?hell=yea"`;
+
+exports[`set after enter: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "@@rudy/345678",
+  "index": 0,
+}
+`;
 
 exports[`set after enter: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -571,6 +592,13 @@ exports[`set before enter on load throws error: 1 - routes - NEVER_USED_PATHLESS
 
 exports[`set before enter on load throws error: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`set before enter on load throws error: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "@@rudy/345678",
+  "index": 0,
+}
+`;
+
 exports[`set before enter on load throws error: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
   "location": Object {
@@ -710,6 +738,13 @@ exports[`set before enter on load throws error: firstRoute - /first - 1 - title 
 
 exports[`set before enter on load throws error: firstRoute - /first - 1 - windowLocation 1`] = `"/"`;
 
+exports[`set before enter throws error: {"type":"SECOND"} - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
 exports[`set before enter throws error: {"type":"SECOND"} - response 1`] = `
 Object {
   "error": [Error: [rudy] you can only set state on a previous url before enter],
@@ -825,6 +860,13 @@ Object {
 exports[`set before enter throws error: {"type":"SECOND"} - title 1`] = `"@@rudy/CALL_HISTORY_ERROR"`;
 
 exports[`set before enter throws error: {"type":"SECOND"} - windowLocation 1`] = `"/redirected"`;
+
+exports[`set in pathlessRoute: 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
 
 exports[`set in pathlessRoute: 1 - response 1`] = `
 Object {
@@ -956,6 +998,13 @@ Object {
 exports[`set in pathlessRoute: 1 - title 1`] = `"FIRST"`;
 
 exports[`set in pathlessRoute: 1 - windowLocation 1`] = `"/?hell=yea"`;
+
+exports[`set in pathlessRoute: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "@@rudy/345678",
+  "index": 0,
+}
+`;
 
 exports[`set in pathlessRoute: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -1156,6 +1205,13 @@ Object {
 exports[`set in pathlessRoute: firstRoute - /first - 1 - title 1`] = `"FIRST"`;
 
 exports[`set in pathlessRoute: firstRoute - /first - 1 - windowLocation 1`] = `"/"`;
+
+exports[`setState before enter sets state on prev entry: {"type":"SECOND"} - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 2,
+}
+`;
 
 exports[`setState before enter sets state on prev entry: {"type":"SECOND"} - response 1`] = `
 Object {

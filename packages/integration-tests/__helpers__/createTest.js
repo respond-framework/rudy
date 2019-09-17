@@ -378,6 +378,7 @@ const snapChange = (prefix, res, store, history, opts = {}, initialState) => {
 
   if (opts.testBrowser) {
     expectSessionStorage(prefix)
+    expectHistoryState(prefix)
     expectWindowLocation(prefix)
   }
 }
@@ -403,6 +404,10 @@ const expectTitle = (prefix) => {
 
 const expectSessionStorage = (prefix) => {
   expect(get()).toMatchSnapshot(`${prefix} - sessionStorage`)
+}
+
+const expectHistoryState = (prefix) => {
+  expect(window.history.state).toMatchSnapshot(`${prefix} - historyState`)
 }
 
 const expectWindowLocation = (prefix) => {
