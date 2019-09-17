@@ -182,9 +182,12 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
         return snapChange(++defaultPrefix, res, store, history, opts)
       },
       snap: async (action, prefix = '') => {
-        prefix = prefix || JSON.stringify(action) || 'function'
+        prefix =
+          prefix ||
+          (action && (JSON.stringify(action) || 'function')) ||
+          '<none>'
 
-        const res = await store.dispatch(action)
+        const res = action ? await store.dispatch(action) : null
 
         if (opts.snipesOnly) return res
 

@@ -21,3 +21,25 @@ const haschanged = async (currentUrl, tries = 1) => {
   if (currentUrl !== window.location.href) return
   return haschanged(currentUrl, ++tries)
 }
+
+export const windowHistoryGo = (n) =>
+  new Promise((resolve, reject) => {
+    let timeout
+
+    // Resolve when the resulting popstate event happens
+    const onPopState = () => {
+      clearTimeout(timeout)
+      window.removeEventListener('popstate', onPopState)
+      resolve()
+    }
+    window.addEventListener('popstate', onPopState)
+
+    // Trigger the real go function
+    window.history.go(n)
+
+    // timeout after 1 second
+    timeout = setTimeout(() => {
+      window.removeEventListener('popstate', onPopState)
+      reject()
+    }, 1000)
+  })
