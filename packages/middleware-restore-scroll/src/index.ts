@@ -4,7 +4,11 @@ import ScrollBehavior, {
   ShouldUpdateScroll,
 } from 'scroll-behavior'
 import { isServer } from '@respond-framework/utils'
-import { Api, Middleware, Location } from '@respond-framework/rudy'
+import {
+  Api,
+  Middleware,
+  Location,
+} from '@respond-framework/rudy/src/typescript-types'
 
 type RestoreScrollOptions = {
   shouldUpdateScroll?: ShouldUpdateScroll<Location>

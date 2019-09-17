@@ -1,3 +1,8 @@
+/**
+ * TODO: port the rest of this package to typescript, and export these
+ * types (or a more complete version of them) from the entry point.
+ */
+
 export type Location = {
   hash: string
   key: string
