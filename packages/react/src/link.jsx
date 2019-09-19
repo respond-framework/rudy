@@ -1,4 +1,5 @@
 // @flow
+/* eslint-disable react/prop-types,react/jsx-props-no-spreading */
 
 import React from 'react'
 import { connect } from 'react-redux'

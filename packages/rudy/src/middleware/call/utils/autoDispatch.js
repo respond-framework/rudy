@@ -21,7 +21,7 @@ const isAutoDispatch = (route, options, isOptCb) =>
       ? true
       : options.autoDispatch
     : route.autoDispatch !== undefined
-      ? route.autoDispatch
-      : options.autoDispatch === undefined
-        ? true
-        : options.autoDispatch
+    ? route.autoDispatch
+    : options.autoDispatch === undefined
+    ? true
+    : options.autoDispatch

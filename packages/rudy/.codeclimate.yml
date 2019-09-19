@@ -6,7 +6,7 @@ engines:
     enabled: true
     config:
       languages:
-        - ? javascript
+        - javascript:
   fixme:
     enabled: true
   eslint:

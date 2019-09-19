@@ -21,7 +21,10 @@ describe('createSelector', () => {
   })
 
   test('Returns the given key if a string is provided', async () => {
-    const selector = createSelector('test name', 'test key')
+    const selector = createSelector(
+      'test name',
+      'test key',
+    )
     expect(
       selector({
         'test name': 'test value',
@@ -36,7 +39,10 @@ describe('createSelector', () => {
       'test key': 'test keyed value',
     }
     const providedSelector = jest.fn(() => 'selector return value')
-    const selector = createSelector('test name', providedSelector)
+    const selector = createSelector(
+      'test name',
+      providedSelector,
+    )
     const result = selector(state)
     expect(result).toStrictEqual('selector return value')
     expect(providedSelector).toHaveBeenCalledTimes(1)

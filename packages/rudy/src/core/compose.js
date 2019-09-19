@@ -60,10 +60,10 @@ export default (
               result !== undefined
                 ? result // as below in the standard use-case, this insures last middleware dictates return
                 : res === req.action
-                  ? req.redirect // `transformAction` + `enter` middleware return original action dispatched, but we never want to return that value of the action redirected from
-                  : res !== undefined
-                    ? res
-                    : req.redirect) // usually the result returned will be the result of the pipeline redirected to, but we honor explicit different returns (`res`)
+                ? req.redirect // `transformAction` + `enter` middleware return original action dispatched, but we never want to return that value of the action redirected from
+                : res !== undefined
+                ? res
+                : req.redirect) // usually the result returned will be the result of the pipeline redirected to, but we honor explicit different returns (`res`)
           }
 
           // if a middleware return `false`, the pipeline is terminated and now there is no longer a "pending" route change

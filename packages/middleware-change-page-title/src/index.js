@@ -13,7 +13,10 @@ export default (options) => {
       window.document.title = title
     },
   } = options || {}
-  const selectTitleState = createSelector('title', keyOrSelector)
+  const selectTitleState = createSelector(
+    'title',
+    keyOrSelector,
+  )
 
   return (api) => async (req, next) => {
     const title = selectTitleState(api.getState())

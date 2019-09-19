@@ -72,7 +72,10 @@ export default (
   options.stringifyQuery = options.stringifyQuery || qs.stringify
 
   const routes = formatRoutes(routesInput, formatRoute)
-  const selectLocationState = createSelector('location', location)
+  const selectLocationState = createSelector(
+    'location',
+    location,
+  )
   const history = createSmartHistory(routes, options)
   const { firstAction } = history
   const initialState = createState(firstAction)

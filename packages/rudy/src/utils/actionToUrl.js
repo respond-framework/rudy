@@ -231,8 +231,8 @@ const notFoundUrl = (
   const t: string = hasScene
     ? type
     : routes[`${scene}/NOT_FOUND`] // try to interpret scene-level NOT_FOUND if available (note: links create plain NOT_FOUND actions)
-      ? `${scene}/NOT_FOUND`
-      : 'NOT_FOUND'
+    ? `${scene}/NOT_FOUND`
+    : 'NOT_FOUND'
 
   const p: string = routes[t].path || routes.NOT_FOUND.path || ''
 
