@@ -10,7 +10,7 @@ declare module 'scroll-behavior' {
     context?: Context,
   ) => ScrollTarget | true | false
 
-  type ScrollBehaviorArgs<Loc, Context> = {
+  type ScrollBehaviorArgs<Loc extends { hash?: string, action?: 'PUSH' | string }, Context> = {
     addTransitionHook: (hook: TransitionHook) => () => void
     stateStorage: {
       save: (location: Loc, key: string | null, value: ScrollPosition) => void
