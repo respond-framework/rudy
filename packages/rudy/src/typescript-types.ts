@@ -7,16 +7,30 @@ export interface FluxStandardRoutingAction {
   type: string;
 }
 
-export type Location<Action extends FluxStandardRoutingAction> = {
-  hash: string
-  key: string
-  prev: DispatchedAction<Action> | undefined
-  lastScrollPosition?: [number, number]
+export type LocationEntry<Action extends FluxStandardRoutingAction> = Action & {
+  location: {
+    key: string,
+    scene: string,
+    url: string,
+    pathname: string,
+    search: string,
+  },
 }
 
-export type DispatchedAction<Action extends FluxStandardRoutingAction> = Action & {
-  location: Location<Action>
+export type DispatchedLocation<Action extends FluxStandardRoutingAction> = Action & {
+  prev: LocationEntry<Action> | undefined
+  entries: LocationEntry<Action>[],
+  index: number,
+  length: number,
 }
+
+// A routing action as it is between transformAction and the reducers
+export type DispatchedAction<Action extends FluxStandardRoutingAction> = Action & {
+  location: DispatchedLocation<Action>
+}
+
+// The shape of the location reducer state
+export type Location<Action extends FluxStandardRoutingAction> = Action & DispatchedLocation<Action>
 
 export interface Api<Action extends FluxStandardRoutingAction> {
   getLocation: () => Location<Action>
