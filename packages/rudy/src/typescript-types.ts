@@ -3,21 +3,32 @@
  * types (or a more complete version of them) from the entry point.
  */
 
-export type Location = {
+export interface FluxStandardRoutingAction {
+  type: string;
+}
+
+export type Location<Action extends FluxStandardRoutingAction> = {
   hash: string
   key: string
-  prev: Location | undefined
+  prev: DispatchedAction<Action> | undefined
+  lastScrollPosition?: [number, number]
 }
 
-export interface Api {
-  getLocation: () => Location
+export type DispatchedAction<Action extends FluxStandardRoutingAction> = Action & {
+  location: Location<Action>
 }
 
-export type Request = {}
+export interface Api<Action extends FluxStandardRoutingAction> {
+  getLocation: () => Location<Action>
+}
 
-export type Middleware = (
-  api: Api,
-) => (request: Request, next: () => Promise<any>) => Promise<any>
+export type Request<Action extends FluxStandardRoutingAction> = {
+  action: Action
+}
+
+export type Middleware<Action extends FluxStandardRoutingAction> = (
+  api: Api<Action>,
+) => (request: Request<Action>, next: () => Promise<any>) => Promise<any>
 
 export type Route = {}
 
