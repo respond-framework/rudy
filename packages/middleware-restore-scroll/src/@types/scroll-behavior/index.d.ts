@@ -14,7 +14,7 @@ declare module 'scroll-behavior' {
     addTransitionHook: (hook: TransitionHook) => () => void
     stateStorage: {
       save: (location: Loc, key: string | null, value: ScrollPosition) => void
-      read: (location: Loc, key: string | null) => ScrollPosition
+      read: (location: Loc, key: string | null) => ScrollPosition | null
     }
     getCurrentLocation: () => Loc
     shouldUpdateScroll?: ShouldUpdateScroll<Context>
