@@ -1,56 +1,79 @@
 /* eslint-env browser */
 import ScrollBehavior, {
   TransitionHook,
-  ShouldUpdateScroll,
+  ScrollPosition,
 } from 'scroll-behavior'
 import { isServer } from '@respond-framework/utils'
 import {
   Api,
   Middleware,
-  Location,
+  LocationEntry,
+  FluxStandardRoutingAction,
+  DispatchedAction,
 } from '@respond-framework/rudy/src/typescript-types'
 
-type RestoreScrollOptions = {
-  shouldUpdateScroll?: ShouldUpdateScroll<Location>
+type ShouldUpdateScroll<Entry> =
+  (prevEntry?: Entry, entry?: Entry) => string | boolean | number | [number, number]
+
+type RestoreScrollOptions<Action extends FluxStandardRoutingAction> = {
+  shouldUpdateScroll?: ShouldUpdateScroll<LocationEntry<Action>>
 }
 
-export default class RestoreScroll {
-  options: RestoreScrollOptions
+export default class RestoreScroll<Action extends FluxStandardRoutingAction> {
+  options: RestoreScrollOptions<Action>
 
-  behavior?: ScrollBehavior<Location, Location>
+  behavior?: ScrollBehavior<LocationEntry<Action>, LocationEntry<Action>>
 
-  api?: Api
+  api?: Api<Action>
 
   transitionHooks: { [index: string]: TransitionHook } = {}
 
   nextHookIndex = 0
 
-  static _makeStorageKey = (
-    location: Location | null,
+  _makeStorageKey = (
+    entry: LocationEntry<Action> | null,
     scrollBehaviorKey: string | null,
   ): string =>
     `@@rudy-restore-scroll/${
-      location ? `${location.key}/` : ``
+      entry ? `${entry.location.key}/` : ``
     }${JSON.stringify(scrollBehaviorKey)}`
 
-  constructor(options: RestoreScrollOptions = {}) {
+  saveScrollPosition = (entry: LocationEntry<Action>, key: string | null, value: ScrollPosition): void => {
+    window.sessionStorage.setItem(
+      this._makeStorageKey(entry, key),
+      JSON.stringify(value),
+    )
+  }
+
+  readScrollPosition = (entry: LocationEntry<Action>, key: string | null): ScrollPosition | null => {
+    const savedItem = window.sessionStorage.getItem(
+      this._makeStorageKey(entry, key),
+    )
+    if (savedItem === null) {
+      return null
+    }
+    try {
+      return JSON.parse(savedItem)
+    } catch {
+      return null
+    }
+  }
+
+  constructor(options: RestoreScrollOptions<Action> = {}) {
     this.options = options
   }
 
-  _getCurrentLocation = (): Location => {
-    return (this.api as Api).getLocation()
+  _getLocationInHistory = (n: number): LocationEntry<Action> | undefined => {
+    const location = (this.api as Api<Action>).getLocation()
+    return location.entries[location.index + n]
   }
 
-  _getPrevLocation = (): Location | undefined => {
-    return (this.api as Api).getLocation()
-  }
-
-  _init = (api: Api): void => {
+  _init = (api: Api<Action>): void => {
     if (this.api) {
       return
     }
     this.api = api
-    this.behavior = new ScrollBehavior<Location, Location>({
+    this.behavior = new ScrollBehavior<LocationEntry<Action>, LocationEntry<Action>>({
       addTransitionHook: (hook: TransitionHook) => {
         const hookIndex = this.nextHookIndex
         this.nextHookIndex += 1
@@ -60,37 +83,34 @@ export default class RestoreScroll {
         }
       },
       stateStorage: {
-        save: (location, key, value) => {
-          window.sessionStorage.setItem(
-            RestoreScroll._makeStorageKey(location, key),
-            JSON.stringify(value),
-          )
-        },
-        read: (location, key) => {
-          const savedItem = window.sessionStorage.getItem(
-            RestoreScroll._makeStorageKey(location, key),
-          )
-          if (savedItem === null) {
-            return null
-          }
-          try {
-            return JSON.parse(savedItem)
-          } catch {
-            return null
-          }
-        },
+        save: this.saveScrollPosition,
+        read: this.readScrollPosition,
       },
-      getCurrentLocation: () => this._getCurrentLocation(),
-      shouldUpdateScroll: this.options.shouldUpdateScroll,
+      getCurrentLocation: () => this._getLocationInHistory(0) as LocationEntry<Action>,
+      shouldUpdateScroll: (prevEntry, entry) => {
+        if (!this.options.shouldUpdateScroll) {
+          return true; // default behaviour
+        }
+        const requested = this.options.shouldUpdateScroll(prevEntry, entry)
+        if (typeof requested === 'number') {
+          const entryToRestore = this._getLocationInHistory(requested)
+          return entryToRestore ? this.readScrollPosition(entryToRestore, null) || true : true
+        }
+        return requested
+      },
     })
   }
 
-  saveScroll: Middleware = (api: Api) => {
+  saveScroll: Middleware<DispatchedAction<Action>> = (api: Api<DispatchedAction<Action>>) => {
     if (isServer()) {
       return (_request, next) => next()
     }
     this._init(api)
-    return (_request, next) => {
+    return ({ action: { location: { prev } } }, next) => {
+      if (!prev) {
+        // If there is no previous location, there is no position to save
+        return next()
+      }
       Object.keys(this.transitionHooks).forEach((hookIndex) => {
         this.transitionHooks[hookIndex]()
       })
@@ -98,15 +118,15 @@ export default class RestoreScroll {
     }
   }
 
-  restoreScroll: Middleware = (api: Api) => {
+  restoreScroll: Middleware<Action> = (api: Api<Action>) => {
     if (isServer()) {
       return (_request, next) => next()
     }
     this._init(api)
     return (_request, next) => {
-      ;(this.behavior as ScrollBehavior<Location, Location>).updateScroll(
-        this._getPrevLocation(),
-        this._getCurrentLocation(),
+      ;(this.behavior as ScrollBehavior<LocationEntry<Action>, LocationEntry<Action>>).updateScroll(
+        this._getLocationInHistory(-1),
+        this._getLocationInHistory(0),
       )
       return next()
     }
@@ -119,8 +139,8 @@ export default class RestoreScroll {
       )
     }
     this.behavior.updateScroll(
-      this._getCurrentLocation(),
-      this._getCurrentLocation(),
+      this._getLocationInHistory(0),
+      this._getLocationInHistory(0),
     )
   }
 }
