@@ -12,11 +12,11 @@ import {
   DispatchedAction,
 } from '@respond-framework/rudy/src/typescript-types'
 
-type ShouldUpdateScroll<Entry> =
-  (prevEntry?: Entry, entry?: Entry) => string | boolean | number | [number, number]
+export type ShouldUpdateScroll<Action extends FluxStandardRoutingAction> =
+  (prevEntry?: LocationEntry<Action>, entry?: LocationEntry<Action>) => string | boolean | number | [number, number]
 
-type RestoreScrollOptions<Action extends FluxStandardRoutingAction> = {
-  shouldUpdateScroll?: ShouldUpdateScroll<LocationEntry<Action>>
+export type RestoreScrollOptions<Action extends FluxStandardRoutingAction> = {
+  shouldUpdateScroll?: ShouldUpdateScroll<Action>
 }
 
 export default class RestoreScroll<Action extends FluxStandardRoutingAction> {
