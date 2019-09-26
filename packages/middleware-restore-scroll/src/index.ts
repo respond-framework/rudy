@@ -10,10 +10,11 @@ import {
   LocationEntry,
   FluxStandardRoutingAction,
   DispatchedAction,
+  Request
 } from '@respond-framework/rudy/src/typescript-types'
 
 export type ShouldUpdateScroll<Action extends FluxStandardRoutingAction> =
-  (prevEntry?: LocationEntry<Action>, entry?: LocationEntry<Action>) => string | boolean | number | [number, number]
+  (request: Request<Action>) => string | boolean | number | [number, number]
 
 export type RestoreScrollOptions<Action extends FluxStandardRoutingAction> = {
   shouldUpdateScroll?: ShouldUpdateScroll<Action>
@@ -22,7 +23,9 @@ export type RestoreScrollOptions<Action extends FluxStandardRoutingAction> = {
 export default class RestoreScroll<Action extends FluxStandardRoutingAction> {
   options: RestoreScrollOptions<Action>
 
-  behavior?: ScrollBehavior<LocationEntry<Action>, LocationEntry<Action>>
+  behavior?: ScrollBehavior<LocationEntry<Action>, Request<Action>, never>
+
+  lastRequest?: Request<Action>
 
   api?: Api<Action>
 
@@ -63,6 +66,11 @@ export default class RestoreScroll<Action extends FluxStandardRoutingAction> {
     this.options = options
   }
 
+  _getCurrentLocation = (): LocationEntry<Action> => {
+    const location = (this.api as Api<Action>).getLocation()
+    return location.entries[location.index]
+  }
+
   _getLocationInHistory = (n: number): LocationEntry<Action> | undefined => {
     const location = (this.api as Api<Action>).getLocation()
     return location.entries[location.index + n]
@@ -73,7 +81,7 @@ export default class RestoreScroll<Action extends FluxStandardRoutingAction> {
       return
     }
     this.api = api
-    this.behavior = new ScrollBehavior<LocationEntry<Action>, LocationEntry<Action>>({
+    this.behavior = new ScrollBehavior<LocationEntry<Action>, Request<Action>, never>({
       addTransitionHook: (hook: TransitionHook) => {
         const hookIndex = this.nextHookIndex
         this.nextHookIndex += 1
@@ -86,12 +94,13 @@ export default class RestoreScroll<Action extends FluxStandardRoutingAction> {
         save: this.saveScrollPosition,
         read: this.readScrollPosition,
       },
-      getCurrentLocation: () => this._getLocationInHistory(0) as LocationEntry<Action>,
-      shouldUpdateScroll: (prevEntry, entry) => {
+      getCurrentLocation: () => this._getCurrentLocation(),
+      shouldUpdateScroll: (request) => {
         if (!this.options.shouldUpdateScroll) {
           return true; // default behaviour
         }
-        const requested = this.options.shouldUpdateScroll(prevEntry, entry)
+        // The current entry is always available
+        const requested = this.options.shouldUpdateScroll(request)
         if (typeof requested === 'number') {
           const entryToRestore = this._getLocationInHistory(requested)
           return entryToRestore ? this.readScrollPosition(entryToRestore, null) || true : true
@@ -106,7 +115,9 @@ export default class RestoreScroll<Action extends FluxStandardRoutingAction> {
       return (_request, next) => next()
     }
     this._init(api)
-    return ({ action: { location: { prev } } }, next) => {
+    return (request, next) => {
+      this.lastRequest = request
+      const { action: { location: { prev } } } = request
       if (!prev) {
         // If there is no previous location, there is no position to save
         return next()
@@ -123,11 +134,13 @@ export default class RestoreScroll<Action extends FluxStandardRoutingAction> {
       return (_request, next) => next()
     }
     this._init(api)
-    return (_request, next) => {
-      ;(this.behavior as ScrollBehavior<LocationEntry<Action>, LocationEntry<Action>>).updateScroll(
-        this._getLocationInHistory(-1),
-        this._getLocationInHistory(0),
-      )
+    return (request, next) => {
+      if (!this.behavior) {
+        throw Error(
+          'Cannot call restoreScroll before initialising restoreScroll or saveScroll middlewares',
+        )
+      }
+      this.behavior.updateScroll(request)
       return next()
     }
   }
@@ -138,9 +151,6 @@ export default class RestoreScroll<Action extends FluxStandardRoutingAction> {
         'Cannot call updateScroll before initialising restoreScroll or saveScroll middlewares',
       )
     }
-    this.behavior.updateScroll(
-      this._getLocationInHistory(0),
-      this._getLocationInHistory(0),
-    )
+    this.behavior.updateScroll(this.lastRequest)
   }
 }
