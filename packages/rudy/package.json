@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "module": "es/index.js",
   "rudy-src-main": "src/index.js",
-  "types": "ts/index.d.ts",
+  "types": "ts/typescript-types.d.ts",
   "files": [
     "dist",
     "es",
