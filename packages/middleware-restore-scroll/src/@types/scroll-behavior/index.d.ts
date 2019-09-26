@@ -5,30 +5,35 @@ declare module 'scroll-behavior' {
 
   export type ScrollTarget = string | ScrollPosition
 
-  export type ShouldUpdateScroll<Context> = (
-    prevContext?: Context,
-    context?: Context,
+  export type ShouldUpdateScroll<PrevContext, Context> = (
+    prevContext: PrevContext,
+    context: Context,
   ) => ScrollTarget | true | false
 
-  type ScrollBehaviorArgs<Loc extends { hash?: string, action?: 'PUSH' | string }, Context> = {
+  export type ShouldUpdateElementScroll<PrevContext, Context> = (
+    prevContext: PrevContext | null,
+    context: Context,
+  ) => ScrollTarget | true | false
+
+  type ScrollBehaviorArgs<Loc extends { hash?: string, action?: 'PUSH' | string }, PrevContext=Location, Context=PrevContext> = {
     addTransitionHook: (hook: TransitionHook) => () => void
     stateStorage: {
       save: (location: Loc, key: string | null, value: ScrollPosition) => void
       read: (location: Loc, key: string | null) => ScrollPosition | null
     }
     getCurrentLocation: () => Loc
-    shouldUpdateScroll?: ShouldUpdateScroll<Context>
+    shouldUpdateScroll?: ShouldUpdateScroll<PrevContext, Context>
   }
 
-  export default class ScrollBehavior<Loc = Location, Context = Location> {
-    constructor(options: ScrollBehaviorArgs<Loc, Context>)
+  export default class ScrollBehavior<Loc = Location, PrevContext = Location | null, Context = Location> {
+    constructor(options: ScrollBehaviorArgs<Loc, PrevContext, Context>)
 
-    updateScroll: (prevContext?: Context, context?: Context) => void
+    updateScroll: (prevContext?: PrevContext, context?: Context) => void
 
     registerElement: (
       key: string,
       element: HTMLElement,
-      shouldUpdateScroll: ShouldUpdateScroll<Context>,
+      shouldUpdateScroll: ShouldUpdateElementScroll<PrevContext, Context>,
       context: Context,
     ) => void
 
