@@ -16,6 +16,7 @@ lerna-debug.log
 *.log
 *.ico
 *.sh
+*.tsbuildinfo
 
 # Ignored dirs in sub packages
 cjs/
@@ -24,4 +25,5 @@ dist/
 buildClient/
 buildServer/
 flow-typed/
+ts/
 CHANGELOG.md

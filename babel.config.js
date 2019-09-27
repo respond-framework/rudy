@@ -6,6 +6,16 @@ module.exports = (api) => {
   const test = api.env('test')
   const esModules = api.caller(supportsStaticEsm) || envEs
   return {
+    overrides: [
+      {
+        test: /\.tsx?$/,
+        presets: ['@babel/preset-typescript'],
+      },
+      {
+        test: /\.jsx?$/,
+        presets: ['@babel/preset-flow'],
+      },
+    ],
     presets: [
       [
         '@babel/preset-env',
@@ -15,8 +25,7 @@ module.exports = (api) => {
         },
       ],
       '@babel/preset-react',
-      '@babel/preset-flow',
-    ],
+    ].filter(Boolean),
     plugins: [
       '@babel/plugin-proposal-object-rest-spread',
       '@babel/plugin-proposal-class-properties',
