@@ -3090,7 +3090,7 @@ chardet@^0.7.0:
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
 
-chokidar@^2.0.0, chokidar@^2.0.2:
+chokidar@^2.0.2:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-2.0.4.tgz#356ff4e2b0e8e43e322d18a372460bbcf3accd26"
   integrity sha512-z9n7yt9rOvIJrMhvDtDictKrkFHeihkNl6uWMmZlmL6tJtX9Cs+87oK+teBx+JIgzvbX3yZHT3eF8vpbDxHJXQ==
@@ -4807,17 +4807,6 @@ flow-bin@^0.78.0:
   resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.78.0.tgz#df9fe7f9c9a2dfaff39083949fe2d831b41627b7"
   integrity sha512-LV55tE+ItkC9HQAbEK+VxpBe54Ryp/dj4q9KmqDIfhV7mtP+hbvc/1AUf/AaWFIve3eURO0cxoGN4ZQQ3o2HTg==
 
-flow-copy-source@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/flow-copy-source/-/flow-copy-source-2.0.2.tgz#096e579a9bb63a38afc5d4dd68ac847a5be27594"
-  integrity sha512-IHKgy45Q+Xs7UanUZyFFJae/ubMKtzj0dU4vs1YoqlfKl2wzLTaqehyTpjqO4vLAnL48yGvLfnttncX5Utn/4g==
-  dependencies:
-    chokidar "^2.0.0"
-    fs-extra "^7.0.0"
-    glob "^7.0.0"
-    kefir "^3.7.3"
-    yargs "^12.0.1"
-
 flush-write-stream@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/flush-write-stream/-/flush-write-stream-1.1.1.tgz#8dd7d873a1babc207d94ead0c2e0e44276ebf2e8"
@@ -6417,13 +6406,6 @@ jsx-ast-utils@^2.1.0, jsx-ast-utils@^2.2.1:
   dependencies:
     array-includes "^3.0.3"
     object.assign "^4.1.0"
-
-kefir@^3.7.3:
-  version "3.8.3"
-  resolved "https://registry.yarnpkg.com/kefir/-/kefir-3.8.3.tgz#8e0ab10084ed8a01cbb5d4f7f18a0b859f7b9bd9"
-  integrity sha512-HMxsCDX2IzAU6Oj+7Uex8ysK9rl1OKH7D583CXZ0yjScuqeq+CA34nP+SX2Mx3gqKeriOKPWMaKL04Maw9K2xg==
-  dependencies:
-    symbol-observable "1.0.4"
 
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
   version "3.2.2"
@@ -9752,11 +9734,6 @@ supports-color@^6.0.0, supports-color@^6.1.0:
   integrity sha512-qe1jfm1Mg7Nq/NSh6XE24gPXROEVsWHxC1LIx//XNlD9iw7YZQGjZNjYN7xGaEG6iKdA8EtNFW6R0gjnVXp+wQ==
   dependencies:
     has-flag "^3.0.0"
-
-symbol-observable@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.0.4.tgz#29bf615d4aa7121bdd898b22d4b3f9bc4e2aa03d"
-  integrity sha1-Kb9hXUqnEhvdiYsi1LP5vE4qoD0=
 
 symbol-observable@^1.1.0, symbol-observable@^1.2.0:
   version "1.2.0"
