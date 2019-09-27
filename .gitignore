@@ -8,3 +8,7 @@ dist
 
 packages/*/cjs/
 packages/*/es/
+packages/*/ts/
+packages/*/tsconfig.tsbuildinfo
+packages/*/tests/ts/
+packages/*/tests/tsconfig.tsbuildinfo
