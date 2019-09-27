@@ -1,6 +1,7 @@
 // @flow
 import qs from 'qs'
 import { createSelector } from '@respond-framework/utils'
+import RestoreScroll from '@respond-framework/middleware-restore-scroll'
 import type {
   Options,
   Store,
@@ -36,22 +37,7 @@ import {
 export default (
   routesInput: RoutesInput = {},
   options: Options = {},
-  middlewares: Array<Function> = [
-    serverRedirect, // short-circuiting middleware
-    anonymousThunk,
-    pathlessRoute('thunk'),
-    transformAction, // pipeline starts here
-    // Hydrate: skip callbacks called on server to produce initialState (beforeEnter, thunk, etc)
-    // Server: don't allow client-centric callbacks (onEnter, onLeave, beforeLeave)
-    call('beforeLeave', { prev: true }),
-    call('beforeEnter', { runOnServer: true }),
-    enter,
-    changePageTitle({ title: options.title }),
-    call('onLeave', { prev: true }),
-    call('onEnter', { runOnHydrate: true }),
-    call('thunk', { cache: true, runOnServer: true }),
-    call('onComplete', { runOnServer: true }),
-  ],
+  middlewares: Array<Function>,
 ) => {
   const {
     location,
@@ -62,6 +48,28 @@ export default (
     createInitialState: createState = createInitialState,
     onError: onErr,
   } = options
+
+  if (!middlewares) {
+    const scrollRestorer = new RestoreScroll()
+    middlewares = [
+      serverRedirect, // short-circuiting middleware
+      anonymousThunk,
+      pathlessRoute('thunk'),
+      transformAction, // pipeline starts here
+      // Hydrate: skip callbacks called on server to produce initialState (beforeEnter, thunk, etc)
+      // Server: don't allow client-centric callbacks (onEnter, onLeave, beforeLeave)
+      call('beforeLeave', { prev: true }),
+      call('beforeEnter', { runOnServer: true }),
+      scrollRestorer.saveScroll,
+      enter,
+      changePageTitle({ title: options.title }),
+      call('onLeave', { prev: true }),
+      call('onEnter', { runOnHydrate: true }),
+      call('thunk', { cache: true, runOnServer: true }),
+      scrollRestorer.restoreScroll,
+      call('onComplete', { runOnServer: true }),
+    ]
+  }
 
   // assign to options so middleware can override them in 1st pass if necessary
   options.shouldTransition = options.shouldTransition || shouldTransition
