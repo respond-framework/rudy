@@ -20,12 +20,11 @@
     "es"
   ],
   "scripts": {
-    "prepare": "yarn run build:cjs && yarn run build:es && yarn run flow-copy",
+    "prepare": "yarn run build:cjs && yarn run build:es",
     "build:cjs": "babel --root-mode upward --source-maps true src -d cjs",
     "build:es": "BABEL_ENV=es babel --root-mode upward --source-maps true src -d es",
     "build": "yarn run build:cjs && yarn run build:es",
     "clean": "rimraf cjs && rimraf es",
-    "flow-copy": "flow-copy-source src cjs && flow-copy-source src es",
     "prettier": "prettier",
     "is-pretty": "prettier --ignore-path=../../config/.prettierignore '**/*' --list-different",
     "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write",

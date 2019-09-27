@@ -60,7 +60,6 @@
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
     "flow-bin": "^0.78.0",
-    "flow-copy-source": "^2.0.2",
     "husky": "^0.14.3",
     "jest": "^24.8.0",
     "jest-cli": "^24.8.0",

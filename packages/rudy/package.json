@@ -10,11 +10,10 @@
     "es"
   ],
   "scripts": {
-    "prepare": "yarn run build:cjs && yarn run build:es && yarn run flow-copy",
+    "prepare": "yarn run build:cjs && yarn run build:es",
     "build:cjs": "babel --root-mode upward --source-maps true src -d dist",
     "build:es": "BABEL_ENV=es babel --root-mode upward --source-maps true src -d es",
     "build": "yarn run build:cjs && yarn run build:es",
-    "flow-copy": "flow-copy-source src dist && flow-copy-source src es",
     "flow-watch": "clear; printf \"\\033[3J\" & npm run flow & fswatch -o ./ | xargs -n1 -I{} sh -c 'clear; printf \"\\033[3J\" && npm run flow'",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "clean": "rimraf dist && rimraf es && rimraf coverage",
