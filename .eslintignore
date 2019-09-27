@@ -5,3 +5,5 @@
 packages/*/cjs/
 packages/*/es/
 packages/*/flow-typed/
+packages/*/ts/
+packages/*/tests/ts/

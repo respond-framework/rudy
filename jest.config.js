@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   transform: {
-    '^.+\\.jsx?$': path.relative(
+    '^.+\\.(j|t)sx?$': path.relative(
       process.cwd(),
       path.resolve(__dirname, './config/babel-jest'),
     ),
