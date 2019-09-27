@@ -46,30 +46,3 @@ const createHistory = (routes, opts) => {
 const { middleware, reducer, firstRoute } = createRouter(routes, { createHistory })
 
 */
-
-export type {
-  RouteInput,
-  Route,
-  Routes,
-  RouteNames,
-  Options,
-  Params,
-  Payload,
-  LocationState,
-  Location,
-  Meta,
-  Action,
-  ReceivedAction,
-  Listener,
-  Listen,
-  Push,
-  GoBack,
-  History as HistoryType,
-  HistoryLocation,
-  Document,
-  Navigators,
-  Navigator,
-  Store,
-  NavigationAction,
-  Router,
-} from './flow-types'
