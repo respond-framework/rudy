@@ -27,5 +27,7 @@
       "@respond-framework/*": ["*/src"]
     }
   },
-  "references": []
+  "references": [
+    { "path": "../packages/types" }
+  ]
 }
