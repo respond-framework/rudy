@@ -4,7 +4,8 @@
   "description": "Shared utilities for rudy",
   "main": "cjs/index.js",
   "module": "es/index.js",
-  "rudy-src-main": "src/index.js",
+  "rudy-src-main": "src/index.ts",
+  "types": "ts/index.d.ts",
   "repository": "https://github.com/respond-framework/rudy/tree/master/packages/utils",
   "contributors": [
     "James Gilmore <james@faceyspacey.com>",
@@ -17,18 +18,20 @@
   },
   "files": [
     "cjs",
-    "es"
+    "es",
+    "ts"
   ],
   "scripts": {
-    "prepare": "yarn run build:cjs && yarn run build:es",
-    "build:cjs": "babel --root-mode upward --source-maps true src -d cjs",
-    "build:es": "BABEL_ENV=es babel --root-mode upward --source-maps true src -d es",
-    "build": "yarn run build:cjs && yarn run build:es",
-    "clean": "rimraf cjs && rimraf es",
+    "prepare": "yarn run clean && yarn run build",
+    "build:cjs": "babel --root-mode upward --source-maps true -x .tsx,.ts,.js,.jsx src -d cjs",
+    "build:es": "babel --root-mode upward --source-maps true -x .tsx,.ts,.js,.jsx --env-name es src -d es",
+    "build:ts": "tsc -b",
+    "build": "yarn run build:cjs && yarn run build:es && yarn run build:ts",
+    "clean": "rimraf cjs es ts *.tsbuildinfo tests/ts tests/*.tsbuildinfo",
     "prettier": "prettier",
     "is-pretty": "prettier --ignore-path=../../config/.prettierignore '**/*' --list-different",
     "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write",
-    "lint": "eslint --config ../../.eslintrc.js --ignore-path ../../.eslintignore --ext=js,jsx .",
+    "lint": "eslint --config ../../.eslintrc.js --ext=ts,tsx,js,jsx --ignore-path ../../.eslintignore --ext=ts,tsx,js,jsx .",
     "test": "jest --config ../../jest.config.js --rootDir ."
   }
 }
