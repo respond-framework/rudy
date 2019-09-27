@@ -28,6 +28,7 @@
     }
   },
   "references": [
+    { "path": "../packages/middleware-restore-scroll" },
     { "path": "../packages/types" },
     { "path": "../packages/utils" },
     { "path": "../packages/utils/tests" }

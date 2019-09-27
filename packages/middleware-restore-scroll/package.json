@@ -1,0 +1,44 @@
+{
+  "name": "@respond-framework/middleware-restore-scroll",
+  "version": "0.1.0-test.1",
+  "description": "Rudy middleware to restore scroll position after navigation",
+  "main": "cjs/index.js",
+  "module": "es/index.js",
+  "rudy-src-main": "src/index.ts",
+  "types": "ts/index.d.ts",
+  "repository": "https://github.com/respond-framework/rudy/tree/master/packages/middleware-restore-scroll",
+  "contributors": [
+    "Daniel Playfair Cal <daniel.playfair.cal@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "cjs",
+    "es",
+    "ts"
+  ],
+  "scripts": {
+    "prepare": "yarn run build",
+    "build:cjs": "babel --root-mode upward --source-maps true -x .tsx,.ts,.js,.jsx src -d cjs",
+    "build:es": "babel --root-mode upward --source-maps true -x .tsx,.ts,.js,.jsx --env-name es src -d es",
+    "build:ts": "tsc -b",
+    "build": "yarn run build:cjs && yarn run build:es && yarn run build:ts",
+    "clean": "rimraf cjs es ts *.tsbuildinfo",
+    "prettier": "prettier",
+    "is-pretty": "prettier --ignore-path=../../config/.prettierignore '**/*' --list-different",
+    "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write"
+  },
+  "dependencies": {
+    "@respond-framework/utils": "^0.1.1-test.1",
+    "scroll-behavior": "git+https://github.com/hedgepigdaniel/scroll-behavior.git#feat/typescript-build"
+  },
+  "peerDependencies": {
+    "@respond-framework/types": "^0.1.1-test.1"
+  },
+  "devDependencies": {
+    "@respond-framework/types": "^0.1.1-test.1"
+  }
+}
