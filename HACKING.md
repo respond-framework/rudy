@@ -31,6 +31,15 @@ the node process. There is a working debug configuration for Visual Studio Code
 in `.vscode/launch.json`. You can use a similar configuration to debug using any
 node.js debugger.
 
+## Type checking
+
+You can check types for the entire project (to the extent that it has been
+ported to typescript) using the following command (in the root directory):
+
+```shell
+yarn run check-types [--watch]
+```
+
 ## Testing Rudy with another app
 
 ### With yarn link
