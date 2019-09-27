@@ -1,5 +1,4 @@
-// @flow
-/* global window */
+/* eslint-env browser */
 
 export default (): boolean =>
   !(
