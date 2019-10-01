@@ -1,4 +1,5 @@
 export { default as transformAction } from './transformAction'
+export { default as preventDoubleDispatch } from './preventDoubleDispatch'
 export { default as enter } from './enter'
 export { default as call, shouldCall } from './call'
 

@@ -26,7 +26,7 @@ export default (initialState: Object, routes: Routes) => (
     return { ...st, ...act, ...location }
   }
 
-  if (r && r.path && (l.url !== st.url || /load|reset/.test(l.kind))) {
+  if (r && r.path) {
     const { type, params, query, state, hash, basename } = action
     const { universal } = st
     const s = { type, params, query, state, hash, basename, universal, ...l }
