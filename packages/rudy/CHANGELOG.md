@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-from-git.0](https://github.com/respond-framework/rudy/tree/master/packages/rudy/compare/@respond-framework/rudy@0.1.1-test.4...@respond-framework/rudy@1.0.0-from-git.0) (2019-10-01)
+
+
+### Bug Fixes
+
+* **history:** delete console.log from BrowserHistory ([#58](https://github.com/respond-framework/rudy/tree/master/packages/rudy/issues/58)) ([4d1a4e4](https://github.com/respond-framework/rudy/tree/master/packages/rudy/commit/4d1a4e4)), closes [#46](https://github.com/respond-framework/rudy/tree/master/packages/rudy/issues/46)
+
+
+### Code Refactoring
+
+* remove flow from builds ([8ab2b41](https://github.com/respond-framework/rudy/tree/master/packages/rudy/commit/8ab2b41))
+
+
+### BREAKING CHANGES
+
+* flow types are no longer available in published
+packages
+
+
+
+
+
 ## [0.1.1-test.4](https://github.com/respond-framework/rudy/tree/master/packages/rudy/compare/@respond-framework/rudy@0.1.1-test.3...@respond-framework/rudy@0.1.1-test.4) (2019-09-10)
 
 

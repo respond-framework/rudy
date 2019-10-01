@@ -1,7 +1,7 @@
 {
   "name": "@respond-framework/boilerplate",
   "description": "Universal Rudy Demo",
-  "version": "0.1.1-test.4",
+  "version": "0.1.1-from-git.0",
   "main": "server/index.js",
   "author": "James Gillmore <james@faceyspacey.com>",
   "license": "MIT",
@@ -21,8 +21,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@respond-framework/react": "^0.1.1-test.3",
-    "@respond-framework/rudy": "^0.1.1-test.4",
+    "@respond-framework/react": "^1.0.0-from-git.0",
+    "@respond-framework/rudy": "^1.0.0-from-git.0",
     "core-js": "^3.2.1",
     "express": "^4.15.2",
     "react": "^16.8.0",

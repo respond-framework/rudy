@@ -1,6 +1,6 @@
 {
   "name": "@respond-framework/rudy",
-  "version": "0.1.1-test.4",
+  "version": "1.0.0-from-git.0",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
   "main": "dist/index.js",
   "module": "es/index.js",
@@ -37,8 +37,8 @@
   },
   "homepage": "https://github.com/respond-framework/rudy",
   "dependencies": {
-    "@respond-framework/middleware-change-page-title": "^1.0.1-test.1",
-    "@respond-framework/utils": "^0.1.1-test.1",
+    "@respond-framework/middleware-change-page-title": "^2.0.0-from-git.0",
+    "@respond-framework/utils": "^1.0.0-from-git.0",
     "path-to-regexp": "^2.1.0",
     "prop-types": "^15.6.0",
     "qs": "^6.5.1",
