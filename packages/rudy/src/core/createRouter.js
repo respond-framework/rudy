@@ -1,7 +1,7 @@
 // @flow
 import qs from 'qs'
-import { createSelector } from '@respond-framework/utils'
-import RestoreScroll from '@respond-framework/scroll-restorer'
+import { createSelector, isServer } from '@respond-framework/utils'
+import defaultCreateRestoreScroll from '@respond-framework/scroll-restorer'
 import type {
   Options,
   Store,
@@ -32,6 +32,8 @@ import {
   call,
   enter,
   changePageTitle,
+  saveScroll,
+  restoreScroll,
 } from '../middleware'
 
 export default (
@@ -47,29 +49,8 @@ export default (
     createReducer: createLocationReducer = createReducer,
     createInitialState: createState = createInitialState,
     onError: onErr,
+    restoreScroll: scrollRestorerCreator = defaultCreateRestoreScroll(),
   } = options
-
-  if (!middlewares) {
-    const scrollRestorer = new RestoreScroll()
-    middlewares = [
-      serverRedirect, // short-circuiting middleware
-      anonymousThunk,
-      pathlessRoute('thunk'),
-      transformAction, // pipeline starts here
-      // Hydrate: skip callbacks called on server to produce initialState (beforeEnter, thunk, etc)
-      // Server: don't allow client-centric callbacks (onEnter, onLeave, beforeLeave)
-      call('beforeLeave', { prev: true }),
-      call('beforeEnter', { runOnServer: true }),
-      scrollRestorer.saveScroll,
-      enter,
-      changePageTitle({ title: options.title }),
-      call('onLeave', { prev: true }),
-      call('onEnter', { runOnHydrate: true }),
-      call('thunk', { cache: true, runOnServer: true }),
-      scrollRestorer.restoreScroll,
-      call('onComplete', { runOnServer: true }),
-    ]
-  }
 
   // assign to options so middleware can override them in 1st pass if necessary
   options.shouldTransition = options.shouldTransition || shouldTransition
@@ -93,6 +74,30 @@ export default (
   const has = (name: string) => wares[name]
   const ctx = { busy: false }
   const api = { routes, history, options, register, has, ctx }
+
+  const scrollRestorer = isServer() ? undefined : scrollRestorerCreator(api)
+  api.scrollRestorer = scrollRestorer
+
+  if (!middlewares) {
+    middlewares = [
+      serverRedirect, // short-circuiting middleware
+      anonymousThunk,
+      pathlessRoute('thunk'),
+      transformAction, // pipeline starts here
+      // Hydrate: skip callbacks called on server to produce initialState (beforeEnter, thunk, etc)
+      // Server: don't allow client-centric callbacks (onEnter, onLeave, beforeLeave)
+      call('beforeLeave', { prev: true }),
+      call('beforeEnter', { runOnServer: true }),
+      saveScroll,
+      enter,
+      changePageTitle({ title: options.title }),
+      call('onLeave', { prev: true }),
+      call('onEnter', { runOnHydrate: true }),
+      call('thunk', { cache: true, runOnServer: true }),
+      restoreScroll,
+      call('onComplete', { runOnServer: true }),
+    ]
+  }
   const onError = call('onError', { runOnServer: true, runOnHydrate: true })(
     api,
   )

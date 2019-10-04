@@ -23,5 +23,8 @@
     "prettier": "prettier",
     "is-pretty": "prettier --ignore-path=../../config/.prettierignore '**/*' --list-different",
     "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write"
+  },
+  "dependencies": {
+    "scroll-behavior": "git+https://github.com/hedgepigdaniel/scroll-behavior.git#feat/typescript-build"
   }
 }

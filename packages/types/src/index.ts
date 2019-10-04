@@ -3,6 +3,8 @@
  * and the outside world.
  */
 
+import { ScrollPosition } from 'scroll-behavior'
+
 /**
  * Standard interface for redux actions which map to URLs/routes
  */
@@ -102,12 +104,14 @@ export type Location<Action extends FluxStandardRoutingAction> = LocationAction<
  */
 export interface Api<Action extends FluxStandardRoutingAction> {
   getLocation: () => Location<Action>
+  scrollRestorer?: ScrollRestorer<Action>
+  options: Options<Action>
 }
 
 /**
  * A Rudy request, associated with the dispatch of an FSRA
  */
-export type Request<Action extends FluxStandardRoutingAction> = {
+export type Request<Action extends FluxStandardRoutingAction> = Api<Action> & {
   /**
    * The redux action corresponding to the request. Before the
    * transformAction middleware, the action is an `Action`, whereas
@@ -150,6 +154,20 @@ export type Middleware<Action extends FluxStandardRoutingAction> = (
   next: () => MiddlewareResult<Action>,
 ) => MiddlewareResult<Action>
 
+export interface ScrollRestorer<Action extends FluxStandardRoutingAction> {
+  saveScroll: Middleware<Action>
+  restoreScroll: Middleware<Action>
+  updateScroll: () => void
+  readScrollPosition: (
+    entry: LocationEntry<Action>,
+    key: string | null,
+  ) => ScrollPosition | null
+}
+
+export type ScrollRestorerCreator<Action extends FluxStandardRoutingAction> = (
+  api: Api<Action>,
+) => ScrollRestorer<Action>
+
 /**
  * Options for a route, corresponding to FSRAs with a specific Redux action type
  */
@@ -158,4 +176,6 @@ export type Route = {}
 /**
  * Global Rudy options
  */
-export type Options = {}
+export type Options<Action extends FluxStandardRoutingAction> = {
+  restoreScroll?: ScrollRestorerCreator<Action>
+}
