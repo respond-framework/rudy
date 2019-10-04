@@ -14,6 +14,8 @@ import {
   ScrollRestorerCreator,
 } from '@respond-framework/types'
 
+export { ScrollPosition } from 'scroll-behavior'
+
 export type ShouldUpdateScroll<
   Action extends FluxStandardRoutingAction
 > = BaseShouldUpdateScroll<Request<Action>, undefined>
