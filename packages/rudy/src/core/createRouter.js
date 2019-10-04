@@ -1,7 +1,7 @@
 // @flow
 import qs from 'qs'
 import { createSelector } from '@respond-framework/utils'
-import RestoreScroll from '@respond-framework/middleware-restore-scroll'
+import RestoreScroll from '@respond-framework/scroll-restorer'
 import type {
   Options,
   Store,

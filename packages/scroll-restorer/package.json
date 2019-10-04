@@ -1,12 +1,12 @@
 {
-  "name": "@respond-framework/middleware-restore-scroll",
+  "name": "@respond-framework/scroll-restorer",
   "version": "0.1.0-test.1",
   "description": "Rudy middleware to restore scroll position after navigation",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "rudy-src-main": "src/index.ts",
   "types": "ts/index.d.ts",
-  "repository": "https://github.com/respond-framework/rudy/tree/master/packages/middleware-restore-scroll",
+  "repository": "https://github.com/respond-framework/rudy/tree/master/packages/scroll-restorer",
   "contributors": [
     "Daniel Playfair Cal <daniel.playfair.cal@gmail.com>"
   ],
