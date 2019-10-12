@@ -27,6 +27,28 @@ export type LocationEntry<Action extends FluxStandardRoutingAction> = Required<
   }
 }
 
+/**
+ * This is a location entry which is the "previous" entry in the case that
+ * there is in fact no previous entry
+ */
+export interface NullLocationEntry
+  extends LocationEntry<FluxStandardRoutingAction> {
+  type: ''
+  params: {}
+  query: {}
+  state: {}
+  hash: ''
+  basename: ''
+  location: {
+    url: ''
+    pathname: ''
+    search: ''
+    key: ''
+    scene: ''
+    index: -1
+  }
+}
+
 export type Kind =
   | 'load'
   | 'push'
@@ -42,7 +64,7 @@ export type Direction = 'forward' | 'backward'
 export type DispatchedLocation<
   Action extends FluxStandardRoutingAction
 > = Required<Action> & {
-  prev: LocationEntry<Action> | undefined
+  prev: LocationEntry<Action> | NullLocationEntry
   entries: LocationEntry<Action>[]
   index: number
   length: number
