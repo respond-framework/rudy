@@ -25,6 +25,6 @@
     "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write"
   },
   "dependencies": {
-    "scroll-behavior": "git+https://github.com/hedgepigdaniel/scroll-behavior.git#feat/typescript-build"
+    "scroll-behavior": "git+https://github.com/hedgepigdaniel/scroll-behavior.git#build/initial-typescript"
   }
 }

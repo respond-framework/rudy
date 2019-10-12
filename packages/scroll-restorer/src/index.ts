@@ -2,7 +2,7 @@
 import ScrollBehavior, {
   TransitionHook,
   ScrollPosition,
-  ShouldUpdateScroll as BaseShouldUpdateScroll,
+  ScrollTarget,
 } from 'scroll-behavior'
 import {
   Api,
@@ -16,23 +16,25 @@ import {
 
 export { ScrollPosition } from 'scroll-behavior'
 
-export type ShouldUpdateScroll<
-  Action extends FluxStandardRoutingAction
-> = BaseShouldUpdateScroll<Request<Action>, undefined>
+export type ShouldUpdateScroll<Action extends FluxStandardRoutingAction> = (
+  request: Request<Action>,
+) => ScrollTarget
 
 export type RestoreScrollOptions<Action extends FluxStandardRoutingAction> = {
   shouldUpdateScroll?: ShouldUpdateScroll<Action>
+}
+
+type Location<Action extends FluxStandardRoutingAction> = LocationEntry<
+  Action
+> & {
+  action: 'unknown'
 }
 
 export class RudyScrollRestorer<Action extends FluxStandardRoutingAction>
   implements ScrollRestorer<Action> {
   private options: RestoreScrollOptions<Action>
 
-  private behavior: ScrollBehavior<
-    LocationEntry<Action>,
-    Request<Action>,
-    never
-  >
+  private behavior: ScrollBehavior<Location<Action>, Request<Action>>
 
   private lastRequest?: Request<Action>
 
@@ -81,11 +83,7 @@ export class RudyScrollRestorer<Action extends FluxStandardRoutingAction>
   constructor(api: Api<Action>, options: RestoreScrollOptions<Action> = {}) {
     this.api = api
     this.options = options
-    this.behavior = new ScrollBehavior<
-      LocationEntry<Action>,
-      Request<Action>,
-      never
-    >({
+    this.behavior = new ScrollBehavior<Location<Action>, Request<Action>>({
       addTransitionHook: (hook: TransitionHook) => {
         const hookIndex = this.nextHookIndex
         this.nextHookIndex += 1
@@ -99,18 +97,21 @@ export class RudyScrollRestorer<Action extends FluxStandardRoutingAction>
         read: this.readScrollPosition,
       },
       getCurrentLocation: () => this.getCurrentLocation(),
-      shouldUpdateScroll: (request) => {
+      shouldUpdateScroll: (_, request) => {
         if (!this.options.shouldUpdateScroll) {
           return true // default behaviour
         }
-        return this.options.shouldUpdateScroll(request, undefined)
+        return this.options.shouldUpdateScroll(request)
       },
     })
   }
 
-  private getCurrentLocation = (): LocationEntry<Action> => {
+  private getCurrentLocation = (): Location<Action> => {
     const location = this.api.getLocation()
-    return location.entries[location.index]
+    return {
+      ...location.entries[location.index],
+      action: 'unknown',
+    }
   }
 
   saveScroll: Middleware<Action> = () => {
@@ -130,13 +131,15 @@ export class RudyScrollRestorer<Action extends FluxStandardRoutingAction>
 
   restoreScroll: Middleware<Action> = () => {
     return (request, next) => {
-      this.behavior.updateScroll(request)
+      this.behavior.updateScroll(null, request)
       return next()
     }
   }
 
   updateScroll = (): void => {
-    this.behavior.updateScroll(this.lastRequest)
+    if (this.lastRequest) {
+      this.behavior.updateScroll(null, this.lastRequest)
+    }
   }
 }
 
