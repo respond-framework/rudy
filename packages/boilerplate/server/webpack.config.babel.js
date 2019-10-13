@@ -60,6 +60,10 @@ export default (env) => {
           use: {
             loader: 'eslint-loader',
             options: {
+              configFile: './.eslintrc.js',
+              ignorePath: '../../.eslintignore',
+              reportUnusedDisableDirectives: true,
+              cache: true,
               emitError: isProd, // Production builds must have no warnings
             },
           },
