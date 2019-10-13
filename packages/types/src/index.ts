@@ -118,12 +118,37 @@ export type Request<Action extends FluxStandardRoutingAction> = {
 }
 
 /**
+ * Resolved return value of a middleware function
+ *
+ * TODO: Fix !45 and allow truthy primitive values to be returned
+ */
+type MiddlewareResolvedResult<Action extends FluxStandardRoutingAction> =
+  | Action
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  | Object
+  | Function
+  | false
+  | ''
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  | any[]
+
+/**
+ * Return value of a middleware function
+ */
+export type MiddlewareResult<Action extends FluxStandardRoutingAction> =
+  | Promise<MiddlewareResolvedResult<Action>>
+  | MiddlewareResolvedResult<Action>
+
+/**
  * Rudy middleware which wraps and optionally changes the behaviour of
  * a request
  */
 export type Middleware<Action extends FluxStandardRoutingAction> = (
   api: Api<Action>,
-) => (request: Request<Action>, next: () => Promise<any>) => Promise<any>
+) => (
+  request: Request<Action>,
+  next: () => MiddlewareResult<Action>,
+) => MiddlewareResult<Action>
 
 /**
  * Options for a route, corresponding to FSRAs with a specific Redux action type
