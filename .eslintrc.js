@@ -81,5 +81,8 @@ module.exports = {
         devDependencies: ['config/**'],
       },
     ],
+    'import/no-unresolved': ['error', {
+      ignore: ['./buildClient/stats.json$', './buildServer/h$']
+    }]
   },
 }

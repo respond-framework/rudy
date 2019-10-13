@@ -4,8 +4,8 @@ import 'regenerator-runtime/runtime'
 import { resolve } from 'path'
 import express from 'express'
 import favicon from 'serve-favicon'
-import clientStats from '../buildClient/stats.json' // eslint-disable-line import/no-unresolved
-import serverRender from '../buildServer/h' // eslint-disable-line import/no-unresolved
+import clientStats from '../buildClient/stats.json'
+import serverRender from '../buildServer/h'
 import makeConfig from './webpack.config.babel'
 
 // ASSUMPTION: the compiled version of this file is one directory under the boilerplate root
