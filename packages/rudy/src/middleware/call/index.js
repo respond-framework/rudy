@@ -1,6 +1,8 @@
 import { enhanceRoutes, shouldCall, createCache, autoDispatch } from './utils'
 import { noOp } from '../../utils'
 
+export * from './utils'
+
 export default (name, config = {}) => (api) => {
   const {
     cache = false,
