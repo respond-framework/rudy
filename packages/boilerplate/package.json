@@ -40,14 +40,5 @@
   "devDependencies": {
     "babel-plugin-universal-import": "^3.0.3",
     "extract-css-chunks-webpack-plugin": "^3.1.3"
-  },
-  "lint-staged": {
-    "linters": {
-      "*.js": [
-        "prettier --single-quote --semi=false --write",
-        "eslint --fix",
-        "git add"
-      ]
-    }
   }
 }
