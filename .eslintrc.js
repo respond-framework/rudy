@@ -78,11 +78,14 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       2,
       {
-        devDependencies: ['config/**'],
+        devDependencies: ['config/**', 'lint-staged.config.js'],
       },
     ],
-    'import/no-unresolved': ['error', {
-      ignore: ['./buildClient/stats.json$', './buildServer/h$']
-    }]
+    'import/no-unresolved': [
+      'error',
+      {
+        ignore: ['./buildClient/stats.json$', './buildServer/h$'],
+      },
+    ],
   },
 }
