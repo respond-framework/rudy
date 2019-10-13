@@ -14,7 +14,7 @@
     "clean": "lerna run clean",
     "test": "lerna run test",
     "build": "lerna run build",
-    "lint": "eslint --ext=ts,tsx,js,jsx --cache --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint --config .eslintrc.js --ext=ts,tsx,js,jsx --cache --report-unused-disable-directives --max-warnings 0",
     "check-types": "tsc -b config/tsconfig.json",
     "is-pretty:root": "prettier '**/*' --list-different",
     "is-pretty": "yarn run is-pretty:root && yarn run lerna run is-pretty",

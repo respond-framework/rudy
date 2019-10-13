@@ -60,7 +60,7 @@ export default (env) => {
           use: {
             loader: 'eslint-loader',
             options: {
-              configFile: './.eslintrc.js',
+              configFile: '../../.eslintrc.js',
               ignorePath: '../../.eslintignore',
               reportUnusedDisableDirectives: true,
               cache: true,
