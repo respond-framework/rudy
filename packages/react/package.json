@@ -24,8 +24,7 @@
     "clean": "rimraf cjs && rimraf es",
     "prettier": "prettier",
     "is-pretty": "prettier --ignore-path=../../config/.prettierignore '**/*' --list-different",
-    "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write",
-    "lint": "eslint --ignore-path ../../.eslintignore --ext=js,jsx ."
+    "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write"
   },
   "dependencies": {
     "resolve-pathname": "^2.2.0"

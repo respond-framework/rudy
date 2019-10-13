@@ -22,7 +22,6 @@
     "clean": "rimraf ts *.tsbuildinfo",
     "prettier": "prettier",
     "is-pretty": "prettier --ignore-path=../../config/.prettierignore '**/*' --list-different",
-    "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write",
-    "lint": "eslint --config ../../.eslintrc.js --ignore-path ../../.eslintignore --ext=ts,tsx,js,jsx ."
+    "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write"
   }
 }

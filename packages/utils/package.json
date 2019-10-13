@@ -31,7 +31,6 @@
     "prettier": "prettier",
     "is-pretty": "prettier --ignore-path=../../config/.prettierignore '**/*' --list-different",
     "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write",
-    "lint": "eslint --config ../../.eslintrc.js --ext=ts,tsx,js,jsx --ignore-path ../../.eslintignore --ext=ts,tsx,js,jsx .",
     "test": "jest --config ../../jest.config.js --rootDir ."
   }
 }

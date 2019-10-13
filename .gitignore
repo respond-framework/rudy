@@ -3,6 +3,8 @@ dist
 .idea
 *.mobi
 
+.eslintcache
+
 **/node_modules/
 **/.DS_Store
 

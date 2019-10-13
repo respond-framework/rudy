@@ -22,7 +22,6 @@ export default (options) => {
     const title = selectTitleState(api.getState())
 
     if (!isServer() && typeof title === 'string') {
-      // eslint-disable-next-line no-undef
       setTitle(title)
     }
 
