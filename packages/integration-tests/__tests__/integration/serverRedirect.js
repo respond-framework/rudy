@@ -42,7 +42,7 @@ createTest(
     const redirectFunc = jest.fn()
     doesRedirect(firstResponse, redirectFunc)
 
-    expect(redirectFunc).toBeCalledWith(302, '/redirected', {
+    expect(redirectFunc).toHaveBeenCalledWith(302, '/redirected', {
       location: { kind: 'replace', status: 302, url: '/redirected' },
       status: 302,
       type: 'REDIRECTED',
@@ -52,6 +52,6 @@ createTest(
     const expressResponse = { redirect: jest.fn() }
     doesRedirect(firstResponse, expressResponse)
 
-    expect(expressResponse.redirect).toBeCalledWith(302, '/redirected')
+    expect(expressResponse.redirect).toHaveBeenCalledWith(302, '/redirected')
   },
 )
