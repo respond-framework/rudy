@@ -1,11 +1,12 @@
 import { applyMiddleware, createStore, combineReducers } from 'redux'
 import {
-  get,
-  clear,
+  getSessionStorage,
+  clearSessionStorage,
   getCurrentIndex,
-} from '@respond-framework/rudy/history/utils/sessionStorage'
-import { locationToUrl } from '@respond-framework/rudy/utils'
-import { createRouter } from '@respond-framework/rudy'
+  locationToUrl,
+  createRouter,
+} from '@respond-framework/rudy'
+
 import awaitUrlChange from './awaitUrlChange'
 
 export default async (...allArgs) => {
@@ -21,7 +22,7 @@ export default async (...allArgs) => {
     options = {}
   }
 
-  options = Object.assign({}, JSON.parse(process.env.RUDY_OPTIONS), options) // do things like force all tests to log -- see ../.testsConfig.json
+  options = { ...JSON.parse(process.env.RUDY_OPTIONS), ...options } // do things like force all tests to log -- see ../.testsConfig.json
 
   options.wallabyErrors =
     options.wallabyErrors !== undefined
@@ -234,7 +235,7 @@ export const setupStore = (routesMap, initialPath, opts) => {
   options.initialEntries = [initialPath]
   options.extra = options.extra || { arg: 'extra-arg' }
 
-  const middlewareFunc = options.middlewareFunc
+  const { middlewareFunc } = options
   delete options.middlewareFunc
 
   const title = (state, action = {}) => {
@@ -403,7 +404,7 @@ const expectTitle = (prefix) => {
 }
 
 const expectSessionStorage = (prefix) => {
-  expect(get()).toMatchSnapshot(`${prefix} - sessionStorage`)
+  expect(getSessionStorage()).toMatchSnapshot(`${prefix} - sessionStorage`)
 }
 
 const expectHistoryState = (prefix) => {
@@ -500,6 +501,6 @@ export const resetBrowser = async () => {
   }
 
   window.history.replaceState({}, null, '/') // insure if the index was 0 but there was a replace on it, that we are back at '/'
-  clear()
+  clearSessionStorage()
   /* eslint-env */
 }

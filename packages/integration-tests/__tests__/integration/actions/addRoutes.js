@@ -1,4 +1,4 @@
-import { addRoutes } from '@respond-framework/rudy/actions'
+import { addRoutes } from '@respond-framework/rudy'
 import createTest from '../../../__helpers__/createTest'
 
 createTest(

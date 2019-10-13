@@ -1,4 +1,4 @@
-import { get } from '@respond-framework/rudy/history/utils/sessionStorage'
+import { getSessionStorage } from '@respond-framework/rudy'
 import createTest, { setupStore } from '../../../../__helpers__/createTest'
 
 beforeAll(async () => {
@@ -31,7 +31,7 @@ createTest(
   [],
   async ({ snapPop, getLocation }) => {
     expect(getLocation()).toMatchSnapshot()
-    expect(get()).toMatchSnapshot()
+    expect(getSessionStorage()).toMatchSnapshot()
 
     await snapPop('back')
 
@@ -47,6 +47,6 @@ createTest(
     //  2. FIRST -> SECOND -> THIRD -> google.com -> SECOND(right click back button, back 2 steps)
     expect(getLocation().length).toEqual(3)
 
-    expect(get()).toMatchSnapshot()
+    expect(getSessionStorage()).toMatchSnapshot()
   },
 )

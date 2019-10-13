@@ -1,4 +1,4 @@
-import { Request } from '@respond-framework/rudy/core/createRequest'
+import { _Request } from '@respond-framework/rudy'
 import createTest from '../../__helpers__/createTest'
 
 createTest(
@@ -7,7 +7,7 @@ createTest(
     SECOND: {
       path: '/second',
       beforeEnter: (req) => {
-        expect(req).toBeInstanceOf(Request)
+        expect(req).toBeInstanceOf(_Request)
 
         expect(req.tmp).toBeDefined()
         expect(req.ctx).toMatchObject({

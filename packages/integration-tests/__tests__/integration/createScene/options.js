@@ -1,4 +1,4 @@
-import createScene from '@respond-framework/rudy/createScene'
+import { createScene } from '@respond-framework/rudy'
 import createTest from '../../../__helpers__/createTest'
 
 const routesMap = {

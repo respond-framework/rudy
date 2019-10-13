@@ -1,10 +1,5 @@
-import {
-  transformAction,
-  call,
-  enter,
-} from '@respond-framework/rudy/middleware'
+import { transformAction, call, enter, compose } from '@respond-framework/rudy'
 
-import { compose } from '@respond-framework/rudy/core'
 import createTest from '../../__helpers__/createTest'
 
 createTest('call({ start: true })', {

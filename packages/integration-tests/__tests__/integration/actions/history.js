@@ -12,7 +12,7 @@ import {
   setHash,
   setBasename,
   redirect,
-} from '@respond-framework/rudy/actions'
+} from '@respond-framework/rudy'
 import createTest from '../../../__helpers__/createTest'
 
 const routes = {

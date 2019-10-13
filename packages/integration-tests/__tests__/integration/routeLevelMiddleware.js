@@ -3,9 +3,9 @@ import {
   call,
   enter,
   changePageTitle,
-} from '@respond-framework/rudy/middleware'
+  compose,
+} from '@respond-framework/rudy'
 
-import { compose } from '@respond-framework/rudy/core'
 import createTest from '../../__helpers__/createTest'
 
 createTest(

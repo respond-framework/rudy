@@ -1,6 +1,5 @@
-import { compose } from '@respond-framework/rudy/core'
-
 import {
+  compose,
   serverRedirect,
   pathlessRoute,
   anonymousThunk,
@@ -8,7 +7,8 @@ import {
   call,
   enter,
   changePageTitle,
-} from '@respond-framework/rudy/middleware'
+} from '@respond-framework/rudy'
+
 import createTest from '../../__helpers__/createTest'
 
 createTest(
