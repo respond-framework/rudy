@@ -1,6 +1,9 @@
 # Ignored everywhere
 **/node_modules/
 
+# Not ignored
+!.eslintrc.js
+
 # Ignored dirs in sub packages
 packages/*/cjs/
 packages/*/es/
@@ -10,6 +13,9 @@ packages/*/ts/
 packages/*/tests/ts/
 packages/boilerplate/buildServer/
 packages/boilerplate/buildClient/
+
+# Examples with separate linting configuration
+examples/react/basic
 
 # Ignored source: (TODO fix errors)
 packages/integration-tests/__helpers__/awaitUrlChange.js

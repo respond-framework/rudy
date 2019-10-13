@@ -1,13 +1,3 @@
-const path = require('path')
-const {
-  configs: {
-    recommended: { env, ...jestConfig },
-  },
-  environments: {
-    globals: { globals: jestGlobals },
-  },
-} = require('eslint-plugin-jest')
-
 module.exports = {
   extends: [
     'eslint-config-airbnb',
@@ -41,9 +31,65 @@ module.exports = {
       extends: ['plugin:flowtype/recommended', 'prettier/flowtype'],
     },
     {
-      files: ['*.test.js', '*.test.jsx', '*.test.ts', '*.test.tsx'],
-      ...jestConfig,
-      globals: jestGlobals,
+      files: [
+        '*.test.js',
+        '*.test.jsx',
+        '*.test.ts',
+        '*.test.tsx',
+        '**/__tests__/**',
+        '**/__test-helpers__/**',
+        '**/tests/**',
+      ],
+      extends: ['plugin:jest/recommended'],
+      env: {
+        'jest/globals': true,
+      },
+    },
+    {
+      files: ['packages/integration-tests/__tests__/integration/browser/**'],
+      env: {
+        browser: true,
+      },
+    },
+    {
+      files: ['packages/rudy/**'],
+      rules: {
+        'no-param-reassign': 0,
+      },
+    },
+    {
+      files: ['packages/react/**'],
+      rules: {
+        'no-param-reassign': 0,
+      },
+      env: {
+        browser: true,
+      },
+    },
+    {
+      files: ['packages/boilerplate/**'],
+      env: {
+        'shared-node-browser': true,
+      },
+      settings: {
+        'import/resolver': {
+          node: {
+            extensions: [
+              '.browser.js',
+              '.server.js',
+              '.ts',
+              '.tsx',
+              '.js',
+              '.jsx',
+              '.css',
+            ],
+          },
+        },
+      },
+      rules: {
+        'react/jsx-filename-extension': 0,
+        'react/prop-types': ['error', { skipUndeclared: true }],
+      },
     },
   ],
   settings: {
