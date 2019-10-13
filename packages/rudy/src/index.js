@@ -3,11 +3,15 @@ import * as supports from './history/utils/supports'
 import * as popListener from './history/utils/popListener'
 import * as sessionStorage from './history/utils/sessionStorage'
 
-export { default as createRouter } from './core/createRouter'
+export * from './core'
 export { default as createScene } from './createScene'
 
-export { default as createHistory } from './core/createHistory'
 export { default as History } from './history/History'
+export {
+  get as getSessionStorage,
+  clear as clearSessionStorage,
+  getCurrentIndex,
+} from './history/utils'
 export { default as MemoryHistory } from './history/MemoryHistory'
 export { default as BrowserHistory } from './history/BrowserHistory'
 

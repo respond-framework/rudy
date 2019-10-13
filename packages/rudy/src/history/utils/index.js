@@ -13,4 +13,6 @@ export {
   replaceState,
   go,
   getCurrentIndex,
+  get,
+  clear,
 } from './sessionStorage'
