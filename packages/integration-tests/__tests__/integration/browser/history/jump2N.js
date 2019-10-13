@@ -1,5 +1,4 @@
-import { locationToUrl } from '@respond-framework/rudy/utils'
-import { jump } from '@respond-framework/rudy/actions'
+import { locationToUrl, jump } from '@respond-framework/rudy'
 import createTest, { resetBrowser } from '../../../../__helpers__/createTest'
 import { windowHistoryGo } from '../../../../__helpers__/awaitUrlChange'
 

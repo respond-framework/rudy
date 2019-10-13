@@ -1,4 +1,4 @@
-import History from '@respond-framework/rudy/history/History'
+import { History } from '@respond-framework/rudy'
 import createTest from '../../__helpers__/createTest'
 
 createTest(

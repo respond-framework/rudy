@@ -1,5 +1,5 @@
-import { locationToUrl } from '@respond-framework/rudy/utils'
-import { set } from '@respond-framework/rudy/actions'
+import { locationToUrl, set } from '@respond-framework/rudy'
+
 import createTest from '../../../../__helpers__/createTest'
 
 createTest(

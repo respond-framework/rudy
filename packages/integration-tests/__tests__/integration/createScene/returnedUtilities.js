@@ -1,4 +1,4 @@
-import createScene from '@respond-framework/rudy/createScene'
+import { createScene } from '@respond-framework/rudy'
 
 const routesMap = {
   SECOND: {

@@ -1,4 +1,4 @@
-import { confirm } from '@respond-framework/rudy/actions'
+import { confirm } from '@respond-framework/rudy'
 import createTest from '../../__helpers__/createTest'
 
 createTest('beforeLeave return undefined', {
