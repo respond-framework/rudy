@@ -39,7 +39,24 @@ import {
 export default (
   routesInput: RoutesInput = {},
   options: Options = {},
-  middlewares: Array<Function>,
+  middlewares: Array<Function> = [
+    serverRedirect, // short-circuiting middleware
+    anonymousThunk,
+    pathlessRoute('thunk'),
+    transformAction, // pipeline starts here
+    // Hydrate: skip callbacks called on server to produce initialState (beforeEnter, thunk, etc)
+    // Server: don't allow client-centric callbacks (onEnter, onLeave, beforeLeave)
+    call('beforeLeave', { prev: true }),
+    call('beforeEnter', { runOnServer: true }),
+    saveScroll,
+    enter,
+    changePageTitle({ title: options.title }),
+    call('onLeave', { prev: true }),
+    call('onEnter', { runOnHydrate: true }),
+    call('thunk', { cache: true, runOnServer: true }),
+    restoreScroll,
+    call('onComplete', { runOnServer: true }),
+  ],
 ) => {
   const {
     location,
@@ -78,26 +95,6 @@ export default (
   const scrollRestorer = isServer() ? undefined : scrollRestorerCreator(api)
   api.scrollRestorer = scrollRestorer
 
-  if (!middlewares) {
-    middlewares = [
-      serverRedirect, // short-circuiting middleware
-      anonymousThunk,
-      pathlessRoute('thunk'),
-      transformAction, // pipeline starts here
-      // Hydrate: skip callbacks called on server to produce initialState (beforeEnter, thunk, etc)
-      // Server: don't allow client-centric callbacks (onEnter, onLeave, beforeLeave)
-      call('beforeLeave', { prev: true }),
-      call('beforeEnter', { runOnServer: true }),
-      saveScroll,
-      enter,
-      changePageTitle({ title: options.title }),
-      call('onLeave', { prev: true }),
-      call('onEnter', { runOnHydrate: true }),
-      call('thunk', { cache: true, runOnServer: true }),
-      restoreScroll,
-      call('onComplete', { runOnServer: true }),
-    ]
-  }
   const onError = call('onError', { runOnServer: true, runOnHydrate: true })(
     api,
   )
