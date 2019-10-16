@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-test.5](https://github.com/respond-framework/rudy/tree/master/packages/rudy/compare/@respond-framework/rudy@0.1.1-test.4...@respond-framework/rudy@0.1.1-test.5) (2019-10-16)
+
+
+### Bug Fixes
+
+* **history:** delete console.log from BrowserHistory ([#58](https://github.com/respond-framework/rudy/tree/master/packages/rudy/issues/58)) ([4d1a4e4](https://github.com/respond-framework/rudy/tree/master/packages/rudy/commit/4d1a4e4)), closes [#46](https://github.com/respond-framework/rudy/tree/master/packages/rudy/issues/46)
+* **history:** store index of current history stack entry in the browser location state ([#61](https://github.com/respond-framework/rudy/tree/master/packages/rudy/issues/61)) ([3abd2b1](https://github.com/respond-framework/rudy/tree/master/packages/rudy/commit/3abd2b1))
+
+
+### BREAKING CHANGES
+
+* **history:** browsers that don't support the history API or session storage are no longer supported at all. In practice this means IE9 is no longer supported.
+* **history:** future entries in the history stack remain even if the user has since navigated from a previous entry to an external site (because they are no longer removed when they are potentially still the future entries in the browser stack)
+
+Fixes https://github.com/respond-framework/rudy/issues/59
+
+
+
+
+
 ## [0.1.1-test.4](https://github.com/respond-framework/rudy/tree/master/packages/rudy/compare/@respond-framework/rudy@0.1.1-test.3...@respond-framework/rudy@0.1.1-test.4) (2019-09-10)
 
 

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-test.5](https://github.com/respond-framework/rudy/tree/master/packages/integration-tests/compare/integration-tests@1.0.1-test.4...integration-tests@1.0.1-test.5) (2019-10-16)
+
+
+### Bug Fixes
+
+* **history:** store index of current history stack entry in the browser location state ([#61](https://github.com/respond-framework/rudy/tree/master/packages/integration-tests/issues/61)) ([3abd2b1](https://github.com/respond-framework/rudy/tree/master/packages/integration-tests/commit/3abd2b1))
+
+
+### BREAKING CHANGES
+
+* **history:** browsers that don't support the history API or session storage are no longer supported at all. In practice this means IE9 is no longer supported.
+* **history:** future entries in the history stack remain even if the user has since navigated from a previous entry to an external site (because they are no longer removed when they are potentially still the future entries in the browser stack)
+
+Fixes https://github.com/respond-framework/rudy/issues/59
+
+
+
+
+
 ## [1.0.1-test.4](https://github.com/respond-framework/rudy/tree/master/packages/integration-tests/compare/integration-tests@1.0.1-test.3...integration-tests@1.0.1-test.4) (2019-09-10)
 
 
