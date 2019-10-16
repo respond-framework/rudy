@@ -8,6 +8,13 @@ exports[`dispatch after enter on load: 1 - routes - NEVER_USED_PATHLESS - thunk 
 
 exports[`dispatch after enter on load: 1 - routes - REDIRECTED - onComplete 1`] = `1`;
 
+exports[`dispatch after enter on load: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
+
 exports[`dispatch after enter on load: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
   "location": Object {
@@ -86,7 +93,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 0,
 }
 `;
 
@@ -172,6 +178,13 @@ exports[`dispatch after enter on load: firstRoute - /first - 1 - title 1`] = `"R
 
 exports[`dispatch after enter on load: firstRoute - /first - 1 - windowLocation 1`] = `"/redirected"`;
 
+exports[`dispatch after enter: 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
 exports[`dispatch after enter: 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
@@ -201,7 +214,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 1,
 }
 `;
 
@@ -301,6 +313,13 @@ Object {
 exports[`dispatch after enter: 1 - title 1`] = `"REDIRECTED"`;
 
 exports[`dispatch after enter: 1 - windowLocation 1`] = `"/redirected"`;
+
+exports[`dispatch after enter: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "@@rudy/345678",
+  "index": 0,
+}
+`;
 
 exports[`dispatch after enter: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -433,7 +452,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 0,
 }
 `;
 
@@ -510,6 +528,13 @@ exports[`dispatch before enter on load: 1 - routes - FIRST - thunk 1`] = `0`;
 exports[`dispatch before enter on load: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`dispatch before enter on load: 1 - routes - REDIRECTED - onComplete 1`] = `1`;
+
+exports[`dispatch before enter on load: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
 
 exports[`dispatch before enter on load: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -589,7 +614,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 0,
 }
 `;
 
@@ -675,6 +699,13 @@ exports[`dispatch before enter on load: firstRoute - /first - 1 - title 1`] = `"
 
 exports[`dispatch before enter on load: firstRoute - /first - 1 - windowLocation 1`] = `"/redirected"`;
 
+exports[`dispatch before enter: 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
 exports[`dispatch before enter: 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
@@ -704,7 +735,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 1,
 }
 `;
 
@@ -804,6 +834,13 @@ Object {
 exports[`dispatch before enter: 1 - title 1`] = `"REDIRECTED"`;
 
 exports[`dispatch before enter: 1 - windowLocation 1`] = `"/redirected"`;
+
+exports[`dispatch before enter: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "@@rudy/345678",
+  "index": 0,
+}
+`;
 
 exports[`dispatch before enter: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -936,7 +973,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 0,
 }
 `;
 
@@ -1006,6 +1042,13 @@ exports[`dispatch before enter: firstRoute - /first - 1 - title 1`] = `"FIRST"`;
 
 exports[`dispatch before enter: firstRoute - /first - 1 - windowLocation 1`] = `"/"`;
 
+exports[`dispatch in pathlessRoute: 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
 exports[`dispatch in pathlessRoute: 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
@@ -1033,7 +1076,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 1,
 }
 `;
 
@@ -1118,6 +1160,13 @@ Object {
 exports[`dispatch in pathlessRoute: 1 - title 1`] = `"REDIRECTED"`;
 
 exports[`dispatch in pathlessRoute: 1 - windowLocation 1`] = `"/redirected"`;
+
+exports[`dispatch in pathlessRoute: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "@@rudy/345678",
+  "index": 0,
+}
+`;
 
 exports[`dispatch in pathlessRoute: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -1250,7 +1299,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 0,
 }
 `;
 

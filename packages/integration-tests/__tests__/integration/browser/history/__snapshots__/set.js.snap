@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
+
 exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - response 1`] = `
 Object {
   "basename": "base",
@@ -62,7 +69,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 0,
 }
 `;
 
@@ -140,6 +146,13 @@ exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","a
 
 exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - windowLocation 1`] = `"/base/?hell=yea#yolo"`;
 
+exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hello":"world"},"hash":"yolo","basename":"base","state":{"something":123},"params":{"foo":"bar"}},null,null]}} - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
+
 exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hello":"world"},"hash":"yolo","basename":"base","state":{"something":123},"params":{"foo":"bar"}},null,null]}} - response 1`] = `
 Object {
   "basename": "base",
@@ -206,7 +219,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 0,
 }
 `;
 

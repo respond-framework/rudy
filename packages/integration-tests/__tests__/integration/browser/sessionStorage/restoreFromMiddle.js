@@ -1,10 +1,6 @@
 import { get } from '@respond-framework/rudy/history/utils/sessionStorage'
 import createTest, { setupStore } from '../../../../__helpers__/createTest'
 
-// note restoreFromMiddle is in fact the same as restoreFromFront
-// since `sessionStorage.js` clips all entries after the current index
-// since they would have been lost if you navigated to another site
-
 beforeAll(async () => {
   const routesMap = {
     FIRST: '/',
@@ -44,9 +40,12 @@ createTest(
 
     expect(getLocation().index).toEqual(0)
 
-    // this is key, since we left in the middle of the entries (at SECOND), THIRD will be erased on return,
-    // just like the real browser when you push a whole new website
-    expect(getLocation().length).toEqual(2)
+    // although we left in the middle of the entries (at SECOND),
+    // THIRD will still be present on return, since in a real browser
+    // there is no reliable way to distinguish between these histories
+    //  1. FIRST -> SECOND -> THIRD -> SECOND(back button) -> google.com -> SECOND(back button)
+    //  2. FIRST -> SECOND -> THIRD -> google.com -> SECOND(right click back button, back 2 steps)
+    expect(getLocation().length).toEqual(3)
 
     expect(get()).toMatchSnapshot()
   },

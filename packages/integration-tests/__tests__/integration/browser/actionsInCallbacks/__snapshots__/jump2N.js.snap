@@ -6,6 +6,13 @@ exports[`jump(-2) after enter on load: 1 - routes - REDIRECTED - onComplete 1`] 
 
 exports[`jump(-2) after enter on load: 1 - routes - THIRD - thunk 1`] = `1`;
 
+exports[`jump(-2) after enter on load: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
+
 exports[`jump(-2) after enter on load: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
   "location": Object {
@@ -222,7 +229,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 0,
 }
 `;
 
@@ -336,6 +342,13 @@ Object {
 exports[`jump(-2) after enter on load: firstRoute - /first - 1 - title 1`] = `"FIRST"`;
 
 exports[`jump(-2) after enter on load: firstRoute - /first - 1 - windowLocation 1`] = `"/"`;
+
+exports[`jump(-2) after enter: 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
 
 exports[`jump(-2) after enter: 1 - response 1`] = `
 Object {
@@ -487,7 +500,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 1,
 }
 `;
 
@@ -616,6 +628,13 @@ Object {
 exports[`jump(-2) after enter: 1 - title 1`] = `"SECOND"`;
 
 exports[`jump(-2) after enter: 1 - windowLocation 1`] = `"/second"`;
+
+exports[`jump(-2) after enter: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 2,
+}
+`;
 
 exports[`jump(-2) after enter: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -818,7 +837,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 2,
 }
 `;
 
@@ -923,6 +941,13 @@ exports[`jump(-2) before enter on load: 1 - routes - NEVER_USED_PATHLESS - thunk
 exports[`jump(-2) before enter on load: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
 exports[`jump(-2) before enter on load: 1 - routes - THIRD - beforeEnter 1`] = `1`;
+
+exports[`jump(-2) before enter on load: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
 
 exports[`jump(-2) before enter on load: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -1140,7 +1165,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 0,
 }
 `;
 
@@ -1254,6 +1278,13 @@ Object {
 exports[`jump(-2) before enter on load: firstRoute - /first - 1 - title 1`] = `"FIRST"`;
 
 exports[`jump(-2) before enter on load: firstRoute - /first - 1 - windowLocation 1`] = `"/"`;
+
+exports[`jump(-2) before enter: 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
 
 exports[`jump(-2) before enter: 1 - response 1`] = `
 Object {
@@ -1385,7 +1416,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 0,
 }
 `;
 
@@ -1499,6 +1529,13 @@ Object {
 exports[`jump(-2) before enter: 1 - title 1`] = `"FIRST"`;
 
 exports[`jump(-2) before enter: 1 - windowLocation 1`] = `"/"`;
+
+exports[`jump(-2) before enter: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 2,
+}
+`;
 
 exports[`jump(-2) before enter: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -1701,7 +1738,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 2,
 }
 `;
 
@@ -1800,6 +1836,13 @@ Object {
 exports[`jump(-2) before enter: firstRoute - /first - 1 - title 1`] = `"THIRD"`;
 
 exports[`jump(-2) before enter: firstRoute - /first - 1 - windowLocation 1`] = `"/third"`;
+
+exports[`jump(-2) in pathlessRoute: 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
 
 exports[`jump(-2) in pathlessRoute: 1 - response 1`] = `
 Object {
@@ -1916,7 +1959,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 0,
 }
 `;
 
@@ -2015,6 +2057,13 @@ Object {
 exports[`jump(-2) in pathlessRoute: 1 - title 1`] = `"FIRST"`;
 
 exports[`jump(-2) in pathlessRoute: 1 - windowLocation 1`] = `"/"`;
+
+exports[`jump(-2) in pathlessRoute: firstRoute - /first - 1 - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 2,
+}
+`;
 
 exports[`jump(-2) in pathlessRoute: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -2217,7 +2266,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 2,
 }
 `;
 

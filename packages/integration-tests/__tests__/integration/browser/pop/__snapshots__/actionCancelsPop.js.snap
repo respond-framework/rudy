@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`pop then regular action (cancel pop): {"type":"FIRST"} - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 3,
+}
+`;
+
 exports[`pop then regular action (cancel pop): {"type":"FIRST"} - response 1`] = `
 Object {
   "basename": "",
@@ -135,7 +142,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 3,
 }
 `;
 

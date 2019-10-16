@@ -1,6 +1,7 @@
 // @flow
+import { isServer } from '@respond-framework/utils'
 import History from './History'
-import { restoreHistory, saveHistory, supportsSession } from './utils'
+import { restoreHistory, saveHistory } from './utils'
 import { toEntries } from '../utils'
 
 // Even though this is used primarily in environments without `window` (server + React Native),
@@ -19,7 +20,7 @@ export default class MemoryHistory extends History {
   _restore() {
     const { options: opts } = this
     const { initialIndex: i, initialEntries: ents, initialN: n } = opts
-    const useSession = supportsSession() && opts.testBrowser !== false
+    const useSession = !isServer() && opts.testBrowser !== false
 
     opts.restore = opts.restore || (useSession && restoreHistory)
     opts.save = opts.save || (useSession && saveHistory)

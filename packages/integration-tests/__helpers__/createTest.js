@@ -2,6 +2,7 @@ import { applyMiddleware, createStore, combineReducers } from 'redux'
 import {
   get,
   clear,
+  getCurrentIndex,
 } from '@respond-framework/rudy/history/utils/sessionStorage'
 import { locationToUrl } from '@respond-framework/rudy/utils'
 import { createRouter } from '@respond-framework/rudy'
@@ -181,9 +182,12 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
         return snapChange(++defaultPrefix, res, store, history, opts)
       },
       snap: async (action, prefix = '') => {
-        prefix = prefix || JSON.stringify(action) || 'function'
+        prefix =
+          prefix ||
+          (action && (JSON.stringify(action) || 'function')) ||
+          '<none>'
 
-        const res = await store.dispatch(action)
+        const res = action ? await store.dispatch(action) : null
 
         if (opts.snipesOnly) return res
 
@@ -374,6 +378,7 @@ const snapChange = (prefix, res, store, history, opts = {}, initialState) => {
 
   if (opts.testBrowser) {
     expectSessionStorage(prefix)
+    expectHistoryState(prefix)
     expectWindowLocation(prefix)
   }
 }
@@ -399,6 +404,10 @@ const expectTitle = (prefix) => {
 
 const expectSessionStorage = (prefix) => {
   expect(get()).toMatchSnapshot(`${prefix} - sessionStorage`)
+}
+
+const expectHistoryState = (prefix) => {
+  expect(window.history.state).toMatchSnapshot(`${prefix} - historyState`)
 }
 
 const expectWindowLocation = (prefix) => {
@@ -476,8 +485,7 @@ const awaitPop = async (history, tries = 1) => {
 
 export const resetBrowser = async () => {
   /* eslint-env browser */
-  const storage = get()
-  const index = storage && storage.index
+  const index = getCurrentIndex()
 
   if (index) {
     const delta = index * -1

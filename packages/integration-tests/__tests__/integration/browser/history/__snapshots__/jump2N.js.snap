@@ -1,5 +1,543 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`history.go(n): <none> - historyState 1`] = `
+Object {
+  "id": "@@rudy/345678",
+  "index": 0,
+}
+`;
+
+exports[`history.go(n): <none> - historyState 2`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
+exports[`history.go(n): <none> - historyState 3`] = `
+Object {
+  "id": "@@rudy/345678",
+  "index": 0,
+}
+`;
+
+exports[`history.go(n): <none> - historyState 4`] = `
+Object {
+  "id": "345678",
+  "index": 2,
+}
+`;
+
+exports[`history.go(n): <none> - response 1`] = `null`;
+
+exports[`history.go(n): <none> - response 2`] = `null`;
+
+exports[`history.go(n): <none> - response 3`] = `null`;
+
+exports[`history.go(n): <none> - response 4`] = `null`;
+
+exports[`history.go(n): <none> - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`history.go(n): <none> - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
+
+exports[`history.go(n): <none> - routes - NEVER_USED_PATHLESS - thunk 3`] = `0`;
+
+exports[`history.go(n): <none> - routes - NEVER_USED_PATHLESS - thunk 4`] = `0`;
+
+exports[`history.go(n): <none> - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`history.go(n): <none> - routes - REDIRECTED - onComplete 2`] = `0`;
+
+exports[`history.go(n): <none> - routes - REDIRECTED - onComplete 3`] = `0`;
+
+exports[`history.go(n): <none> - routes - REDIRECTED - onComplete 4`] = `0`;
+
+exports[`history.go(n): <none> - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+}
+`;
+
+exports[`history.go(n): <none> - sessionStorage 2`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+}
+`;
+
+exports[`history.go(n): <none> - sessionStorage 3`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+}
+`;
+
+exports[`history.go(n): <none> - sessionStorage 4`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+}
+`;
+
+exports[`history.go(n): <none> - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/",
+          "scene": "",
+          "search": "",
+          "url": "/",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 0,
+    "key": "345678",
+    "kind": "jump",
+    "length": 3,
+    "n": -2,
+    "params": Object {},
+    "pathname": "/",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 2,
+        "key": "345678",
+        "pathname": "/third",
+        "scene": "",
+        "search": "",
+        "url": "/third",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "THIRD",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "universal": false,
+    "url": "/",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`history.go(n): <none> - state 2`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/",
+          "scene": "",
+          "search": "",
+          "url": "/",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 1,
+    "key": "345678",
+    "kind": "next",
+    "length": 3,
+    "n": 1,
+    "params": Object {},
+    "pathname": "/second",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 0,
+        "key": "345678",
+        "pathname": "/",
+        "scene": "",
+        "search": "",
+        "url": "/",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "FIRST",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "universal": false,
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`history.go(n): <none> - state 3`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "backward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/",
+          "scene": "",
+          "search": "",
+          "url": "/",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 0,
+    "key": "345678",
+    "kind": "back",
+    "length": 3,
+    "n": -1,
+    "params": Object {},
+    "pathname": "/",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 1,
+        "key": "345678",
+        "pathname": "/second",
+        "scene": "",
+        "search": "",
+        "url": "/second",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "SECOND",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "universal": false,
+    "url": "/",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`history.go(n): <none> - state 4`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/",
+          "scene": "",
+          "search": "",
+          "url": "/",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 2,
+    "key": "345678",
+    "kind": "jump",
+    "length": 3,
+    "n": 2,
+    "params": Object {},
+    "pathname": "/third",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 0,
+        "key": "345678",
+        "pathname": "/",
+        "scene": "",
+        "search": "",
+        "url": "/",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "FIRST",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "THIRD",
+    "universal": false,
+    "url": "/third",
+  },
+  "title": "THIRD",
+}
+`;
+
+exports[`history.go(n): <none> - title 1`] = `"THIRD"`;
+
+exports[`history.go(n): <none> - title 2`] = `"FIRST"`;
+
+exports[`history.go(n): <none> - title 3`] = `"SECOND"`;
+
+exports[`history.go(n): <none> - title 4`] = `"FIRST"`;
+
+exports[`history.go(n): <none> - windowLocation 1`] = `"/"`;
+
+exports[`history.go(n): <none> - windowLocation 2`] = `"/second"`;
+
+exports[`history.go(n): <none> - windowLocation 3`] = `"/"`;
+
+exports[`history.go(n): <none> - windowLocation 4`] = `"/third"`;
+
+exports[`set(action, n):  - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
+exports[`set(action, n):  - historyState 2`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
+
 exports[`set(action, n):  - response 1`] = `
 Object {
   "basename": "",
@@ -207,7 +745,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 1,
 }
 `;
 
@@ -230,7 +767,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 0,
 }
 `;
 
@@ -426,6 +962,13 @@ exports[`set(action, n):  - windowLocation 1`] = `"/second"`;
 
 exports[`set(action, n):  - windowLocation 2`] = `"/"`;
 
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-2,null,null]}} - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
+
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-2,null,null]}} - response 1`] = `
 Object {
   "basename": "",
@@ -539,7 +1082,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 0,
 }
 `;
 

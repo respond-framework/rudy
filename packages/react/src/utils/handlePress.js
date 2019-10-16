@@ -41,10 +41,6 @@ export default (
   }
 
   if (!action && !target && fullUrl.indexOf('http') === 0) {
-    if (history.index === 0) {
-      history.saveHistory(history.location, true) // used to patch an edge case, see `history/utils/sessionStorage.js.getIndexAndEntries`
-    }
-
     window.location.href = fullUrl
   }
   return undefined

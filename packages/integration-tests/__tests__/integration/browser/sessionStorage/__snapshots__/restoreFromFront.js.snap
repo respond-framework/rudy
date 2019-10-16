@@ -108,7 +108,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 2,
 }
 `;
 
@@ -131,6 +130,19 @@ Object {
       "345678",
     ],
   ],
+}
+`;
+
+exports[`restore history when index === entries.length - 1:  - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
+exports[`restore history when index === entries.length - 1:  - historyState 2`] = `
+Object {
+  "id": "345678",
   "index": 0,
 }
 `;
@@ -342,7 +354,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 1,
 }
 `;
 
@@ -365,7 +376,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 0,
 }
 `;
 

@@ -1,5 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`set(action, n):  - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
+
+exports[`set(action, n):  - historyState 2`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
 exports[`set(action, n):  - response 1`] = `
 Object {
   "basename": "base",
@@ -198,7 +212,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 0,
 }
 `;
 
@@ -218,7 +231,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 1,
 }
 `;
 
@@ -408,6 +420,13 @@ exports[`set(action, n):  - windowLocation 1`] = `"/base/bar?hell=yea#yolo"`;
 
 exports[`set(action, n):  - windowLocation 2`] = `"/second"`;
 
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"params":{"foo":"bar"},"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},-1,null]}} - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"params":{"foo":"bar"},"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},-1,null]}} - response 1`] = `
 Object {
   "basename": "",
@@ -510,7 +529,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 1,
 }
 `;
 

@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`pop from route that wont let you leave:  - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
+
 exports[`pop from route that wont let you leave:  - response 1`] = `false`;
 
 exports[`pop from route that wont let you leave:  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
@@ -22,7 +29,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 1,
 }
 `;
 

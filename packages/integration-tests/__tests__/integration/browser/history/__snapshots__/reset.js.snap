@@ -1,5 +1,75 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`reset(actions):  - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 9,
+}
+`;
+
+exports[`reset(actions):  - historyState 2`] = `
+Object {
+  "id": "345678",
+  "index": 8,
+}
+`;
+
+exports[`reset(actions):  - historyState 3`] = `
+Object {
+  "id": "345678",
+  "index": 7,
+}
+`;
+
+exports[`reset(actions):  - historyState 4`] = `
+Object {
+  "id": "345678",
+  "index": 6,
+}
+`;
+
+exports[`reset(actions):  - historyState 5`] = `
+Object {
+  "id": "345678",
+  "index": 5,
+}
+`;
+
+exports[`reset(actions):  - historyState 6`] = `
+Object {
+  "id": "345678",
+  "index": 4,
+}
+`;
+
+exports[`reset(actions):  - historyState 7`] = `
+Object {
+  "id": "345678",
+  "index": 3,
+}
+`;
+
+exports[`reset(actions):  - historyState 8`] = `
+Object {
+  "id": "345678",
+  "index": 2,
+}
+`;
+
+exports[`reset(actions):  - historyState 9`] = `
+Object {
+  "id": "345678",
+  "index": 1,
+}
+`;
+
+exports[`reset(actions):  - historyState 10`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
+
 exports[`reset(actions):  - response 1`] = `
 Object {
   "basename": "",
@@ -2295,7 +2365,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 9,
 }
 `;
 
@@ -2362,7 +2431,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 8,
 }
 `;
 
@@ -2429,7 +2497,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 7,
 }
 `;
 
@@ -2496,7 +2563,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 6,
 }
 `;
 
@@ -2563,7 +2629,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 5,
 }
 `;
 
@@ -2630,7 +2695,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 4,
 }
 `;
 
@@ -2697,7 +2761,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 3,
 }
 `;
 
@@ -2764,7 +2827,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 2,
 }
 `;
 
@@ -2831,7 +2893,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 1,
 }
 `;
 
@@ -2898,7 +2959,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 0,
 }
 `;
 
@@ -5154,6 +5214,13 @@ exports[`reset(actions):  - windowLocation 9`] = `"/second?hell=yea#works"`;
 
 exports[`reset(actions):  - windowLocation 10`] = `"/base/bar#yolo"`;
 
+exports[`reset(actions): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],null,null]}} - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 10,
+}
+`;
+
 exports[`reset(actions): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],null,null]}} - response 1`] = `
 Object {
   "basename": "",
@@ -5439,7 +5506,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 10,
 }
 `;
 

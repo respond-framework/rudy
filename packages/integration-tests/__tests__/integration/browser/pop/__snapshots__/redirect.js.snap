@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`pop redirect:  - historyState 1`] = `
+Object {
+  "id": "345678",
+  "index": 0,
+}
+`;
+
 exports[`pop redirect:  - response 1`] = `
 Object {
   "basename": "",
@@ -110,7 +117,6 @@ Object {
       "345678",
     ],
   ],
-  "index": 0,
 }
 `;
 

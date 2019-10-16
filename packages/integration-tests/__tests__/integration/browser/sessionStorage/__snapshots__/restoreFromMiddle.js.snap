@@ -36,13 +36,28 @@ Object {
       "state": Object {},
       "type": "SECOND",
     },
+    Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "key": "345678",
+        "pathname": "/third",
+        "scene": "",
+        "search": "",
+        "url": "/third",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "THIRD",
+    },
   ],
   "from": null,
   "hash": "",
   "index": 1,
   "key": "345678",
   "kind": "load",
-  "length": 2,
+  "length": 3,
   "n": 1,
   "params": Object {},
   "pathname": "/second",
@@ -87,8 +102,12 @@ Object {
       Object {},
       "345678",
     ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
   ],
-  "index": 1,
 }
 `;
 
@@ -105,7 +124,18 @@ Object {
       Object {},
       "345678",
     ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
   ],
+}
+`;
+
+exports[`restore history when index > 0:  - historyState 1`] = `
+Object {
+  "id": "345678",
   "index": 0,
 }
 `;
@@ -148,12 +178,27 @@ Object {
         "state": Object {},
         "type": "SECOND",
       },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
     ],
     "from": null,
     "index": 0,
     "key": "345678",
     "kind": "back",
-    "length": 2,
+    "length": 3,
     "n": -1,
     "pathname": "/",
     "pop": true,
@@ -202,8 +247,12 @@ Object {
       Object {},
       "345678",
     ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
   ],
-  "index": 0,
 }
 `;
 
@@ -244,13 +293,28 @@ Object {
         "state": Object {},
         "type": "SECOND",
       },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
     ],
     "from": null,
     "hash": "",
     "index": 0,
     "key": "345678",
     "kind": "back",
-    "length": 2,
+    "length": 3,
     "n": -1,
     "params": Object {},
     "pathname": "/",
