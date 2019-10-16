@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@respond-framework/utils": "^0.1.1-test.1",
-    "scroll-behavior": "git+https://github.com/hedgepigdaniel/scroll-behavior.git#build/initial-typescript"
+    "scroll-behavior": "git+https://github.com/hedgepigdaniel/scroll-behavior.git#build/intermediate-scroll"
   },
   "peerDependencies": {
     "@respond-framework/types": "^0.1.1-test.1"

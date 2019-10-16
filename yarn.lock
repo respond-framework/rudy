@@ -9356,9 +9356,9 @@ schema-utils@^2.1.0:
     ajv "^6.10.2"
     ajv-keywords "^3.4.1"
 
-"scroll-behavior@git+https://github.com/hedgepigdaniel/scroll-behavior.git#build/initial-typescript":
+"scroll-behavior@git+https://github.com/hedgepigdaniel/scroll-behavior.git#build/intermediate-scroll":
   version "0.9.10"
-  resolved "git+https://github.com/hedgepigdaniel/scroll-behavior.git#e5cbd6e906622c8c5cafb54df0868a3dd289236b"
+  resolved "git+https://github.com/hedgepigdaniel/scroll-behavior.git#2980b68cc1658bda5923610421a12b325f28b056"
   dependencies:
     dom-helpers "^3.4.0"
     invariant "^2.2.4"
