@@ -27,7 +27,6 @@ module.exports = {
         'prettier/@typescript-eslint',
       ],
       rules: {
-        'no-useless-constructor': 0,
         '@typescript-eslint/explicit-function-return-type': [
           'error',
           {
