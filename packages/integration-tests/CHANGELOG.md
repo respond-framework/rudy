@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-test.6](https://github.com/respond-framework/rudy/tree/master/packages/integration-tests/compare/integration-tests@1.0.1-test.5...integration-tests@1.0.1-test.6) (2019-10-23)
+
+
+### Bug Fixes
+
+* **tests:** import through package exports, not file paths ([780e5ca](https://github.com/respond-framework/rudy/tree/master/packages/integration-tests/commit/780e5ca))
+
+
+
+
+
 ## [1.0.1-test.5](https://github.com/respond-framework/rudy/tree/master/packages/integration-tests/compare/integration-tests@1.0.1-test.4...integration-tests@1.0.1-test.5) (2019-10-16)
 
 

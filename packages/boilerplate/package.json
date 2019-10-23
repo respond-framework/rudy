@@ -1,7 +1,7 @@
 {
   "name": "@respond-framework/boilerplate",
   "description": "Universal Rudy Demo",
-  "version": "0.1.1-test.5",
+  "version": "0.1.1-test.6",
   "main": "server/index.js",
   "author": "James Gillmore <james@faceyspacey.com>",
   "license": "MIT",
@@ -20,8 +20,8 @@
     "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write"
   },
   "dependencies": {
-    "@respond-framework/react": "^0.1.1-test.4",
-    "@respond-framework/rudy": "^0.1.1-test.5",
+    "@respond-framework/react": "^0.1.1-test.5",
+    "@respond-framework/rudy": "^0.1.1-test.6",
     "core-js": "^3.2.1",
     "express": "^4.15.2",
     "react": "^16.8.0",
