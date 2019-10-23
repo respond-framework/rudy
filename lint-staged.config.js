@@ -9,7 +9,8 @@ module.exports = {
         ...commands,
         micromatch.isMatch(file, eslintMatcher)
           ? `eslint --cache --report-unused-disable-directives --max-warnings 0 --fix '${file}'`
-          : `prettier --write '${file}'``git add '${file}'`,
+          : `prettier --write '${file}'`,
+        `git add '${file}'`,
       ],
       [],
     ),
