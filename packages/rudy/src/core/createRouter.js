@@ -1,6 +1,7 @@
 // @flow
 import qs from 'qs'
-import { createSelector } from '@respond-framework/utils'
+import { createSelector, isServer } from '@respond-framework/utils'
+import defaultCreateRestoreScroll from '@respond-framework/scroll-restorer'
 import type {
   Options,
   Store,
@@ -31,6 +32,8 @@ import {
   call,
   enter,
   changePageTitle,
+  saveScroll,
+  restoreScroll,
 } from '../middleware'
 
 export default (
@@ -45,11 +48,13 @@ export default (
     // Server: don't allow client-centric callbacks (onEnter, onLeave, beforeLeave)
     call('beforeLeave', { prev: true }),
     call('beforeEnter', { runOnServer: true }),
+    saveScroll,
     enter,
     changePageTitle({ title: options.title }),
     call('onLeave', { prev: true }),
     call('onEnter', { runOnHydrate: true }),
     call('thunk', { cache: true, runOnServer: true }),
+    restoreScroll,
     call('onComplete', { runOnServer: true }),
   ],
 ) => {
@@ -61,6 +66,7 @@ export default (
     createReducer: createLocationReducer = createReducer,
     createInitialState: createState = createInitialState,
     onError: onErr,
+    restoreScroll: scrollRestorerCreator = defaultCreateRestoreScroll(),
   } = options
 
   // assign to options so middleware can override them in 1st pass if necessary
@@ -85,6 +91,10 @@ export default (
   const has = (name: string) => wares[name]
   const ctx = { busy: false }
   const api = { routes, history, options, register, has, ctx }
+
+  const scrollRestorer = isServer() ? undefined : scrollRestorerCreator(api)
+  api.scrollRestorer = scrollRestorer
+
   const onError = call('onError', { runOnServer: true, runOnHydrate: true })(
     api,
   )
