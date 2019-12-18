@@ -125,12 +125,14 @@ export class RudyScrollRestorer<Action extends FluxStandardRoutingAction>
       Object.keys(this.transitionHooks).forEach((hookIndex) => {
         this.transitionHooks[hookIndex]()
       })
+      this.behavior.startIgnoringScrollEvents()
       return next()
     }
   }
 
   restoreScroll: Middleware<Action> = () => {
     return (request, next) => {
+      this.behavior.stopIgnoringScrollEvents()
       this.behavior.updateScroll(null, request)
       return next()
     }
