@@ -25,6 +25,6 @@
     "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write"
   },
   "dependencies": {
-    "scroll-behavior": "git+https://github.com/hedgepigdaniel/scroll-behavior.git#build/intermediate-scroll-2"
+    "scroll-behavior": "^0.9.11"
   }
 }
