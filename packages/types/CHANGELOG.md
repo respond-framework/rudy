@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-test.4](https://github.com/respond-framework/rudy/tree/master/packages/types/compare/@respond-framework/types@0.1.1-test.3...@respond-framework/types@0.1.1-test.4) (2019-12-20)
+
+
+### Bug Fixes
+
+* update to released scroll-behavior API ([#70](https://github.com/respond-framework/rudy/tree/master/packages/types/issues/70)) ([8e7d381](https://github.com/respond-framework/rudy/tree/master/packages/types/commit/8e7d381))
+
+
+
+
+
 ## [0.1.1-test.3](https://github.com/respond-framework/rudy/tree/master/packages/types/compare/@respond-framework/types@0.1.1-test.2...@respond-framework/types@0.1.1-test.3) (2019-11-13)
 
 

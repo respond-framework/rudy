@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-test.8](https://github.com/respond-framework/rudy/tree/master/packages/integration-tests/compare/integration-tests@1.0.1-test.7...integration-tests@1.0.1-test.8) (2019-12-20)
+
+**Note:** Version bump only for package integration-tests
+
+
+
+
+
 ## [1.0.1-test.7](https://github.com/respond-framework/rudy/tree/master/packages/integration-tests/compare/integration-tests@1.0.1-test.6...integration-tests@1.0.1-test.7) (2019-11-13)
 
 **Note:** Version bump only for package integration-tests
