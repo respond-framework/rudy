@@ -1,6 +1,7 @@
 // @flow
 /* eslint-env browser */
 import { toEntries } from '../../utils'
+import { supportsSessionStorage } from '@respond-framework/utils'
 
 // API:
 
@@ -9,16 +10,11 @@ import { toEntries } from '../../utils'
 // - `saveHistory` is  called every time the history entries or index changes
 // - `restoreHistory` is called on startup obviously
 
-// Essentially the idea is that if there is no `sessionStorage`, we maintain the entire
-// storage object on EACH AND EVERY history entry's `state`. I.e. `history.state` on
-// every page will have the `index` and `entries` array. That way when browsers disable
-// cookies/sessionStorage, we can still grab the data we need off off of history state :)
-//
-// It's a bit crazy, but it works very well, and there's plenty of space allowed for storing
-// things there to get a lot of mileage out of it. We store the minimum amount of data necessary.
-//
-// Firefox has the lowest limit of 640kb PER ENTRY. IE has 1mb and chrome has at least 10mb:
-// https://stackoverflow.com/questions/6460377/html5-history-api-what-is-the-max-size-the-state-object-can-be
+// If there is no `sessionStorage` (which happens e.g. in incognito mode in iOS safari), we
+// have a fallback which is simply module state (which is reset on page reload). In this case,
+// we don't use window.pushState and therefore ensure that the length of the SPA history is 1.
+// This is because we can't store our mirrored history stack across page reloads, external
+// navigation, etc, which is needed to correctly intercept SPA history actions.
 
 export const saveHistory = ({ entries }) => {
   entries = entries.map((e) => [e.location.url, e.state, e.location.key]) // one entry has the url, a state object, and a 6 digit key
@@ -35,30 +31,56 @@ export const restoreHistory = (api) => {
   return format(history, api)
 }
 
+let fallbackSessionState = ''
+
 export const clear = () => {
-  window.sessionStorage.setItem(key(), '')
+  if (supportsSessionStorage()) {
+    window.sessionStorage.setItem(key(), '')
+  } else {
+    fallbackSessionState = ''
+  }
   historySet({ index: 0, id: key() })
 }
 
-const set = (val) => window.sessionStorage.setItem(key(), JSON.stringify(val))
+const set = (val) => {
+  if (supportsSessionStorage()) {
+    window.sessionStorage.setItem(key(), JSON.stringify(val))
+  } else {
+    fallbackSessionState = JSON.stringify(val)
+  }
+}
 
 export const get = () => {
+  let json
+  if (supportsSessionStorage()) {
+    json = window.sessionStorage.getItem(key())
+  } else {
+    json = fallbackSessionState
+  }
   try {
-    const json = window.sessionStorage.getItem(key())
     return JSON.parse(json)
-  } catch (error) {
+  } catch {
     return null
   }
 }
 
 // HISTORY FACADE:
 
-export const pushState = (url: string) =>
+export const pushState = (url: string) => {
+  if (!supportsSessionStorage()) {
+    // If session storage is no supported, do not create a history
+    // with multiple entries
+    window.location.href = url
+    // Block until the page reloads
+    return new Promise(() => {})
+  }
   window.history.pushState(
     { id: sessionId(), index: getHistoryState().index + 1 },
     null,
     url,
   ) // insure every entry has the sessionId (called by `BrowserHistory`)
+  return Promise.resolve()
+}
 
 export const replaceState = (url: string) =>
   window.history.replaceState(

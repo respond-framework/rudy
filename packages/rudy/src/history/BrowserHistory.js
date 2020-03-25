@@ -16,7 +16,7 @@ import {
 import type { Action, Dispatch } from '../flow-types'
 
 // 1) HISTORY RESTORATION:
-// * FROM SESSION_STORAGE (WITH A FALLBACK TO OUR "HISTORY_STORAGE" SOLUTION)
+// * FROM SESSION_STORAGE
 
 // The `id` below is very important, as it's used to identify unique `sessionStorage` sessions lol.
 
@@ -30,9 +30,6 @@ import type { Action, Dispatch } from '../flow-types'
 
 // - then we restore the history using the id
 // - and for all subsequent history saving, we save to the correct storage with that `id`
-
-// NOTE: As far as the "HISTORY_STORAGE" fallback goes, please `sessionStorage.js`.
-// Essentially we save the entire sessionStorage in every entry of `window.history` :)
 
 // 2) POP HANDLING -- THE MOST IMPORTANT THING HERE:
 
