@@ -10,11 +10,16 @@ import { supportsSessionStorage } from '@respond-framework/utils'
 // - `saveHistory` is  called every time the history entries or index changes
 // - `restoreHistory` is called on startup obviously
 
-// If there is no `sessionStorage` (which happens e.g. in incognito mode in iOS safari), we
-// have a fallback which is simply module state (which is reset on page reload). In this case,
-// we don't use window.pushState and therefore ensure that the length of the SPA history is 1.
-// This is because we can't store our mirrored history stack across page reloads, external
-// navigation, etc, which is needed to correctly intercept SPA history actions.
+/**
+ * If there is no `sessionStorage` (which happens e.g. in incognito mode in
+ * iOS safari), we have a fallback which is to store the history of stack
+ * entries inside the current browser history stack entry. Since we can only
+ * access the current history stack entry, this means that if the user
+ * returns to the middle of a set of entries within the app, then Rudy will
+ * not be aware of the future entries. Navigation will still work, but the
+ * entries in the redux state will not include future states, and callbacks
+ * related to future states will therefore not work.
+ */
 
 export const saveHistory = ({ entries }) => {
   entries = entries.map((e) => [e.location.url, e.state, e.location.key]) // one entry has the url, a state object, and a 6 digit key
@@ -31,22 +36,27 @@ export const restoreHistory = (api) => {
   return format(history, api)
 }
 
-let fallbackSessionState = ''
-
 export const clear = () => {
   if (supportsSessionStorage()) {
     window.sessionStorage.setItem(key(), '')
   } else {
-    fallbackSessionState = ''
+    const state = window.history.state
+    if (state) {
+      delete state.stack
+      window.history.replaceState(state, null)
+    }
   }
   historySet({ index: 0, id: key() })
 }
 
 const set = (val) => {
+  const json = JSON.stringify(val)
   if (supportsSessionStorage()) {
-    window.sessionStorage.setItem(key(), JSON.stringify(val))
+    window.sessionStorage.setItem(key(), json)
   } else {
-    fallbackSessionState = JSON.stringify(val)
+    const state = window.history.state || {}
+    state.stack = json
+    window.history.replaceState(state, null)
   }
 }
 
@@ -55,7 +65,7 @@ export const get = () => {
   if (supportsSessionStorage()) {
     json = window.sessionStorage.getItem(key())
   } else {
-    json = fallbackSessionState
+    json = (window.history.state || {}).stack
   }
   try {
     return JSON.parse(json)
@@ -66,21 +76,12 @@ export const get = () => {
 
 // HISTORY FACADE:
 
-export const pushState = (url: string) => {
-  if (!supportsSessionStorage()) {
-    // If session storage is no supported, do not create a history
-    // with multiple entries
-    window.location.href = url
-    // Block until the page reloads
-    return new Promise(() => {})
-  }
+export const pushState = (url: string) =>
   window.history.pushState(
     { id: sessionId(), index: getHistoryState().index + 1 },
     null,
     url,
   ) // insure every entry has the sessionId (called by `BrowserHistory`)
-  return Promise.resolve()
-}
 
 export const replaceState = (url: string) =>
   window.history.replaceState(
