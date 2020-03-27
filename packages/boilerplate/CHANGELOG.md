@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-test.9](https://github.com/hedgepigdaniel/rudy/compare/@respond-framework/boilerplate@0.1.1-test.8...@respond-framework/boilerplate@0.1.1-test.9) (2020-03-27)
+
+**Note:** Version bump only for package @respond-framework/boilerplate
+
+
+
+
+
 ## [0.1.1-test.8](https://github.com/hedgepigdaniel/rudy/compare/@respond-framework/boilerplate@0.1.1-test.7...@respond-framework/boilerplate@0.1.1-test.8) (2019-12-20)
 
 **Note:** Version bump only for package @respond-framework/boilerplate

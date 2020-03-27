@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-test.4](https://github.com/respond-framework/rudy/tree/master/packages/middleware-change-page-title/compare/@respond-framework/middleware-change-page-title@1.0.1-test.3...@respond-framework/middleware-change-page-title@1.0.1-test.4) (2020-03-27)
+
+**Note:** Version bump only for package @respond-framework/middleware-change-page-title
+
+
+
+
+
 ## [1.0.1-test.3](https://github.com/respond-framework/rudy/tree/master/packages/middleware-change-page-title/compare/@respond-framework/middleware-change-page-title@1.0.1-test.2...@respond-framework/middleware-change-page-title@1.0.1-test.3) (2019-10-23)
 
 

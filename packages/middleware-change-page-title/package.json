@@ -1,6 +1,6 @@
 {
   "name": "@respond-framework/middleware-change-page-title",
-  "version": "1.0.1-test.3",
+  "version": "1.0.1-test.4",
   "description": "Rudy middleware to synchronise the browser page title with redux state",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -31,6 +31,6 @@
     "test": "jest --config ../../jest.config.js --rootDir ."
   },
   "dependencies": {
-    "@respond-framework/utils": "^0.1.1-test.3"
+    "@respond-framework/utils": "^0.1.1-test.4"
   }
 }

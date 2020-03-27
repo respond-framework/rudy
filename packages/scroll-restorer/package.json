@@ -1,6 +1,6 @@
 {
   "name": "@respond-framework/scroll-restorer",
-  "version": "0.1.0-test.3",
+  "version": "0.1.0-test.4",
   "description": "Rudy middleware to restore scroll position after navigation",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -32,7 +32,7 @@
     "prettify": "prettier --ignore-path=../../config/.prettierignore '**/*' --write"
   },
   "dependencies": {
-    "@respond-framework/utils": "^0.1.1-test.1",
+    "@respond-framework/utils": "^0.1.1-test.4",
     "scroll-behavior": "^0.9.11"
   },
   "peerDependencies": {
