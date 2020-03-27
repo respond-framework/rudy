@@ -13,6 +13,7 @@ import {
   ScrollRestorer,
   ScrollRestorerCreator,
 } from '@respond-framework/types'
+import { supportsSessionStorage } from '@respond-framework/utils'
 
 export { ScrollPosition } from 'scroll-behavior'
 
@@ -57,6 +58,9 @@ export class RudyScrollRestorer<Action extends FluxStandardRoutingAction>
     key: string | null,
     value: ScrollPosition,
   ): void => {
+    if (!supportsSessionStorage()) {
+      return
+    }
     window.sessionStorage.setItem(
       this.makeStorageKey(entry, key),
       JSON.stringify(value),
@@ -67,6 +71,9 @@ export class RudyScrollRestorer<Action extends FluxStandardRoutingAction>
     entry: LocationEntry<Action>,
     key: string | null,
   ): ScrollPosition | null => {
+    if (!supportsSessionStorage()) {
+      return null
+    }
     const savedItem = window.sessionStorage.getItem(
       this.makeStorageKey(entry, key),
     )

@@ -1,6 +1,7 @@
 // @flow
 /* eslint-env browser */
 import { toEntries } from '../../utils'
+import { supportsSessionStorage } from '@respond-framework/utils'
 
 // API:
 
@@ -9,16 +10,16 @@ import { toEntries } from '../../utils'
 // - `saveHistory` is  called every time the history entries or index changes
 // - `restoreHistory` is called on startup obviously
 
-// Essentially the idea is that if there is no `sessionStorage`, we maintain the entire
-// storage object on EACH AND EVERY history entry's `state`. I.e. `history.state` on
-// every page will have the `index` and `entries` array. That way when browsers disable
-// cookies/sessionStorage, we can still grab the data we need off off of history state :)
-//
-// It's a bit crazy, but it works very well, and there's plenty of space allowed for storing
-// things there to get a lot of mileage out of it. We store the minimum amount of data necessary.
-//
-// Firefox has the lowest limit of 640kb PER ENTRY. IE has 1mb and chrome has at least 10mb:
-// https://stackoverflow.com/questions/6460377/html5-history-api-what-is-the-max-size-the-state-object-can-be
+/**
+ * If there is no `sessionStorage` (which happens e.g. in incognito mode in
+ * iOS safari), we have a fallback which is to store the history of stack
+ * entries inside the current browser history stack entry. Since we can only
+ * access the current history stack entry, this means that if the user
+ * returns to the middle of a set of entries within the app, then Rudy will
+ * not be aware of the future entries. Navigation will still work, but the
+ * entries in the redux state will not include future states, and callbacks
+ * related to future states will therefore not work.
+ */
 
 export const saveHistory = ({ entries }) => {
   entries = entries.map((e) => [e.location.url, e.state, e.location.key]) // one entry has the url, a state object, and a 6 digit key
@@ -36,17 +37,39 @@ export const restoreHistory = (api) => {
 }
 
 export const clear = () => {
-  window.sessionStorage.setItem(key(), '')
+  if (supportsSessionStorage()) {
+    window.sessionStorage.setItem(key(), '')
+  } else {
+    const state = window.history.state
+    if (state) {
+      delete state.stack
+      window.history.replaceState(state, null)
+    }
+  }
   historySet({ index: 0, id: key() })
 }
 
-const set = (val) => window.sessionStorage.setItem(key(), JSON.stringify(val))
+const set = (val) => {
+  const json = JSON.stringify(val)
+  if (supportsSessionStorage()) {
+    window.sessionStorage.setItem(key(), json)
+  } else {
+    const state = window.history.state || {}
+    state.stack = json
+    window.history.replaceState(state, null)
+  }
+}
 
 export const get = () => {
+  let json
+  if (supportsSessionStorage()) {
+    json = window.sessionStorage.getItem(key())
+  } else {
+    json = (window.history.state || {}).stack
+  }
   try {
-    const json = window.sessionStorage.getItem(key())
     return JSON.parse(json)
-  } catch (error) {
+  } catch {
     return null
   }
 }
