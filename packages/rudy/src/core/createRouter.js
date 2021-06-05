@@ -29,6 +29,7 @@ import {
   pathlessRoute,
   anonymousThunk,
   transformAction,
+  preventDoubleDispatch,
   call,
   enter,
   changePageTitle,
@@ -44,6 +45,7 @@ export default (
     anonymousThunk,
     pathlessRoute('thunk'),
     transformAction, // pipeline starts here
+    preventDoubleDispatch,
     // Hydrate: skip callbacks called on server to produce initialState (beforeEnter, thunk, etc)
     // Server: don't allow client-centric callbacks (onEnter, onLeave, beforeLeave)
     call('beforeLeave', { prev: true }),
