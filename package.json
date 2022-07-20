@@ -85,7 +85,7 @@
     "rimraf": "^2.6.1",
     "source-map-loader": "^0.2.4",
     "stats-webpack-plugin": "^0.6.1",
-    "terser": "^3.8.1",
+    "terser": "^4.8.1",
     "typescript": "^3.6.3",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "4.16.3",
